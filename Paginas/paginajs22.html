@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Node JS</title>
+</head>
+<body class="body">
+  <header>
+    <!-- Introducción -->
+    <section class="container">
+      <div>
+        <h1 class="textCenter">Node.js</h1>
+        <p>NodeJS es un entorno de ejecución de JavaScript fuera del navegador. Se crea en 2009, orientado a servidores. Es muy importante que esté fuera del navegador debido a que ya no es necesario un navegador web para ejecutar código JavaScript.</p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <!-- Características -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Caracteríasticas principales.</h2>
+        <dl>
+          <dt>Concurrencia</dt>
+          <dd>Es monohilo, con entradas y salidas asíncronas, lo cual permite correr un único proceso por cada núcleo del procesador y enviar peticiones de manera asíncrona evitando saturaciones.</dd>
+          <dt>Corre sobre motor V8</dt>
+          <dd><i>Creado por Google en 2008 para Chrome, escrito en C++ y es opensource.</i> Convierte código JavaScript en código máquina en lugar de interpretarlo en tiempo real, permitiendo que si hay errores de sintaxis, las aplicaciones no funcione desde un principio en vez de que dejen de funcionar al momento de ejecutar esa parte de la sintaxis. También gracias a que esta escrito en C++ va a ejecutarse de una forma muy rápida.</dd>
+          <dt>Módulos</dt>
+          <dd>Todo funciona en base a Módulos (módulo es todo aquello que no sea sintaxis de código como if, while, etc.), que son piezas de código muy pequeñas que modularizan nuestros sistemas y ayudan a entender mejor el código.</dd>
+          <dt>Orientación a Eventos</dt>
+          <dd>Existe un bucle de eventos que se ejecuta constantemente y se disparan eventos que se pueden percibir o escuchar, permitiendo programar de forma reactiva, es decir que se pueden programar acciones cuando surjan dichos eventos.</dd>
+        </dl>
+      </div>
+    </section>
+    <!-- Proceso de eventos -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter"></h2>
+        <dl>
+          <dt>Event Queue</dt>
+          <dd>Contiene todos los <i>eventos</i> que se generan por el código de la aplicación (funciones, peticiones, eventos, etc.), estos <i>eventos</i> quedan en una cola que van pasando uno a uno al Event Loop.</dd>
+          <dt>Event Loop</dt>
+          <dd>Es un proceso con un bucle que gestiona, de forma asíncrona, todos los <i>eventos</i> de la aplicación.<br/>
+          Se encarga de resolver los <i>eventos</i> ultra rápidos que llegan desde el Event Queue. En caso de no poder resolverse rápido, enviá el <i>evento</i> al Thread Pool.</dd>
+          <dt>Thread Pool</dt>
+          <dd>Se encarga de gestionar los <i>eventos</i> de forma asíncrona. Crea un hilo nuevo dentro del procesador para ejecutar cada uno de los <i>eventos</i> que tiene.<br/>
+          Una vez que los <i>eventos</i> terminan de ejecutarse, los devuelve al Event Loop. El Event Loop analiza si los pasa a Event Queue o no.</dd>
+        </dl>
+      </div>
+    </section>
+    <!-- Monohilo -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Monohilo.</h2>
+        <p><i>Un hilo o subproceso es una secuencia de tareas encadenadas muy pequeña que puede ser ejecutada por un sistema operativo.</i></p>
+        <p>El monohilo abre un proceso de Node, interpreta un archivo, lo convierte a código máquina, lo ejecuta y cierra el proceso.</p>
+        <p>Cuando ocurre un error dentro de alguno de los hilos y no se controla apropiadamente (catch); Node detiene todos los hilos en ejecución. Esto puede ser muy peligroso, debido a que es dificil determinar el origen del problema y en que punto de ejecución se encontraba cada hilo cuando fue detenido.</p>
+        <p>En el siguiente ejemplo la función no se detiene y continúa su ejecución al infinito repitiendo un texto cada segundo.</p>
+        <p>La ejecución de funciones que recaen en ciclos infinitos se detiene con <b>ctrl + alt + m</b> en Run Code, o con <b>ctrl + c</b> en la terminal.</p>
+        <p>Esta instrucción es asíncrona, por lo que se ejecuta en un n momento dejando que otras funciones declaradas posteriormente se ejecuten antes que ésta.</p>
+        <aside class="exempliGratia">
+          &emsp;console.log('Hola mundo');<br/>
+          &emsp;<i class="coment highlight">// SetInterval permite ejecutar una función cada n cantidad de tiempo, por lo que recibe como argumentos: Función a ejecutarse, intervalo de tiempo.</i><br/>
+          &emsp;let i = 0;<br/>
+          &emsp;setInterval(function(){<br/>
+          &emsp;&emsp;console.log(`Voy a contar hasta infinito, detén mi ejecución o consumo tu memoria ${i}`);<br/>
+          &emsp;&emsp;i++;<br/>
+          &emsp;}, 1000);<br/>
+          &emsp;console.log('Yo solo iba de paso =B');
+          <hr class="link">
+          &emsp;<i>Imprime en la terminal:</i><br/>
+          &emsp;Hola mundo<br/>
+          &emsp;Yo solo iba de paso =B<br/>
+          &emsp;Voy a contar hasta ... tu memoria 0<br/>
+          &emsp;Voy a contar hasta ... tu memoria 1<br/>
+          &emsp;Voy a contar hasta ... tu memoria 2<br/>
+          &emsp;^C
+        </aside>
+        <p>Al ser monohilo el peligro recae en que si el código se efectua y arroja un error dentro de sus acciones, puede detener toda la aplicación.</p>
+        <p>Escuchar los errores en todo el código es muy imporante. Comprobar funciones y revisar lo que posiblemente puede fallar es clave para que no se corte la ejecución de la aplicación.</p>
+        <aside class="exempliGratia">
+          &emsp;console.log('Hola mundo');<br/>
+          &emsp;let i = 0;<br/>
+          &emsp;setInterval(function(){<br/>
+          &emsp;&emsp;console.log(`Voy a contar hasta infinito, detén mi ejecución o consumo tu memoria ${i}`);<br/>
+          &emsp;&emsp;if (i === 5) {<br/>
+          &emsp;&emsp;&emsp;console.log('forcé un error');<br/>
+          &emsp;&emsp;&emsp;var a = 3 + z;<br/>
+          &emsp;&emsp;}<br/>
+          &emsp;&emsp;i++;<br/>
+          &emsp;}, 1000);<br/>
+          &emsp;console.log('Yo solo iba de paso =B');
+          <hr class="link">
+          &emsp;<i>Imprime en la terminal:</i><br/>
+          &emsp;Hola mundo<br/>
+          &emsp;Yo solo iba de paso =B<br/>
+          &emsp;Voy a contar hasta ... tu memoria 0<br/>
+          &emsp;Voy a contar hasta ... tu memoria 1<br/>
+          &emsp;Voy a contar hasta ... tu memoria 2<br/>
+          &emsp;Voy a contar hasta ... tu memoria 3<br/>
+          &emsp;Voy a contar hasta ... tu memoria 4<br/>
+          &emsp;forcé un error<br/>
+          &emsp;<i>variable z no declarada.</i>
+        </aside>
+      </div>
+    </section>
+    <!-- Variables de entorno -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Variables de entorno.</h2>
+        <p>Son una forma de llamar información de externa a nuestro software, sirve para definir parámetros sencillos de configuración de los programas de modo que puedan ejecutarse en diferentes ambiente sin necesidad de modificar el código fuente de un script.</p>
+        <p>Es buena practica declararlas con mayúsculas (EDAD, ID_USER), se manda a llamar utilizando las siguientes palabras reservadas separadas por un punto:</p>
+        <ul>
+          <li><b>process</b>: objeto que da información sobre el procesos que está ejecutando el script.</li>
+          <li><b>env</b>: propiedad que da acceso a las variables de entorno de manera sencilla. Indica la hubicación de la variable de entorno (environment variable) que en general se llama "env".</li>
+          <li><b>NOMBRE</b> indica el nombre de la variable que se importará.</li>
+          <li><b>|| 'Fulanito'</b> indica el dato de la variable por default, ésta variable se anexará a la variable NOMBRE si ésta no tiene un valor definido.</li>
+        </ul>
+        <aside class="exempliGratia">
+          &emsp;let nombre = process.env.NOMBRE || 'fulanito';<br/>
+          &emsp;let edad = process.env.EDAD || '18';<br/>
+          &emsp;console.log('hola ' + nombre + ' de ' + edad + ' años.');
+          <hr class="link">
+          <i class="coment">Ejemplo de la consola de Visual Studio Code:</i><br/>
+          NOMBRE=Juan EDAD=25 node JavaScript/paginajs22.html
+        </aside>
+        <h3><a href="https://nodemon.io/" target="_blank" rel="noopener noreferrer" class="link">Nodemon</a></h3>
+        <p>Es un gestor de Node (un demonio). Se utiliza en el desarrollo de proyectos de código porque permite ver la ejecución del código.</p>
+        <p>Un demonio es la ejecución constante de un proceso, cuando se modifica el código se actualiza automaticamente y se obserban los cambios.</p>
+        <p>Nodemon se instala desde la terminal con el comando:</p>
+        <i class="coment">npm install -g nodemon</i>
+        <p>Y se ejecuta colocando <b>nodemon <i>ruta/del/programa.js</i></b></p>
+        <h3><a href="https://pm2.keymetrics.io/" target="_blank" rel="noopener noreferrer" class="link">PM2</a></h3>
+        <p>Es un demonio administrador de procesos que ayuda a administrar, monitorear y mantener la aplicación todo el tiempo. Se utiliza en la producción de la aplicación.</p>
+        <p>PM2 se instala desde la terminal con el comando:</p>
+        <i class="coment">npm install -g pm2</i>
+        <p>Y se ejecuta colocando <b>pm2 start <i>ruta/del/programa.js</i></b></p>
+        <ul>
+          <li><b>pm2 start <u><i>Id del proceso</i></u> | <u><i>Name de la app</i></u> | <u><i>Ruta de la app</i></u></b> inicia una aplicación en pm2 y muestra las instrucciones que se pueden utilizar (ej: pm2 start ruta/del/programa.js).</li>
+          <li><b>pm2 start ruta/del/programa.js -i 4</b> crea 4 instancias.</li>
+          <li><b>pm2 monitor</b> monitorea la aplicación proporcionando un dashboard con la información de la aplicación.</li>
+          <li><b>pm2 status</b> muestra una tabla conla información básica de la aplicación y sus procesos.</li>
+          <li><b>pm2 log</b>muestra todos los logs que se van ejecutando.</li>
+          <li><b>pm2 stop <u><i>Id del proceso</i></u> | <u><i>Name de la app</i></u> | <u><i>Ruta de la app</i></u></b> detiene el proceso (ej: pm2 stop 0).</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section class="container">
+      <div>
+        <h3>Referencias:</h3>
+        <p>
+          <a href="https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/" target="_blank" rel="noopener noreferrer">Problemas de seguridad y Updates de monohilos.</a><br/>
+        </p>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

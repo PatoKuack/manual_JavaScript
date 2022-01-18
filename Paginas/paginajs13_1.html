@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../Estilos/Normalizecss.css">
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
+  <title>Manipulador DOM (seleccionar)</title>
+</head>
+<body class="cuerpo">
+  <header>
+    <section>
+      <div class="contenedor">
+        <h1 class="titCentrado">DOM traversing.</h1>
+        <p class="contenido">
+          DOM traversing significa recorrer el DOM es decir, obtener un elemento HTML y poder recorrerlo por los hermanos, padres, e hijos de este elemento.
+        </p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section>
+      <div class="contenedor" id="padre">
+        <h2 class="titCentrado">Seleccionar elementos.</h2>
+        <h3 class="titCentrado">Hijos:</h3>
+        <dl class="contenido">
+          <dt>childNodes</dt>
+          <dd>Devuelve todos los <u>nodos</u> hijos (etiquetas, textos, saltos de línea entre etiquetas, etc) de un nodo padre.</dd>
+          <dt>children</dt>
+          <dd>Devuelve todos los <u>elementos</u> hijos (etiquetas) de un nodo padre.</dd>
+          <dt>firstChild</dt>
+          <dd>Devuelve el primer <u>nodo</u> hijo de un nodo padre (no necesariamente devuelve un elemento, podría ser texto o elemento).</dd>
+          <dt>firstElementChild</dt>
+          <dd>Devuelve el primer <u>elementos</u> hijo de un nodo padre.</dd>
+          <dt>lastChild</dt>
+          <dd>Devuelve el último <u>nodos</u> hijo de un nodo padre.</dd>
+          <dt>lastElementChild</dt>
+          <dd>Devuelve el último <u>elementos</u> hijo de un nodo padre.</dd>
+          <dt>hasChildNodes()</dt>
+          <dd>Devuelve un booleano dependiendo de que el nodo padre tenga hijos <u>nodos</u> o no (un <u>espacio</u> o <u>salto de línea</u> entre la apertura y cierre de la etiqueta cuenta como un nodo).</dd>
+        </dl>
+        <figure id="child-vacio"></figure>
+        <h3 class="titCentrado">Hermanos:</h3>
+        <dl class="contenido">
+          <dt>nextSibling</dt>
+          <dd>Devuelve el siguiente <u>nodo</u> hermano de un nodo.</dd>
+          <dt>nextElementSibling</dt>
+          <dd>Devuelve el siguiente <u>elemento</u> hermano de un nodo.</dd>
+          <dt>previousSibling</dt>
+          <dd>Devuelve el anterior <u>nodo</u> hermano de un nodo.</dd>
+          <dt>previousElementSibling</dt>
+          <dd>Devuelve el anterior <u>elemento</u> hermano de un nodo.</dd>
+        </dl>
+      <h3 class="titCentrado">Padres:</h3>
+        <dl class="contenido">
+          <dt>parentNode</dt>
+          <dd>Devuelve el <u>nodo</u> padre de un elemento hijo.</dd>
+          <dt>parentElement</dt>
+          <dd>Devuelve el <u>elemento</u> padre de un elemento hijo.</dd>
+          <dt>.parentNode.parentNode || .parentElement.parentElement</dt>
+          <dd>Se pueden anidar para obtener el <u>nodo</u> o <u>elemento</u> padre de un nodo nieto.</dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../Js/programajs13.js"></script>
+</body>
+</html>

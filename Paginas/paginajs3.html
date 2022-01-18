@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Condicionales y ciclos</title>
+</head>
+<body>
+  <div class="medio">
+    <h2>Condicionales</h2>
+    <div>
+      <h3>if-else</h3>
+      Realiza una acción si la condición se cumple <b>if ( <i><u>condición</u></i> ){ <i><u>acción</u></i> }</b><br>
+      Si la condición no se cumple, el programa hace caso omiso a la sentencia if.<br>
+      Puede realizarse una segunda acción en caso de que la condición no se cumpla colocando en seguida el comando <b>else { <i><u>acción 2</u></i> }</b><br>
+      Se puede anidar una condición utilizado un <b>else if{}</b>, para anclar un segundo if si la condición del primer if no se cumple.<br>
+      Para una condición <i>booleana</i>, se puede especificar si la condición es true o false<br>
+      o se puede escribir solamente la variable, el programa entiende que si es verdadera se cumple la condición y si es falsa no se cumple, ejemplo:<br>
+      <b>let pepinillo = false<br>
+      let escondidos = true<br>
+      if (pepinillo){ <i><u>acción 1</u></i> }<br>
+      else if (escondidos === true){ <i><u>acción 2</u></i> }<br>
+      else { <i><u>acción3</u></i> }</b><br>
+      Se puede colocar simplemente <b>if (<i><u>variable</u></i>)</b> para preguntar si la variable existe, es decir, si se ha intriducido alguna variable o <b>if (!<i><u>variable</u></i>)</b> para preguntar si la variable no existe, es decir, si el campo donde se coloca la variable esta vacío.<br>
+      Se puede colocar una sentencia <b>if</b> en una línea, ejemplo:<br>
+      <b>if (<i><u>condición</u></i>) return <u><i>acción</i></u></b>
+      <hr/>
+      Otra forma de utilizar if y else es de la siguiente forma:<br/>
+      <b>var <u>variable</u> = <u>condición</u> ? "<u>acciónTrue</u>" : "<u>acciónFalse</u>";</b>
+    </div>
+    <div>
+      <h3>switch</h3>
+      Se pueden utilizar condiciones múltiples para validar una variable con la palabra reservada <b>switch</b>, en función de esa variable se determina la acción a ejecutar,<br>
+      para esto se especifican los casos que se desean tomar en cuenta por si el valor de la variable entra en alguno de ellos con el comando <b>case <i><u>valor</u></i> :</b>,<br>
+      se puede colocar al final un <b>default:</b> para realizar una acción en caso de que el valor de la variable no sea validada por ninguno de los casos previos, ejemplo:<br>
+      <b>switch( <i><u>parámetro o condición</u></i> ){<br>
+      &emsp;case <i><u>valor1</u></i>:<br>
+      &emsp;&emsp;<i><u>acción</u></i><br>
+      &emsp;&emsp;break;<br>
+      &emsp;default:<br>
+      &emsp;&emsp;<i><u>acción</u></i><br>
+      }</b>
+    </div>
+    <h2>Ciclos (bucles o loops).</h2>
+    <div>
+      <h3>For</h3>
+      Repite la ejecución de bloques de código contenidos en el comando <b>for</b> hasta que se cumple una condición, entonces se cierra el ciclo y continua el programa,<br>
+      En el ciclo <b>for</b> se colocan 3 parámetros, el valor de inicialización, la condición y el incremento del valor, ejemplo:<br>
+      <b>for (let i=0; i>10; i--){<br>
+      &emsp;<u><i>acción</i></u><br>
+      }</b>
+      <hr>
+      Otra forma de utilizar un for es de la siguiente forma:<br>
+      <b>for(var <u><i>variable</i></u> of <u><i>array</i></u>){<br>
+      &emsp;<u><i>acción</i></u><br>
+      }</b><br>
+      La "acción" se aplicará a cada uno de los valores del "array" indicado (el numero de ciclos será el numero de datos del array) y en cada ciclo la "variable" tomará el valor de los arrays en forma secuencial.
+    </div>
+    <div>
+      <h3>While</h3>
+      Repite la ejecución de bloques de código contenidos en el comando <b>while</b> mientras se cumpla la condición especificada,<br>
+      se tiene que colocar una acción que convierta la condición de verdadera a falsa para romper el ciclo y continuar con el código, ejemplo: <br>
+      <b>let vidas = 5<br>
+      while(vidas > 0){<br>
+      &emsp;vidas--<br>
+      &emsp;<u><i>acción</i></u><br>
+      }</b>
+    </div>
+  </div>
+  <script src="../Js/programajs3.js"></script>
+</body>
+</html>

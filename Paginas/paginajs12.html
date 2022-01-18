@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../Estilos/Normalizecss.css">
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
+  <link rel="stylesheet" href="../Estilos/stylejs12.css">
+  <title>Eventos</title>
+</head>
+<body class="cuerpo" id="anochecer">
+  <header class="contenedor">
+    <h1 class="titulo titCentrado">Eventos</h1>
+    <p>
+      Un evento es todo aquello que ocurre en la página como la interacción de un usuario, la carga de un recurso, que se complete una acción, etc. No necesariamente implicando una interacción del usuario.
+    </p>
+  </header>
+  <main>
+    <section>
+      <!-- Eventos -->
+      <div class="contenedor">
+        <h2>Eventos</h2>
+        <dl>
+          <dt>on<i>Event</i></dt>
+          <dd>Cuando utilizamos el objeto <i>$0</i> en la consola del navegador y colocamos un punto ($0.), se despliega una lista de propiedades y métodos que tiene el objeto que hace referencia a un elemento sombreado de la página. Dentro de ésa lista existen unas opciones que inician con "on", todas esas opciones son <u>eventos</u> que pueden ser aplicadas al elemento al que señala el objeto $0.</dd>
+          <dt>addEventListener('_', _)</dt>
+          <dd>Este método es un escuchador de eventos, recibe un evento en forma de string y un callback (una función que se ejecuta cuando el evento ocurre), la función debe ser anónima ya que resivirá un parámetro y se ejecutará cuando se cumpla el evento.<br/>
+          El evento en este caso se coloca sin el <b>on</b></dd>
+          <p><b>window</b> es el objeto global de JavaScript, no hay ningún objeto por encima de éste, todos decienden de éste y es omitible al ejecutar especificaciones que lo involucren, ejemplo:<br/>
+          <u>window.</u>document.getElement...<br/>
+          document.getElement...<br/>
+          <u>window.</u>addEventListener...<br/>
+          addEventListener...</p>
+          <p class="titCentrado">Ejemplo con <b>onclick</b>:</p>
+          <span class="ejemplo">
+            const buton1 = document.getElementById('form1');<br/>
+            const saludo1 = () => { alert('Helloooooooo nurse =3')};<br/>
+            buton1.addEventListener('click', saludo1);
+          </span>
+          <form action="#" class="titCentrado" id="form1">
+            <input class="forminput" type="button" value="Clic" name="save">
+          </form>
+          <hr class="enlace">
+          <p class="titCentrado">Ejemplo con <b>ondblclick</b> (doble clic):</p>
+          <span class="ejemplo">
+            const <u>buton2</u> = document.getElementById(<u>'form2'</u>);<br/>
+            const <u>saludo2</u> = <u>texto2</u> => alert(<u>texto2</u>);<br/>
+            <u>buton2</u>.addEventListener('<u>dblclick</u>', <u>() => { saludo2('tock tock, ¿quién es? =P') }</u>);<br/>
+            <em class="coment">//cuando se cumpla el evento, se imprimirá en la alerta el saludo;</em>
+          </span>
+          <form action="#" class="titCentrado" id="form2">
+            <input class="forminput" type="button" value="Doble clic" name="save">
+          </form>
+          <hr class="enlace">
+          <p class="titCentrado">Ejemplo con <b>contextmenu</b> (clic derecho):</p>
+          <span class="ejemplo">
+            const <u>buton3</u> = document.getElementById(<u>'form3'</u>);<br/>
+            const <u>saludo3</u> = <u>texto3</u> => alert(`${<u>texto3.target.textContent</u>} \neste botón no contiene texto`);<br/>
+            <u>buton3</u>.addEventListener('<u>contextmenu</u>', <u>texto3</u> => <u>{<br/>
+              console.log(<u>texto3</u>.target);<br/>
+              <u>saludo3</u>(<u>texto3</u>);<br/>
+            }</u>);<br/>
+            <em class="coment">//"<u>texto3</u>.target" devuelve en consola el elemento del DOM en donde se origina el evento;</em>
+          </span>
+          <form action="#" class="titCentrado" id="form3">
+            <input class="forminput" type="button" value="Clic derecho" name="save">
+          </form>
+        </dl>
+      </div>
+      <!-- Del mouse -->
+      <div class="contenedor">
+        <h2>Eventos de mouse</h2>
+        <p>
+          Los principales eventos del mouse son los siguientes:
+        </p>
+        <dl>
+          <dt>click</dt>
+          <dd>detecta un click.</dd>
+          <dt>dblclick</dt>
+          <dd>detecta un click doble.</dd>
+          <dt>mouseenter</dt>
+          <dd>es equivalente al hover de CSS cuando el mouse entra.</dd>
+          <dt>mouseleave</dt>
+          <dd>es equivalente al hover de CSS cuando el mouse sale.</dd>
+          <dt>contextmenu</dt>
+          <dd>captura el click derecho.</dd>
+          <dt>mousedown</dt>
+          <dd>detecta cuando se deja presionado el click.</dd>
+          <dt>moseup</dt>
+          <dd>detecta cuando se suelta el click.</dd>
+          <dt>mousemove</dt>
+          <dd>detecta cuando se mueve dentro de un elemento.</dd>
+        </dl>
+        <hr class="enlace">
+        <h3>Otros metodos u objetos</h3>
+        <dl>
+          <dt>preventDefault()</dt>
+          <dd>Con este método se puede indicar al navegador que lo que debería hacer con una acción por defecto pare de hacerla. Por ejemplo, con el click derecho el navegador debería mostrar un menú contextual, pero al pasarle este método a una función, ya no lo mostrará.</dd>
+          <dt>event</dt>
+          <dd>Con este objeto se puede validar en que coordenadas está hubicado el mouse en el DOM pasándole las propiedades pageX, pageY. De esta manera se puede saber donde ocurrió exactamente un evento.</dd>
+          <dt>clientX, clientY</dt>
+          <dd>Client es relativo a la parte visible de la pagina (en caso de que hagas scroll se tendrá en cuenta sólo la parte visible</dd>
+          <dt>pageX, pageY</dt>
+          <dd>Page es relativo a toda la pagina, incluyendo la parte oculta (nuevamente, al hacer scroll)</dd>
+          <dt>screenX, screenY</dt>
+          <dd>Screen es poco usado, su característica consiste en las coordenadas de TODA la pantalla.</dd>
+        </dl>
+        <div class="titCentrado">
+          <img src="../Imagenes/coordenadas.jpg" alt="ejemplo de tipos de coordenadas" title="tipos de coordenadas" class="coordenadas">
+        </div>
+        <p class="titCentrado">Ejemplo (presiona clic derechos o clic aquí abajo):</p>
+        <span class="ejemplo" id="menuContext">
+          const menuEj = document.getElementById('menuContext');<br/>
+          <em class="coment">//Función para crear el menú</em><br/>
+          const miMenu1 = meniu =>{<br/>
+            const menuDiv = document.createElement('div');<br/>
+            const menuContext = document.getElementById('mContextual');<br/>
+            menuDiv.id = 'mContextual';<br/>
+            menuDiv.textContent = '¡Cha chan!';<br/>
+              if(menuContext) {<br/>
+                document.body.removeChild(menuContext);<br/>
+              } <em class="coment">//Si ya existe uno, lo elimina</em><br/>
+            document.body.appendChild(menuDiv);<br/>
+            <em class="coment">//Le agregamos unos estilos</em><br/>
+            menuDiv.style.padding = '1em';<br/>
+            menuDiv.style.background = '#fde38e';<br/>
+            menuDiv.style.position = 'fixed';<br/>
+            menuDiv.style.top = `${meniu.clientY}px`;<br/>
+            menuDiv.style.left = `${meniu.clientX}px`;<br/>
+          };<br/>
+          <em class="coment">//Función para cerrar el menú</em><br/>
+          const miMenu2 = meniu2 =>{<br/>
+            const menuQuit = document.getElementById('mContextual');<br/>
+            if(menuQuit) {<br/>
+              document.body.removeChild(menuQuit);<br/>
+            }<br/>
+          };<br/>
+          <em class="coment">//Escuchador para clic derecho (abrir menú)</em><br/>
+          menuEj.addEventListener('contextmenu', meniu => {<br/>
+            miMenu1(meniu);<br/>
+            meniu.preventDefault();<br/>
+          });<br/>
+          <em class="coment">//Escuchador para clic (cerrar menú)</em><br/>
+          menuEj.addEventListener('click', miMenu2);<br/>
+        </span>
+      </div>
+      <!-- Del teclado -->
+      <div class="contenedor">
+        <h2>Eventos del teclado</h2>
+        <p>
+          Los principales eventos del teclado son los siguientes:
+        </p>
+        <dl>
+          <dt>keydown</dt>
+          <dd>cuando presionas una tecla.</dd>
+          <dt>keyup</dt>
+          <dd>cuando sueltas una tecla.</dd>
+          <dt>keypress</dt>
+          <dd>cuando dejas presionada una tecla sin soltarla.</dd>
+        </dl>
+        <p>Al revisar en la consola en la sección <u><b>target (elemento donde se dispara el evento)</b></u> de los eventos del teclado que imprimimos, se puede observar que entre sus caracteristicas existen variables como <b>key: "a"</b>, <b>ctrlkey: true</b> o <b>altkey: false</b> que nos pueden servir para saber que tecla presionó el usuario o si se presionó algún atajo del teclado</p>
+        <p class="titCentrado">Ejemplo (presiona control + y):</p>
+        <span class="ejemplo" id="tecleando">
+          document.addEventListener('keydown', tecla => {<br/>
+            let control = tecla.ctrlKey;<br/>
+            let alt = tecla.altKey;<br/>
+            if(control === true && tecla.key === "y"){<br/>
+              tecla.preventDefault();<br/>
+              alert('¡¡¡funcionó!!!');<br/>
+            };<br/>
+            console.log(tecla);<br/>
+          });
+        </span>
+        <span class="ejemplo">
+          let rBG = 0, gBG = 35, bBG = 100;<br/>
+          const colorear = () => {<br/>
+            cielo.style.backgroundImage = `radial-gradient(circle, rgb(241, 250, 255) 1%, rgb(${rBG}, ${gBG}, ${bBG}) 3%)`;<br/>
+          }<br/><br/>
+          const cielo = document.getElementById('anochecer');<br/>
+          cielo.addEventListener('keydown', bgColor => {<br/>
+            switch (bgColor.key){<br/>
+              case 'ArrowLeft':<br/>
+                rBG=rBG+5;<br/>
+                gBG=gBG-2;<br/>
+                bBG=bBG-5;<br/>
+                if(rBG>=255) rBG=255;<br/>
+                if(gBG<=0) gBG=0;<br/>
+                if(bBG<=0) bBG=0;<br/>
+                console.log(rBG, gBG, bBG);<br/>
+                colorear();<br/>
+                break;<br/>
+              case 'ArrowRight':<br/>
+                rBG=rBG-5;<br/>
+                gBG=gBG+2;<br/>
+                bBG=bBG+5;<br/>
+                if(rBG<=0) rBG=0;<br/>
+                if(gBG>=255) gBG=255;<br/>
+                if(bBG>=255) bBG=255;<br/>
+                console.log(rBG, gBG, bBG);<br/>
+                colorear();<br/>
+                break;<br/>
+              default:<br/>
+                break;<br/>
+            }<br/>
+          })
+        </span>
+      </div>
+      <!-- Del formulario -->
+      <div class="contenedor">
+        <h2>Eventos del formulario</h2>
+        <p>
+          Los principales eventos del formulario son los siguientes:
+        </p>
+        <dl>
+          <dt>submit</dt>
+          <dd>se ejecuta cuando el formulario se envía.</dd>
+          <dt>change</dt>
+          <dd>se ejecuta cuando un input del formulario cambia de valor (se puede utilizar el atributo <b>checked</b> para saber si una casilla se marca o no).</dd>
+          <dt>focus</dt>
+          <dd>se ejecuta al hacer click en un input</dd>
+          <dt>blur</dt>
+          <dd>se ejecuta cuando sales del <i>focus</i>.</dd>
+          <dt>reset</dt>
+          <dd>se ejecuta cuando reseteas el formulario.</dd>
+        </dl>
+        <p class="titCentrado" id="FormularioEventos">Ejemplo:</p>
+        <span class="ejemplo" id="instruccion">
+          <form action="#FormularioEventos" class="titCentrado" id="formulario">
+            <input class="forminput" type="checkbox" name="checkbox">
+            <input class="forminput" type="text" placeholder="Nombre / Name" name="text" id="formTexto">
+            <input class="forminput" type="submit" name="submit" value="Enviar">
+            <input class="forminput" type="reset" name="reset">
+          </form>
+          <div id="colocacion"></div>
+        </span>
+        <span class="ejemplo">
+          function insercion(datoEvent) {<br/>
+            const instruct = document.createElement('pre');<br/>
+            const division = document.getElementById('instruccion');<br/>
+            instruct.textContent = `${datoEvent}`;<br/>
+            if(division && division.querySelector('#colocacion')){<br/>
+              division.querySelector('#colocacion').appendChild(instruct);<br/>
+            }<br/>
+          };<br/>
+          const formEvent = document.getElementById('formulario');<br/>
+          formEvent.addEventListener('submit', enviado =>{<br/>
+            insercion(`Formulario enviado`);<br/>
+            console.log(enviado.target);<br/>
+          });
+        </span>
+      </div>
+      <!-- Del DOM y navegador -->
+      <div class="contenedor">
+        <h2>Eventos del DOM y del navegador</h2>
+        <p>El evento principal para el DOM es el siguiente:</p>
+        <dl>
+          <dt>DOMContentloaded</dt>
+          <dd>es un evento que ocurre cuando carga todo el DOM (Este evento es importante cuando no sabes en qué momento existirá el elemento al que vas a llamar), permite cargar lo básico del código HTML (aunque no carguen las imágenes o formularios) para luego ejecutar el código de éste evento en js.</dd>
+        </dl>
+        <p class="titCentrado">Ejemplo:</p>
+        <span class="ejemplo">
+          addEventListener('DOMContentloaded', () =>{<br/>
+            ...<br/>
+          });
+        </span>
+        <p>Los principales eventos del navegador son los siguientes:</p>
+        <dl>
+          <dt>load</dt>
+          <dd>este es parecido al DOMContentloaded pero, este se ejecuta cuando carga toda la página, es decir con las imagenes o formularios, etc.</dd>
+          <dt>scroll</dt>
+          <dd>se ejecuta cuando haces scroll, se pueden utilizar los atributos <b>scrollX</b> y <b>scrollY</b> para saber el nivel de scroll que se tiene y con ello poder realizar acciones.</dd>
+          <dt>resize</dt>
+          <dd>se ejecuta cuando redimensionas la pantalla.</dd>
+        </dl>
+        <p><b>Inner</b> se refiere a la parte interna del navegador, la ventana o el viewport, y <b>outer</b> es toda la ventana del navegador en el sistema operativo.</p>
+        <p class="titCentrado">Ejemplo:</p>
+        <span class="ejemplo">
+          addEventListener('resize', redimencion => {<br/>
+            console.log(innerWidth, innerHeight);<br/>
+            console.log(outerWidth, outerHeight);<br/>
+          });
+        </span>
+      </div>
+      <!-- Multimedia -->
+      <div class="contenedor">
+        <h2>Eventos multimedia</h2>
+        <p>Los principales eventos multimedia son los siguientes:</p>
+        <dl>
+          <dt>play</dt>
+          <dd>se ejecuta con evento click</dd>
+          <dt>pause</dt>
+          <dd>se ejecuta con evento click</dd>
+        </dl>
+        <p>Los eventos aparte de ser escuchados también podrán ser ejecutados.</p>
+        <p class="titCentrado">Ejemplo:</p>
+        <span class="ejemplo">
+          <video src="../Imagenes/Pitufos intro.mp4" controls width="300" id="multimedia" class="forminput block-centrado"></video>
+          <div class="titCentrado">
+            <button id="play" class="forminput">Reproducir</button>
+            <button id="pause" class="forminput">Pausar</button>
+          </div>
+        </span>
+        <span class="ejemplo">
+          const video = document.getElementById('multimedia'),<br/>
+          reproducir = document.getElementById('play'),<br/>
+          pausar = document.getElementById('pause');<br/>
+          reproducir.addEventListener('click', () => {<br/>
+            video.play();<br/>
+          });<br/>
+          pausar.addEventListener('click', () => {<br/>
+            video.pause();<br/>
+          });
+        </span>
+      </div>
+      <!-- Propagación de eventos -->
+      <div class="contenedor">
+        <h2>Propagación de eventos</h2>
+        <p>Cada vez que ocurre un evento, este ocurre en el elemento más profundo en el DOM pero, se propaga hacia afuera. El término utilizado para esto es bubble (burbujea).</p>
+        <p>Esto significa que cada vez que estás dentro de un elemento hijo de otro elemento, al mismo tiempo estás entrando en ambos elementos.</p>
+        <p class="titCentrado">Ejemplo:<br/>
+          (da clic en una de las 4 figuras):</p>
+        <div id="bubble1" class="bubble1">
+          <div id="bubble2" class="bubble2">
+            <div id="bubble3" class="bubble3">
+              <img src="../Imagenes/bubble-man1.png" alt="bubble man" title="haz clic en cada cuadro" class="bubbleman">
+            </div>
+          </div>
+        </div>
+        <span class="ejemplo" id="bubbleletter">
+          document.querySelectorAll( '[class^="bubble"]:not(.bubbleman)' ).forEach( burbujear => {<br/>
+            burbujear.addEventListener('click', burbuja => {
+              <br/>
+              console.log(`burbujeaste ${burbuja.target.id}`);<br/>
+            });<br/>
+          });
+        </span>
+        <p>Esta prolongación la hará hasta llegar al window.<br/>
+        Siempre tener pendiente que con <b>.target</b> podrás hacer énfasis solo a uno de los hijos, porque allí estaría el target en el elemento más profundo, pero teniendo en cuenta que de todas maneras seguirás pasando de igual forma por los padres.</p>
+        <p>Para detener esta propagación podrás usar el método <b>stopPropagation()</b></p>
+        <span class="ejemplo" id="bubbleletter">
+          document.querySelectorAll( '[class^="bubble"]:not(.bubbleman)' ).forEach( burbujear => {<br/>
+            burbujear.addEventListener('click', burbuja => {
+              <br/>
+              console.log(`burbujeaste ${burbuja.target.id}`);<br/>
+              burbuja<b>.stopPropagation()</b>;<br/>
+            });<br/>
+          });
+        </span>
+      </div>
+      <!-- Delegación de eventos -->
+      <div class="contenedor">
+        <h2>Delegación de eventos</h2>
+        <p>La delegación consta en detectar el evento en el elemento padre y luego detectar en cuál de los elementos hijos se hizo el target.</p>
+        <p class="titCentrado">Ejemplo:</p>
+        <div id="galeria" class="galeria">
+          <figure class="obra">&#128444;<figcaption>1</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>2</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>3</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>4</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>5</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>6</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>7</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>8</figcaption></figure>
+          <figure class="obra">&#128444;<figcaption>9</figcaption></figure>
+          <figure class="obra titCentrado" id="seleccionado">Costo<span id="obraNum"></span>:<br/>$<span id="costo"></span></figure>
+          <figure class="obra">&#128444;<figcaption>10</figcaption></figure>
+        </div>
+        <span class="ejemplo">
+          const gallery = document.getElementById('galeria');<br/>
+          gallery.addEventListener('click', foto => {<br/>
+            var posicion = foto.target,<br/>
+              obra = Array.from(gallery.querySelectorAll('figure')),<br/>
+              indice = obra.indexOf(posicion);<br/>
+              console.log(`Seleccionaste la obra número ${indice + 1}`);<br/>
+          });
+        </span>
+      </div>
+    </section>
+    <section>
+      <div class="contenedor">
+        <p>Referencias:</p>
+        <p><a class="enlace" target="_blank" href="https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y">client, page, screen</a></p>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+  <script src="../Js/programajs12.js"></script>
+  <script src="../Js/programajsHelp.js"></script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Objetos</title>
+</head>
+<body>
+  <div class="medio">
+    <div>
+      <h2>Objetos.</h2>
+      Se define como una variable normal y se colocan sus atributos entre llaves, ejemplo:<br>
+      <span>
+        <b>let <u><i>objeto</i></u> = {<br>
+            <u><i>atributo1</i></u> : <u><i>valor1</i></u>,<br>
+            <u><i>atributo2</i></u> : <u><i>valor2</i></u><br>
+          }</b>
+      </span>
+      Se puede escribir directamente en la consola el nombre del objeto para visualizarlo, ejemplo: <code><u><i>objeto</i></u></code><br>
+      Se puede obtener el valor de cada atributo con la sentencia <b><u><i>objeto</i></u>["<u><i>atributo1</i></u>"]</b> o <b><u><i>objeto</i></u>.<u><i>atributo1</i></u></b><br>
+      Se puede obtener el valor de todos los atributos con la sentencia <b>Object.values(<u><i>objeto</i></u>)</b>, se puede guardar el resultado en una variable e imprimirlo en consola.<br>
+      Se puede obtener los atributos del objeto con la sentencia <b>Object.keys(<u><i>objeto</i></u>)</b>, si el resultado devuelve un método vacío significa que el objeto está vacío.<br>
+      Se puede obtener el valor de un atibuto dentro del objeto con la palabra reservada <b>this</b>, ejemplo:<br>
+      <span>
+        <b>var videojuego = {<br>
+          nombre: "Stardew Valley",<br>
+          desarrollador: "Eric "ConcernedApe" Barone",<br>
+          publicador: "Chucklefish Games"<br>
+          lanzamiento: function(){<br>
+            console.log(`${<u>this</u>.nombre} fue lanzado en 2016`);<br>
+          } }</b>
+        <hr>
+        //se manda a llamar la función del atributo del objeto así:<br>
+        <b>videojuego.lanzamiento();</b>
+      </span>
+    </div>
+    <div>
+      <h3>Math.</h3>
+      Nos permite obtener valores matemáticos como:<br>
+      <dl>
+        <dt>Math.sqrt(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Devuelve la raíz cuadrada del valor numerico, pero si es un valor numerico negativo devuelve NaN.</dd>
+        <dt>Math.pow(<i><u>base</u></i>, <i><u>exponente</u></i>)</dt>
+        <dd>Devuelve el valor numerico "base" elevado a la potencia especificada en el segundo parámetro.</dd>
+        <dt>Math.PI</dt>
+        <dd>Esta instrucción contiene el valor de PI, puede guardarse en una variable.</dd>
+        <dt>Math.round(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones (1.50 a 2; 1.49 a 1; -1.50 a -1; -1.51 a -2).</dd>
+        <dt>Math.ceil(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones al mayor (1.05 a 2; -1.9 a -1).</dd>
+        <dt>Math.floor(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones al menor (1.9 a 1; -1.05 a -2).</dd>
+        <dt>Math.trunc(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones truncando su valor fraccional (-1.03 a -1; 5.99 a 5).</dd>
+        <dt>Math.min(<i><u>valNum</u></i>, <i><u>valNum</u></i>, <i><u>valNum</u></i>)</dt>
+        <dd>Devuelve el valor más pequeño de los valores ingresados como argumento.</dd>
+        <dt>Math.max(<i><u>valNum</u></i>, <i><u>valNum</u></i>, <i><u>valNum</u></i>)</dt>
+        <dd>Devuelve el valor más grande de los valores ingresados como argumento.</dd>
+        <dt>Math.random()</dt>
+        <dd>Devuelve un valor aleatorio entre 0 y 1 (jamás dará 1 pero si 0).</dd>
+        <dd>
+          Ejemplo para obtener un vaslor aleatorientre dos valores.
+          <span>
+            function getRandomArbitrary(min, max){<br>
+              return Math.random() * (max - min) + min;<br>
+            }
+          </span>
+        </dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Date.</h3>
+      Nos permite obtener valores de fechas como .getFullYear(), .getMinutes(), getUTCDate(), etc, ejemplo:<br>
+      <b>const <u><i>variable</i></u> = new Date() //es necesario definir una fecha<br>
+      console.log(<u><i>variable</i></u>.getUTCDate( )) // aqui se manipula la fecha</b>
+    </div>
+    <div>
+      <h3>Objetos: función constructora.</h3>
+      Podemos generar una función con parametros que sean sus atributos para poder usarlo como plantilla para crear objetos, ejemplo:<br>
+      <span>
+        <b>
+          function <u><i>función</i></u>(<u><i>atributo1</i></u>, <u><i>atributo2</i></u>){<br>
+            this.<u><i>atributo1</i></u> = <u><i>atributo1</i></u>;<br>
+            this.<u><i>atributo2</i></u> = <u><i>atributo2</i></u>;<br>
+          }
+        </b>
+        <hr>
+        //uso:<br>
+        //los valores colocados llevan comillas si son strings, pero no las llevan si son numeros o booleanos.<br>
+        <b>
+          var <u><i>objeto1</i></u> = new <u><i>función</i></u>("<u><i>valor1</i></u>", <u><i>valor2</i></u>)
+        </b>
+      </span>
+    </div>
+  </div>
+  <script src="../Js/programajs8.js"></script>
+</body>
+</html>

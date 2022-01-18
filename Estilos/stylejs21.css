@@ -1,0 +1,75 @@
+:root{
+  /* COLORS */
+  /* https://www.w3.org/TR/css-color-3/#svg-color */
+  --background1:  rgb(0, 157, 168);
+  --background2:  rgb(0, 117, 126);
+  --bgContainer:  rgba(134, 2, 223, 0.3);
+  --bgBorder:     rgb(252, 206, 5);
+  --letterActive: rgba(190, 255, 250, 0.863);
+  --letterColor:  rgba(255, 255, 255, 0.863);
+  --highlight:    pink;
+  --transparent:  transparent;
+}
+
+.body{
+  background-image:       radial-gradient(circle, var(--background1) 40%, var(--background2) 40%, var(--background2) 80%, var(--background1) 80%);
+  background-size:        50rem 50rem;
+  background-repeat:      repeat;
+  background-position:    40% 28%;
+  color:                  var(--letterColor);
+}
+
+.container{
+  max-width:        750px;
+  background-color: var(--bgContainer);
+  border:           .3em solid var(--bgBorder);
+  border-radius:    10px;
+  margin:           1.5em auto;
+  padding:          1.2em;
+  padding-top:      .5em;
+  box-shadow:       0px 4px 70px -20px var(--bgBorder) inset;
+}
+
+.exempliGratia{
+  background-color: var(--bgContainer);
+  border:           .2em dotted var(--bgBorder);
+  padding:          .7em;
+  font-weight:      bold;
+}
+
+.table tr, .table th, .table td{
+  border: .1em solid var(--letterColor);
+  text-align: center;
+  padding: .3em;
+}
+.table{
+  border: .1em solid var(--letterColor);
+}
+
+
+
+.link{
+  color:        var(--letterActive);
+}
+.link:visited{
+  color:        var(--letterColor);
+}
+
+.bold{
+  font-weight:  bold;
+}
+
+.highlight{
+  color:        var(--highlight);
+}
+
+.textCenter{
+  text-align:   center;
+}
+.marginCenter{
+  margin-left:  auto;
+  margin-right: auto;
+}
+.block{
+  display: block;
+}

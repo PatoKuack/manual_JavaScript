@@ -1,0 +1,22 @@
+{
+  "name": "java-script",
+  "version": "1.0.0",
+  "description": "My little knowledge about JavaScript.",
+  "type": "module",
+  "main": "indexjs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm",
+    "Node",
+    "JavaScript",
+    "variable",
+    "evento",
+    "navegador",
+    "consola",
+    "asincronismo"
+  ],
+  "author": " <nocturno_x_13514@hotmail.com>",
+  "license": "MIT"
+}

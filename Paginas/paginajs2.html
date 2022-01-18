@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Variables y Operadores</title>
+</head>
+<body>
+  <div class="medio">
+    <h2>Operadores</h2>
+    <div>
+      <h3>Operadores de aritméticas</h3>
+      Los operadores aritméticos <b>(+, -, *, /, %, **)</b> permiten crear operaciones matemáticas en la declaración de un valor, ejemplo:<br>
+      <b>let num = 5-15</b>
+    </div>
+    <div>
+      <h3>Operadores de asignación</h3>
+      El operador <b>=</b> sirve para asignar o reasignar o asignar por referencia un valor a una variable.<br>
+      Se puede reducir asignaciones combinando operadores aritméticos y de asignación, ejemplo:<br>
+      <b>a %= b</b>, en este caso se reasigna el residuo de <b>a</b> entre <b>b</b> a la variable <b>a</b>.<br>
+      Lo mismo se puede hacer con cualquier operador aritmético colocándolo en lugar de '%'.
+    </div>
+    <div>
+      <h3>Operadores de concatenación</h3>
+      El operador <b>+</b> concatena strings, ejemplo:<br>
+      <b>let nomCompleto = nombre + " " + apellido</b>
+    </div>
+    <div>
+      <h3>Operador de comparación.</h3>
+      Comparan valores y devuelve true o false según se cumpla o no la comparación.<br>
+      Igual que <b>==</b> compara solo valores (un String "5" puede ser igual que un Number 5).<br>
+      Estrictamente igual que <b>===</b> compara valor y tipo de dato.<br>
+      Diferente que <b>!=</b> compara solo valores (un String "5" no es diferente que un Number 5).<br>
+      Estrictamente diferente que <b>!==</b> compara valor y tipo de dato.<br>
+      Menor que <b><</b> se usan estrictamente para valores numéricos.<br>
+      Menor o menor que <b><=</b> se usan estrictamente para valores numéricos.<br>
+      Mayor que <b>></b> se usan estrictamente para valores numéricos.<br>
+      Mayor que <b>>=</b> se usan estrictamente para valores numéricos.<br>
+      <b>in</b> devuelve un valor booleano si la propiedad especificada está en el objeto especificado, ejemplo:<br>
+      <b>animal = ["oso", "perro", "albatros"] //true con arreglos<br>
+      0 in animal //devuelve true porque hay una posición 0 en el array<br>
+      animal = {"oso", "perro", "albatros"} //true con objetos<br>
+      "oso" in animal //devuelve true porque hay un string en el objeto</b>
+    </div>
+    <div>
+      <h3>Operadores lógicos</h3>
+      And <b>&&</b> concatena comparaciones pidiendo que se cumplan todas las comparaciones involucradas<br>
+      Or <b>||</b> concatena comparaciones pidiendo que se cumplan al menos una de las comparaciones involucradas<br>
+      Es buena práctica separar las comparaciones con paréntesis, ejemplo:<br>
+      <b>(b > a) || (b > c)</b>
+    </div>
+    <div>
+      <h3>Operadores unarios</h3>
+      Necesitan de ellos mismos para modificar su valor.<br>
+      Incremento en uno <b>++</b>, <b>a=a+1 == a++</b><br>
+      Decremento en uno <b>--</b>, <b>a=a-1 == a--</b>
+    </div>
+    <div>
+      <h3>Operadores ternarios</h3>
+      Asigna un valor1 a una variable si se cumple una condición, sino le asigna un valor2, ejemplo:<br>
+      <b>let c = 30 > 21 ? <u>valor1</u> : <u>valor2</u></b>
+    </div>
+    <div>
+      <h3>Type coercion</h3>
+      Capacidad que tiene JavaScript para convertir un tipo de dato en otro al realizar interacciones entre variables con tipos de datos diferentes, ejemplo:<br>
+      <b>let numA = "1";</b>
+      <em class="coment">//numA será de tipo "string"</em><br>
+      <b>let suma = 3 + numA;</b><br>
+      <em class="coment">//suma="31"; convirtió el numero 3 en string y lo concatenó con la variable numA.</em><br>
+      <hr>
+      <b>let numB = "5";</b>
+      <em class="coment">//numB será de tipo "string"</em><br>
+      <b>let resta = numB - 2;</b><br>
+      <em class="coment">//resta=3; convirtió el string "5" en numero y se le restó la variable numB.</em><br>
+      <hr>
+      <b>let resta = 4 - "perro";</b><br>
+      <em class="coment">//resta=NaN; el navegador espera de resultado un numero por tratarse de una resta así que el resultado será de tipo numero, sin embargo como no se puede realizar la resta el resultado será un Not-a-Number.</em><br>
+      <hr>
+      <b>let suma = true + true;</b><br>
+      <em class="coment">//sume =2; como en lógica binaria true = 1 y false = 0, entonces el navegador convierte estos dos valores de tipo booleanos a tipo numerico y los suma.</em><br>
+    </div>
+    <div>
+      <h3>Converción de tipo de valores.</h3>
+      <b>parseInt(<u>"2.99"</u>)</b><br>
+      Convierte cualquier numero en un entero, ya sea que sea un numero con fracción o un numero de tipo string. En un numero con fracción trunca sus decimales, en el ejemplo de 2.99 se convertiría en 2.<br>
+      <b>Object.entries(<u><i>array</i></u>)</b><br>
+      Convierte una lista de valores (array) en una lista de objetos.<br>
+      <b>Array.from(<u><i>object</i></u>)</b><br>
+      Convierte una lista de objetos en una lista de valores (array).
+    </div>
+  </div>
+  <footer>
+    <h4>Referencias:</h4>
+    <p>
+    </p>
+  </footer>
+  <script src="../Js/programajs2.js"></script>
+</body>
+</html>

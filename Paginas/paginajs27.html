@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Express.js</title>
+</head>
+<body class="body">
+  <header>
+    <section class="container">
+      <div>
+        <h1 class="textCenter">Express.js</h1>
+        <p>Es un mini-framework que trabaja en Node. Ayuda a crear servidores y rutas para dar respuestas a un host.</p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <!-- Configuración de entorno -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Configurar entorno de desarrollo.</h2>
+        <ul>
+          <li>Lo primero que se hace es inicializar npm en el proyecto con el comando <b>npm init -y</b> desde la terminal y ubicado en la carpeta donde se alojará el proyecto.</li>
+          <li>También se inicializa el sistema de control de versiones Git con el comando <b>git init</b> desde la terminal y ubicado en la carpeta donde se alojará el proyecto.</li>
+          <li>Después se crean los archivos de configuración en la carpeta raíz del proyecto:</li>
+          <dl>
+            <dt>.gitignore</dt>
+            <dd>Aquí es en donde se colocaran los archivos ignorados para git. En <a href="https://www.toptal.com/developers/gitignore" target="_blank" rel="noopener noreferrer">gitignore.io</a> se puede obtener una configuración lista para copiar y pegar con todo lo necesario, solo se coloca en la sección de busqueda el entorno (Node) y el sistema operativo (Windows, Linux y macOS).</dd>
+            <dt>.editorconfig</dt>
+            <dd>Esta configuración se asegura de que todos los desarrolladores del proyecto tengan la misma configuración del editor, para ésto se recomiendo utilizar la extención llamada "<b>EtidotConfig for VS Code</b>". Con el siguiente código insertado en el archivo se asegura de que todos trabajen de una misma manera.</dd>
+            <aside class="exempliGratia">
+              # Editor configuration, see https://&emsp;editorconfig.org<br/>
+              &emsp;root = true<br/><br/>
+              &emsp;[*]<br/>
+              &emsp;charset = utf-8<br/>
+              &emsp;indent_style = space<br/>
+              &emsp;indent_size = 2<br/>
+              &emsp;insert_final_newline = true<br/>
+              &emsp;trim_trailing_whitespace = true<br/><br/>
+              &emsp;[*.js]<br/>
+              &emsp;quote_type = single<br/><br/>
+              &emsp;[*.md]<br/>
+              &emsp;max_line_length = off<br/>
+              &emsp;trim_trailing_whitespace = false
+            </aside>
+            <dt>.eslintrc.json</dt>
+            <dd>Aquí es en donde se alojan todas las reglas de las buenas practicas, se indica que se manejará ECMAScript 6 y prettier con recomendaciones generales del estandar eslint.</dd>
+            <aside class="exempliGratia">
+              &emsp;{<br/>
+              &emsp;&emsp;"parserOptions": {<br/>
+              &emsp;&emsp;&emsp;"ecmaVersion": 2018<br/>
+              &emsp;&emsp;},<br/>
+              &emsp;&emsp;"extends": [<br/>
+              &emsp;&emsp;&emsp;"eslint:recommended",<br/>
+              &emsp;&emsp;&emsp;"prettier"<br/>
+              &emsp;&emsp;],<br/>
+              &emsp;&emsp;"env": {<br/>
+              &emsp;&emsp;&emsp;"es6": true,<br/>
+              &emsp;&emsp;&emsp;"node": true,<br/>
+              &emsp;&emsp;&emsp;"jest": true<br/>
+              &emsp;&emsp;},<br/>
+              &emsp;&emsp;"rules": {<br/>
+              &emsp;&emsp;&emsp;"no-console": "warn"<br/>
+              &emsp;&emsp;}<br/>
+              &emsp;}<br/>
+            </aside>
+          </dl>
+          <li>Casi por último se crea el archivo inicial <b>index.js</b></li>
+          <li>Por último se modifica el archivo <b>package.json</b>: se levanta un entorno de desarrollo con nodemon, se indica que inicie la aplicación con node y se indica que se use eslint; para que funcione la configuración se instalan algunas dependencias de desarrollo.</li>
+          <aside class="exempliGratia">
+            <i class="coment highlight block textCenter">// ***package.json***</i>
+            &emsp;<span class="highlight">{<br/>
+            &emsp;&emsp;"name": "java-script",<br/>
+            &emsp;&emsp;"version": "1.0.0",<br/>
+            &emsp;&emsp;"description": "My little knowledge about JavaScript.",<br/>
+            &emsp;&emsp;"main": "indexjs.js",</span><br/>
+            &emsp;&emsp;"scripts": {<br/>
+            &emsp;&emsp;&emsp;"dev": "nodemon indexjs.js",<br/>
+            &emsp;&emsp;&emsp;"start": "node indexjs.js",<br/>
+            &emsp;&emsp;&emsp;"lint": "eslint"<br/>
+            &emsp;&emsp;}<span class="highlight">,<br/>
+            &emsp;&emsp;"keywords": [],<br/>
+            &emsp;&emsp;"author": " &#60;buba@hotmail.com&#62;",<br/>
+            &emsp;&emsp;"license": "MIT"<br/>
+            &emsp;}</span>
+          </aside>
+          <aside class="exempliGratia">
+            <i class="coment highlight block textCenter">// ***Terminal***</i>
+            &emsp;npm i nodemon eslint eslint-config-prettier eslint-plugin-prettier pritter -D<br/>
+            <i class="coment higlight">// La -D indica que son dependencias de desarrollo, no de producción.</i><br/>
+            &emsp;npm run dev<br/>
+            &emsp;npm run start
+          </aside>
+        </ul>
+      </div>
+    </section>
+    <!-- Servidor -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Servidor en express.</h2>
+        <p>Se instala express como una instancia de <u>producción</u> desde la terminal y posicionado en la carpeta donde se aloja el proyecto con el comando <b>npm i express</b></p>
+        <p>En el archivo package.json se puede observar el grupo de instancias de desarrollo y de producción.</p>
+        <p>Para utilizar el servidor de express, se crea el siguiente código en un archivo.js</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight">// Se manda a llamar a express.</i><br/>
+          &emsp;const <u><i>myExpress</i></u> = require("express");<br/>
+          <i class="coment highlight">// express es un metodo que construye la aplicación.</i><br/>
+          &emsp;const <u><i>app</i></u> = <u><i>myExpress</i></u>();<br/>
+          <i class="coment highlight">// Se indica en que puerto se desea iniciar la app, es comun que se usen los puertos 3000.</i><br/>
+          &emsp;const <u><i>port</i></u> = <u><i>3000</i></u>;<br/><br/>
+          <i class="coment highlight">// Se crea la respuesta que se le enviará al cliente y se le indica al puerto que escuche cuando se esté ejecutando y mande una respuesta de confirmación.</i><br/>
+          &emsp;<u><i>app</i></u>.get('/', (req, res) =>{<br/>
+          &emsp;&emsp;res.send("Hola mi server en Express");<br/>
+          &emsp;});<br/><br/>
+          &emsp;app.listen(port, () =>{<br/>
+          &emsp;&emsp;console.log("My port: " + port);<br/>
+          &emsp;});
+        </aside>
+        <p>Se suele usar como respuesta (en la parte del código res.send) un formato tipo <b>JavaScript object notation</b> (res.json).</p>
+        <p class="highlight">* En producción no se deben dejar los console.log</p>
+        <p>Después de crear el código se ejecuta en modo desarrollo desde la terminal con el código <b>nodemon <u><i>archivoindex.js</i></u></b></p>
+      </div>
+    </section>
+    <!-- Routing -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Routing.</h2>
+        <p>La ruta de la página o endpoint es la que indica al navegador a que página visitar.</p>
+        <p><i>Los endpoints son las URL de un API o un backend que responden a una petición. Los mismos entrypoints tienen que calzar con un endpoint para existir. Algo debe responder para que se renderice un sitio con sentido para el visitante.</i></p>
+        <aside class="exempliGratia">
+          <span class="highlight">
+            &emsp;const <u><i>myExpress</i></u> = require("express");<br/>
+            &emsp;const <u><i>app</i></u> = <u><i>myExpress</i></u>();<br/>
+            &emsp;const <u><i>port</i></u> = <u><i>3000</i></u>;<br/><br/>
+          </span>
+            &emsp;<u><i>app</i></u>.get('/patiruta-saludo', (req, res) =>{<br/>
+            &emsp;&emsp;res.send('Hola mi server en Express');<br/>
+            &emsp;});<br/><br/>
+            &emsp;<u><i>app</i></u>.get('/patiruta-objeto', (req, res) =>{<br/>
+            &emsp;&emsp;res.json({<br/>
+            &emsp;&emsp;&emsp;name: 'Pato',<br/>
+            &emsp;&emsp;&emsp;lastname: 'Kuack',<br/>
+            &emsp;&emsp;&emsp;nickname: 'Patito'<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;});<br/><br/>
+          <span class="highlight">
+            &emsp;app.listen( <u><i>port</i></u>, () =>{<br/>
+            &emsp;&emsp;console.log( "My port: " + <u><i>port</i></u> );<br/>
+            &emsp;});
+          </span>
+        </aside>
+        <p>Para visualizar la respuesta enviada con res.send, se debe colocar en la URL del navegador el host más la extensión, por ejemplo en este caso: <b>localhost:3000/patiruta-objeto</b></p>
+        <p>Existe una herramienta útil para leer los archivos.json en cada navegador, es bueno instalar o buscar una de ellas para leer facilmente éstos archivos ya que suelen ser muy amplios con datos diversos.</p>
+      </div>
+    </section>
+    <!-- REST -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">REST (Representational State Transfer).</h2>
+        <p>Es una conveccion que se refiere a servicios web por protocolo HTTP. REST permite mandar json, xml, binarios (imágenes, documentos), text, etc.</p>
+        <p>Es conveniente utilizar REST cuando se desean realizar interacciones simples como agregar recursos, quitarlos o modificarlos. También es conveniente cuando los recursos que se desean manejar son limitados.</p>
+        <p>En cambio no es conveniente utilizar REST cuando se desean realizar interacciones más complejas, por ejemplo cuándo es necesario que el servidor aporte más lógica como la validación de un documento.</p>
+        <p>Una petición REST completa se basa en:</p>
+        <ul>
+          <li>URL(Dominio, protocolo).</li>
+          <li>Verbo HTTP (GET, PUT, POST, DELETE).</li>
+        </ul>
+        <p>Los métodos que maneja REST son los siguientes:</p>
+        <ul>
+          <li><b>Get</b>: Se utiliza para obtener.</li>
+          <li><b>Put</b>: Se utiliza para modificar o actualizar.</li>
+          <li><b>Patch</b>: Se utiliza para modificar o actualizar.</li>
+          <li><b>Post</b>: Se utiliza para crear.</li>
+          <li><b>Delete</b>: Se utiliza para eliminar.</li>
+        </ul>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Methods</th>
+              <th>/products</th>
+              <th>/products{id}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>get</td>
+              <td><i>obtener lista</i></td>
+              <td><i>obtener</i></td>
+            </tr>
+            <tr>
+              <td>put</td>
+              <td><i class="highlight">remplazar<br/>(no recomendado para uso en masa)</i></td>
+              <td><i>actualizar / remplazar</i></td>
+            </tr>
+            <tr>
+              <td>patch</td>
+              <td><i class="highlight">no aplica</i></td>
+              <td><i>actualizar</i></td>
+            </tr>
+            <tr>
+              <td>post</td>
+              <td><i>crear</i></td>
+              <td><i class="highlight">no aplica</i></td>
+            </tr>
+            <tr>
+              <td>delete</td>
+              <td><i class="highlight">eliminar<br/>(no recomendado para uso en masa)</i></td>
+              <td><i>eliminar</i></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Para utilizar un identificador en un array de datos se utiliza en un endpoint los dos puntos (:) que indicarán un parámetro, ejemplo:</p>
+        <aside class="exempliGratia">
+          <span class="highlight">
+            &emsp;const <u><i>myExpress</i></u> = require("express");<br/>
+            &emsp;const <u><i>app</i></u> = <u><i>express</i></u>();<br/><br/>
+          </span>
+          &emsp;<u><i>app</i></u>.get('/patiruta-array', (req, res) => {<br/>
+          &emsp;&emsp;res.json([<br/>
+          &emsp;&emsp;&emsp;{<br/>
+          &emsp;&emsp;&emsp;&emsp;name: 'Pato',<br/>
+          &emsp;&emsp;&emsp;&emsp;lastname: 'Kuack',<br/>
+          &emsp;&emsp;&emsp;&emsp;nickname: 'Patito'<br/>
+          &emsp;&emsp;&emsp;},<br/>
+          &emsp;&emsp;&emsp;{<br/>
+          &emsp;&emsp;&emsp;&emsp;name: 'Juan',<br/>
+          &emsp;&emsp;&emsp;&emsp;lastname: 'Lázaro',<br/>
+          &emsp;&emsp;&emsp;&emsp;nickname: 'Gran Juan'<br/>
+          &emsp;&emsp;&emsp;}<br/>
+          &emsp;&emsp;]);<br/>
+          &emsp;});<br/><br/>
+          &emsp;<u><i>app</i></u>.get('/patiruta-array/:identificador', (req, res) => {<br/>
+          &emsp;&emsp;const id = req.params.identificador;<br/>
+          &emsp;&emsp;res.json({<br/>
+          &emsp;&emsp;&emsp;id,<br/>
+          &emsp;&emsp;&emsp;name: 'Juan'<br/>
+          &emsp;&emsp;});<br/>
+          &emsp;});
+        </aside>
+        <p>Una forma más fácil de incluír el id solicitado es utilizando la destructuración de ECMAScript la cuál indica que desde los parametros requerídos, sólo debe interesarse por el id:</p>
+        <aside class="exempliGratia">
+          &emsp;<u><i>app</i></u>.get('/patiruta-array/:patoId', (req, res) => {<br/>
+          &emsp;&emsp;const { patoId } = req.params;<br/>
+          &emsp;&emsp;res.json({<br/>
+          &emsp;&emsp;&emsp;patoId,<br/>
+          &emsp;&emsp;&emsp;...
+        </aside>
+        <p>Para recibir más de un parámetro se genera un endpoint de la siguiente forma:</p>
+        <aside class="exempliGratia">
+          &emsp;<u><i>app</i></u>.get('/pati-especie/:espId/pati-hogar/:hogId', (req, res) => {<br/>
+          &emsp;&emsp;const { espId hogId } = req.params;<br/>
+          &emsp;&emsp;...
+        </aside>
+      </div>
+    </section>
+    <!-- Query params -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Query params.</h2>
+        <p>Son parámetros de consulta que suelen acompañar a los parámetros o métodos get. Sirven para hacer filtros.</p>
+        <dl>
+          <dt>ehemplo/products</dt>
+          <dd>Endpoint simple.</dd>
+          <dt><span class="highlight">ehemplo/products</span>?page<span class="highlight">=</span>1</dt>
+          <dd>Crea una consulta por número de página, una paginación mostrando los productos que contiene la primera página.</dd>
+          <dt><span class="highlight">ehemplo/products</span>?limit<span class="highlight">=</span>10&offset<span class="highlight">=</span>0</dt>
+          <dd>Crea una consulta de paginación también.</dd>
+          <dt><span class="highlight">ehemplo/products</span>?region<span class="highlight">=Mexico</span></dt>
+          <dd>Crea una consulta por región.</dd>
+          <dt><span class="highlight">ehemplo/products</span>?region<span class="highlight">=Mexico</span>&brand<span class="highlight">=PK</span></dt>
+          <dd>Crea una consulta por región y marca del producto.</dd>
+        </dl>
+        <aside class="exempliGratia">
+          &emsp;app.get('/videogames', (req, res) => {<br/>
+          &emsp;&emsp;const { limit, offset } = req.query;<br/>
+          &emsp;&emsp;if (limit && offset){<br/>
+          <i class="coment highlight">// Se comprueba la existencia de los parámetros.</i><br/>
+          &emsp;&emsp;&emsp;res.json({<br/>
+          &emsp;&emsp;&emsp;&emsp;limit,<br/>
+          &emsp;&emsp;&emsp;&emsp;offset<br/>
+          &emsp;&emsp;&emsp;});<br/>
+          &emsp;&emsp;} else {<br/>
+          &emsp;&emsp;&emsp;res.send('No existen los parámetros pedidos.');<br/>
+          &emsp;&emsp;}<br/>
+          &emsp;});<br/>
+        </aside>
+        <p>Para practicar o testear una aplicación se utiliza la dependencia <b>faker</b> para generar datos falsos. Se debe instalar con la instrucción <b>npm i faker -D</b></p>
+        <aside class="exempliGratia">
+          <span class="highlight">
+            &emsp;const <u><i>myExpress</i></u> = require("express");<br/>
+          </span>
+          &emsp;const <u><i>myFaker</i></u> = require("faker");<br/>
+          <span class="highlight">
+            &emsp;const <u><i>app</i></u> = <u><i>myExpress</i></u>();<br/><br/>
+          </span>
+          &emsp;<u><i>app</i></u>.get('/<u><i>patitoProducts</i></u>', (req, res) => {<br/>
+          &emsp;&emsp;const <u><i>pproducts</i></u> = [];<br/>
+          &emsp;&emsp;for (let <u><i>index</i></u> = 0; <u><i>index</i></u> &#60; 100; <u><i>index</i></u>++){<br/>
+          &emsp;&emsp;&emsp;<u><i>pproducts</i></u>.push({<br/>
+          &emsp;&emsp;&emsp;<u><i>name</i></u> <u><i>myFaker</i></u>.commerce.productName(),<br/>
+          &emsp;&emsp;&emsp;<u><i>price</i></u> parseInt(<u><i>myFaker</i></u>.commerce.price(), 10),<br/>
+          &emsp;&emsp;&emsp;<u><i>image</i></u> <u><i>myFaker</i></u>.image.imageUrl()<br/>
+          &emsp;&emsp;&emsp;})<br/>
+          &emsp;&emsp;}<br/>
+          &emsp;&emsp;res.json(<u><i>pproducts</i></u>);<br/>
+          &emsp;});
+        </aside>
+        <p>A continuación se muestra una pequeña modificación del código para que se pueda especificar el numero de productos que se mostrarán:</p>
+        <aside class="exempliGratia">
+          <span class="highlight">
+            &emsp;<u><i>app</i></u>.get('/<u><i>patitoProducts</i></u>', (req, res) => {<br/>
+            &emsp;&emsp;const <u><i>pproducts</i></u> = [];<br/>
+          </span>
+          &emsp;&emsp;const { <u><i>size</i></u> } = req.query;<br/>
+          &emsp;&emsp;const <u><i>limit</i></u> = <u><i>size</i></u> || <u><i>10</i></u>;<br/>
+          <i class="coment highlight">// si no se especifica un numero de productos, se mostrarán por defecto 10.</i><br/>
+          &emsp;&emsp;for (let <u><i>index</i></u> = 0; <u><i>index</i></u> &#60; <u><i>limit</i></u>; <u><i>index</i></u>++){<br/>
+          <span class="highlight">
+            &emsp;&emsp;&emsp;<u><i>pproducts</i></u>.push({<br/>
+            &emsp;&emsp;&emsp;<u><i>name</i></u> <u><i>myFaker</i></u>.commerce.productName(),<br/>
+            &emsp;&emsp;&emsp;...
+            <hr class="link"/>
+            <i class="coment highlight">// Para utilizar éste parámetro se coloca después del endpoint:</i> ?size=<u><i>10000</i></u>
+          </span>
+        </aside>
+        <!-- <p>Una forma más compleja de hacerla es creando los datos en archivo.js y exportando su contenido a otro archivo.js que utilice éstos datos, ejemplo:</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight block textCenter">// *** users.js ***</i><br/>
+          <i class="coment highlight">// En éste archivo se crea el arreglo con los datos iniciales</i><br/>
+          &emsp;const faker = require('faker');<br/>
+          &emsp;const init = () => {<br/>
+          &emsp;&emsp;const result = [];<br/>
+          &emsp;&emsp;for (let i = 0; i &#60; 200; i++) {<br/>
+          &emsp;&emsp;&emsp;result.push({<br/>
+          &emsp;&emsp;&emsp;&emsp;id: i,<br/>
+          &emsp;&emsp;&emsp;&emsp;name: faker.commerce.productName(),<br/>
+          &emsp;&emsp;&emsp;&emsp;price: parseInt( faker.commerce.gamePrice(), 1000 ),<br/>
+          &emsp;&emsp;&emsp;&emsp;image: faker.image.gameImgUrl(),<br/>
+          &emsp;&emsp;&emsp;});<br/>
+          &emsp;&emsp;}<br/>
+          &emsp;&emsp;return result;<br/>
+          &emsp;};<br/>
+          &emsp;module.exports = { init };
+          <hr class="link"/>
+          <i class="coment highlight block textCenter">// *** index.js ***</i><br/>
+          <i class="coment highlight">// Se inicializa el objeto con los usuarios.</i><br/>
+          &emsp;app.listen(port, () => {<br/>
+          &emsp;&emsp;initialDB = {<br/>
+          &emsp;&emsp;&emsp;users: users.init(),<br/>
+          &emsp;&emsp;};<br/>
+          &emsp;&emsp;console.log(`Server running at port ${port}`);<br/>
+          &emsp;});<br/>
+          <i class="coment highlight">// Se filtran los usuarios en la operación get.</i><br/>
+          &emsp;app.get('/users', (req, res) => {<br/>
+          &emsp;&emsp;const { offset, limit } = req.query;<br/>
+          &emsp;&emsp;const result = [];<br/>
+          &emsp;&emsp;if (offset && limit) {<br/>
+          <i class="coment highlight">// Los parámetros recuperados de query, vienen como string, es necesario pasarlos a int.</i><br/>
+          &emsp;&emsp;&emsp;for (let i = parseInt(offset); i &#60; parseInt(limit); i++) {<br/>
+          &emsp;&emsp;&emsp;&emsp;result.push(initialDB.users[i]);<br/>
+          &emsp;&emsp;&emsp;}<br/>
+          &emsp;&emsp;&emsp;res.json(result);<br/>
+          &emsp;&emsp;} else {<br/>
+          &emsp;&emsp;&emsp;res.send('No data found');<br/>
+          &emsp;&emsp;}<br/>
+          &emsp;});
+        </aside> -->
+        <h3>Choque de rutas.</h3>
+        <p>Todo lo que sea <b>especifico</b> debe de ir antes de lo que sea <b>dinámico</b>, por ejemplo, si se tiene una ruta <b>/product/:id</b> y otra ruta <b>/product/filtro</b>, la de filtro debe ir antes para que no choquen sus acciones ya que si filtro va después de la ruta con id, al dirigirnos en el navegador a <b>/product/filtro</b> nos aparecerá un producto con el id=filtro ya que supone que filtro corresponde a un valor asignado al parámetro <b>/:id</b> del endpoint.</p>
+        <aside class="exempliGratia">
+          &emsp;app.get('/product/filter', (req, res) => {<br/>
+          &emsp;&emsp;res.send('filtro de busqueda');<br/>
+          &emsp;}<br/><br/>
+          &emsp;app.get('/product/:id', (req, res) => {<br/>
+          &emsp;&emsp;...<br/>
+        </aside>
+      </div>
+    </section>
+    <!-- Single responsibility principle -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Separación de responsabilidades</h2>
+        <p>Se puede tener un archivo que se encargue de definir todas las rutas de un endpoint en específico separando responsabilidades y facilitando e mantenimiento del código, es decir no se definen todas las rutas en un solo archivo, por ejemplo que /product/sucursal y /product/tiquets se creen en diferentes archivos y estos archivos sean manejados por un archivo principal.</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight block textCenter">// *** routs/productsRoute.js ***</i><br/>
+          <span class="highlight">
+            &emsp;const <u><i>myExpress</i></u> = require("express");<br/>
+          </span>
+          &emsp;const <u><i>myRouter</i></u> = myExpress.Router();<br/><br/>
+          <i class="coment highlight">// Se crea un routing para sustituir al app.</i><br/>
+          &emsp;<u><i>myRouter</i></u>.get('/', (req, res) => {<br/>
+          <i class="coment highlight">// Se deja la ruta unicamente con el slash ya que el archivo principal controlará esta ruta.</i><br/>
+          <span class="highlight">
+            &emsp;&emsp;res.json([<br/>
+            &emsp;&emsp;&emsp;{ ... },<br/>
+            &emsp;&emsp;&emsp;{ ... }<br/>
+            &emsp;&emsp;]);<br/>
+            &emsp;});<br/><br/>
+          </span>
+          &emsp;<u><i>myRouter</i></u>.get('/:id', (req, res) => {<br/>
+          <i class="coment highlight">// Igualmente se deja la ruta solo con el slash y su complemento.</i><br/>
+          <span class="highlight">
+            &emsp;&emsp;const { id } = req.params;<br/>
+            &emsp;&emsp;res.json({<br/>
+            &emsp;&emsp;&emsp;id,<br/>
+            &emsp;&emsp;&emsp;name<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;});<br/><br/>
+          </span>
+          &emsp;module.exports = myRouter;<br/>
+          <i class="coment higlight">// Se convierte el código a un módulo que es exportable.</i>
+          <hr class="link"/>
+          <i class="coment highlight block textCenter">// *** routs/usersRoute.js ***</i><br/>
+          código para la extensión usuarios ...
+          <hr class="link"/>
+          <i class="coment highlight block textCenter">// *** routs/indexRouts.js ***</i><br/>
+          <i class="coment highlight">// Este es el archivo que configura todas las rutas.</i><br/>
+          &emsp;const <u><i>productsRouter</i></u> = require( './productsRouter' );<br/>
+          <i class="coment highlight">// Se manda a llamar a todo el módulo de routing de los productos solicitando la ruta del archivo en donde se encuentra el módulo.</i><br/>
+          &emsp;const <u><i>usersRouter</i></u> = require( './usersRouter' );<br/>
+          &emsp;function <u><i>routerApi</i></u>( <u><i>app</i></u> ) {<br/>
+          <i class="coment highlight">// Se crea una función que recibirá la aplicación como parámetro de entrada.</i><br/>
+          &emsp;&emsp;<u><i>app</i></u>.use( '/<u><i>products</i></u>', <u><i>productsRouter</i></u> );<br/>
+          &emsp;&emsp;<u><i>app</i></u>.use( '/<u><i>users</i></u>', <u><i>usersRouter</i></u> );<br/>
+          <i class="coment highlight">// Se define el endpoint de productos asignandole el módulo importado.</i><br/>
+          &emsp;}<br/><br/>
+          &emsp;module.exports = <u><i>routerApi</i></u>;<br/>
+          <i class="coment highlight">// Se exporta la función routerApi.</i>
+          <hr class="link"/>
+          <i class="coment highlight block textCenter">// *** index.js ***</i><br/>
+          &emsp;const <u><i>myExpress</i></u> = require('express');<br/>
+          &emsp;const <u><i>routerApi</i></u> = require('./routs');<br/>
+          <i class="coment highlight">// Se importa la función routerApi desde la subcarpeta llamada routs</i><br>
+          <span class="highlight">
+            &emsp;const <u><i>app</i></u> = <u><i>myExpress</i></u>();<br/>
+            &emsp;const <u><i>port</i></u> = <u><i>3000</i></u>;<br/>
+            &emsp;...<br/><br/>
+          </span>
+          &emsp;routerApi(app);<br/>
+          <i class="coment highlight">// Se manda a llamar a la función routerApi con el parámetro app.</i>
+        </aside>
+        <p>Debido a que a las aplicaciones se les deben dar mantenimiento, se les coloca una ruta padre, por ejemplo si es una api en la versión 1 (/api/v1), a todos los edpoint de ésta versión se les anexa este fragmento a su ruta.</p>
+        <p>Se mantienen los routers de cada versión en el código por si algún usuario esta consumiento alguna de las versiones ateriores y gracias a las rutas padre o rutas globales se pueden mantener los routers de cada versión sin que hagan estragos entre ellas mismas.</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight">// Se importa express.</i><br/>
+          &emsp;const myExpress = require('express');<br/><br/>
+          &emsp;const productsRouter = require('./productsRouter');<br/>
+          &emsp;const categoriesRouter = require('./categoriesRouter');<br/>
+          &emsp;const userRouter = require('./userRouter');<br/><br/>
+          &emsp;function routerApi(app){<br/>
+          <i class="coment highlight">// Se genera una ruta global para todos los endpoints de alguna version en especifico.</i><br/>
+          &emsp;&emsp;const myRouter = myExtress.Router();<br/>
+          &emsp;&emsp;app.use('api/v1', myRouter);<br/>
+          <i class="coment highlight">// Endpoints de versión 1:</i><br/>
+          &emsp;&emsp;myRouter.use('/products', productsRouter);<br/>
+          &emsp;&emsp;myRouter.use('/categories', categoriesRouter);<br/>
+          &emsp;&emsp;myRouter.use('/users', usersRouter);<br/><br/>
+          <i class="coment highlight">// Ruta global de versión 2.</i><br/>
+          &emsp;&emsp;const myRouter = myExtress.Router();<br/>
+          &emsp;&emsp;app.use('api/v2', myRouter);<br/>
+          <i class="coment highlight">// Endpoints de versión 2.</i><br/>
+          &emsp;&emsp;...<br/>
+          &emsp;}<br/>
+          &emsp;module.exports = routerApi;<br/>
+        </aside>
+      </div>
+    </section>
+    <!-- POST -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">POST.</h2>
+        <p>En cada archivo de las rutas se debe crear un método que reciba el método POST dentro de los endpoints. Para crearlo se  debe colocar el siguiente código antes de la exportación del módulo router (module.exports = router;):</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight block textCenter">// *** routs/productsRoute.js ***</i><br/>
+          <i class="coment highlight">// Se atenderá desde el pathing (ruta) principal.</i><br/>
+          &emsp;router.post('/', (req, res) => {<br/>
+          <i class="coment highlight">// Apartir del atributo body se resiven todos los parámetros enviados por algún cliente.</i><br/>
+          &emsp;&emsp;const myBody = req.body;<br/>
+          <i class="coment highlight">// Se manda una respuesta de tipo json.</i><br/>
+          &emsp;&emsp;res.json({<br/>
+          <i class="coment highlight">// Se manda un mensaje para indicar que es una creación y como dato se manda lo que se recibe del cuerpo.</i><br/>
+          &emsp;&emsp;&emsp;message: 'created',<br/>
+          &emsp;&emsp;&emsp;data: myBody<br/>
+          &emsp;&emsp;});<br/>
+          &emsp;});<br/><br/>
+          &emsp;<span class="highlight">module.exports = router;</span>
+        </aside>
+        <p>El término <b>middleware</b> se refiere a un sistema de software que ofrece servicios y funciones comunes para las aplicaciones. En general, el middleware se encarga de las tareas de gestión de datos, servicios de aplicaciones, mensajería, autenticación y gestión de API.</p>
+        <p>Ayuda a los desarrolladores a diseñar aplicaciones con mayor eficiencia. Además, actúa como hilo conductor entre las aplicaciones, los datos y los usuarios.</p>
+        <p>Se puede implementar un middleware nativo de express que ayudará a que se capture el body de los datos que manda el cliente y los reenvie como respuesta para visualizar a lo que se hizo POST.</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight block textCenter">index.js</i><br/>
+          <span class="highlight">
+            &emsp;const <u><i>myExpress</i></u> = require('express');<br/>
+            &emsp;const <u><i>routerApi</i></u> = require('./routs');<br/>
+            &emsp;const <u><i>app</i></u> = <u><i>myExpress</i></u>();<br/>
+            &emsp;const <u><i>port</i></u> = <u><i>3000</i></u>;<br/>
+          </span>
+          &emsp;<u><i>app</i></u>.use(<u><i>myExpress</i></u>.json());<br/>
+        </aside>
+      </div>
+    </section>
+    <!-- --------------CLASE 11------ -->
+    <!-- PUT -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter"></h2>
+      </div>
+    </section>
+    <!-- PATCH -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter"></h2>
+      </div>
+    </section>
+    <!-- DELETE -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter"></h2>
+      </div>
+    </section>
+    <!-- --------------CLASE 11------ -->
+    <!-- --------------CLASE 12------ -->
+    <!-- Códigos de estado -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter"></h2>
+      </div>
+    </section>
+    <!-- --------------CLASE 12------ -->
+  </main>
+  <footer>
+    <section class="container">
+      <div>
+        <h3>Referencias:</h3>
+        <p>
+          <a class="link" href="https://www.toptal.com/developers/gitignore" target="_blank" rel="noopener noreferrer">gitignore.io</a><br/>
+          <a class="link" href="http://expressjs.com/" target="_blank" rel="noopener noreferrer">Express-Node.js web application framework</a><br/>
+          <a class="link" href="https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh" target="_blank" rel="noopener noreferrer">JSON Viewer - Chrome Web Store.</a><br/>
+          <a class="link" href="https://platzi.com/tutoriales/2485-backend-nodejs/12074-quieres-compartir-tu-servidor-con-tu-familia-pero-no-lo-pueden-ver-en-sus-celulares/" target="_blank" rel="noopener noreferrer">Compartir servidor local.</a><br/>
+          <a class="link" href="https://profile.es/blog/principios-solid-desarrollo-software-calidad/" target="_blank" rel="noopener noreferrer">Princpios SOLID (para desarrollar apps con calidad).</a><br/>
+        </p>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

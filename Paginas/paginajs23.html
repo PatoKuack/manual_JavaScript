@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Manejo del asincronismo.</title>
+</head>
+<body class="body">
+      <!-- Callback -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Callback.</h2>
+          <p>
+            Un callback es la acción de pasar por argumento a una función.
+          </p>
+          <p>
+            Los callback son el nombre de una convención para usar funciones que llaman a otras funciones en JavaScript. No hay una palabra reservada llamada “callback” en el lenguaje JavaScript que haga que nuestro código sea diferente o especial, es mas una convención. Sin embargo <u>se utiliza la palabra callback en los parámetros como buena practica</u> para indicar que estamos realizando un callback.
+          </p>
+          <p>
+            La funcion que recibe como argumento otras funciones es denominada funcion de orden superior (higher-order function), esta contiene la logica correspondiente para ejecutar adecuadamente la funcion callback.
+          </p>
+          <p>
+            La mayoría estamos acostumbrados a programar de manera sincrona, es decir le indicamos al código que por ejemplo defina un Valor <i>“X”</i> y con otro valor <i>“Y”</i> y realizamos un calculo (por ejemplo una multiplicación).
+          </p>
+          <p>
+            El problema radica en que por ejemplo si quisiéramos crear un programa que nos convierta nuestra moneda (pesos) a su equivalente en Bitcoin,
+            podemos definir <i>“X”</i> (valor de nuestro dinero) pero NO podemos definir de manera implícita <i>“Y”</i> (precio del Bitcoin) por que es algo muy volátil. Entonces necesitamos obtener el precio del Bitcoin de una API, nuestro programa realiza una multiplicación de <i>X * Y</i> sin embargo no tenemos <i>“Y”</i> (precio del bitcion) porque tenemos que esperar que el API nos conteste cual es este valor. Es ahí donde sirven los callback.
+          </p>
+          <p>
+            Existen dos Metodos A y B:
+            <ul>
+              <li>
+                El método A obtiene el precio del API de Bitcoin
+              </li>
+              <li>
+                El método B hace el calculo de nuestros Pesos * PrecioBitcoin
+              </li>
+            </ul>
+            Entonces el método B es llamado por el método A cuando por fin lee y obtiene el precio del Bitcoin, solo hasta entonces tiene sentido que multipliquemos nuestros valores.
+          </p>
+          <aside class="exempliGratia">
+            function <u><i>suma</i></u>(<u><i>num1</i></u>, <u><i>num2</i></u>){<br/>
+            &emsp;return <u><i>num1</i></u> + <u><i>num2</i></u>;<br/>
+            }<br/><br/>
+            function <u><i>calculo</i></u>(<u><i>num1</i></u>, <u><i>num2</i></u>, <u><i>callback</i></u>){<br/>
+            &emsp;return <u><i>callback</i></u>(<u><i>num1</i></u>, <u><i>num2</i></u>);<br/>
+            }<br/><br/>
+            console.log(<u><i>calculo</i></u>(<u><i>4</i></u>, <u><i>1</i></u>, <u><i>suma</i></u>));
+          </aside>
+          <aside class="exempliGratia">
+            function <u><i>fecha</i></u>(<u><i>callback</i></u>){<br/>
+            &emsp;console.log(new Date);<br/>
+            <i class="coment highlight">// Con "new Date" se obtiene la fecha actual.</i><br/>
+            &emsp;setTimeout(function () {<br/>
+            <i class="coment highlight">// "setTimeout(f, #)" ejecuta una función con un retardo de milisegundos.</i><br/>
+            &emsp;&emsp;let <u><i>fechaDos</i></u> = new Date;<br/>
+            <i class="coment highlight">// "fechaDos" obtiene el valor de la fecha actual.</i><br/>
+            &emsp;&emsp;<u><i>callback</i></u>(<u><i>fechaDos</i></u>);<br/>
+            <i class="coment highlight">// El parámetro "callback" de esta función "fecha" incrustará un argumento (con el valor de la fecha actual) a la función que reciba.</i><br/>
+            &emsp;}, <u><i>3000</i></u> )<br/>
+            <i class="coment highlight">// La función "fecha" se ejecutará en 3000ms = 3seg.</i><br/>
+            }<br/>
+            <i class="coment highlight">// La función se interpretaría:<br/>
+            function fecha ( collback ( 2021-09-01 ) )</i><br/><br/>
+            function <u><i>mostrarFecha</i></u>(<u><i>fechaActual</i></u>){<br/>
+            &emsp;console.log(<u><i>fechaActual</i></u>);<br/>
+            }<br/><br/>
+            <u><i>fecha</i></u>(<u><i>mostrarFecha</i></u>);<br/>
+            <i class="coment highlight">// Al pasarle la función "mostrarFecha" como argumento a la función "fecha" se interpretaría:<br/>
+            fecha ( mostrarFecha ( 2021-09-01 ) )</i>
+            <br/>
+          </aside>
+        </div>
+      </section>
+      <!-- Recursividad -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Recursividad.</h2>
+          <p>Los <b>callback Hell</b> se dan cuando se pasa una función como parámetro, que a su vez llama a otra función como parámetro, que llama a otra función como parámetro y así varias veces.</p>
+          <p>Una estrategia para trabajar con estas estructuras lógicas tan monolíticas es usar estructuras de control y funciones recursivas.</p>
+          <p>Las funciones recursivas hacen un llamado a sí mismas y mediante la estructura de control se indica cuantas veces se necesitará llamar la función a sí misma.</p>
+          <aside class="exempliGratia">
+            &emsp;function hola(nombre, miCallback) {<br/>
+            &emsp;&emsp;setTimeout(function () {<br/>
+            &emsp;&emsp;&emsp;console.log('Hey, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;miCallback(nombre);<br/>
+            &emsp;&emsp;}, 1500);<br/>
+            &emsp;}<br/><br/>
+            &emsp;function hablar(callbackHablar) {<br/>
+            &emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;console.log('bla bla bla bla...');<br/>
+            &emsp;&emsp;&emsp;callbackHablar();<br/>
+            &emsp;&emsp;}, 1000);<br/>
+            &emsp;}<br/><br/>
+            &emsp;function adios(nombre, otroCallback) {<br/>
+            &emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;console.log('Adios, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;otroCallback();<br/>
+            &emsp;&emsp;}, 1000);<br/>
+            &emsp;}<br/><br/>
+            <i class="coment highlight">
+              &emsp;/***********RECURSIVIDAD***********/<br/>
+              &emsp;//Se usan funciones recursivas porque se esta llamando a la función conversacion dentro de sí misma.<br/>
+              &emsp;//Mediante un If como estructura de control se le dice la cantidad de veces que va a ejectuarse la funcion hablar.
+          </i><br/><br/>
+            &emsp;function conversacion(nombre, veces, callback) {<br/>
+            &emsp;&emsp;if (veces > 0) {<br/>
+            &emsp;&emsp;&emsp;hablar(function () {<br/>
+            &emsp;&emsp;&emsp;&emsp;conversacion(nombre, --veces, callback);<br/>
+            &emsp;&emsp;&emsp;})<br/>
+            &emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;adios(nombre, callback);<br/>
+            &emsp;&emsp;}<br/>
+            &emsp;}<br/>
+            &emsp;console.log('Proceso iniciado...');<br/>
+            &emsp;hola('Calamardo', function (nombre) {<br/>
+            &emsp;&emsp;conversacion(nombre, 3, function() {<br/>
+            &emsp;&emsp;&emsp;console.log('Proceso terminado');<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;});<br/><br/>
+            <i class="coment highlight">
+              &emsp;/***********CALLBACK HELL***********/<br/>
+              &emsp;/*<br/>
+              &emsp;hola('Calamardo', function (nombre) {<br/>
+              &emsp;&emsp;hablar(function () {<br/>
+              &emsp;&emsp;&emsp;hablar(function () {<br/>
+              &emsp;&emsp;&emsp;&emsp;hablar(function () {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;adios(nombre, function() {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;console.log('Proceso terminado...');<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;});<br/>
+              &emsp;&emsp;&emsp;&emsp;});<br/>
+              &emsp;&emsp;&emsp;});<br/>
+              &emsp;&emsp;});<br/>
+              &emsp;});<br/>
+              &emsp;*/<br/>
+            </i>
+          </aside>
+        </div>
+      </section>
+      <!-- Promesas -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Promesas.</h2>
+          <p>Las promesas son una sintaxis mas elegante y legible de realizar callbacks, solo que las promesas cuentan con 3 estados: resuelta, en progreso y rechazada.</p>
+          <p>Para utilizar una promesa solo se debe de instanciar una nueva, una promesa en si es una función que recibe dos parámetros: resolve y reject.</p>
+          <p>Utilizamos resolve para retornar el valor deseado cuando una función se ejecute y utilizamos reject para cuando una función retorna un valor no deseado.</p>
+          <p>Para poder obtener los valores que retorna una función se utiliza su propiedad .then, esta propiedad es una función que recibe un callback el cual tendrá como parámetro el valor retornado con resolve o reject.</p>
+          <p>Siempre que se usa una promesa, además de llamar a la propiedad .then, es necesario invocar la propiedad .catch, la cual es un callback que recibe como parámetro el error ocurrido en caso de que se produzca alguno y evita que ése error cree problemas en el código.</p>
+          <aside class="exempliGratia">
+            &emsp;function hola(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function () {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Hey, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Hay un error!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;function hablar(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('bla bla bla bla...');<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+              &emsp;&emsp;&emsp;&emsp;} else {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Hay un error!');<br/>
+              &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1000);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;function adios(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Adios, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+              &emsp;&emsp;&emsp;&emsp;} else {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Hay un error!');<br/>
+              &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;console.log('Proceso iniciado...');<br/>
+            &emsp;hola('Luffy');<br/>
+            &emsp;.then(hablar);<br/>
+            &emsp;.then(hablar);<br/>
+            &emsp;.then(hablar);<br/>
+            &emsp;.then(adios);<br/>
+            &emsp;&emsp;.then((nombre) => {<br/>
+            &emsp;&emsp;&emsp;console.log('Proceso terminado...');<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;.catch(error => {<br/>
+            &emsp;&emsp;console.log('Hubo un error:');<br/> 
+            &emsp;&emsp;console.log(error);<br/> 
+            &emsp;});<br/><br/>
+          </aside>
+        </div>
+      </section>
+      <!-- Async/Await -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Async/Await.</h2>
+          <p>Es azúcar sintactico, es decir, una forma muy legible y entendible de realizar código, un Async/Await no deja de ser una función asíncrona, la diferencia es que al usar esta sintaxis se podrá ver un código más legible.</p>
+          <p>Para usar correctamente esta sintaxis se usa Async para declarar una función asíncrona, cuando una función es asíncrona se puede usar dentro de su contexto el Await.</p>
+          <p>El Await es la manera en que se le indica al código que ha de esperar a que el evento indicado en el Await se resuelva y retorne un valor, ya que es importante para el proceso del código. Cuando éste retorne un valor el código seguirá normalmente, no estará bloqueando el hilo principal, pues estará esperando a que se resuelva con el event loop.</p>
+          <aside class="exempliGratia">
+            <i class="coment highlight">// La palabra async convierte una función inmediatamente en asíncrona.</i><br/>
+            &emsp;async function hola(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function () {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Hey, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Error en Hola!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;async function hablar(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('bla bla bla bla...');<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Error en Hablar!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1000);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;async function adios(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Adios, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Error en Adios!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            <i class="coment highlight">// Await solo es válido dentro de una función asíncrona.</i><br/>
+            &emsp;async function main() {<br/>
+            <i class="coment highlight">// "try" se utiliza con los async/await cuando se quieren atrapar errores</i><br/>
+            &emsp;&emsp;try{<br/>
+            &emsp;&emsp;&emsp;let nombre = await hola('Hankok');<br/>
+            &emsp;&emsp;&emsp;await hablar();<br/>
+            <i class="coment highlight">// Para hacer que una istrucción no se ejecute en segundo plano no debe colca el await.</i><br/>
+            &emsp;&emsp;&emsp;hablar();<br/>
+            &emsp;&emsp;&emsp;await hablar();<br/>
+            &emsp;&emsp;&emsp;await adios(nombre);<br/>
+            &emsp;&emsp;}<br/>
+            &emsp;&emsp;.catch(error){<br/>
+            &emsp;&emsp;&emsp;console.log('Hubo un error:');<br/> 
+            &emsp;&emsp;&emsp;console.log(error);<br/>
+            &emsp;&emsp;}<br/>
+            &emsp;&emsp;console.log('Proceso terminado...');<br/>
+            &emsp;}<br/><br/>
+            <i class="coment highlight">// Esto nos permitirá saber si nuestra función se está ejecutando de forma asíncrona.</i><br/>
+            &emsp;console.log('Proceso iniciado...');<br/>
+            &emsp;main();<br/>
+            &emsp;console.log('Ésta será la segunda instrucción en ejecutarse saltandose los async.');<br/>
+          </aside>
+        </div>
+      </section>
+      <!-- Errores -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Errores.</h2>
+          <p>Cuando aparece un error en el inspector se indican dos números (4:15), el primero indica el origen del error y el segundo numero indica la línea en donde se rompió el código, por ejemplo, si el error se localiza en una variable de la línea 30 que adquirió un valor generado en una función de la líne 11 entonces el error aparecerá con los dígitos 11:30</p>
+        </div>
+      </section>
+      <!-- Try/Catch -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">try/catch</h2>
+          <p>Con Node se pueden manejar los errores de una manera muy optima, pero primero se debe entender como Node maneja los errores por defecto.</p>
+          <p>Cuando sucede un error en Node, éste por defecto terminara todo el proceso del código para avisar que ha ocurrido un error, esto puede ser fatal para los proyectos.</p>
+          <p>Los errores además se notifican por hilos, es decir, que si un error sucede en el hilo principal del event loop, es decir, el evento queue, el error se avisara desde éste mismo hilo, pero si un error sucede antes desde otro hilo como el hilo de las funciones asíncronas, el error se avisara desde aquel hilo sin dejar mostrar el error del hilo principal.</p>
+          <p>Se puede manejar éste flujo de errores para que Node no se detenga al momento de que ocurra un error y genere una acción deseada, para esto usamos try y catch.</p>
+          <p><b>try</b> es el blóque de código que ejecutará la función que puede o no fallar y <b>catch</b> la función que atrapara el error y decidirá que hacer con él.</p>
+          <span class="block textCenter">try/catch en una función <b>sincrona</b>.</span>
+          <aside class="exempliGratia">
+            &emsp;function otraFunction(){<br/>
+            &emsp;&emsp;rompeSincrono();<br/>
+            &emsp;}<br/>
+            &emsp;function rompeSincrono(){<br/>
+            &emsp;&emsp;return (3 + z);<br/>
+            &emsp;}<br/>
+            &emsp;try{<br/>
+            &emsp;&emsp;otraFuncion();<br/>
+            &emsp;} catch(err){<br/>
+            &emsp;&emsp;console.error("¡Algo se ha roto!");<br/>
+            &emsp;&emsp;console.error(err.message);<br/>
+            <i class="coment highlight">// Con la variable "err" y su atributo "message" se muestra el mensaje litera que proporciona el navegador que indica la razón por la que se rompió el código.</i><br/>
+            &emsp;&emsp;console.log("Pero no pasa nada UuU");<br/>
+            &emsp;}<br/>
+            &emsp;console.log("Final del código.");<br/>
+          </aside>
+          <span class="block textCenter">try/catch en una función <b>asincrona</b>.</span>
+          <aside class="exempliGratia">
+            &emsp;function rompeAsincrono(callback){<br/>
+            &emsp;&emsp;setTimeout(function(){<br/>
+            &emsp;&emsp;&emsp;try{<br/>
+            &emsp;&emsp;&emsp;&emsp;return (3 + z);<br/>
+            &emsp;&emsp;&emsp;} catch (err) {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.error("Error en la función asincrona.");<br/>
+            &emsp;&emsp;&emsp;&emsp;callback(err);<br/>
+            &emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;})<br/>
+            &emsp;}<br/>
+            &emsp;try{<br/>
+            &emsp;&emsp;rompeAsincrono(function(err){<br/>
+            &emsp;&emsp;&emsp;console.log(err.message);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;} catch(err) {<br/>
+            &emsp;&emsp;console.error("Algo crasheó:");<br/>
+            &emsp;&emsp;console.error(err);<br/>
+            &emsp;&emsp;console.log("pero no pasa nada UuU");<br/>
+            &emsp;}<br/>
+            &emsp;console.log("Final del código.");
+          </aside>
+        </div>
+      </section>
+      <footer>
+        <section>
+          <div class="container">
+            <h3>Referencias:</h3>
+            <p>
+              <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/try...catch" target="_blank" rel="noopener noreferrer">Try...catch</a><br/>
+            </p>
+          </div>
+        </section>
+      </footer>
+      <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

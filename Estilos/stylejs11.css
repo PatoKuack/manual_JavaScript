@@ -1,0 +1,105 @@
+:root{
+  /* colores */
+  --backGround:   rgb(0, 35, 100);
+  --bckGndNode1:  rgb(7, 165, 204);
+  --bckGndNode2:  rgb(9, 107, 110);
+  /* --colorBorde:   rgb(160, 62, 199); */
+  --colorBorde:   rgb(244, 255, 97);
+  --colorBordtop: brown;
+  --colorBordDown:peru;
+  --colorTexto:   rgb(241, 250, 255);
+  --colorEnlace:  rgb(255, 214, 127);
+  --colorBotnBG:  bisque;
+  --colorInteract:red;
+  --colorNo:        transparent;
+  --colorConsola: rgba(0, 0, 0, .5);
+
+  /* mediciones */
+  --paddNormal:     1em;
+  --paddHijo:       .7em;
+  --paddNieto:      .2em;
+  --maxWNormal:     50em;
+  --maxWHijo:       45em;
+  --maxWNieto:      37em;
+  --imahen1:        100%;
+  --imahen2:        70%;
+}
+
+*, *:before, *:after{
+  box-sizing: border-box;
+}
+
+.cuerpo{
+  /* background-image: linear-gradient(var(--bckGndNode2) 0%, var(--backGround) 30%); */
+  background-image:
+  radial-gradient(circle, var(--colorTexto) 1%, var(--backGround) 3%);
+  background-position:    -2em 3em;
+  background-size:        15em 11em;
+  background-attachment:  fixed;
+  color:                  var(--colorTexto);
+}
+
+.contenedor{
+  max-width:        var(--maxWNormal);
+  margin:           var(--paddNormal) auto;
+  padding:          var(--paddNormal);
+  background-image: linear-gradient(var(--bckGndNode1)1%, var(--bckGndNode2) 70%);
+  border:           .2em double var(--colorBorde);
+  color:            var(--colorTexto);
+  box-shadow:       .5em .5em 1em var(--colorTexto);
+}
+
+.ejemplo, .consola{
+  display:          block;
+  max-width:        var(--maxWNieto);
+  background-image: linear-gradient(var(--bckGndNode1) 1%, var(--bckGndNode2) 50%);
+  border:           .2em double var(--colorBorde);
+  margin:           var(--paddHijo) auto;
+  padding:          var(--paddHijo);
+  font-weight:      bold;
+}
+
+.interaccion{
+  border-top:     .15em solid var(--colorInteract);
+  border-bottom:  .15em solid var(--colorInteract);
+  text-align:     center;
+}
+
+.negrita, dt{
+  font-weight: bold;
+}
+
+.titCentrado{
+  text-align: center;
+}
+
+.enlace{
+  color: var(--colorEnlace);
+}
+
+.coment{
+  color: var(--colorBorde);
+}
+
+.forminput{
+  background-color: var(--colorBotnBG);
+  border-color:     var(--colorEnlace);
+}
+
+.block-centrado{
+  display:  block;
+  margin:   var(--paddNieto) auto;
+}
+
+.esconder{
+  color:    var(--colorNo);
+  position: absolute;
+}
+
+.consola{
+  background-image: linear-gradient(var(--bckGndNode2) 1%, var(--colorConsola) 50%);
+}
+
+.gif{
+  width: 200px;
+}

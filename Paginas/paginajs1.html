@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+</head>
+<body>
+  <div class="medio">
+    <div>
+      <h2>Buena practica.</h2>
+      <p>Los <b>"punto y coma"</b> no son necesarios en JavaScript, sin embargo es bueno colocarlos para tener un código más legible.</p>
+      <p>Los <b>comentarios</b> son necesarios para guiar al programador a modificar o entender el programa ya sea porque se trabaja en equipo o porque se tiene que actualizar.</p>
+    </div>
+    <div>
+      <h2>Comentarios e instrucciones.</h2>
+      Para comentar en un documento .js se utiliza el doble slash (//) para comentar una línea.<br>
+      Para comentar un párrafo se utilizan slash y asteriscos: /*<i>contenido</i>*/<br>
+      Se puede utilizar el estándar de doble asterisco para darme un formato más elegante, se coloca /** y el editor cerrará automáticamente el comentario de bloque con un */, después al dar un salto de línea se colocará un asterisco por cada línea en el comentario.<br><br>
+      Con la instrucción <b>alert("<u><i>texto</i></u>")</b> aparecerá un cuadro de texto en el navegador con el texto especificado dentro de las comillas.<br>
+      Con la instrucción <b>console.log("<u><i>texto</i></u>")</b> se colocará en la consola del navegador el texto especificado entre las comillas.<br/>
+      Con la instrucción <b><i><u>variable</u></i>[ <i><u>número-de-caracter</u></i> ]</b> se obtiene el caracter ubicado en la posición especificada de un string contenido en la variable, ejemplo: console.log(variable[0])<br>
+      Con el comando <b><u><i>variable</i></u>.length</b> se obtiene el número de caracteres del string que contiene la variable.<br>
+      Con el comando <b>typeof <i><u>dato</u></i></b> imprimiremos en la consola del navegador el tipo de dato especificado ejemplo: console.log(typeof ['texto', 45, true])
+    </div>
+    <div>
+      <h2>Tipos de datos</h2>
+      <ul>
+        <li>Number: todos los tipos de números (enteros y decimales).</li>
+        <li>String: cadenas de texto.</li>
+        <ul>
+          <li>
+            Pueden declararse con comillas dobles <b>"texto"</b>
+          </li>
+          <li>
+            Pueden declararse con comillas simples <b>'texto'</b>
+          </li>
+          <li>
+            Pueden declararse con backticks/backquotes (alt + BlopLock[096]) <b>`texto`</b> y pueden declararse variables dentro de éstas <b>`texto ${variable}`</b>.
+          </li>
+        </ul>
+        <li>Boolean: false o true.</li>
+        <li>Objetos: colección de datos colocados entre llaves y separados por comas, que tienen un identificador y un valor.</li>
+        <li>Array: agrupación de diferentes tipos de datos (valor) encerrados entre corchetes, con posiciones numéricas (identificadores) que van de 0 a n.</li>
+        <li>Null: valores que no existen, aunque no tenga características de un objeto javascript toma este dato como objeto.</li>
+        <li>Undefined: es un tipo de dato no definido como por ejemplo una variable sin valor en ella.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="medio">
+    <h2>Variables.</h2>
+    <div>
+      <h3>Reglas</h3>
+      Las siguientes son reglas para nombrar variables en JavaScript:<br>
+      <ul>
+        <li>No pueden empezar con números, sólo con letras.</li>
+        <li>Se diferencian mayúsculas y minúsculas.</li>
+        <li>No se pueden utilizar caracteres especiales como 'ñ' o tildes.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Declaración.</h3>
+      Para declarar una variable se pueden utilizar tres tipos de variables var, let o const, después se coloca el nombre de la variable, ejemplo:<br>
+      <b>let videojuego;</b><br>
+      tipo nombre;
+    </div>
+    <div>
+      <h3>Asignación.</h3>
+      Para asignar un valor a una variable se utiliza el signo igual seguido por el valor que se le desee asignar (number, string booleano, etc), ejemplo:<br>
+      <b>videojuego = "divertido";</b><br>
+      variable = valor;
+    </div>
+    <div>
+      <h3>Declaración y asignación.</h3>
+      Se le puede asignar un valor a una variable al declararla, ejemplo:<br>
+      <b>let videojuego = "divertido";</b><br>
+      tipo variable = valor;
+    </div>
+    <div>
+      <h3>Reasignación.</h3>
+      Se pueden reasignar valores a variables que ya contenían un valor previamente, ejemplo:<br>
+      <b>let videojuego = "divertido";<br>
+      videojuego = 4;</b><br>
+      Aquí reasignamos el valor de una variable de un valor de tipo string a uno numerico.
+    </div>
+    <div>
+      <h3>Asignación por referencia.</h3>
+      Los valores se asignan y reasignan siguiendo un orden estilo en cascada, ejemplo:<br>
+      <b>
+        let videojuego = "divertido";<br>
+        completados = videojuego;<br>
+        videojuego = 4;<br>
+      </b>
+      En este caso <u>videojuego</u> acabará valiendo <u>4</u>, pero <u>completados</u> valdrá <u>"divertido"</u> porque se declaró antes de la reasignación de <u>videojuego</u>.
+    </div>
+    <div>
+      <h3>Tipos de variables</h3>
+      <h4 class="centrar">var</h4>
+      <b>var</b> permite <u>re-declarar</u> una variable, ejemplo:<br>
+      <b>
+        var videojuego = "divertido;<br>
+        var videojuego = 4;
+      </b><br>
+      Si no se le asigna un valor al momento de declarar una variable con <b>var</b>, se le asigna el valor <i>undefined</i> por default.<br>
+      <b>var</b> también es muy flexible cuando se le manda a llamar, puede ser llamada desde cualquier parte del código si es que se había declarado antes, pero por lo mismo puede ocacionar problemas de seguridad por lo que no se debe usar en variables importantes que comprometan la integridad del código, por ejemplo se puede acceder a una variable <b>var <u>nombreVariable</u> = <u>valor</u></b> desde la consola con el comando <b>window.<u>nombreVariable</u></b>
+      <hr>
+      <h4 class="centrar">let</h4>
+      <b>let</b> NO permite <u>re-declarar</u> una variable, solamente re-asignarles un valor, ejemplo:<br>
+      <b>
+        var videojuego = "divertido";<br>
+        videojuego = 4;
+      </b><br>
+      El comando <b>let <i>valor</i>;</b> reserva un espacio en la memoria RAM para una variable, si no se le asigna un valor no tendrá algún tipo de valor asignado.<br>
+      <b>let</b> tiene más restricciones de seguridad, por ejemplo no se puede acceder a una variable <b>var <u>nombreVariable</u> = <u>valor</u></b> desde la consola con el comando <b>window.<u>nombreVariable</u></b>
+      <hr>
+      <h4 class="centrar">const</h4>
+      Son variables que NO pueden ser re-declaradas ni  pueden re-asignar su valor una vez declaradas, por lo mismo tiene que serle asignado un valor a la variable al momento de ser declarada, ejemplo:<br>
+      Como buena práctica estas constantes se representan siempre con mayúsculas y en formato snake-case, es decir usando guión bajo para separar palabras, ejemplo:<br>
+      <b>const OSO_PERESOSO = "Winnie Pooh"</b>
+    </div>
+  </div>
+  <footer>
+    Tip:<br>
+    El link <i>about:blank</i> en una página web crea una página vacía.<br>
+    <h4>Referencias:</h4>
+    <a target="_blank" href="https://www.w3schools.com/js/js_popup.asp">Prompt Box (alerts).</a>
+    <a target="_blank" href="https://www.analyticslane.com/2019/06/10/diferencias-entre-var-y-let-en-javascript/">Diferencia entre var y let.</a>
+  </footer>
+  <script src="../Js/programajs1.js"></script>
+</body>
+</html>

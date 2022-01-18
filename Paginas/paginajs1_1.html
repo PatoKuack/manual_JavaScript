@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    <div class="medio">
+      <div>
+        <h1>Console.</h1>
+        <p>Con console se puede imprimir todo tipo de valores en la terminal.</p>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="medio">
+      <div>
+        <dl>
+          <dt>console.log(<i><u>valor</u></i>)</dt>
+          <dd>Recibe cualquier tipo de valores y los muestra en el consola.</dd>
+          <dt>console.info(<i><u>valor</u></i>)</dt>
+          <dd>Es equivalente a log pero es usado para información de la página.</dd>
+          <dt>console.error(<i><u>valor</u></i>)</dt>
+          <dd>Es equivalente a log pero es usado para errores.</dd>
+          <dt>console.warn(<i><u>valor</u></i>)</dt>
+          <dd>Es equivalente a log pero es usado para warning.</dd>
+          <dt>console.table(<i><u>objeto</u></i>)</dt>
+          <dd>Muestra una tabla a partir de un objeto.</dd>
+          <dt>console.group(<i><u>valor</u></i>)</dt>
+          <dd>
+            Permite agrupar otros consoles o funciones o valores mediante identación.
+            <dl>
+              <dt>console.groupEnd(<i><u>valor</u></i>)</dt>
+              <dd>Finaliza la agrupación. Los valores que se agrupan van entre el console.group y el .groupEnd</dd>
+            </dl>
+          </dd>
+          <dt>console.count(<i><u>valor</u></i>)</dt>
+          <dd>
+            Inicia un contador autoincremental que cuenta y muestra las veces que se ha imprimido el mismo valor.
+            <dl>
+              <dt>console.countReset(<i><u>valor</u></i>)</dt>
+              <dd>Reinicia el contador.</dd>
+            </dl>
+          </dd>
+          <dt>console.time(<i><u>valor</u></i>)</dt>
+          <dd>
+            Inicia un cronometro en ms.
+            <dl>
+              <dt>console.timeEnd(<i><u>valor</u></i>)</dt>
+              <dd>Finaliza el cronometro.</dd>
+            </dl>
+          </dd>
+          <dt>console.clear()</dt>
+          <dd>Limpia la consola.</dd>
+        </dl>
+      </div>
+    </div>
+  </main>
+  <footer></footer>
+  <script src="../Js/programajs1_1.js"></script>
+</body>
+</html>

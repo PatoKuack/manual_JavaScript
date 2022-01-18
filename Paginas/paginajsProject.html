@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejsP.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio de práctica</title>
+</head>
+<body>
+  <header>
+    <h1>Servidumbre del siglo XVIII</h1>
+  </header>
+  <main>
+    <section class="parte1">
+      <article class="visual">
+        <table>
+          <thead>
+            <tr>
+              <th>Puesto</th>
+              <th>Grado</th>
+              <th>Sueldo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Palafrenero</td>
+              <td>Bajo</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>Chofer</td>
+              <td>Bajo</td>
+              <td>20</td>
+            </tr>
+            <tr>
+              <td>Ayudante de cocina</td>
+              <td>Bajo</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td>Lacayo</td>
+              <td>Bajo</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td>Niñera</td>
+              <td>Bajo</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td>Jefa de cocina</td>
+              <td>Medio</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>Ama de llaves</td>
+              <td>Medio</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>Mayordomo jefe</td>
+              <td>Alto</td>
+              <td>45</td>
+            </tr>
+            <tr>
+              <td>Ayudante de camara</td>
+              <td>Alto</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Doncella personal</td>
+              <td>Alto</td>
+              <td>50</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="codigo">
+        <pre>
+    let oficios = [
+      {<pu>puesto:</pu> "Palafrenero", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 10},
+      {<pu>puesto:</pu>"Chofer", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 20},
+      {<pu>puesto:</pu>"Ayudante de cocina", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 25},
+      {<pu>puesto:</pu>"Lacayo", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 25},
+      {<pu>puesto:</pu>"Niñera", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 25},
+      {<pu>puesto:</pu>"Jefa de cocina", <gra>grado:</gra> "Medio", <su>sueldo:</su> 40},
+      {<pu>puesto:</pu>"Ama de llaves", <gra>grado:</gra> "Medio", <su>sueldo:</su> 40},
+      {<pu>puesto:</pu>"Mayordomo jefe", <gra>grado:</gra> "Alto", <su>sueldo:</su> 45},
+      {<pu>puesto:</pu>"Ayudante de camara", <gra>grado:</gra> "Alto", <su>sueldo:</su> 50},
+      {<pu>puesto:</pu>"Doncella personal", <gra>grado:</gra> "Alto", <su>sueldo:</su> 50}
+    ];
+        </pre>
+      </article>
+    </section>
+    <section class="parte2">
+      <article class="visual">
+        <table>
+          <thead>
+            <tr>
+              <th>declaración</th>
+              <th>Variables</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>let</td>
+              <td>Postulantes</td>
+              <td>[]</td>
+            </tr>
+            <tr>
+              <td>let</td>
+              <td>transacciones</td>
+              <td>[]</td>
+            </tr>
+            <tr>
+              <td>let</td>
+              <td>Salario</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>let</td>
+              <td>Casa</td>
+              <td>{ nombre: "Downton Abbey",
+                manutencion: 0 }</td>
+            </tr>
+            <tr>
+              <td>Niñera</td>
+              <td>Bajo</td>
+              <td>25</td>
+            </tr>
+            <tr>
+              <td>Jefa de cocina</td>
+              <td>Medio</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>Ama de llaves</td>
+              <td>Medio</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>Mayordomo jefe</td>
+              <td>Alto</td>
+              <td>45</td>
+            </tr>
+            <tr>
+              <td>Ayudante de camara</td>
+              <td>Alto</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Doncella personal</td>
+              <td>Alto</td>
+              <td>50</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+      <article class="codigo">
+        <pre>
+    let oficios = [
+      {<pu>puesto:</pu> "Palafrenero", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 10},
+      {<pu>puesto:</pu>"Chofer", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 20},
+      {<pu>puesto:</pu>"Ayudante de cocina", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 25},
+      {<pu>puesto:</pu>"Lacayo", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 25},
+      {<pu>puesto:</pu>"Niñera", <gra>grado:</gra> "Bajo", <su>sueldo:</su> 25},
+      {<pu>puesto:</pu>"Jefa de cocina", <gra>grado:</gra> "Medio", <su>sueldo:</su> 40},
+      {<pu>puesto:</pu>"Ama de llaves", <gra>grado:</gra> "Medio", <su>sueldo:</su> 40},
+      {<pu>puesto:</pu>"Mayordomo jefe", <gra>grado:</gra> "Alto", <su>sueldo:</su> 45},
+      {<pu>puesto:</pu>"Ayudante de camara", <gra>grado:</gra> "Alto", <su>sueldo:</su> 50},
+      {<pu>puesto:</pu>"Doncella personal", <gra>grado:</gra> "Alto", <su>sueldo:</su> 50}
+    ];
+        </pre>
+      </article>
+    </section>
+  </main>
+  <script src="../Js/programajsP-datos.js"></script>
+  <script src="../Js/programajsP.js"></script>
+</body>
+</html>

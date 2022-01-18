@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <title>Engine</title>
+</head>
+<body>
+  <div class="medio">
+    <h2 class="white">Just in time compiler</h2>
+    <p class="white">Cuando se programa un código de JavaScript se genera una lista de tareas que harán didactica a la página web.</p>
+    <p class="white">El proceso de "just in time compiler" o "compilación en tiempo real" es cuando el motor de JavaScript funciona como un interprete entre el código y la computadora transformando el código JavaScript en código máquina o bitecode.</p>
+    <div>
+      <h3>Global Environment.</h3>
+      <p>Una vez que el navegador recibe nuestro código, lo primero que hace es crear un entorno global el cual contiene tres cosas: un objeto global, una variable llamada "this" y un entorno de salida.</p>
+      <h3>Global Object.</h3>
+      <p>Este objeto es igual a Window.</p>
+      <h3>this.</h3>
+      <p>Esta variable depende mucho del contexto en el que se esté llamando, en el caso del entorno global, this es igual a este objeto global que también es igual a window.</p>
+      <h3>Outer Environment.</h3>
+      <p>Tambièn conocido como "ámbito léxico", es el bloque donde fue creada una función y que puede acceder a todos los demás elementos que están dentro del bloque de la función.</p>
+      <h3>Execution context.</h3>
+      <p>Después de que se generan los tres elementos del entorno global, se genera el contexto de ejecución que es conde se corre el código a través de un Stack de tareas que las apila una por una.</p>
+      <h3>Parser.</h3>
+      <p>Cuando empieza a interactuar JavaScript con el motor del navegador se realiza un parseo del documento completo para poder encontrar las llaves principales o Keywords.</p>
+      <h3>AST.</h3>
+      <p>Con las keywords del código se genera un "abstract syntax tree" o "árbol de sintaxis abstracta" que es una forma del código en donde las instrucciones se desglosan para mostrar sus componentes y las acciones que realiza.</p>
+      <h3>Bitecode</h3>
+      <p>El árbol sintactico se interpreta y se convierte en bitecode el cual es un código muy básico que puede interpretar la máquina.</p>
+      <h3>Profiler.</h3>
+      <p>Si al interpretar el árbol sintactico se encuentran código que se puede optimizar, el código pasa al "profiler" o "monitor" que optimiza el código, lo compila y lo regresa como bitecode para que la máquina lo pueda entender.</p>
+      <h3>Hoisting.</h3>
+      <p>En este último proceso (Profiler) se pueden generar errores por no utilizar bien el Hoisting que es declarar las variables y funciones de una forma adecuada para que funcionen al mandarlas llamar.</p>
+    </div>
+  </div>
+  <footer>
+    <h3>Referencias:</h3>
+    <p>
+      <a href="https://static.platzi.com/media/public/uploads/glosario_70bd6257-d472-4c07-a7fd-f379503ab370.pdf" target="_blank" rel="noopener noreferrer">Glosario de conceptos.</a><br/>
+      <a href="https://dev.to/lydiahallie/javascript-visualized-the-javascript-engine-4cdf" target="_blank" rel="noopener noreferrer">JavaScript Engine.</a><br/>
+      <a href="https://astexplorer.net/" target="_blank" rel="noopener noreferrer">Ejemplo de AST.</a><br/>
+
+      <a href="https://developer.mozilla.org/en-US/docs/Glossary/Parse" target="_blank" rel="noopener noreferrer">Parse.</a>
+    </p>
+  </footer>
+</body>
+</html>

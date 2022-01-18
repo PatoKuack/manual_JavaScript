@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css"> 
+  <link rel="stylesheet" href="../Estilos/stylejs2.css"> 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Funciones</title>
+</head>
+<body>
+  <div class="medio">
+    <h2>Funciones.</h2>
+    <div>
+      <p>Las funciones son bloques de código que son reutilizables y pueden ser ejecutados desde cualquier lugar de nuestro código las veces que deseemos.</p>
+      <p>Las funciones se declaran con la instrucción <b>function</b> seguido del nombre de la función y un bloque de parentesis, después se abre un bloque de llaves para colocar instrucciones que se ejecutarán cuando se mande a llamar la función, ejemplo:<br>
+      <b>function <u><i>función</i></u>(){<br>
+        <u><i>código</i></u>;<br>
+      }</b></p>
+      <p>Las funciones se mandan a llamar simplemente colocando el nombre de la función y un bloque de parentesis, ejemplo:<br>
+      <b><u><i>función</i></u>()</b>;</p>
+      <span>
+        <b>
+          function saludar(){<br>
+            console.log("Holiholilla");<br>
+          }<br>
+        </b>
+        //para mandar a llamar la función:<br>
+        <b>
+          saludar();
+        </b>
+      </span>
+    </div>
+    <div>
+      <h3>Parámetros.</h3>
+      Elemento de la función que es definido al mandar a llamar la función para ser ejecutado, no son esenciales y la variable en donde se almacenan los datos del parámetro sólo existe dentro de la función.<br>
+      Si se le asigna un valor al parametro, va a significar que cuando el parámetro no tenga algún valor (en caso de que se reciba el valor directamente de algún usuario) adquirirá ese valor por defecto.
+      Sus declaraciones son de la siguiente forma:<br>
+      <b>function <u><i>función</i></u> = <u><i>valor</i></u> ( <u><i>parámetro</i></u> ) {<br>
+        <u><i>bloque de código usando el parámetro</i></u><br>
+      }</b><br>
+      Se llaman de la siguiente forma:<br>
+      <b><u><i>función</i></u> ( <u><i>Dato(s) del parámetro</i></u> ) ;</b><br>
+      Se puede llamar directamente dentro del código o en la consola.
+      <span>
+        <b>
+          function miFuncion(suma1, suma2){<br>
+          console.log(suma1 + suma2);<br>
+          }<br>
+          miFuncion(247, 585);<br>
+        </b>
+        //imprimiría: 832
+      </span>
+    </div>
+    <div>
+      <h3>Argumento.</h3>
+      Representa el valor que se pasa al parámetro de una función cuando se le llama a travez de un código.
+      <span>
+        <b>
+          *Las funciones reciben parámetros y los argumentos se envían a las funciones.
+        </b>
+      </span>
+    </div>
+    <div>
+      <h3>Valores de retorno.</h3>
+      Retorna un valor con la palabra reservada <b>return</b> para utilizar esos valores directamente en el llamado de la función, ejemplo:<br>
+      <b>function <u><i>función</i></u> ( <u><i>parámetros</i></u> ) {<br>
+        return ` $ { <u><i>parámetros</i></u> } `<br>
+      }<br>
+      console.log ( <u><i>función ( datos )</i></u> )</b><br>
+      Si hubiera más código <u>después</u> del <i>return</i>, no se ejecutaría porque el código de la función termina al completar la línea de <i>return</i>.
+      <span>
+        <b>
+          function miFuncion(suma1, suma2){<br>
+            var resultado = suma1 + suma2;<br>
+            return (resultado);<br>
+          }<br>
+          miFuncion(247, 585);<br>
+        </b>
+        //regresará e imprimirá en consola: 832
+      </span>
+    </div>
+    <div>
+      <h3>Funciones de primera clase.</h3>
+      Son funciones que se pueden almacenar en una variable como un valor o como la variable en si.<br>
+      *Se utiliza const como almacenamiento para las funciones ya que las funciones no son modificables.<br>
+      <b>const <u><i>variable</i></u> = <u><i>función</i></u>()</b> guarda la ejecución de la función, es decir el dato resultante de la función.<br>
+      <b>const <u><i>variable</i></u> = <u><i>función</i></u></b> guarda la función para poder utilizar la <i>variable</i> como una función.
+      <span>
+        <b>
+          cont sumaDos = miFuncion;<br>
+          sumaDos(247, 585);<br>
+        </b>
+        //imprimiría: 832
+        <hr>
+        <b>
+          const sumaTres = miFuncion(247, 585);<br>
+          console.log(sumaTres);<br>
+        </b>
+        //imprimiría: 832
+      </span>
+    </div>
+    <div>
+      <h3>Funciones anónimas.</h3>
+      Son funciones que no tienen nombre, se les indica los parámetros que se utilizarán y la acción que se ejecutará, ejemplo:<br>
+      <b>const <u><i>variable</i></u> = function(<u><i>parámetros</i></u>){<br>
+        <u><i>acción</i></u><br>
+      }</b><br>
+      //Se manda a llamar<br>
+      <b><u><i>variable</i></u>(<u><i>datos</i></u>)</b>
+      <span>
+        <b>
+          const bienvenida = function(nombre){<br>
+          console.log(`Bienvenide ${nombre}!`);<br>
+          }<br>
+        </b>
+        //mandar a llamar<br>
+        <b>
+          binvenida("Cosmo");
+        </b>
+      </span>
+      <h4>Auto-ejecución</h4>
+      Se pueden invocar las funciones por si solas, se tienen que colocar encerradas en paréntesis para indicarle a JavaScript que se le colocará una expresión, ejemplo:<br>
+      <span>
+        <b>( function ( a, b ) {<br>
+          console.log ( a + b )<br>
+        } ( 4, 5 ) )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Funciones de flecha.</h3>
+      Retornan datos reduciendo el código de una función. Cuando tiene <u>un solo parámetro</u> se pueden omitir los paréntesis donde se colocan (es opcional), pero cuando tenga <u>más de uno o ningún parámetro</u> se colocan los parentesis, ejemplo:<br>
+      Se puede colocar de una manera muy reducida el código de una función como operaciones matemáticas o impresiones de texto:<br>
+      <b>const <i><u>variable</u></i> = ( <i><u>parámetro</u></i>, <i><u>parámetro</u></i> ) => <i><u>código simple</u></i></b><br>
+      Se pueden colocar llaves para agregarle a la función código de comparación o más complejo:<br>
+      <b>const <i><u>variable</u></i> = <i><u>parámetro</u></i> => {<br>
+        <u><i>código lógico</i></u><br>
+      }</b>
+      <span>
+        <b>
+          const despedida = apodo => `Chau ${apodo}`<br>
+          console.log(despedida("Calamardo"))
+        </b>
+        <hr>
+        <b>
+          const despedida = () => console.log("Hasta luego!")<br>
+          despedida();
+        </b>
+      </span>
+    </div>
+  </div>
+  <script src="../Js/programajs4.js"></script>
+</body>
+</html>

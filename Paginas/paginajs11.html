@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../Estilos/Normalizecss.css">
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
+  <title>DOM</title>
+</head>
+<body class="cuerpo">
+  <header>
+  <!-- DOM -->
+    <div class="contenedor">
+      <h1 class="titulo titCentrado">DOM</h1>
+      <p class="contenido">
+        Document Object Model (modelo de objetos de documentos), <i>"Document"</i> hace referencia a que todo el HTML es un <i>documento</i>, <i>"Object"</i> hace referencia a que es un elemento independiente con propiedades y métodos, y <i>"Model"</i> hace referencia a que es la estructura en particular que tienen los objetos en HTML.<br/>
+        El DOM es la transformación de nuestro html en objetos entendibles para el navegador.(el DOM no es parte de la especificación de JavaScript, sino que es una web API)<br/>
+        Toda etiqueta de HTML es un objeto en el DOM y cada objeto puede tener hijos (el contenido de una etiqueta se considera un hijo).
+      </p>
+      <h3>CSSOM</h3>
+      <p>
+        CSS object model es la transformación de nuestro css en objetos entendibles para el navegador.
+      </p>
+      <h3>Render Tree</h3>
+      <p>
+        Es la suma del DOM + CSSOM renderizado por nuestro navegador.
+      </p>
+    </div>
+  </header>
+  <main>
+    <section>
+    <!-- Document -->
+      <div class="contenedor">
+        <h2>Document</h2>
+        <p>
+          El DOM parte de un objeto global llamado <b>document</b> que representa un objeto que contiene todo lo que se ve en la página web.<br/>
+          Se pueden acceder rápidamente a determinados elementos del DOM con el objeto <b>document</b> desde la consola del navegador (presionando F12), ejemplo:
+        </p>
+        <dl>
+          <dt>document.<u>head</u></dt>
+          <dd>nos mostrará la etiqueta head que se encuentra en el código HTML de la página y su contenido.</dd>
+          <dt>document.body.<u>classmain</u>.<u>classsection</u></dt>
+          <dd>nos mostrará el contenido de la ruta especificada, el contenido de la clase classsection que esta dentro de la clase classmain que esta en el body.</dd>
+          <dt>document.<u>charset</u></dt>
+          <dd>nos mostrará el contenido de este atributo, no funciona con todos los atributos como por ejemplo lang.</dd>
+          <dt>document.scripts[0]</dt>
+          <dd>nos mostrará el primer script vinculado en el documento HTML de la página web.</dd>
+          <dt>document.links</dt>
+          <dd>nos devuelve todos los enlaces que haya en la página web.</dd>
+          <dt>document.getSelection()</dt>
+          <dd>este es un método por lo que requiere los parentesis, este método nos devuelve la ruta en el documento HTML de un fragmento de texto que hayamos seleccionado (sombreado o marcado) en la página web.</dd>
+          <dt>document.getSelection().toString()</dt>
+          <dd>estos métodos juntos nos devuelven unicamente el fragmento de texto que hemos seleccionado (sombreado o marcado) en la página web.</dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <!-- Nodos -->
+      <div class="contenedor">
+        <h2 id="nodoEjemplo">Nodos</h2>
+        <p>
+          Toda etiqueta HTML (excluyendo su contenido) es un elemento. Los nodos son todo elemento, atributos y/o contenido de las etiquetas.
+        </p>
+        <dl>
+          <dt>$0</dt>
+          <dd>
+            es una herramienta en la "consola" del navegador que nos permite llamar un elemento seleccionado (sombreado) previamente en la pestaña "elementos" del inspector.
+          </dd>
+          <dt><u>$0</u>.nodeName</dt>
+          <dd>
+            nos devuelve en consola los caracteres en mayúscula de la etiqueta llamada con $0 o de alguna otra que especifiquemos, esto es muy útil para validar si el usuario hizo clic sobre un enlace o título.
+          </dd>
+          <dt><u>$0</u>.childNodes[<u>0</u>]</dt>
+          <dd>
+            nos devuelve el primer nodo hijo del documento HTML o del nodo que especifiquemos.
+          </dd>
+          <dt><u>$0</u><b>.nodeType</b></dt>
+          <dd>
+            nos devuelve en consola un numero <u>del 1 al 12</u> que identifica el tipo de nodo (o sea la etiqueta llamada con $0).
+          </dd>
+        </dl>
+        <hr class="enlace">
+        <h3>Tipos de nodos</h3>
+        <p>
+          Existen <a class="enlace" targer="_blank" href="https://developer.mozilla.org/es/docs/Web/API/Node/nodeType" title="tipos y ejemplos">12 tipos de nodo</a> de los cuales, algunos se han ido quedando en des-uso y los navegadores ya no los reconocen.<br/>
+          Los tipos de nodos más importantes son:
+          <ul>
+            <li>1: ELEMENT_NODE</li>
+            <li>2: ATTRIBUTE_NODE</li>
+            <li>3: TEXT_NODE</li>
+            <li>8: COMMENT_NODE</li>
+          </ul>
+        </p>
+      </div>
+      <!-- Seleccionar nodos -->
+      <div class=contenedor>
+        <h2>Seleccionar nodos</h2>
+        <p>
+          Para seleccionar nodos existen varias formas pero hay 3 muy importantes:
+        </p>
+        <dl>
+          <dt>document.getElementById('__')</dt>
+          <dd>
+            Nos devuelve un único elemento del documento del DOM colocando como parametro el id del elemento buscado, gracias a que selecciona el elemento por medio de una referencia única es muy eficiente para el rendimiento del código en la página.
+          </dd>
+          <span class="ejemplo">
+            const elementoEj = document.getElementById('nodoEjemplo');<br/>
+            <em class="coment">//se guarda la selección en una variable</em><br/>
+            let elemEj1 = elementoEj.nodeName;<br/>
+            <em class="coment">//se guarda el resultado que devuelve el objeto en una nueva variable para imprimirla o utilizarla</em><br/>
+            console.log(`nodeName: ${elemEj1}`);
+          </span>
+          <dt>document.querySelector('__') o element.querySelector('__')</dt>
+          <dd>
+            El elemento devuelto puede venir del documento (el nivel más alto del DOM) o de un elemento, en sus parametros se colocan selectores CSS (h2, #id > .class).
+          </dd>
+          <span class="ejemplo">
+            const selectorEj = document.querySelector('#nodoEjemplo');<br/>
+            let selecEj2 = selectorEj.childNodes[0];<br/>
+            console.log(`childNodes: ${selecEj2}`);
+          </span>
+          <dt>document.querySelectorAll('__') o element.querySelectorAll('__')</dt>
+          <dd>Nos devuelve una lista de elementos (no un Array) conformada por nodos que pueden venir del documento (el nivel más alto del DOM) o de un elemento, en sus parametros se colocan selectores CSS (ul li:nth-child(2), #id, .class)</dd>
+          <span class="ejemplo">
+            const selectorAllEj = document.querySelectorAll('#nodoEjemplo');<br/>
+            let selecAllEj3 = selectorAllEj[0].nodeType;<br/>
+            console.log(`nodeType: ${selecAllEj3}`);
+          </span>
+        </dl>
+        <p>otra formas de seleccionar:</p>
+        <dl>
+          <dt>document.getElementsByTagName('__')</dt>
+          <dd>Nos devuelve una lista (no Array) de puros elementos.</dd>
+        </dl>
+        <p>
+          Existen objetos que nos permiten utilizar CSS desde el código JavaSript, por ejempo:
+        </p>
+        <dl>
+          <dt><u>nodo</u>.style.<u>background = "yellow"</u></dt>
+          <dd>
+            nos permite ingresar a las propiedades CSS y agregarselas al nodo especificado, en este caso se seleccionó la propiedad background.
+          </dd>
+        </dl>
+        <hr class="enlace"/>
+        <h3>Colecciones de nodos <small>(lista -> array)</small>.</h3>
+        <p>
+          Para convertir una lista de Nodos a un Array, se utilizan <b>Spread Opeators</b> (...) que convierte a cada elemento de la lista como un elemento único, es necesario colocarla entre corchetes, ejemplo:
+        </p>
+        <span class="ejemplo">
+          const nodeList = [...document.querySelectorAll('dt')]
+        </span>
+        <p>
+          Una forma más segura y recomendada de convertir una lista de Nodos a un Array, es con el prototipo <b>Array</b> y el método <b>from</b> así se indica que se cree un array desde la lista que se le pasa como parámetro. 
+        </p>
+        <span class="ejemplo">
+          const dataTitle = Array.from(document.getElementsByTagName('dt'));<br/>
+          dataTitle.map(adicion => adicion.classList.add('negrita'));<br/>
+          <em class="coment">
+            //se agregó, desde java script, la clase "negrita" a todas las etiquetas "dt" del documento HTML
+          </em>
+        </span>
+        <span class="ejemplo">
+          const nodeList = Array.from(document.querySelectorAll('dt'))<br/><br/>
+          <em class="coment">/* Ejemplo de uso utilizando <b>.trim</b> para eliminar espacios en la busqueda de contenido y <b>.remove</b> para <u>eliminar el resultado del DOM</u>: */</em><br/><br/>
+          nodeList.map( eliminar => {<br/>
+            if(eliminar.textContent.trim().toUpperCase() === 'OBJECT') {<br/>
+            eliminar.remove()<br/>
+            }<br/>
+          })
+        </span>
+        <p>
+          Otra forma para convertir una lista de Nodos a un Array es utilizando un <b>for(of)</b>, ejemplo:
+        </p>
+        <span class="ejemplo">
+          const nodeList = (document.querySelectorAll('dt'))<br/>
+          for(let eliminar of nodeList) {<br/>
+            if(eliminar.textContent.trim().toUpperCase() === 'OBJECT') {<br/>
+              eliminar.remove()<br/>
+            }<br/>
+          }
+        </span>
+      </div>
+    </section>
+    <section>
+      <!-- Atributos -->
+      <div class="contenedor">
+        <h2 class="atributoClass">Atributos</h2>
+        <dl>
+          <dt>setAttribute( '_', '_' )</dt>
+          <dd>
+            Se utiliza para definir un atributo del elemento especificado colocando en su parametro dos valores, el tipo de atributo que se desea y el valor, ejemplo:
+            <span class="ejemplo">
+              const attribEj = document.querySelector('h2.atributoClass');<br/>
+              console.log(attribEj);<br/>
+              attribEj.setAttribute('id', 'atributoId');
+            </span>
+          </dd>
+          <dt>getAttribute( '_' )</dt>
+          <dd>
+            Se utiliza para obtener el atributo del elemento especificado colocando en su parametro el tipo de atributo que se desea (id, class, value), ejemplo:
+            <span class="ejemplo">
+              var attribGet = attribEj.getAttribute('id');<br/>
+              console.log(`Se colocó un id "${attribGet}"`);<br/>
+              console.log(attribEj);
+            </span>
+          </dd>
+          <dt>value</dt>
+          <dd>
+            Se utiliza en los inputs de formulario para obtener el valor introducido por un usuario.
+          </dd>
+          <dt>id</dt>
+          <dd>
+            Se utiliza en casi todo, ejemplo:
+            <span class="ejemplo">
+              const attribEj2 = document.getElementById('atributoId');<br/>
+              attribEj.id = "attribId";<br/>
+              var attribGet2 = attribEj.getAttribute('id');<br/>
+              console.log(`Se modificó el id por "${attribGet2}"`);<br/>
+              console.log(attribEj);<br/>
+              <em class="coment">//se cambió el id de 'atributoId' a 'attribId'</em>
+            </span>
+          </dd>
+        </dl>
+        <hr class="enlace"/>
+        <h3 class="clsLst">classList</h3>
+        <p>Devuelve una lista de clases si se utiliza sola, pero tiene 3 métodos para darle otras funcionalidades:</p>
+        <dl>
+          <dt>classList.add()</dt>
+          <dd>
+            Añade clases al elemento especificado colocando la o las clases como parámetros.
+            <span class="ejemplo">
+              const claseEj = document.querySelector('h3.clsLst');<br/>
+              claseEj.classList.add('momOso', 'dadoso', 'babyoso');<br/>
+              console.log(claseEj);<br/>
+              <em class="coment">//se agregó a mamá, papá y bebé osos</em>
+            </span>
+          </dd>
+          <dt>classList.remove()</dt>
+          <dd>
+            Elimina clases al elemento especificado colocando la o las clases como parámetros.
+            <span class="ejemplo">
+              claseEj.classList.remove('momOso', 'dadoso');<br/>
+              console.log(claseEj);<br/>
+              <em class="coment">//se eliminó a mamá y papá osos</em>
+            </span>
+          </dd>
+          <dt>classList.toggle()</dt>
+          <dd>
+            Añade clases al elemento especificado si la clase introducida en los parámetros no existe o elimina la clase si ya existe en el elemento.
+            <span class="ejemplo">
+              claseEj.classList.toggle('babyoso');<br/>
+              claseEj.classList.toggle('ricitosOro');<br/>
+              console.log(claseEj);<br/>
+              <em class="coment">//se eliminó a bebé oso y después se agregó a ricitos de oro</em>
+            </span>
+          </dd>
+        </dl>
+        <em>
+          Siempre se debe validar la existencia de los elementos, ejemplo:<br/>
+          <i>if(<u>elemento</u>){<u>código</u>}</i>
+        </em>
+      </div>
+    </section>
+    <section>
+      <!-- Contenido -->
+      <div class="contenedor">
+        <h2 id="tcont"><ejemplo>Contenido</ejemplo></h2>
+        <dl>
+          <dt>textContent</dt>
+          <dd>Devuelve solo texto, el contenido del elemento especificado, ejemplo:</dd>
+          <span class="ejemplo">
+            const contenidoEj = document.querySelector('#tcont');<br/>
+            console.log(contenidoEj.textContent);
+          </span>
+          <dt>innerHTML</dt>
+          <dd>Devuelve HTML, lo que contenga la etiqueta especificada junto con elementos hijos o nietos, ejemplo:</dd>
+          <span class="ejemplo">
+            console.log(contenidoEj.innerHTML);
+          </span>
+          <dt>outerHTML</dt>
+          <dd>Devuelve HTML, toda la etiqueta especificada junto con sus atributos y contenido, ejemplo:</dd>
+          <span class="ejemplo">
+            console.log(contenidoEj.outerHTML);
+          </span>
+          <p>Ejemplo utilizando los métodos desde el script:</p>
+          <span class="ejemplo">
+            const title = document.querySelector('h2')<br/>
+            title.innerHTML = 'Hello < em >bear < /em >'<br/>
+            <em class="coment">//desde el script, le coloca al h2 el conenido "Hello <i>bear</i>"</em><br/>
+            <em class="coment">//en cambio si usamos textContent aparecería "Hello < em >Bear < /em >"</em>
+          </span>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <!-- Crear elementos -->
+      <div class="contenedor">
+        <h2>Crear elementos</h2>
+        <dl>
+          <dt>document.createElement('_')</dt>
+          <dd>Crea un elemento <u>en memoria</u> (es decir, no aparece en la página web) vacío colocando entre sus parámetros la etiqueta HTML, para ingresarle un contenido, se debe utilizar el nombre de la constante y asignarle un textContent o un innertHTML y para ingresarle una clase o id se debe asignarle a la constante un classList.add o un setAtribute, ejemplo:</dd>
+          <span class="ejemplo">
+            const animal = document.createElement('div');<br/>
+            animal.textContent = 'Pejelagarto'<br/>
+            animal.classList.add('reptilia');<br/>
+            animal.id='oviparidad';<br/>
+            console.log(animal.outerHTML);
+          </span>
+          <dt>document.<i>elemento</i>.appendChild(<i>elemento</i>)</dt>
+          <dd>Inserta el elemento especificado en los parametros en algún lugar del DOM, y lo inserta como el último hijo del elemento especificado antes del método, esto sirve para colocar datos que se personalicen en el momento dentro de la página web, ejemplo:</dd>
+          <span class="ejemplo">
+            document.body.appendChild(animal);
+          </span>
+          <p class="interaccion" id="interact1">Ejemplo de colocación de información con una interacción:<br/>
+          ¿Te llamas <span id="interact2"></span>?</p>
+          <span class="ejemplo">
+            var interact3 = prompt('Ingresa tu nombre en la consola', "ej: Peter Pan");<br/>
+            <em class="coment">//cuadro emergente que pide datos</em><br/>
+            const interact4 = document.createElement('em');<br/>
+            <em class="coment">//crea elemento (etiqueta) em</em><br/>
+            const interact5 = document.getElementById('interact1');<br/>
+            <em class="coment">//busca el elemento con el id = "interact1"</em><br/>
+            interact4.textContent = interact3;<br/>
+            <em class="coment">//inserta el dato del cuadro emergente en el elemento em</em><br/>
+            if(interact5 && interact5.querySelector('#interact2')){<br/>
+              interact5.querySelector('#interact2').appendChild(interact4);<br/>
+            }<br/>
+            <em class="coment">//valida si existe el elemento y su hijo, en donde se colocará el em con el dato<br/>
+            //si existe inserta el em al final de la etiqueta correspondiente</em>
+          </span>
+        </dl>
+        <hr  class="enlace"/>
+        <p>Si se desea solamente colocar texto dentro de HTML desde Java Script, se recomienda usar la instrucción .innerText="<u><i>contenido</i></u>" que puede agregar texto y sobre escribir ese mismo texto si se desea agregar otro texto diferente a diferencia de la creación de un elemento que necesita recargar la página web para actualizar el texto, de lo contrario se acumularían los elementos creados.</p>
+        <span class="ejemplo">
+          const <u><i>variable</i></u> = document.getElementById("<u><i>element_id</i></u>");<br/>
+          <em class="coment">//busca el elemento por medio de su Id en HTML en donde se desea colocar un texto.</em>
+          <u><i>variable</i></u>.innerText = <u><i>text_add</i></u>;<br>
+          <em class="coment">//inserta el texto en el elemento deseado.</em>
+        </span>
+      </div>
+    </section>
+  </main>
+  <section>
+    <!-- Referencias -->
+    <div class="contenedor">
+      Referencias:<br/>
+      <a class="enlace" targer="_blank" href="https://developer.mozilla.org/es/docs/Web/API/Node/nodeType">Tipos de nodos y sus ejemplos</a><br/>
+      <a class="enlace" target="_blank" href="https://es.stackoverflow.com/questions/22538/diferencia-entre-queryselector-queryselectorall-getelementbyid-getelementbyta">Expicación de selecciones</a>
+    </div>
+  </section>
+  <footer>
+    
+  </footer>
+  <script src="../Js/programajs11.js"></script>
+  <script src="../Js/programajsHelp.js"></script>
+</body>
+</html>

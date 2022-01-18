@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../Estilos/Normalizecss.css">
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
+  <title>Manipulador DOM</title>
+</head>
+<body class="cuerpo">
+  <header>
+    <section>
+      <div class="contenedor">
+        <h1 class="titCentrado">Manipulador DOM</h1>
+        <p class="contenido">
+          Cuando se trabaja con el DOM es recomendable utilizar métodos como filter y map para hacer manipulaciones y evitar los for que generan mucho código y son propensos a errores.
+        </p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Insertar elementos.</h2>
+        <dl class="contenido">
+          <dt><u>elemento</u>.appendChild(<u>newEl</u>)</dt>
+          <dd>Inserta un elemento (<i>newEl</i>) al final y como el último hermano de un elemento (<i>Elemento</i>).</dd>
+          <dt><u>parentEl</u>.insertBefore(<u>newEl</u>, <u>descendantEl</u>)</dt>
+          <dd>Inserta un elemento (<i>newEl</i>) como descendiente de un elemento padre (<i>parentEl</i>) justo antes de que empiece el elemento especificado en el segundo parámetro del método (<i>descendantEl</i>).</dd>
+          <span class="ejemplo">
+            const ad = document.createElement('div');<br/>
+            <em class="coment">//se crea el elemento "div" en donde se colocará la publicidad.</em><br/>
+            ad.id = 'publicidad';<br/>
+            <em class="coment">//se le coloca un Id o Class.<br/>
+            //a veces los elementos con el id "publicidad" o "ad" son bloqueados en la página si el usuario tiene configurado su navegador para no ver publicidad.</em><br/>
+            ad.textContent = 'Contenido Publicitario';<br/>
+            <em class="coment">//se coloca el contenido de la publicidad y se le puede dar diseño desde aquí o desde un documento CSS.</em><br/>
+            const getMiddleSon = dad => {<br/>
+              let dadId = document.getElementById(`${dad}`);<br/>
+              <em class="coment">//se crea una función y se obtiene el elemento padre con su Id.</em><br/>
+              let dadIdSons = dadId.children;<br/>
+              let dadIdSonsCount = dadIdSons.lenght;<br/>
+              let middleSon = Math.ceil(dadIdSonsCount/2);<br/>
+              <em class="coment">//se obtienen sus elementos hijos, se obtiene la cantidad de elementos y se divide a la mitad redondeando al numero mayor.</em><br/>
+              return dadIdSons[middleSon];<br/>
+              <em class="coment">//se retorna como valor el hijo que este a la mitad del elemento padre.</em><br/>
+            }<br/>
+            let middSon = getMiddleSon(parent);<br/>
+            <em class="coment">//se guarda el valor retornado de la función en una variable.</em><br/>
+            let father = document.getElementById("dad");<br/>
+            father.insertBefore(ad, middSon);<br/>
+            <em class="coment">//se inserta la publicidad (ad) antes del hijo medio (middSon) del elemento padre (father).</em>
+          </span>
+          <dt>insertAdjacent</dt>
+          <dd>
+            Le inserta a un elemento un hijo indicándole uno de los siguientes métodos y posiciones:
+            <dl>
+              <h3>Posiciones.</h3>
+              <dt>beforebegin</dt>
+              <dd>Antes de que comience el elemento (sería como su hermano anterior).</dd>
+              <dt>afterbegin</dt>
+              <dd>Después de que comience el elemento (sería como su primer hijo).</dd>
+              <dt>beforeend</dt>
+              <dd>Antes de que termine el elemento (sería como su último hijo).</dd>
+              <dt>afterend</dt>
+              <dd>Después de que termine el elemento (sería como su hermano siguiente).</dd>
+
+              <h3>Métodos.</h3>
+              <dt>insertAdjacentElement(<u>position</u>, <u>elemento</u>)</dt>
+              <dd>
+                Inserta elementos, ejemplo:
+              </dd>
+              <span class="ejemplo">
+                let father = document.getElementById("dad");<br/>
+                const <u>ad</u> = document.createElement('div');<br/>
+                ad.textContent = 'Contenido Publicitario';<br/>
+                father.insertAdjacentElement(beforebegin, ad);
+              </span>
+              <dt>insertAdjacentHTML(<u>position</u>, <u>HTML</u>)</dt>
+              <dd>
+                Inserta etiquetas HTML, ejemplo:<br/>
+              </dd>
+              <span class="ejemplo">
+                let father = document.getElementById("dad");<br/>
+                father.insertAdjacentHTML(beforeend, "Contenido");
+              </span>
+              <dt>insertAdjacentText(<u>position</u>, <u>text</u>)</dt>
+              <dd>
+                Inserta textos, ejemplo:<br/>
+              </dd>
+              <span class="ejemplo">
+                let father = document.getElementById("dad");<br/>
+                father.insertAdjacentHTML(afterbegin, "Contenido");
+              </span>
+            </dl>
+          </dd>
+          <hr class="enlace"/>
+          <dt>JQuery.</dt>
+          <dd>
+            Los métodos de JQuery no funcionarán en todos los navegadores, no tienen un soporte total, en ésta <a class="enlace" href="https://caniuse.com/dom-manip-convenience">página (CanIUse)</a> podrás confirmar en cuáles navegadores funcionan estos métodos en la actualidad.
+            <dl>
+              <h3>Métodos.</h3>
+              <dt>before()</dt>
+              <dd>hermano anterior, equivalente - beforebegin.</dd>
+              <span class="ejemplo">
+                const father = document.getElementById("dad");<br/>
+                const ad = document.createElement('div');<br/>
+                ad.textContent = 'Contenido Publicitario';<br/>
+                father.before(ad);
+              </span>
+              <dt>after()</dt>
+              <dd>hermano siguiente, equivalente - afterend.</dd>
+              <span class="ejemplo">
+                const father = document.getElementById("dad");<br/>
+                const ad = document.createElement('div');<br/>
+                ad.textContent = 'Contenido Publicitario';<br/>
+                father.after(ad);
+              </span>
+              <dt>prepend()</dt>
+              <dd>primer hijo, equivalente - afterbegin</dd>
+              <span class="ejemplo">
+                const father = document.getElementById("dad");<br/>
+                const ad = document.createElement('div');<br/>
+                ad.textContent = 'Contenido Publicitario';<br/>
+                father.prepend(ad);
+              </span>
+              <dt>append()</dt>
+              <dd>último hijo, equivalente - beforeend</dd>
+              <span class="ejemplo">
+                const father = document.getElementById("dad");<br/>
+                const ad = document.createElement('div');<br/>
+                ad.textContent = 'Contenido Publicitario';<br/>
+                father.append(ad);
+              </span>
+              <dt><u>child</u>.replaceWith(<u>newChild</u>)</dt>
+              <dd>reemplazar un hijo, equivalente - replaceChild</dd>
+              <span class="ejemplo">
+                const father = document.getElementById("dad");<br/>
+                const ad = document.createElement('div');<br/>
+                ad.textContent = 'Contenido Publicitario';<br/>
+                father.children[0].replaceWith(ad);
+              </span>
+            </dl>
+          </dd>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Clonar y eliminar elementos.</h2>
+        <dl>
+          <dt><u>elemento</u>.replaceChild(<u>newChild</u>, <u>oldChild</u>)</dt>
+          <dd>Remplaza un elemento colocando en los parámetros el nuevo hijo (el que remplazará) y el viejo hijo (el que será reemplazado). El nuevo hijo deberá ser un elemento.</dd>
+          <span class="ejemplo">
+            let father = document.getElementById("dad");<br/>
+            const <u>ad</u> = document.createElement('div');<br/>
+            ad.textContent = 'Contenido Publicitario';<br/>
+            father.replaceChild(ad, father.children[1]);
+          </span>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Clonar y eliminar elementos.</h2>
+        <dl>
+          <dt>cloneNode()</dt>
+          <dd>Clonará el elemento indicado. Éste deberá recibir un valor true si se quiere clonar con todos sus descendientes.</dd>
+          <span class="consola">
+            <em class="coment">// Éste ejemplo se realiza en consola y teniendo un elemento seleccionado en la página.</em><br/>
+            const <u>newClone</u> = $0.cloneNode(true);<br/>
+            $0.after(newClone);
+          </span>
+          <dt>remove()</dt>
+          <dd>Eliminará el elemento indicado.</dd>
+          <span class="consola">
+            <em class="coment">// Éste ejemplo se realiza en consola y teniendo un elemento seleccionado en la página.</em><br/>
+            $0.remove()
+          </span>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Fragmentos.</h2>
+        <p>La operación más costosa para un navegador, es siempre el pintado de elementos en el DOM.</p>
+        <p>Un <i>fragmento</i> es como si fuera un elemento del DOM, pero vive en memoria, y permite ahorrar mucho rendimiento.</p>
+        <dl>
+          <dt>createDocumentFragment()</dt>
+          <dd>Permite guardar documentos en memoria, guardar estructuras HTML en memoria antes de plasmarlos en pantalla. Esto mejora muchísimo el rendimiento.</dd>
+          <span class="ejemplo">
+            const peliculas = [ "Coco", "Cruella", "Luca,", "Wall-e" ];<br/>
+            const listaPelis = document.createElement("ul");<br/>
+            const listaPelisContenedor = document.getElementById("id-div-pelis");<br/>
+            listaPelisContenedor.appendChild(listaPelis);<br/><br/>
+            for (let peli of peliculas){<br/>
+              const li = document.createElement("li");<br/>
+              <u>listaPelis</u>.appendChild(li);<br/>
+              li.textContent = peliculas;<br/>
+            }<br/><br/>
+            <em class="coment">// El navegador crea un elemento con contenido en cada iteración del for, cada creación de elemento disminuye el rendimiento del navegador.</em>
+            <hr class="enlace"/>
+            const peliculas = [ "Coco", "Cruella", "Luca,", "Wall-e" ];<br/>
+            const listaPelis = document.createElement("ul");<br/>
+            const listaPelisContenedor = document.getElementById("id-div-pelis");<br/>
+            <u>const listaPelisFragmento = document.createDocumentFragment();</u><br/>
+            listaPelisContenedor.appendChild(listaPelis);<br/><br/>
+            for (let peli of peliculas){<br/>
+              const li = document.createElement("li");<br/>
+              <u>listaPelisFragmento</u>.appendChild(li);<br/>
+              <em class="coment">// Esta última línea guarda en memoria todas las etiquetas "li" con los strings del array.</em><br/>
+              li.textContent = peliculas;<br/>
+            }<br/><br/>
+            <u>listaPelis.appendChild(listaPelisFragmento);</u><br/><br/>
+            <em class="coment">// El navegador crea en la página todo lo guardado en memoria.</em>
+          </span>
+        </dl>
+      </div>
+    </section>
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Plantillas.</h2>
+        <dl>
+          <dt>template</dt>
+          <dd>Esta etiqueta en HTML permite crear plantillas que luego pueden ser reutilizadas. Esto sirve para cuando se tienen elementos en un proyecto que sigan una misma estructura, se crea un template vacío en HTML y luego se llena con JavaScript.</dd>
+          <span class="ejemplo">
+            <em class="coment">// HTML</em><br/>
+            &#60;template id="plantilla"&#62;<br/>
+            &emsp;&#60;h2&#62; &#60;/h2&#62;<br/>
+            &emsp;&#60;p&#62; &#60;/p&#62;<br/>
+            &#60;/template&#62;<br/>
+            &#60;div id="contenido"&#62; &#60;/div&#62;
+            <hr class="enlace"/>
+            <em class="coment">// JAVASCRIPT</em><br/>
+            const plantilla = document.getElementById('plantilla');<br/>
+            <em class="coment">// Se obtiene un apuntador a la etiqueta "template" del documento HTML.</em><br/>
+            const nuevaPlantilla = plantilla.content.cloneNode(true);<br/>
+            <em class="coment">// Se clona la estructura de la etiqueta "template" del documento HTML.</em><br/>
+            nuevaPlantilla.querySelector('h2').textContent = "<u>título</u>";<br/>
+            nuevaPlantilla.querySelector('p').textContent = "<u>texto</u>";<br/>
+            <em class="coment">// Se inserta contenido en las etiquetas que contiene el clon de la etiqueta "template" del documento HTML.</em><br/>
+            document.getElementById( 'contenido' ).appendChild( nuevaPlantilla );<br/>
+            <em class="coment">// Se inserta el clon de la etiqueta "template" en la etiqueta "div" del documento HTML.</em><br/>
+            <em class="coment">// Se podría crear un ciclo para recibir y colocar datos en las plantillas y poder crear vários elementos en la página con diferente contenido pero con la misma estructura.</em>
+          </span>
+        </dl>
+      </div>
+    </section>
+  </main>
+  <footer></footer>
+</body>
+<script src="../Js/programajs14.js"></script>
+</html>

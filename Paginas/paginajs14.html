@@ -28,7 +28,7 @@
     <section>
       <div class="contenedor" id="parent">
         <h2 class="titCentrado">style</h2>
-        <p class="contenido">Es una propiedad que permite acceder a los estilos de un elemento HTML, de un elemento en el DOM. Con la nomenclatura del punto y la propiedad CSS que se quiera modificar, se puede trabajar con los estilos de CSS en JavaScript. Con el detalle que si la propiedad en CSS lleva guiones, deberás utilizar camelCase.</p>
+        <p class="contenido">Es una propiedad que permite acceder a los estilos de un elemento HTML, de un elemento en el DOM. Con la nomenclatura del punto y la propiedad CSS que se quiera modificar, se puede trabajar con los estilos de CSS en JavaScript. Con el detalle que, si la propiedad en CSS lleva guiones, deberás utilizar camelCase.</p>
         <span class="ejemplo">
           const title2 = document.querySelector('h2');<br/>
           title2.style.backgroundColor = 'red';<br/>
@@ -37,7 +37,7 @@
       </div>
       <div class="contenedor" id="parent">
         <h2 class="titCentrado">matchMedia()</h2>
-        <p class="contenido">Permite evaluar breakPoints y utilizar mediaQuerys de CSS las cuales permiten determinar si la página esta en horizontal o vertical, adaptan su ancho o largo entre otros veneficios.</p>
+        <p class="contenido">Permite evaluar breakPoints y utilizar mediaQuerys de CSS las cuales permiten determinar si la página está en horizontal o vertical, adaptan su ancho o largo entre otros veneficios.</p>
         <span class="ejemplo">
           const breackPoint = matchMedia('(min-width: 640px) and (orientation: portrait)');<br/>
           <em class="coment">// matchMedia evalua una mediaQuery de CSS y devolverá un valor booleano si se cumple con el tamaño y orientación en este caso.</em><br/>
@@ -60,7 +60,7 @@
           Esta función permite obtener los estilos calculados de un elemento.
         </p>
         <p class="contenido">
-          Un estilo calculado es el resultado de su modificación en CSS ya en el navegador, como por ejemplo el tamaño de fuente de un artículo al que se le dió un font-size de 2em (el doble de su tamaño original), obtendríamos ése tamaño duplicado en vez del original.
+          Un estilo calculado es el resultado de su modificación en CSS ya en el navegador, como por ejemplo el tamaño de fuente de un artículo al que se le dio un font-size de 2em (el doble de su tamaño original), obtendríamos ese tamaño duplicado en vez del original.
         </p>
         <span class="ejemplo">
           console.log(getComputedStyle(document.body).font-zise);<br/>
@@ -72,10 +72,10 @@
       <div class="contenedor" id="parent">
         <h2 class="titCentrado">getBoundingClientRect()</h2>
         <p class="contenido">
-          Este método devuelve las dimensiones y posiciones exactas de un elemento como el "bottom: ..." que indicacuanto espacio hay del borde superior de la página a la esquina superior izquierda (en perspectiva con el usuario) del elemento (top, left y righr tambien toman su referencia con los bordes de la página y la misma esquina mencionada del elemento) o el "width: ..." o las coordenadas en "X" o en "Y".
+          Este método devuelve las dimensiones y posiciones exactas de un elemento como el "bottom: ..." que indica cuanto espacio hay del borde superior de la página a la esquina superior izquierda (en perspectiva con el usuario) del elemento (top, left y right también toman su referencia con los bordes de la página y la misma esquina mencionada del elemento) o el "width: ..." o las coordenadas en "X" o en "Y".
         </p>
         <span class="consola">
-          <em class="coment">// Desde la consola del naveador:</em><br/>
+          <em class="coment">// Desde la consola del navegador:</em><br/>
           $0.getBoundingClientRect();<br/>
           <em class="coment">// Nos regresaría un DOMRect{...} el cual contiene los detalles de la posición de un elemento.</em><br/>
           $0.getBoundingClientRect().height;<br/>
@@ -83,7 +83,7 @@
         </span>
         <h3>naturalWidth y naturalHeight</h3>
         <p class="contenido">
-          Estas propiedades devolverán el tamaño real y autentico de una imagen, no el que ha sido modificado por código para dar un estio.
+          Estas propiedades devolverán el tamaño real y autentico de una imagen, no el que ha sido modificado por código para dar un estilo.
         </p>
       </div>
     </section>

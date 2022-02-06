@@ -21,7 +21,7 @@
         <h2 class="textCenter">Trucos de Node.</h2>
         <h3>Benchmarking (console time y timeEnd).</h3>
         <p>Benchmark significa prueba de rendimiento o comparativa en inglés.</p>
-        <p>La función <b>console.time(‘nombre’)</b> inicia un temporizador que se puede usar para rastrear cuánto tiempo dura una operación. El temporizador sera identificado por el nombre dado a la consola. Ese mismo nombre se utilizara cuando se llame a console.timeEnd(‘nombre’) para detener el temporizador y obtener el tiempo demorado durante el proceso.</p>
+        <p>La función <b>console.time(‘nombre’)</b> inicia un temporizador que se puede usar para rastrear cuánto tiempo dura una operación. El temporizador será identificado por el nombre dado a la consola. Ese mismo nombre se utilizara cuando se llame a console.timeEnd(‘nombre’) para detener el temporizador y obtener el tiempo demorado durante el proceso.</p>
         <aside class="exempliGratia">
           &emsp;let suma1 = 0;<br/>
           &emsp;let suma2 = 0;<br/><br/>
@@ -43,10 +43,10 @@
         <p>NodeJS viene integrado con un modo de debug para conectarse desde cualquier herramienta de inspección de código a nuestro código de NodeJS.</p>
         <p>Se utiliza con un flag desde la terminal al correr un archivo.js, lo que hará es ejecutar la aplicación en NodeJS y abrir un segundo puerto con un inspector.</p>
         <p class="bold">node --inspector ./ruta-del-archivo.js</p>
-        <p>También se pueden utilizar los inspectores de los navegadores como el de chrome. Se puede acceder al debugger de chrome con la url <b>chrome://inspect/#devices</b> y en la sección de <i>inspect</i> se elije el remote target que se quiera inspeccionar.</p>
+        <p>También se pueden utilizar los inspectores de los navegadores como el de chrome. Se puede acceder al debugger de chrome con la url <b>chrome://inspect/#devices</b> y en la sección de <i>inspect</i> se elige el remote target que se quiera inspeccionar.</p>
         <h3>Error First Callbacks.</h3>
         <p>Un patrón que se sigue siempre en cualquier lenguaje y programa de devs es Error First Callbacks, esto quiere decir que siempre que tengamos un callback el primer parámetro debería ser el error.</p>
-        <p>Otro patrón típico es tener el callback como la última función que se pasa aunque con los setInterval o setTimeout no es posible.</p>
+        <p>Otro patrón típico es tener el callback como la última función que se pasa, aunque con los setInterval o setTimeout no es posible.</p>
         <p>Los Error First Callbacks se utilizan para pasar primero el error y los datos posteriormente. Entonces, se puede verificar el primer argumento, es decir, el objeto de error para ver si algo salió mal y poder manejarlo. En caso de que no haya ningún error, se puede utilizar los argumentos posteriores y seguir adelante.</p>
         <aside class="exempliGratia">
           &emsp;function asincrona(callback) {<br/>
@@ -56,7 +56,7 @@
           <i class="coment highlight">// Si no hay problemas devolverá como error un null y como dato el valor en a.</i><br/>
           &emsp;&emsp;&emsp;&emsp;callback(null, a);<br/>
           &emsp;&emsp;&emsp;} catch (e) {<br/>
-          <i class="coment highlight">// Si hay problemas devolverá como error un el error (e) y como dato puede devolver null o en éste caso un undefined al dejar en blaco el segundo parámetro.</i><br/>
+          <i class="coment highlight">// Si hay problemas devolverá como error un el error (e) y como dato puede devolver null o en éste caso un undefined al dejar en blanco el segundo parámetro.</i><br/>
           &emsp;&emsp;&emsp;&emsp;callback(e);<br/>
           &emsp;&emsp;&emsp;}<br/>
           &emsp;&emsp;}, 1000);<br/>
@@ -65,7 +65,7 @@
           &emsp;&emsp;if (err) {<br/>
           &emsp;&emsp;&emsp;console.error('Tenemos un error');<br/>
           &emsp;&emsp;&emsp;console.error(err);<br/>
-          <i class="coment highlight">// Si se tiene un error se puede lanzar el error con <b>throw err;</b> pero solo funcionaría en funciones sincronas.</i><br/>
+          <i class="coment highlight">// Si se tiene un error se puede lanzar el error con <b>throw err;</b> pero solo funcionaría en funciones síncronas.</i><br/>
           &emsp;&emsp;&emsp;return false;<br/>
           &emsp;&emsp;}<br/>
           &emsp;&emsp;console.log(`Todo ha ido bien, mi dato es ${dato}`);<br/>
@@ -80,8 +80,8 @@
       <div>
         <h3>Scraping con Puppeteer.</h3>
         <p>Web scraping es una técnica utilizada mediante programas de software para extraer información de sitios web. Usualmente, estos programas simulan la navegación de un humano en la World Wide Web ya sea utilizando el protocolo HTTP manualmente, o incrustando un navegador en una aplicación.</p>
-        <p><b>Puppeteer</b> es hecho por google, con ésta herramienta se puede leer la información de una página web, también se pueden lazar eventos de click para editar o ejecutar acciones en dicha página como crear archivos PDF a patir de HTML, entre otras cosas.</p>
-        <p>Primero se inicializa npm desde la terminal y posicionado en la carpeta que contendrá el código con el que se utilizará scraping con la instrucción <b>npm i -y</b>, ya que se creó el package.json y se inicializó npm, se instala la herramienta puppeteer desde la terminal con la istrucción <b>npm i puppeteer</b>, cuando se acabe de instalar se puede escribir el código para utilizarlo.</p>
+        <p><b>Puppeteer</b> es hecho por Google, con esta herramienta se puede leer la información de una página web, también se pueden lazar eventos de click para editar o ejecutar acciones en dicha página como crear archivos PDF a partir de HTML, entre otras cosas.</p>
+        <p>Primero se inicializa npm desde la terminal y posicionado en la carpeta que contendrá el código con el que se utilizará scraping con la instrucción <b>npm i -y</b>, ya que se creó el package.json y se inicializó npm, se instala la herramienta puppeteer desde la terminal con la instrucción <b>npm i puppeteer</b>, cuando se acabe de instalar se puede escribir el código para utilizarlo.</p>
         <aside class="exempliGratia">
           <i class="coment highlight">
             /*<br/>
@@ -90,12 +90,12 @@
             */
           </i><br/>
           &emsp;const myPuppeteer = require('puppeteer');<br/>
-          <i class="coment highlight">// Funcion autoejecutable, función que se mete entre parentesis para convertirla en una expresión y se manda a ejecutar.</i><br/>
+          <i class="coment highlight">// Función autoejecutable, función que se mete entre paréntesis para convertirla en una expresión y se manda a ejecutar.</i><br/>
           &emsp;(async () => {<br/>
           &emsp;&emsp;console.log('Lanzar el navegador');<br/>
           <i class="coment highlight">// <b>{headless: false}</b> se agrega para que el navegador no se lance en segundo plano.</i><br/>
           &emsp;const browser = await myPuppeteer.launch({headless: false});<br/>
-          <i class="coment highlight">// Abrir una pagina en el navegador.</i><br/>
+          <i class="coment highlight">// Abrir una página en el navegador.</i><br/>
           &emsp;const page = await browser.newPage();<br/>
           <i class="coment highlight">// Abrir una página web.</i><br/>
           &emsp;await page.goto('https://es.wikipedia.org/wiki/Node.js');<br/>
@@ -106,7 +106,7 @@
           &emsp;&emsp;return h1.innerHTML;<br/>
           &emsp;});<br/>
           &emsp;console.log(titulo1);<br/>
-          <i class="coment highlight">// Se usa browser.close para cerrar el navegador después de haber extraido los datos.</i><br/>
+          <i class="coment highlight">// Se usa browser.close para cerrar el navegador después de haber extraído los datos.</i><br/>
           &emsp;console.log('Cerrando el navegador');<br/>
           &emsp;browser.close();<br/>
           &emsp;console.log('Navegador cerrado');<br/>
@@ -135,16 +135,16 @@ const link = 'https://platzi.com/blog/que-es-platzi-master/';
       <div>
         <h3>Automatización de procesos con Gulp</h3>
         <p><b>Gulp</b> es una herramienta de construcción en JavaScript construida sobre flujos de nodos. Estos flujos facilitan la conexión de operaciones de archivos a través de canalizaciones. Gulp lee el sistema de archivos y canaliza los datos disponibles de un complemento de un solo propósito a otro a través del operador .pipe(), haciendo una tarea a la vez. Los archivos originales no se ven afectados hasta que se procesan todos los complementos. Se puede configurar para modificar los archivos originales o para crear nuevos. Esto otorga la capacidad de realizar tareas complejas mediante la vinculación de sus numerosos complementos. Los usuarios también pueden escribir sus propios complementos para definir sus propias tareas.</p>
-        <p>Primero se inicializa npm desde la terminal y posicionado en la carpeta que contendrá el código con el que se creará la automatización con la instrucción <b>npm i -y</b>, ya que se creó el package.json y se inicializó npm, se instala la herramienta gulp desde la terminal con la istrucción <b>npm i gulp gulp-server-livereload</b>, cuando se acabe de instalar se puede escribir el código para utilizarlo.</p>
+        <p>Primero se inicializa npm desde la terminal y posicionado en la carpeta que contendrá el código con el que se creará la automatización con la instrucción <b>npm i -y</b>, ya que se creó el package.json y se inicializó npm, se instala la herramienta gulp desde la terminal con la instrucción <b>npm i gulp gulp-server-livereload</b>, cuando se acabe de instalar se puede escribir el código para utilizarlo.</p>
         <aside class="exempliGratia">
           <i class="coment highlight block textCenter">// ***gulpFile.js***</i><br/>
-          <i class="coment highlight">// Trabajando automatizacion de procesos con gulp.</i><br/>
+          <i class="coment highlight">// Trabajando automatización de procesos con gulp.</i><br/>
           &emsp;const myGulp = require('gulp');<br/>
           &emsp;const serverX = require('gulp-server-livereload');<br/>
-          <i class="coment highlight">/* Iniciar una tarea con gulp, usando task que recibe dos parametros<br/>
+          <i class="coment highlight">/* Iniciar una tarea con gulp, usando task que recibe dos parámetros<br/>
           &emsp;1. El nombre de la tarea.<br/>
-          &emsp;2. Un callback que tambien recibe un callback.<br/>
-          A conticuaciòn se construye el sitio:*/</i><br/>
+          &emsp;2. Un callback que también recibe un callback.<br/>
+          A continuación se construye el sitio:*/</i><br/>
           &emsp;myGulp.task('myBuild', (callback) =>{<br/>
           &emsp;&emsp;console.log('Construyendo el sitio');<br/>
           &emsp;&emsp;setTimeout(() => {<br/>
@@ -184,7 +184,7 @@ const link = 'https://platzi.com/blog/que-es-platzi-master/';
       <div>
         <h3>Aplicaciones de escritorio con Electron.</h3>
         <p><b>Electron</b> permite el desarrollo de aplicaciones gráficas de escritorio originalmente desarrolladas para aplicaciones web: Node.js del lado del servidor y Chromium como interfaz. Electron es el framework gráfico detrás de muchos proyectos de código abierto importantes, incluyendo a Atom de GitHub​ y Microsoft Visual Studio Code.</p>
-        <p>Primero se inicializa npm desde la terminal y posicionado en la carpeta que contendrá el código con el que se creará la aplicación de escritorio con la instrucción <b>npm i -y</b>, ya que se creó el package.json y se inicializó npm, se instala la herramienta electron desde la terminal con la istrucción <b>npm i electron</b>, cuando se acabe de instalar se puede escribir el código para utilizarlo.</p>
+        <p>Primero se inicializa npm desde la terminal y posicionado en la carpeta que contendrá el código con el que se creará la aplicación de escritorio con la instrucción <b>npm i -y</b>, ya que se creó el package.json y se inicializó npm, se instala la herramienta electron desde la terminal con la instrucción <b>npm i electron</b>, cuando se acabe de instalar se puede escribir el código para utilizarlo.</p>
         <p class="highlight">* El nombre del paquete en el package.json debe ser diferente al nombre de la carpeta que contiene el proyecto.</p>
         <aside class="exempliGratia">
           <i class="coment highlight block textCenter">// *** index.html ***</i><br/>
@@ -200,7 +200,7 @@ const link = 'https://platzi.com/blog/que-es-platzi-master/';
           &emsp;let <u><i>ventanaPrincipal</i></u>;<br/>
           <i class="coment highlight">// Se escucha por medio de un listener el evento que indica cuando esté lista la aplicación principal de Electron para crear ventanas emergentes y poder crearlas en el momento adecuado, ya que si se manda a crear una ventana antes de que Electron pueda crear ventanas marcará un error.</i><br/>
           &emsp;app.on('ready', <u><i>crearVentana</i></u>);<br/>
-          <i class="coment highlight">// Se crea una función que se encargue de que la ventana tenga caracteristicas especificas como ancho y alto.</i><br/>
+          <i class="coment highlight">// Se crea una función que se encargue de que la ventana tenga características específicas como ancho y alto.</i><br/>
           &emsp;function <u><i>crearVentana</i></u>() {<br/>
           &emsp;&emsp;<u><i>ventanaPrincipal</i></u> = new BrowserWindow({<br/>
           &emsp;&emsp;&emsp;width: 800,<br/>
@@ -217,7 +217,7 @@ const link = 'https://platzi.com/blog/que-es-platzi-master/';
           &emsp;&emsp;...,<br/>
           &emsp;&emsp;"scripts": {<br/>
           </span>
-          <i class="coment highlight">// Como la ruta donde se desea utilizar Electron esta justo en la carpeta donde se encuentra el package.json, entonces se coloca un punto. Si se deseara empezar desde una carpeta más arriba o diferente, se colocaría un ../ o ../carpeta</i><br/>
+          <i class="coment highlight">// Como la ruta donde se desea utilizar Electron está justo en la carpeta donde se encuentra el package.json, entonces se coloca un punto. Si se deseara empezar desde una carpeta más arriba o diferente, se colocaría un ../ o ../carpeta</i><br/>
           &emsp;&emsp;&emsp;"start": "electron .",<br/>
           <span class="highlight">
             &emsp;&emsp;&emsp;"test":&ensp;"echo ... 1",<br/>

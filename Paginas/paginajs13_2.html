@@ -49,7 +49,7 @@
               let dadIdSons = dadId.children;<br/>
               let dadIdSonsCount = dadIdSons.lenght;<br/>
               let middleSon = Math.ceil(dadIdSonsCount/2);<br/>
-              <em class="coment">//se obtienen sus elementos hijos, se obtiene la cantidad de elementos y se divide a la mitad redondeando al numero mayor.</em><br/>
+              <em class="coment">//se obtienen sus elementos hijos, se obtiene la cantidad de elementos y se divide a la mitad redondeando al número mayor.</em><br/>
               return dadIdSons[middleSon];<br/>
               <em class="coment">//se retorna como valor el hijo que este a la mitad del elemento padre.</em><br/>
             }<br/>
@@ -173,16 +173,16 @@
         <h2 class="titCentrado">Clonar y eliminar elementos.</h2>
         <dl>
           <dt>cloneNode()</dt>
-          <dd>Clonará el elemento indicado. Éste deberá recibir un valor true si se quiere clonar con todos sus descendientes.</dd>
+          <dd>Clonará el elemento indicado. Este deberá recibir un valor true si se quiere clonar con todos sus descendientes.</dd>
           <span class="consola">
-            <em class="coment">// Éste ejemplo se realiza en consola y teniendo un elemento seleccionado en la página.</em><br/>
+            <em class="coment">// Este ejemplo se realiza en consola y teniendo un elemento seleccionado en la página.</em><br/>
             const <u>newClone</u> = $0.cloneNode(true);<br/>
             $0.after(newClone);
           </span>
           <dt>remove()</dt>
           <dd>Eliminará el elemento indicado.</dd>
           <span class="consola">
-            <em class="coment">// Éste ejemplo se realiza en consola y teniendo un elemento seleccionado en la página.</em><br/>
+            <em class="coment">// Este ejemplo se realiza en consola y teniendo un elemento seleccionado en la página.</em><br/>
             $0.remove()
           </span>
         </dl>
@@ -249,7 +249,7 @@
             <em class="coment">// Se inserta contenido en las etiquetas que contiene el clon de la etiqueta "template" del documento HTML.</em><br/>
             document.getElementById( 'contenido' ).appendChild( nuevaPlantilla );<br/>
             <em class="coment">// Se inserta el clon de la etiqueta "template" en la etiqueta "div" del documento HTML.</em><br/>
-            <em class="coment">// Se podría crear un ciclo para recibir y colocar datos en las plantillas y poder crear vários elementos en la página con diferente contenido pero con la misma estructura.</em>
+            <em class="coment">// Se podría crear un ciclo para recibir y colocar datos en las plantillas y poder crear varios elementos en la página con diferente contenido pero con la misma estructura.</em>
           </span>
         </dl>
       </div>

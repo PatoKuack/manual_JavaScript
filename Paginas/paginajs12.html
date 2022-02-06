@@ -30,11 +30,11 @@
         <h2>Eventos</h2>
         <dl>
           <dt>on<i>Event</i></dt>
-          <dd>Cuando utilizamos el objeto <i>$0</i> en la consola del navegador y colocamos un punto ($0.), se despliega una lista de propiedades y métodos que tiene el objeto que hace referencia a un elemento sombreado de la página. Dentro de ésa lista existen unas opciones que inician con "on", todas esas opciones son <u>eventos</u> que pueden ser aplicadas al elemento al que señala el objeto $0.</dd>
+          <dd>Cuando utilizamos el objeto <i>$0</i> en la consola del navegador y colocamos un punto ($0.), se despliega una lista de propiedades y métodos que tiene el objeto que hace referencia a un elemento sombreado de la página. Dentro de esa lista existen unas opciones que inician con "on", todas esas opciones son <u>eventos</u> que pueden ser aplicadas al elemento al que señala el objeto $0.</dd>
           <dt>addEventListener('_', _)</dt>
-          <dd>Este método es un escuchador de eventos, recibe un evento en forma de string y un callback (una función que se ejecuta cuando el evento ocurre), la función debe ser anónima ya que resivirá un parámetro y se ejecutará cuando se cumpla el evento.<br/>
+          <dd>Este método es un escuchador de eventos, recibe un evento en forma de string y un callback (una función que se ejecuta cuando el evento ocurre), la función debe ser anónima ya que recibirá un parámetro y se ejecutará cuando se cumpla el evento.<br/>
           El evento en este caso se coloca sin el <b>on</b></dd>
-          <p><b>window</b> es el objeto global de JavaScript, no hay ningún objeto por encima de éste, todos decienden de éste y es omitible al ejecutar especificaciones que lo involucren, ejemplo:<br/>
+          <p><b>window</b> es el objeto global de JavaScript, no hay ningún objeto por encima de este, todos descienden de este y es omisible al ejecutar especificaciones que lo involucren, ejemplo:<br/>
           <u>window.</u>document.getElement...<br/>
           document.getElement...<br/>
           <u>window.</u>addEventListener...<br/>
@@ -100,21 +100,21 @@
           <dd>detecta cuando se mueve dentro de un elemento.</dd>
         </dl>
         <hr class="enlace">
-        <h3>Otros metodos u objetos</h3>
+        <h3>Otros métodos u objetos</h3>
         <dl>
           <dt>preventDefault()</dt>
           <dd>Con este método se puede indicar al navegador que lo que debería hacer con una acción por defecto pare de hacerla. Por ejemplo, con el click derecho el navegador debería mostrar un menú contextual, pero al pasarle este método a una función, ya no lo mostrará.</dd>
           <dt>event</dt>
-          <dd>Con este objeto se puede validar en que coordenadas está hubicado el mouse en el DOM pasándole las propiedades pageX, pageY. De esta manera se puede saber donde ocurrió exactamente un evento.</dd>
+          <dd>Con este objeto se puede validar en que coordenadas está ubicado el mouse en el DOM pasándole las propiedades pageX, pageY. De esta manera se puede saber dónde ocurrió exactamente un evento.</dd>
           <dt>clientX, clientY</dt>
-          <dd>Client es relativo a la parte visible de la pagina (en caso de que hagas scroll se tendrá en cuenta sólo la parte visible</dd>
+          <dd>Client es relativo a la parte visible de la página (en caso de que hagas scroll se tendrá en cuenta sólo la parte visible</dd>
           <dt>pageX, pageY</dt>
-          <dd>Page es relativo a toda la pagina, incluyendo la parte oculta (nuevamente, al hacer scroll)</dd>
+          <dd>Page es relativo a toda la página, incluyendo la parte oculta (nuevamente, al hacer scroll)</dd>
           <dt>screenX, screenY</dt>
           <dd>Screen es poco usado, su característica consiste en las coordenadas de TODA la pantalla.</dd>
         </dl>
         <div class="titCentrado">
-          <img src="../Imagenes/coordenadas.jpg" alt="ejemplo de tipos de coordenadas" title="tipos de coordenadas" class="coordenadas">
+          <img src="../á/coordenadas.jpg" alt="ejemplo de tipos de coordenadas" title="tipos de coordenadas" class="coordenadas">
         </div>
         <p class="titCentrado">Ejemplo (presiona clic derechos o clic aquí abajo):</p>
         <span class="ejemplo" id="menuContext">
@@ -166,7 +166,7 @@
           <dt>keypress</dt>
           <dd>cuando dejas presionada una tecla sin soltarla.</dd>
         </dl>
-        <p>Al revisar en la consola en la sección <u><b>target (elemento donde se dispara el evento)</b></u> de los eventos del teclado que imprimimos, se puede observar que entre sus caracteristicas existen variables como <b>key: "a"</b>, <b>ctrlkey: true</b> o <b>altkey: false</b> que nos pueden servir para saber que tecla presionó el usuario o si se presionó algún atajo del teclado</p>
+        <p>Al revisar en la consola en la sección <u><b>target (elemento donde se dispara el evento)</b></u> de los eventos del teclado que imprimimos, se puede observar que entre sus características existen variables como <b>key: "a"</b>, <b>ctrlkey: true</b> o <b>altkey: false</b> que nos pueden servir para saber que tecla presionó el usuario o si se presionó algún atajo del teclado</p>
         <p class="titCentrado">Ejemplo (presiona control + y):</p>
         <span class="ejemplo" id="tecleando">
           document.addEventListener('keydown', tecla => {<br/>
@@ -263,7 +263,7 @@
         <p>El evento principal para el DOM es el siguiente:</p>
         <dl>
           <dt>DOMContentloaded</dt>
-          <dd>es un evento que ocurre cuando carga todo el DOM (Este evento es importante cuando no sabes en qué momento existirá el elemento al que vas a llamar), permite cargar lo básico del código HTML (aunque no carguen las imágenes o formularios) para luego ejecutar el código de éste evento en js.</dd>
+          <dd>es un evento que ocurre cuando carga todo el DOM (Este evento es importante cuando no sabes en qué momento existirá el elemento al que vas a llamar), permite cargar lo básico del código HTML (aunque no carguen las imágenes o formularios) para luego ejecutar el código de este evento en js.</dd>
         </dl>
         <p class="titCentrado">Ejemplo:</p>
         <span class="ejemplo">
@@ -274,7 +274,7 @@
         <p>Los principales eventos del navegador son los siguientes:</p>
         <dl>
           <dt>load</dt>
-          <dd>este es parecido al DOMContentloaded pero, este se ejecuta cuando carga toda la página, es decir con las imagenes o formularios, etc.</dd>
+          <dd>este es parecido al DOMContentloaded pero, este se ejecuta cuando carga toda la página, es decir con las imágenes o formularios, etc.</dd>
           <dt>scroll</dt>
           <dd>se ejecuta cuando haces scroll, se pueden utilizar los atributos <b>scrollX</b> y <b>scrollY</b> para saber el nivel de scroll que se tiene y con ello poder realizar acciones.</dd>
           <dt>resize</dt>
@@ -302,7 +302,7 @@
         <p>Los eventos aparte de ser escuchados también podrán ser ejecutados.</p>
         <p class="titCentrado">Ejemplo:</p>
         <span class="ejemplo">
-          <video src="../Imagenes/Pitufos intro.mp4" controls width="300" id="multimedia" class="forminput block-centrado"></video>
+          <video src="../á/Pitufos intro.mp4" controls width="300" id="multimedia" class="forminput block-centrado"></video>
           <div class="titCentrado">
             <button id="play" class="forminput">Reproducir</button>
             <button id="pause" class="forminput">Pausar</button>
@@ -330,7 +330,7 @@
         <div id="bubble1" class="bubble1">
           <div id="bubble2" class="bubble2">
             <div id="bubble3" class="bubble3">
-              <img src="../Imagenes/bubble-man1.png" alt="bubble man" title="haz clic en cada cuadro" class="bubbleman">
+              <img src="../á/bubble-man1.png" alt="bubble man" title="haz clic en cada cuadro" class="bubbleman">
             </div>
           </div>
         </div>

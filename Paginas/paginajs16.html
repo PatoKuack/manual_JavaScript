@@ -19,8 +19,8 @@
   <header>
     <section>
       <div class="contenedor">
-        <h1 class="titCentrado">Ascicronismo</h1>
-        <p class="contenido">JavaScript es sincrono, pero gracias a la ayuda del navegador puede funcionar de forma asincrona ayudandole a JavaScript a ejecutar más de una tarea a la vez.</p>
+        <h1 class="titCentrado">Asicronismo</h1>
+        <p class="contenido">JavaScript es síncrono, pero gracias a la ayuda del navegador puede funcionar de forma asíncrona ayudándole a JavaScript a ejecutar más de una tarea a la vez.</p>
       </div>
     </section>
   </header>
@@ -31,17 +31,17 @@
         <h2 class="titCentrado">Asincronismo.</h2>
         <h3>Call Stack.</h3>
         <p class="contenido">Es la lista de todas las tareas que realiza el programa, la forma en que se mandan a llamar las variables y las funciones. Las tareas en el callstack se apilan de abajo hacia arriba y se llaman desde la última que mandamos a llamar hasta la más antigua. En la base de la pila reposa el Global Object, si una función llama a otra, coloca la función que es llamada encima de la pila.</p>
-        <p class="contenido">Se ejecuta una tarea a la vez (sincronía), una vez que se van ejecutando las tareas se van retirando de la pila y al ejecutar todas las tareas se retira el Global object.</p>
+        <p class="contenido">Se ejecuta una tarea a la vez (síncronía), una vez que se van ejecutando las tareas se van retirando de la pila y al ejecutar todas las tareas se retira el Global object.</p>
         <h3>Memory Heap.</h3>
         <p class="contenido">Es un espacio de memoria compartido para toda la aplicación ubicada en la RAM en donde se almacenan objetos y funciones en bloques de memoria de forma arbitraría y sin un orden, los cuales pueden ser usados múltiples veces a través de una referencia única.</p>
         <h3>API.</h3>
-        <p class="contenido">Una API es una herramienta que puedes usar para pasar información de una pieza de software a otra, puedes acceder a datos o enviarlos desde tu sitio o tu app, por ejemplo puedes usar la API facebook para enviarle el comportamiento de un usuario en tu e-commers y así facebook te ayude a filtrar usuarios para enviarles publicidad especifica.</p>
+        <p class="contenido">Una API es una herramienta que puedes usar para pasar información de una pieza de software a otra, puedes acceder a datos o enviarlos desde tu sitio o tu app, por ejemplo, puedes usar la API Facebook para enviarle el comportamiento de un usuario en tu e-commers y así Facebook te ayude a filtrar usuarios para enviarles publicidad especifica.</p>
         <h3>Web APIs.</h3>
         <p class="contenido">Existen API que nos ayudan a manipular el DOM, a manipular el tiempo de respuesta que tienen algunas funciones y a generar peticiones. Éstas API se encuentran en el navegador, con la palabra reservada <b>window</b> o <b>this</b> se pueden visualizar las funciones que ofrece el navegador.</p>
         <h3>Callback Queue.</h3>
         <p class="contenido">El código de JavaScript manda las funciones que no le competen hacia al navegador y se apilan en el Callback Queue para irse ejecutando una por una y mientras se ejecutan estas funciones, el código JavaScript ejecuta sus propias tareas. Entonces el Callback Queue es como un área de espera donde el navegador coloca sus tareas pendientes.</p>
         <h3>Event Loop.</h3>
-        <p class="contenido">Es un watcher u observador que mueve las tareas del Callback Queue (lado del navegadr) hacia el Call Stack (lado de JavaScript) una vez que el Callback Queue está vacío para que sus tareas sean ejecutadas.</p>
+        <p class="contenido">Es un watcher u observador que mueve las tareas del Callback Queue (lado del navegador) hacia el Call Stack (lado de JavaScript) una vez que el Callback Queue está vacío para que sus tareas sean ejecutadas.</p>
         <h3>Garbage Collection.</h3>
         <p class="contenido">Limpia la memoria de los datos no utilizados para no sobrecargarla y seguir trabajando sin problemas.</p>
         <p class="contenido">El algoritmo Mark & Sweep hace referencia a cuando un tipo de dato se vuelve inalcanzable para el programa.</p>
@@ -50,7 +50,7 @@
         <p class="contenido">Desde 2012 los navegadores usan un Garbage Collector basado en este algoritmo, que ha ido recibiendo mejoras en su implementación constantemente.</p>
         <h3>Stack Overflow.</h3>
         <p class="contenido">Es cuando tenemos más de las tareas de las que podemos procesar en el Call Stack.</p>
-        <p class="contenido">Se genera cuando el Call Stack se llena completamente (pila de tareas). Esto pasa cuando se genera o se trabaja con bucles infinitos, recurcividad y funciones. Entonces este entra en stack overflow.</p>
+        <p class="contenido">Se genera cuando el Call Stack se llena completamente (pila de tareas). Esto pasa cuando se genera o se trabaja con bucles infinitos, recursividad y funciones. Entonces este entra en stack overflow.</p>
         <span>
           <b>
             function overflow(){<br/>

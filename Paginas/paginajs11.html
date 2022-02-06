@@ -48,7 +48,7 @@
           <dt>document.<u>head</u></dt>
           <dd>nos mostrará la etiqueta head que se encuentra en el código HTML de la página y su contenido.</dd>
           <dt>document.body.<u>classmain</u>.<u>classsection</u></dt>
-          <dd>nos mostrará el contenido de la ruta especificada, el contenido de la clase classsection que esta dentro de la clase classmain que esta en el body.</dd>
+          <dd>nos mostrará el contenido de la ruta especificada, el contenido de la clase classsection que está dentro de la clase classmain que está en el body.</dd>
           <dt>document.<u>charset</u></dt>
           <dd>nos mostrará el contenido de este atributo, no funciona con todos los atributos como por ejemplo lang.</dd>
           <dt>document.scripts[0]</dt>
@@ -56,9 +56,9 @@
           <dt>document.links</dt>
           <dd>nos devuelve todos los enlaces que haya en la página web.</dd>
           <dt>document.getSelection()</dt>
-          <dd>este es un método por lo que requiere los parentesis, este método nos devuelve la ruta en el documento HTML de un fragmento de texto que hayamos seleccionado (sombreado o marcado) en la página web.</dd>
+          <dd>este es un método por lo que requiere los paréntesis, este método nos devuelve la ruta en el documento HTML de un fragmento de texto que hayamos seleccionado (sombreado o marcado) en la página web.</dd>
           <dt>document.getSelection().toString()</dt>
-          <dd>estos métodos juntos nos devuelven unicamente el fragmento de texto que hemos seleccionado (sombreado o marcado) en la página web.</dd>
+          <dd>estos métodos juntos nos devuelven únicamente el fragmento de texto que hemos seleccionado (sombreado o marcado) en la página web.</dd>
         </dl>
       </div>
     </section>
@@ -84,13 +84,13 @@
           </dd>
           <dt><u>$0</u><b>.nodeType</b></dt>
           <dd>
-            nos devuelve en consola un numero <u>del 1 al 12</u> que identifica el tipo de nodo (o sea la etiqueta llamada con $0).
+            nos devuelve en consola un número <u>del 1 al 12</u> que identifica el tipo de nodo (o sea la etiqueta llamada con $0).
           </dd>
         </dl>
         <hr class="enlace">
         <h3>Tipos de nodos</h3>
         <p>
-          Existen <a class="enlace" targer="_blank" href="https://developer.mozilla.org/es/docs/Web/API/Node/nodeType" title="tipos y ejemplos">12 tipos de nodo</a> de los cuales, algunos se han ido quedando en des-uso y los navegadores ya no los reconocen.<br/>
+          Existen <a class="enlace" targer="_blank" href="https://developer.mozilla.org/es/docs/Web/API/Node/nodeType" title="tipos y ejemplos">12 tipos de nodo</a> de los cuales, algunos se han ido quedando en desuso y los navegadores ya no los reconocen.<br/>
           Los tipos de nodos más importantes son:
           <ul>
             <li>1: ELEMENT_NODE</li>
@@ -109,7 +109,7 @@
         <dl>
           <dt>document.getElementById('__')</dt>
           <dd>
-            Nos devuelve un único elemento del documento del DOM colocando como parametro el id del elemento buscado, gracias a que selecciona el elemento por medio de una referencia única es muy eficiente para el rendimiento del código en la página.
+            Nos devuelve un único elemento del documento del DOM colocando como parámetro el id del elemento buscado, gracias a que selecciona el elemento por medio de una referencia única es muy eficiente para el rendimiento del código en la página.
           </dd>
           <span class="ejemplo">
             const elementoEj = document.getElementById('nodoEjemplo');<br/>
@@ -120,7 +120,7 @@
           </span>
           <dt>document.querySelector('__') o element.querySelector('__')</dt>
           <dd>
-            El elemento devuelto puede venir del documento (el nivel más alto del DOM) o de un elemento, en sus parametros se colocan selectores CSS (h2, #id > .class).
+            El elemento devuelto puede venir del documento (el nivel más alto del DOM) o de un elemento, en sus parámetros se colocan selectores CSS (h2, #id > .class).
           </dd>
           <span class="ejemplo">
             const selectorEj = document.querySelector('#nodoEjemplo');<br/>
@@ -128,14 +128,14 @@
             console.log(`childNodes: ${selecEj2}`);
           </span>
           <dt>document.querySelectorAll('__') o element.querySelectorAll('__')</dt>
-          <dd>Nos devuelve una lista de elementos (no un Array) conformada por nodos que pueden venir del documento (el nivel más alto del DOM) o de un elemento, en sus parametros se colocan selectores CSS (ul li:nth-child(2), #id, .class)</dd>
+          <dd>Nos devuelve una lista de elementos (no un Array) conformada por nodos que pueden venir del documento (el nivel más alto del DOM) o de un elemento, en sus parámetros se colocan selectores CSS (ul li:nth-child(2), #id, .class)</dd>
           <span class="ejemplo">
             const selectorAllEj = document.querySelectorAll('#nodoEjemplo');<br/>
             let selecAllEj3 = selectorAllEj[0].nodeType;<br/>
             console.log(`nodeType: ${selecAllEj3}`);
           </span>
         </dl>
-        <p>otra formas de seleccionar:</p>
+        <p>otra forma de seleccionar:</p>
         <dl>
           <dt>document.getElementsByTagName('__')</dt>
           <dd>Nos devuelve una lista (no Array) de puros elementos.</dd>
@@ -146,7 +146,7 @@
         <dl>
           <dt><u>nodo</u>.style.<u>background = "yellow"</u></dt>
           <dd>
-            nos permite ingresar a las propiedades CSS y agregarselas al nodo especificado, en este caso se seleccionó la propiedad background.
+            nos permite ingresar a las propiedades CSS y agregárselas al nodo especificado, en este caso se seleccionó la propiedad background.
           </dd>
         </dl>
         <hr class="enlace"/>
@@ -169,7 +169,7 @@
         </span>
         <span class="ejemplo">
           const nodeList = Array.from(document.querySelectorAll('dt'))<br/><br/>
-          <em class="coment">/* Ejemplo de uso utilizando <b>.trim</b> para eliminar espacios en la busqueda de contenido y <b>.remove</b> para <u>eliminar el resultado del DOM</u>: */</em><br/><br/>
+          <em class="coment">/* Ejemplo de uso utilizando <b>.trim</b> para eliminar espacios en la búsqueda de contenido y <b>.remove</b> para <u>eliminar el resultado del DOM</u>: */</em><br/><br/>
           nodeList.map( eliminar => {<br/>
             if(eliminar.textContent.trim().toUpperCase() === 'OBJECT') {<br/>
             eliminar.remove()<br/>
@@ -196,7 +196,7 @@
         <dl>
           <dt>setAttribute( '_', '_' )</dt>
           <dd>
-            Se utiliza para definir un atributo del elemento especificado colocando en su parametro dos valores, el tipo de atributo que se desea y el valor, ejemplo:
+            Se utiliza para definir un atributo del elemento especificado colocando en su parámetro dos valores, el tipo de atributo que se desea y el valor, ejemplo:
             <span class="ejemplo">
               const attribEj = document.querySelector('h2.atributoClass');<br/>
               console.log(attribEj);<br/>
@@ -205,7 +205,7 @@
           </dd>
           <dt>getAttribute( '_' )</dt>
           <dd>
-            Se utiliza para obtener el atributo del elemento especificado colocando en su parametro el tipo de atributo que se desea (id, class, value), ejemplo:
+            Se utiliza para obtener el atributo del elemento especificado colocando en su parámetro el tipo de atributo que se desea (id, class, value), ejemplo:
             <span class="ejemplo">
               var attribGet = attribEj.getAttribute('id');<br/>
               console.log(`Se colocó un id "${attribGet}"`);<br/>
@@ -315,7 +315,7 @@
             console.log(animal.outerHTML);
           </span>
           <dt>document.<i>elemento</i>.appendChild(<i>elemento</i>)</dt>
-          <dd>Inserta el elemento especificado en los parametros en algún lugar del DOM, y lo inserta como el último hijo del elemento especificado antes del método, esto sirve para colocar datos que se personalicen en el momento dentro de la página web, ejemplo:</dd>
+          <dd>Inserta el elemento especificado en los parámetros en algún lugar del DOM, y lo inserta como el último hijo del elemento especificado antes del método, esto sirve para colocar datos que se personalicen en el momento dentro de la página web, ejemplo:</dd>
           <span class="ejemplo">
             document.body.appendChild(animal);
           </span>
@@ -331,7 +331,7 @@
             interact4.textContent = interact3;<br/>
             <em class="coment">//inserta el dato del cuadro emergente en el elemento em</em><br/>
             if(interact5 && interact5.querySelector('#interact2')){<br/>
-              interact5.querySelector('#interact2').appendChild(interact4);<br/>
+              interact5.querySelector( '#interact2' ).appendChild(interact4);<br/>
             }<br/>
             <em class="coment">//valida si existe el elemento y su hijo, en donde se colocará el em con el dato<br/>
             //si existe inserta el em al final de la etiqueta correspondiente</em>
@@ -353,7 +353,7 @@
     <div class="contenedor">
       Referencias:<br/>
       <a class="enlace" targer="_blank" href="https://developer.mozilla.org/es/docs/Web/API/Node/nodeType">Tipos de nodos y sus ejemplos</a><br/>
-      <a class="enlace" target="_blank" href="https://es.stackoverflow.com/questions/22538/diferencia-entre-queryselector-queryselectorall-getelementbyid-getelementbyta">Expicación de selecciones</a>
+      <a class="enlace" target="_blank" href="https://es.stackoverflow.com/questions/22538/diferencia-entre-queryselector-queryselectorall-getelementbyid-getelementbyta">Explicación de selecciones</a>
     </div>
   </section>
   <footer>

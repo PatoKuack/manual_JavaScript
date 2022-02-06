@@ -21,26 +21,26 @@
             Un callback es la acción de pasar por argumento a una función.
           </p>
           <p>
-            Los callback son el nombre de una convención para usar funciones que llaman a otras funciones en JavaScript. No hay una palabra reservada llamada “callback” en el lenguaje JavaScript que haga que nuestro código sea diferente o especial, es mas una convención. Sin embargo <u>se utiliza la palabra callback en los parámetros como buena practica</u> para indicar que estamos realizando un callback.
+            Los callback son el nombre de una convención para usar funciones que llaman a otras funciones en JavaScript. No hay una palabra reservada llamada “callback” en el lenguaje JavaScript que haga que nuestro código sea diferente o especial, es mas una convención. Sin embargo, <u>se utiliza la palabra callback en los parámetros como buena práctica</u> para indicar que estamos realizando un callback.
           </p>
           <p>
-            La funcion que recibe como argumento otras funciones es denominada funcion de orden superior (higher-order function), esta contiene la logica correspondiente para ejecutar adecuadamente la funcion callback.
+            La función que recibe como argumento otras funciones es denominada función de orden superior (higher-order function), esta contiene la lógica correspondiente para ejecutar adecuadamente la función callback.
           </p>
           <p>
-            La mayoría estamos acostumbrados a programar de manera sincrona, es decir le indicamos al código que por ejemplo defina un Valor <i>“X”</i> y con otro valor <i>“Y”</i> y realizamos un calculo (por ejemplo una multiplicación).
+            La mayoría estamos acostumbrados a programar de manera síncrona, es decir le indicamos al código que por ejemplo defina un Valor <i>“X”</i> y con otro valor <i>“Y”</i> y realizamos un cálculo (por ejemplo, una multiplicación).
           </p>
           <p>
             El problema radica en que por ejemplo si quisiéramos crear un programa que nos convierta nuestra moneda (pesos) a su equivalente en Bitcoin,
-            podemos definir <i>“X”</i> (valor de nuestro dinero) pero NO podemos definir de manera implícita <i>“Y”</i> (precio del Bitcoin) por que es algo muy volátil. Entonces necesitamos obtener el precio del Bitcoin de una API, nuestro programa realiza una multiplicación de <i>X * Y</i> sin embargo no tenemos <i>“Y”</i> (precio del bitcion) porque tenemos que esperar que el API nos conteste cual es este valor. Es ahí donde sirven los callback.
+            podemos definir <i>“X”</i> (valor de nuestro dinero) pero NO podemos definir de manera implícita <i>“Y”</i> (precio del Bitcoin) porque es algo muy volátil. Entonces necesitamos obtener el precio del Bitcoin de una API, nuestro programa realiza una multiplicación de <i>X * Y</i> sin embargo no tenemos <i>“Y”</i> (precio del bitcoin) porque tenemos que esperar que el API nos conteste cual es este valor. Es ahí donde sirven los callback.
           </p>
           <p>
-            Existen dos Metodos A y B:
+            Existen dos métodos (A y B):
             <ul>
               <li>
                 El método A obtiene el precio del API de Bitcoin
               </li>
               <li>
-                El método B hace el calculo de nuestros Pesos * PrecioBitcoin
+                El método B hace el cálculo de nuestros Pesos * PrecioBitcoin
               </li>
             </ul>
             Entonces el método B es llamado por el método A cuando por fin lee y obtiene el precio del Bitcoin, solo hasta entonces tiene sentido que multipliquemos nuestros valores.
@@ -107,8 +107,8 @@
             &emsp;}<br/><br/>
             <i class="coment highlight">
               &emsp;/***********RECURSIVIDAD***********/<br/>
-              &emsp;//Se usan funciones recursivas porque se esta llamando a la función conversacion dentro de sí misma.<br/>
-              &emsp;//Mediante un If como estructura de control se le dice la cantidad de veces que va a ejectuarse la funcion hablar.
+              &emsp;//Se usan funciones recursivas porque se está llamando a la función conversación dentro de sí misma.<br/>
+              &emsp;//Mediante un If como estructura de control se le dice la cantidad de veces que va a ejecutarse la función hablar.
           </i><br/><br/>
             &emsp;function conversacion(nombre, veces, callback) {<br/>
             &emsp;&emsp;if (veces > 0) {<br/>
@@ -148,7 +148,7 @@
       <section>
         <div class="container">
           <h2 class="textCenter">Promesas.</h2>
-          <p>Las promesas son una sintaxis mas elegante y legible de realizar callbacks, solo que las promesas cuentan con 3 estados: resuelta, en progreso y rechazada.</p>
+          <p>Las promesas son una sintaxis más elegante y legible de realizar callbacks, solo que las promesas cuentan con 3 estados: resuelta, en progreso y rechazada.</p>
           <p>Para utilizar una promesa solo se debe de instanciar una nueva, una promesa en si es una función que recibe dos parámetros: resolve y reject.</p>
           <p>Utilizamos resolve para retornar el valor deseado cuando una función se ejecute y utilizamos reject para cuando una función retorna un valor no deseado.</p>
           <p>Para poder obtener los valores que retorna una función se utiliza su propiedad .then, esta propiedad es una función que recibe un callback el cual tendrá como parámetro el valor retornado con resolve o reject.</p>
@@ -210,9 +210,9 @@
       <section>
         <div class="container">
           <h2 class="textCenter">Async/Await.</h2>
-          <p>Es azúcar sintactico, es decir, una forma muy legible y entendible de realizar código, un Async/Await no deja de ser una función asíncrona, la diferencia es que al usar esta sintaxis se podrá ver un código más legible.</p>
+          <p>Es azúcar sintáctico, es decir, una forma muy legible y entendible de realizar código, un Async/Await no deja de ser una función asíncrona, la diferencia es que al usar esta sintaxis se podrá ver un código más legible.</p>
           <p>Para usar correctamente esta sintaxis se usa Async para declarar una función asíncrona, cuando una función es asíncrona se puede usar dentro de su contexto el Await.</p>
-          <p>El Await es la manera en que se le indica al código que ha de esperar a que el evento indicado en el Await se resuelva y retorne un valor, ya que es importante para el proceso del código. Cuando éste retorne un valor el código seguirá normalmente, no estará bloqueando el hilo principal, pues estará esperando a que se resuelva con el event loop.</p>
+          <p>El Await es la manera en que se le indica al código que ha de esperar a que el evento indicado en el Await se resuelva y retorne un valor, ya que es importante para el proceso del código. Cuando este retorne un valor el código seguirá normalmente, no estará bloqueando el hilo principal, pues estará esperando a que se resuelva con el event loop.</p>
           <aside class="exempliGratia">
             <i class="coment highlight">// La palabra async convierte una función inmediatamente en asíncrona.</i><br/>
             &emsp;async function hola(nombre) {<br/>
@@ -257,7 +257,7 @@
             &emsp;&emsp;try{<br/>
             &emsp;&emsp;&emsp;let nombre = await hola('Hankok');<br/>
             &emsp;&emsp;&emsp;await hablar();<br/>
-            <i class="coment highlight">// Para hacer que una istrucción no se ejecute en segundo plano no debe colca el await.</i><br/>
+            <i class="coment highlight">// Para hacer que una instrucción no se ejecute en segundo plano no debe colca el await.</i><br/>
             &emsp;&emsp;&emsp;hablar();<br/>
             &emsp;&emsp;&emsp;await hablar();<br/>
             &emsp;&emsp;&emsp;await adios(nombre);<br/>
@@ -271,7 +271,7 @@
             <i class="coment highlight">// Esto nos permitirá saber si nuestra función se está ejecutando de forma asíncrona.</i><br/>
             &emsp;console.log('Proceso iniciado...');<br/>
             &emsp;main();<br/>
-            &emsp;console.log('Ésta será la segunda instrucción en ejecutarse saltandose los async.');<br/>
+            &emsp;console.log('Ésta será la segunda instrucción en ejecutarse saltándose los async.');<br/>
           </aside>
         </div>
       </section>
@@ -279,7 +279,7 @@
       <section>
         <div class="container">
           <h2 class="textCenter">Errores.</h2>
-          <p>Cuando aparece un error en el inspector se indican dos números (4:15), el primero indica el origen del error y el segundo numero indica la línea en donde se rompió el código, por ejemplo, si el error se localiza en una variable de la línea 30 que adquirió un valor generado en una función de la líne 11 entonces el error aparecerá con los dígitos 11:30</p>
+          <p>Cuando aparece un error en el inspector se indican dos números (4:15), el primero indica el origen del error y el segundo número indica la línea en donde se rompió el código, por ejemplo, si el error se localiza en una variable de la línea 30 que adquirió un valor generado en una función de la línea 11 entonces el error aparecerá con los dígitos 11:30</p>
         </div>
       </section>
       <!-- Try/Catch -->
@@ -287,11 +287,11 @@
         <div class="container">
           <h2 class="textCenter">try/catch</h2>
           <p>Con Node se pueden manejar los errores de una manera muy optima, pero primero se debe entender como Node maneja los errores por defecto.</p>
-          <p>Cuando sucede un error en Node, éste por defecto terminara todo el proceso del código para avisar que ha ocurrido un error, esto puede ser fatal para los proyectos.</p>
-          <p>Los errores además se notifican por hilos, es decir, que si un error sucede en el hilo principal del event loop, es decir, el evento queue, el error se avisara desde éste mismo hilo, pero si un error sucede antes desde otro hilo como el hilo de las funciones asíncronas, el error se avisara desde aquel hilo sin dejar mostrar el error del hilo principal.</p>
-          <p>Se puede manejar éste flujo de errores para que Node no se detenga al momento de que ocurra un error y genere una acción deseada, para esto usamos try y catch.</p>
-          <p><b>try</b> es el blóque de código que ejecutará la función que puede o no fallar y <b>catch</b> la función que atrapara el error y decidirá que hacer con él.</p>
-          <span class="block textCenter">try/catch en una función <b>sincrona</b>.</span>
+          <p>Cuando sucede un error en Node, este por defecto terminara todo el proceso del código para avisar que ha ocurrido un error, esto puede ser fatal para los proyectos.</p>
+          <p>Los errores además se notifican por hilos, es decir que, si un error sucede en el hilo principal del event loop, es decir, el evento queue, el error se avisara desde este mismo hilo, pero si un error sucede antes desde otro hilo como el hilo de las funciones asíncronas, el error se avisara desde aquel hilo sin dejar mostrar el error del hilo principal.</p>
+          <p>Se puede manejar este flujo de errores para que Node no se detenga al momento de que ocurra un error y genere una acción deseada, para esto usamos try y catch.</p>
+          <p><b>try</b> es el bloque de código que ejecutará la función que puede o no fallar y <b>catch</b> la función que atrapará el error y decidirá qué hacer con él.</p>
+          <span class="block textCenter">try/catch en una función <b>síncrona</b>.</span>
           <aside class="exempliGratia">
             &emsp;function otraFunction(){<br/>
             &emsp;&emsp;rompeSincrono();<br/>
@@ -309,14 +309,14 @@
             &emsp;}<br/>
             &emsp;console.log("Final del código.");<br/>
           </aside>
-          <span class="block textCenter">try/catch en una función <b>asincrona</b>.</span>
+          <span class="block textCenter">try/catch en una función <b>asíncrona</b>.</span>
           <aside class="exempliGratia">
             &emsp;function rompeAsincrono(callback){<br/>
             &emsp;&emsp;setTimeout(function(){<br/>
             &emsp;&emsp;&emsp;try{<br/>
             &emsp;&emsp;&emsp;&emsp;return (3 + z);<br/>
             &emsp;&emsp;&emsp;} catch (err) {<br/>
-            &emsp;&emsp;&emsp;&emsp;console.error("Error en la función asincrona.");<br/>
+            &emsp;&emsp;&emsp;&emsp;console.error("Error en la función asíncrona.");<br/>
             &emsp;&emsp;&emsp;&emsp;callback(err);<br/>
             &emsp;&emsp;&emsp;}<br/>
             &emsp;&emsp;})<br/>

@@ -18,11 +18,11 @@
     <h2>Funciones.</h2>
     <div>
       <p>Las funciones son bloques de código que son reutilizables y pueden ser ejecutados desde cualquier lugar de nuestro código las veces que deseemos.</p>
-      <p>Las funciones se declaran con la instrucción <b>function</b> seguido del nombre de la función y un bloque de parentesis, después se abre un bloque de llaves para colocar instrucciones que se ejecutarán cuando se mande a llamar la función, ejemplo:<br>
+      <p>Las funciones se declaran con la instrucción <b>function</b> seguido del nombre de la función y un bloque de paréntesis, después se abre un bloque de llaves para colocar instrucciones que se ejecutarán cuando se mande a llamar la función, ejemplo:<br>
       <b>function <u><i>función</i></u>(){<br>
         <u><i>código</i></u>;<br>
       }</b></p>
-      <p>Las funciones se mandan a llamar simplemente colocando el nombre de la función y un bloque de parentesis, ejemplo:<br>
+      <p>Las funciones se mandan a llamar simplemente colocando el nombre de la función y un bloque de paréntesis, ejemplo:<br>
       <b><u><i>función</i></u>()</b>;</p>
       <span>
         <b>
@@ -39,7 +39,7 @@
     <div>
       <h3>Parámetros.</h3>
       Elemento de la función que es definido al mandar a llamar la función para ser ejecutado, no son esenciales y la variable en donde se almacenan los datos del parámetro sólo existe dentro de la función.<br>
-      Si se le asigna un valor al parametro, va a significar que cuando el parámetro no tenga algún valor (en caso de que se reciba el valor directamente de algún usuario) adquirirá ese valor por defecto.
+      Si se le asigna un valor al parámetro, va a significar que cuando el parámetro no tenga algún valor (en caso de que se reciba el valor directamente de algún usuario) adquirirá ese valor por defecto.
       Sus declaraciones son de la siguiente forma:<br>
       <b>function <u><i>función</i></u> = <u><i>valor</i></u> ( <u><i>parámetro</i></u> ) {<br>
         <u><i>bloque de código usando el parámetro</i></u><br>
@@ -59,7 +59,7 @@
     </div>
     <div>
       <h3>Argumento.</h3>
-      Representa el valor que se pasa al parámetro de una función cuando se le llama a travez de un código.
+      Representa el valor que se pasa al parámetro de una función cuando se le llama a través de un código.
       <span>
         <b>
           *Las funciones reciben parámetros y los argumentos se envían a las funciones.
@@ -87,13 +87,13 @@
     </div>
     <div>
       <h3>Funciones de primera clase.</h3>
-      Son funciones que se pueden almacenar en una variable como un valor o como la variable en si.<br>
+      Son funciones que se pueden almacenar en una variable como un valor o como la variable en sí.<br>
       *Se utiliza const como almacenamiento para las funciones ya que las funciones no son modificables.<br>
       <b>const <u><i>variable</i></u> = <u><i>función</i></u>()</b> guarda la ejecución de la función, es decir el dato resultante de la función.<br>
       <b>const <u><i>variable</i></u> = <u><i>función</i></u></b> guarda la función para poder utilizar la <i>variable</i> como una función.
       <span>
         <b>
-          cont sumaDos = miFuncion;<br>
+          const sumaDos = miFuncion;<br>
           sumaDos(247, 585);<br>
         </b>
         //imprimiría: 832
@@ -124,7 +124,7 @@
           binvenida("Cosmo");
         </b>
       </span>
-      <h4>Auto-ejecución</h4>
+      <h4>Auto ejecución</h4>
       Se pueden invocar las funciones por si solas, se tienen que colocar encerradas en paréntesis para indicarle a JavaScript que se le colocará una expresión, ejemplo:<br>
       <span>
         <b>( function ( a, b ) {<br>
@@ -134,7 +134,7 @@
     </div>
     <div>
       <h3>Funciones de flecha.</h3>
-      Retornan datos reduciendo el código de una función. Cuando tiene <u>un solo parámetro</u> se pueden omitir los paréntesis donde se colocan (es opcional), pero cuando tenga <u>más de uno o ningún parámetro</u> se colocan los parentesis, ejemplo:<br>
+      Retornan datos reduciendo el código de una función. Cuando tiene <u>un solo parámetro</u> se pueden omitir los paréntesis donde se colocan (es opcional), pero cuando tenga <u>más de uno o ningún parámetro</u> se colocan los paréntesis, ejemplo:<br>
       Se puede colocar de una manera muy reducida el código de una función como operaciones matemáticas o impresiones de texto:<br>
       <b>const <i><u>variable</u></i> = ( <i><u>parámetro</u></i>, <i><u>parámetro</u></i> ) => <i><u>código simple</u></i></b><br>
       Se pueden colocar llaves para agregarle a la función código de comparación o más complejo:<br>

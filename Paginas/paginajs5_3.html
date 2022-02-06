@@ -17,13 +17,13 @@
   <div class="medio">
     <h2 class="white">Closure.</h2>
     <div>
-      <p>Es la combinación de una función y el ambito lexico en la cual ha sido declarada dicha función (un closure recuerda el ambito en el que ha sido creado).</p>
+      <p>Es la combinación de una función y el ámbito léxico en la cual ha sido declarada dicha función (un closure recuerda el ámbito en el que ha sido creado).</p>
       <span>
         <b>
           const moneyBox = () => {<br/>
             var saveCoins = 0;<br/>
         </b>
-            <em class="coment">//se declara la vatiable que guardará las monedas.</em><br/>
+            <em class="coment">//se declara la variable que guardará las monedas.</em><br/>
         <b>
             const countCoins = (coins) => {<br/>
         </b>
@@ -41,7 +41,7 @@
         <b>
           }<br/>
         </b>
-          <em class="coment">//se obtiene un Closure porque dentro de la función "moneyBox" combina una función y el ambito donde se declara.</em><br/>
+          <em class="coment">//se obtiene un Closure porque dentro de la función "moneyBox" combina una función y el ámbito donde se declara.</em><br/>
         <b>
           let myMoneyBox = moneyBox();<br/>
           myMoneyBox(4);
@@ -52,7 +52,7 @@
         <em class="coment">//imprime en consola 3 resultados que serían: 4, 11 y 22</em>
       </span><br/>
       <h3>Variables privadas con Closures.</h3>
-      <p>JavaScript por su naturaleza no fomenta el uso de datos privados pero por medio de los Closures podemos crear valores que solo puedan ser accedidos por medio de métodos, que no van a estar disponibles fuera de esta función.</p>
+      <p>JavaScript por su naturaleza no fomenta el uso de datos privados, pero por medio de los Closures podemos crear valores que solo puedan ser accedidos por medio de métodos, que no van a estar disponibles fuera de esta función.</p>
       <span>
         <b>
           const person = () => {<br/>
@@ -73,7 +73,7 @@
               setName: (name) => {<br/>
                 saveNAme = name;<br/>
         </b>
-                <em class="coment">//guarda el valor recibido en el parámetrode esta función en la variable "saveName".</em><br/>
+                <em class="coment">//guarda el valor recibido en el parámetro de esta función en la variable "saveName".</em><br/>
         <b>
               }; 
             } 
@@ -87,7 +87,7 @@
           newPerson.setName('Juan');<br/>
           console.log(newPerson.getName());<br/>
         </b>
-          <em class="coment">//invoca a la función "person()" con su subfunción "setName()" para almacenar el nombre que se le envia como argumento y después imprimirá el contenido de la variable llamando a la subfunción "getName()".</em><br/>
+          <em class="coment">//invoca a la función "person()" con su subfunción "setName()" para almacenar el nombre que se le envía como argumento y después imprimirá el contenido de la variable llamando a la subfunción "getName()".</em><br/>
           <em class="coment">//imprime: Juan</em>
         </b>
       </span>

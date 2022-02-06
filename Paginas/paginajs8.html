@@ -28,7 +28,7 @@
       Se puede obtener el valor de cada atributo con la sentencia <b><u><i>objeto</i></u>["<u><i>atributo1</i></u>"]</b> o <b><u><i>objeto</i></u>.<u><i>atributo1</i></u></b><br>
       Se puede obtener el valor de todos los atributos con la sentencia <b>Object.values(<u><i>objeto</i></u>)</b>, se puede guardar el resultado en una variable e imprimirlo en consola.<br>
       Se puede obtener los atributos del objeto con la sentencia <b>Object.keys(<u><i>objeto</i></u>)</b>, si el resultado devuelve un método vacío significa que el objeto está vacío.<br>
-      Se puede obtener el valor de un atibuto dentro del objeto con la palabra reservada <b>this</b>, ejemplo:<br>
+      Se puede obtener el valor de un atributo dentro del objeto con la palabra reservada <b>this</b>, ejemplo:<br>
       <span>
         <b>var videojuego = {<br>
           nombre: "Stardew Valley",<br>
@@ -47,9 +47,9 @@
       Nos permite obtener valores matemáticos como:<br>
       <dl>
         <dt>Math.sqrt(<i><u>valorNumerico</u></i>)</dt>
-        <dd>Devuelve la raíz cuadrada del valor numerico, pero si es un valor numerico negativo devuelve NaN.</dd>
+        <dd>Devuelve la raíz cuadrada del valor numérico, pero si es un valor numérico negativo devuelve NaN.</dd>
         <dt>Math.pow(<i><u>base</u></i>, <i><u>exponente</u></i>)</dt>
-        <dd>Devuelve el valor numerico "base" elevado a la potencia especificada en el segundo parámetro.</dd>
+        <dd>Devuelve el valor numérico "base" elevado a la potencia especificada en el segundo parámetro.</dd>
         <dt>Math.PI</dt>
         <dd>Esta instrucción contiene el valor de PI, puede guardarse en una variable.</dd>
         <dt>Math.round(<i><u>valorNumerico</u></i>)</dt>
@@ -67,7 +67,7 @@
         <dt>Math.random()</dt>
         <dd>Devuelve un valor aleatorio entre 0 y 1 (jamás dará 1 pero si 0).</dd>
         <dd>
-          Ejemplo para obtener un vaslor aleatorientre dos valores.
+          Ejemplo para obtener un valor aleatorio entre dos valores.
           <span>
             function getRandomArbitrary(min, max){<br>
               return Math.random() * (max - min) + min;<br>
@@ -78,13 +78,13 @@
     </div>
     <div>
       <h3>Date.</h3>
-      Nos permite obtener valores de fechas como .getFullYear(), .getMinutes(), getUTCDate(), etc, ejemplo:<br>
+      Nos permite obtener valores de fechas como .getFullYear(), .getMinutes(), getUTCDate(), etc., ejemplo:<br>
       <b>const <u><i>variable</i></u> = new Date() //es necesario definir una fecha<br>
-      console.log(<u><i>variable</i></u>.getUTCDate( )) // aqui se manipula la fecha</b>
+      console.log(<u><i>variable</i></u>.getUTCDate( )) // aquí se manipula la fecha</b>
     </div>
     <div>
       <h3>Objetos: función constructora.</h3>
-      Podemos generar una función con parametros que sean sus atributos para poder usarlo como plantilla para crear objetos, ejemplo:<br>
+      Podemos generar una función con parámetros que sean sus atributos para poder usarlo como plantilla para crear objetos, ejemplo:<br>
       <span>
         <b>
           function <u><i>función</i></u>(<u><i>atributo1</i></u>, <u><i>atributo2</i></u>){<br>
@@ -94,7 +94,7 @@
         </b>
         <hr>
         //uso:<br>
-        //los valores colocados llevan comillas si son strings, pero no las llevan si son numeros o booleanos.<br>
+        //los valores colocados llevan comillas si son strings, pero no las llevan si son números o booleanos.<br>
         <b>
           var <u><i>objeto1</i></u> = new <u><i>función</i></u>("<u><i>valor1</i></u>", <u><i>valor2</i></u>)
         </b>

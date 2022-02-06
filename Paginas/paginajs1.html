@@ -16,8 +16,8 @@
 <body>
   <div class="medio">
     <div>
-      <h2>Buena practica.</h2>
-      <p>Los <b>"punto y coma"</b> no son necesarios en JavaScript, sin embargo es bueno colocarlos para tener un código más legible.</p>
+      <h2>Buenas prácticas.</h2>
+      <p>Los <b>"punto y coma"</b> no son necesarios en JavaScript, sin embargo, es bueno colocarlos para tener un código más legible.</p>
       <p>Los <b>comentarios</b> son necesarios para guiar al programador a modificar o entender el programa ya sea porque se trabaja en equipo o porque se tiene que actualizar.</p>
     </div>
     <div>
@@ -27,8 +27,8 @@
       Se puede utilizar el estándar de doble asterisco para darme un formato más elegante, se coloca /** y el editor cerrará automáticamente el comentario de bloque con un */, después al dar un salto de línea se colocará un asterisco por cada línea en el comentario.<br><br>
       Con la instrucción <b>alert("<u><i>texto</i></u>")</b> aparecerá un cuadro de texto en el navegador con el texto especificado dentro de las comillas.<br>
       Con la instrucción <b>console.log("<u><i>texto</i></u>")</b> se colocará en la consola del navegador el texto especificado entre las comillas.<br/>
-      Con la instrucción <b><i><u>variable</u></i>[ <i><u>número-de-caracter</u></i> ]</b> se obtiene el caracter ubicado en la posición especificada de un string contenido en la variable, ejemplo: console.log(variable[0])<br>
-      Con el comando <b><u><i>variable</i></u>.length</b> se obtiene el número de caracteres del string que contiene la variable.<br>
+      Con la instrucción <b><i><u>variable</u></i>[ <i><u>número-de-carácter</u></i> ]</b> se obtiene el carácter ubicado en la posición especificada de un string contenido en la variable, ejemplo: console.log(variable[0])<br>
+      Con el comando <b><u><i>variable</i></u>.length</b> se obtiene el número de carácteres del string que contiene la variable.<br>
       Con el comando <b>typeof <i><u>dato</u></i></b> imprimiremos en la consola del navegador el tipo de dato especificado ejemplo: console.log(typeof ['texto', 45, true])
     </div>
     <div>
@@ -50,7 +50,7 @@
         <li>Boolean: false o true.</li>
         <li>Objetos: colección de datos colocados entre llaves y separados por comas, que tienen un identificador y un valor.</li>
         <li>Array: agrupación de diferentes tipos de datos (valor) encerrados entre corchetes, con posiciones numéricas (identificadores) que van de 0 a n.</li>
-        <li>Null: valores que no existen, aunque no tenga características de un objeto javascript toma este dato como objeto.</li>
+        <li>Null: valores que no existen, aunque no tenga carácterísticas de un objeto javascript toma este dato como objeto.</li>
         <li>Undefined: es un tipo de dato no definido como por ejemplo una variable sin valor en ella.</li>
       </ul>
     </div>
@@ -63,7 +63,7 @@
       <ul>
         <li>No pueden empezar con números, sólo con letras.</li>
         <li>Se diferencian mayúsculas y minúsculas.</li>
-        <li>No se pueden utilizar caracteres especiales como 'ñ' o tildes.</li>
+        <li>No se pueden utilizar carácteres especiales como 'ñ' o tildes.</li>
       </ul>
     </div>
     <div>
@@ -89,7 +89,7 @@
       Se pueden reasignar valores a variables que ya contenían un valor previamente, ejemplo:<br>
       <b>let videojuego = "divertido";<br>
       videojuego = 4;</b><br>
-      Aquí reasignamos el valor de una variable de un valor de tipo string a uno numerico.
+      Aquí reasignamos el valor de una variable de un valor de tipo string a uno numérico.
     </div>
     <div>
       <h3>Asignación por referencia.</h3>
@@ -104,16 +104,16 @@
     <div>
       <h3>Tipos de variables</h3>
       <h4 class="centrar">var</h4>
-      <b>var</b> permite <u>re-declarar</u> una variable, ejemplo:<br>
+      <b>var</b> permite <u>re declarar</u> una variable, ejemplo:<br>
       <b>
         var videojuego = "divertido;<br>
         var videojuego = 4;
       </b><br>
       Si no se le asigna un valor al momento de declarar una variable con <b>var</b>, se le asigna el valor <i>undefined</i> por default.<br>
-      <b>var</b> también es muy flexible cuando se le manda a llamar, puede ser llamada desde cualquier parte del código si es que se había declarado antes, pero por lo mismo puede ocacionar problemas de seguridad por lo que no se debe usar en variables importantes que comprometan la integridad del código, por ejemplo se puede acceder a una variable <b>var <u>nombreVariable</u> = <u>valor</u></b> desde la consola con el comando <b>window.<u>nombreVariable</u></b>
+      <b>var</b> también es muy flexible cuando se le manda a llamar, puede ser llamada desde cualquier parte del código si es que se había declarado antes, pero por lo mismo puede ocasionar problemas de seguridad por lo que no se debe usar en variables importantes que comprometan la integridad del código, por ejemplo se puede acceder a una variable <b>var <u>nombreVariable</u> = <u>valor</u></b> desde la consola con el comando <b>window.<u>nombreVariable</u></b>
       <hr>
       <h4 class="centrar">let</h4>
-      <b>let</b> NO permite <u>re-declarar</u> una variable, solamente re-asignarles un valor, ejemplo:<br>
+      <b>let</b> NO permite <u>re declarar</u> una variable, solamente re asignarles un valor, ejemplo:<br>
       <b>
         var videojuego = "divertido";<br>
         videojuego = 4;
@@ -122,8 +122,8 @@
       <b>let</b> tiene más restricciones de seguridad, por ejemplo no se puede acceder a una variable <b>var <u>nombreVariable</u> = <u>valor</u></b> desde la consola con el comando <b>window.<u>nombreVariable</u></b>
       <hr>
       <h4 class="centrar">const</h4>
-      Son variables que NO pueden ser re-declaradas ni  pueden re-asignar su valor una vez declaradas, por lo mismo tiene que serle asignado un valor a la variable al momento de ser declarada, ejemplo:<br>
-      Como buena práctica estas constantes se representan siempre con mayúsculas y en formato snake-case, es decir usando guión bajo para separar palabras, ejemplo:<br>
+      Son variables que NO pueden ser re declaradas ni  pueden re asignar su valor una vez declaradas, por lo mismo tiene que serle asignado un valor a la variable al momento de ser declarada, ejemplo:<br>
+      Como buena práctica estas constantes se representan siempre con mayúsculas y en formato snake-case, es decir usando guion bajo para separar palabras, ejemplo:<br>
       <b>const OSO_PERESOSO = "Winnie Pooh"</b>
     </div>
   </div>

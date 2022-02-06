@@ -10,7 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../Estilos/stylejs21.css">
-  <title>Módulos 1</title>
+  <title>Módulos I</title>
 </head>
 <body class="body">
   <header>
@@ -37,8 +37,8 @@
         <h2 class="textCenter">File system.</h2>
         <p>El file system provee una API para interactuar con el sistema de archivos cerca del estándar POSIX.</p>
         <p>POSIX es el estándar para interfaces de comando y shell, las siglas significan: “Interfaz de sistema operativo portátil” y la X de POSIX es por UNIX.</p>
-        <p>El File System es uno de los módulos principales que nos ofrece Node, este módulo es aquel que nos permite operar directamente con los archivos de nuestro sistema, permitiéndonos crear, leer, editar, eliminar y manipular de diferentes maneras al archivos del sistema. <i>Escribirlos, es muy útil para precompiladores, para lo que requiera hacer grabados de disco, o bases de datos en Node que requieren un uso intensivo de Node.</i></p>
-        <p>La mayoría de métodos de éste módulo son asíncronos, pero también nos ofrecen su versión síncrona (como <i>readFileSync</i>), es muy poco recomendable usar la versión síncrona ya que puede bloquear el proceso principal o Event Loop de Node y no permite responder a peticiones hasta que el evento síncrono concluya.</p>
+        <p>El File System es uno de los módulos principales que nos ofrece Node, este módulo es aquel que nos permite operar directamente con los archivos de nuestro sistema, permitiéndonos crear, leer, editar, eliminar y manipular de diferentes maneras a los archivos del sistema. <i>Escribirlos, es muy útil para precompiladores, para lo que requiera hacer grabados de disco, o bases de datos en Node que requieren un uso intensivo de Node.</i></p>
+        <p>La mayoría de métodos de este módulo son asíncronos, pero también nos ofrecen su versión síncrona (como <i>readFileSync</i>), es muy poco recomendable usar la versión síncrona ya que puede bloquear el proceso principal o Event Loop de Node y no permite responder a peticiones hasta que el evento síncrono concluya.</p>
         <p>Para poder usar un módulo dentro de Node lo debemos importar, existen varias formas de importarlo, pero la más utilizada es con <b>require</b> en una constante con el mismo nombre del módulo:</p>
         <aside class="exempliGratia">
           &emsp;const fs require('fs');<br/>
@@ -49,14 +49,14 @@
           &emsp;&emsp;});<br/>
           &emsp;}<br/><br/>
           &emsp;leer(__dirname + '/archivo1.txt', console.log);<br/>
-          <i class="coment highlight">// Se utiliza "__dirname" para hubicar la ruta del archivo actual. En éste caso el archivo.txt se encontraría en el mismo lugar que el archivo.js en el que se esta convocando.</i>
+          <i class="coment highlight">// Se utiliza "__dirname" para ubicar la ruta del archivo actual. En este caso el archivo.txt se encontraría en el mismo lugar que el archivo.js en el que se está convocando.</i>
           <hr class="link"/>
           &emsp;function escribir(ruta, contenido, callback) {<br/>
           &emsp;&emsp;fs.writeFile(ruta, contenido, function (err) => {<br/>
           &emsp;&emsp;&emsp;if (err) {<br/>
           &emsp;&emsp;&emsp;&emsp;console.error('No se ha podido escribir. ', err);<br/>
           &emsp;&emsp;&emsp;} else {<br/>
-          &emsp;&emsp;&emsp;&emsp;console.log('Se ha escrto correctamente.');<br/>
+          &emsp;&emsp;&emsp;&emsp;console.log('Se ha escrito correctamente.');<br/>
           &emsp;&emsp;&emsp;}<br/>
           &emsp;&emsp;});<br/>
           &emsp;}<br/>
@@ -79,7 +79,7 @@
         <p>El módulo de procesos secundarios de Node.js (child_process) tiene dos funciones spawn y exec, mediante las cuales se puede iniciar un proceso secundario para ejecutar otros programas en el sistema.</p>
         <aside class="exempliGratia">
           &emsp;const { exec } = require("child_process");<br/>
-          <i class="coment highlight">// Esta primera línea es equibalente a: const exec = require("child_process").exec;</i><br/>
+          <i class="coment highlight">// Esta primera línea es equivalente a: const exec = require("child_process").exec;</i><br/>
           <i class="coment highlight">// Lo que hará es importar un grupo de objetos de este objeto llamado child_process.exec</i><br/>
           &emsp;exec('Node indexjs.html', (err, stdout) => {<br/>
           &emsp;&emsp;if(err) {<br/>
@@ -89,9 +89,9 @@
           &emsp;&emsp;console.log(stdout);<br/>
           &emsp;});
           <i class="coment highlight">
-            // Se colocan dos parametros:<br/>
+            // Se colocan dos parámetros:<br/>
             En el primero van las instrucciones entre comillas.<br/>
-            En el segundo y entre parentesis el error, la salida primcipal estandar y el estandar error por si ha habido algún error.</i>
+            En el segundo y entre paréntesis el error, la salida principal estándar y el estándar error por si ha habido algún error.</i>
         </aside>
         <aside class="exempliGratia">
           &emsp;const { exec, spawn } = require('child_process');<br/>
@@ -114,7 +114,7 @@
           <li>Se usa <b>spawn</b> para obtener el proceso.</li><br/>
         </ul>
         <p>La diferencia más significativa entre <b>child_process.spawn</b> y <b>child_process.exec</b> está en que spawn devuelve un stream y exec devuelve un buffer.</p>
-        <p>La ventaja de este enfoque es que se obtiene mayor control del proceso, y del estado en el que se encuenta.</p>
+        <p>La ventaja de este enfoque es que se obtiene mayor control del proceso, y del estado en el que se encuentra.</p>
       </div>
     </section>
     <!-- node-gyp -->
@@ -131,8 +131,8 @@
       <div class="">
         <h3 class="textCenter">Para módulos en C++</h3>
         <ul>
-          <li>El segundo paso es crear un archivo de código fuente de extención .cc (de c++) dentro de una subcarpeta dentro de la carpeta donde se aloja proyecto.</li>
-          <li>El tercer paso es crear un archivo <b>binding.gyp</b> en la subcarpeta donde se encuentra el archivo.cc creado en el segundo paso. Éste archivo será como uno de extención .json que indicará lo que se compilará como módulo, como se llamará y como recabará información.</li>
+          <li>El segundo paso es crear un archivo de código fuente de extensión .cc (de c++) dentro de una subcarpeta dentro de la carpeta donde se aloja proyecto.</li>
+          <li>El tercer paso es crear un archivo <b>binding.gyp</b> en la subcarpeta donde se encuentra el archivo.cc creado en el segundo paso. Este archivo será como uno de extensión .json que indicará lo que se compilará como módulo, como se llamará y como recabará información.</li>
         </ul>
         <aside class="exempliGratia">
           &emsp;{<br/>
@@ -150,7 +150,7 @@
         <ul>
           <li>El cuarto paso es posicionarse desde la terminal en la subcarpeta donde se encuentran los archivos creados en el segundo paso y ejecutar la instrucción <b>node-gyp configure</b> para generar un directorio build que contendrá código nativo que se va generando para poder configurar el módulo.</li>
           <li>El quinto paso es (también desde la subcarpeta) ejecutar en la terminal la instrucción <b>node-gyp build</b> para generar un directorio "Release" dentro del directorio "build". El módulo se compilará y se podrá importar en JavaScript. Se puede revisar la existencia del archivo <i>build/Relese/nombre-del-módulo.node</i> (el cual es un binario por lo que no se podrá abrir).</li>
-          <li>El sexto paso es importar el archivo de código fuente creando un archivo de extención .js en la subcarpeta del segundo paso y usando el siguiente código:</li>
+          <li>El sexto paso es importar el archivo de código fuente creando un archivo de extensión .js en la subcarpeta del segundo paso y usando el siguiente código:</li>
         </ul>
         <aside class="exempliGratia">
           &emsp;const <u>funciónX</u> = require('./build/Release/<u>nombre-del-módulo</u>');<br/>
@@ -164,13 +164,13 @@
       <div class="">
         <h3 class="textCenter">Para módulos en HTTP</h3>
         <ul>
-          <li>El segundo paso es crear un archivo de extención .js en la carpeta raíz del proyecto y anexarle el siguiente código:</li>
+          <li>El segundo paso es crear un archivo de extensión .js en la carpeta raíz del proyecto y anexarle el siguiente código:</li>
         </ul>
         <aside class="exempliGratia">
           &emsp;const <u>funciónY</u> = require('http');<br/>
           &emsp;<u>funciónY</u>.createServer(function (req, res){<br/>
-            <i class="coment highlight">// Crea un servidor básico pasandole una función por la cual funcionará el servidor.<br/>
-            // Ésta función llevará los parametros "req" (request) y "res" (response).</i><br/>
+            <i class="coment highlight">// Crea un servidor básico pasándole una función por la cual funcionará el servidor.<br/>
+            // Ésta función llevará los parámetros "req" (request) y "res" (response).</i><br/>
             &emsp;&emsp;console.log('Nueva petición:');<br/>
             &emsp;&emsp;console.log(req.url);<br/>
             <i class="coment highlight">// Imprime la URL a la que se está llamando.</i><br/>
@@ -193,7 +193,7 @@
           &emsp;&emsp;console.log(req.url);<br/>
           &emsp;&emsp;switch (req.url) {<br/>
           &emsp;&emsp;&emsp;case '/hola':<br/>
-          &emsp;&emsp;&emsp;&emsp;res.write('Hola, ¿que tal?');<br/>
+          &emsp;&emsp;&emsp;&emsp;res.write('Hola, ¿qué tal?');<br/>
           &emsp;&emsp;&emsp;&emsp;res.end();<br/>
           &emsp;&emsp;&emsp;&emsp;break;<br/>
           &emsp;&emsp;&emsp;default:<br/>
@@ -202,15 +202,15 @@
           &emsp;&emsp;}<br/>
           <i class="coment highlight">// Si se ingresa a "localhost:3000" aparecerá en pantalla el texto del error 404, pero si se ingresa a "localhost:3000/hola" aparecerá en pantalla el mensaje del saludo.</i>
         </aside>
-        <p>*No es buena idea iniciar Node como administrador porque cualquier problema puede producir una escala de pribilegios a nivel de súper administrador en toda la máquina, generando muchos problemas de seguridad.</p>
-        <p>Con ésto ya se pueden crear routers y guiar los servidores HTTP para que puedan diferenciar las rutas a las que acceden los usuarios.</p>
+        <p>*No es buena idea iniciar Node como administrador porque cualquier problema puede producir una escala de privilegios a nivel de súper administrador en toda la máquina, generando muchos problemas de seguridad.</p>
+        <p>Con esto ya se pueden crear routers y guiar los servidores HTTP para que puedan diferenciar las rutas a las que acceden los usuarios.</p>
       </div>
       <hr class="link"/>
       <!-- OS -->
       <div class="">
         <h3 class="textCenter">Para módulos en OS</h3>
         <ul>
-          <li>El segundo paso es crear un archivo de extención .js en la carpeta raíz del proyecto y anexarle el siguiente código:</li>
+          <li>El segundo paso es crear un archivo de extensión .js en la carpeta raíz del proyecto y anexarle el siguiente código:</li>
         </ul>
         <aside class="exempliGratia">
           &emsp;const <u>funciónA</u> = require('os');<br/><br/>
@@ -234,9 +234,9 @@
           <dt>platform()</dt>
           <dd>muestra la plataforma del sistema (Windows).</dd>
           <dt>cpus()</dt>
-          <dd>muestra la informaciónde la cpu del sistema, los núcleos y su información.</dd>
+          <dd>muestra la información de la CPU del sistema, los núcleos y su información.</dd>
           <dt>cpus().lenght</dt>
-          <dd>muestra el numero de hilos activos en el rocesador.</dd>
+          <dd>muestra el número de hilos activos en el procesador.</dd>
           <dt>constants</dt>
           <dd>muestra todas las señales y prioridades del sistema.</dd>
           <dt>freemem()</dt>
@@ -252,7 +252,7 @@
           <dt>networkInterfaces()</dt>
           <dd>muestra las interfaces de red que hay activas en ese momento en el sistema.</dd>
         </dl>
-        <p>El modulo de OS, Operative System, nos permite ejecutar acciones de más bajo nivel en nuestro sistema, permitiéndonos conocer una gran variedad de detalles del mismo.
+        <p>El módulo de OS, Operative System, nos permite ejecutar acciones de más bajo nivel en nuestro sistema, permitiéndonos conocer una gran variedad de detalles del mismo.
         <p>Como la memoria disponible que tiene, el total de la memoria, la interfaz de red, etc.</p>
         <p>Esto nos será de gran ayuda a la hora de ejecutar o crear proyectos que necesiten información de una máquina para ejecutar una operación.</p>
       </div>
@@ -262,12 +262,12 @@
       <div>
         <h3 class="textCenter">Process</h3>
         <ul>
-          <li>El segundo paso es crear un archivo de extención .js en la carpeta raíz del proyecto y anexarle el siguiente código:</li>
+          <li>El segundo paso es crear un archivo de extensión .js en la carpeta raíz del proyecto y anexarle el siguiente código:</li>
         </ul>
         <aside class="exempliGratia">
           &emsp;const <u>funciónB</u> = require('process');
         </aside>
-        <p>Como <i>process</i> esta incluido dentro de los módulos globales, no se tiene que requerir el módulo de process, se puede acceder al process del módulo global que es el proceso en el que se esta trabajando:</p>
+        <p>Como <i>process</i> está incluido dentro de los módulos globales, no se tiene que requerir el módulo de process, se puede acceder al process del módulo global que es el proceso en el que se está trabajando:</p>
         <aside class="exempliGratia">
           &emsp;process.on('beforeExit', () => {<br/>
           &emsp;&emsp;console.log('El proceso está a punto de terminar.');<br/>
@@ -276,24 +276,24 @@
           &emsp;&emsp;console.error('¡Vaya!, se olvidó el capturar un error.');<br/>
           &emsp;&emsp;console.error(err);<br/>
           &emsp;})<br/>
-          <i class="coment highlight">// 'UncaughtException' permite capturar cualquier error que no fue caputurado previamente. Esto evita que Node cierre todos los hijos al encontrar un error no manejado.</i><br/>
+          <i class="coment highlight">// 'UncaughtException' permite capturar cualquier error que no fue capturado previamente. Esto evita que Node cierre todos los hijos al encontrar un error no manejado.</i><br/>
           <i class="highlight">// process.on('unhandleRejection', <u>función</u>);</i><br/>
           <i class="coment highlight">// También sirve para capturar promesas que se han rechazado y no han sido capturadas.</i><br/>
           &emsp;funcionQueProvocaError();<br/>
-          &emsp;console.log('Si el error no se recoje, éste mensaje no saldrá.');<br/>
+          &emsp;console.log('Si el error no se recoge, este mensaje no saldrá.');<br/>
         </aside>
         <aside class="exempliGratia">
-          &emsp;console.log('Ésto SI se ejecutará.');<br/><br/>
+          &emsp;console.log('Esto SI se ejecutará.');<br/><br/>
           &emsp;process.on('exit', () => {<br/>
             &emsp;&emsp;console.log('El proceso terminó.');<br/>
             &emsp;&emsp;setTimeout(() => {<br/>
-            &emsp;&emsp;&emsp;console.log('Ésto NO se ejecutará.');<br/>
+            &emsp;&emsp;&emsp;console.log('Esto NO se ejecutará.');<br/>
             &emsp;&emsp;}, 0);<br/>
             &emsp;});<br/><br/>
             &emsp;setTimeout(() => {<br/>
-            &emsp;&emsp;console.log('Ésto SI se ejecutará.');<br/>
+            &emsp;&emsp;console.log('Esto SI se ejecutará.');<br/>
             &emsp;}, 0);<br/>
-            <i class="coment highlight">// Sirve para saber cuando un proceso terminó, una vez que se escucha el 'exit' es porque el proceso se ha desconectado del EventLoop y no podrá ejecutar eventos en segundo hilo (en asincronia).</i>
+            <i class="coment highlight">// Sirve para saber cuándo un proceso terminó, una vez que se escucha el 'exit' es porque el proceso se ha desconectado del EventLoop y no podrá ejecutar eventos en segundo hilo (en asincronía).</i>
         </aside>
         <p>El objecto process es una instancia de EventEmitter; y permite suscribirse a él para escuchar eventos de Node.</p>
       </div>
@@ -312,7 +312,7 @@
         <h3>Glosario:</h3>
         <dl>
           <dt>Transpilar:</dt>
-          <dd>Es pasar de un tipo de lenguaje hacia otro que sea soportado por ejemplo por determinado navegador. Se suele usar con el transpilador BABEL, éste permite usar las características nuevas de JS que salen cada año y las convierte a sintaxis antigua para que los navegadores desactualizados puedan soportar el código y correrlo sin problema.</dd>
+          <dd>Es pasar de un tipo de lenguaje hacia otro que sea soportado por ejemplo por determinado navegador. Se suele usar con el transpilador BABEL, este permite usar las características nuevas de JS que salen cada año y las convierte a sintaxis antigua para que los navegadores desactualizados puedan soportar el código y correrlo sin problema.</dd>
         </dl>
       </div>
     </section>

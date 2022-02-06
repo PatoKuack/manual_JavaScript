@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulos 2</title>
+  <title>Módulos II</title>
 </head>
 <body class="body">
   <header></header>
@@ -83,14 +83,14 @@
         <h2 class="textCenter">Módulos útiles.</h2>
         <h3>bcrypt</h3>
         <p>La función de cifrado de bcrypt permite construir una plataforma de seguridad utilizando contraseñas encriptadas y poder verificar la autenticidad de la contraseña.</p>
-        <p>Primero es necesario instalarla a traves de la terminal con la instrucción <b>npm install bcrypt</b></p>
+        <p>Primero es necesario instalarla a través de la terminal con la instrucción <b>npm install bcrypt</b></p>
         <aside class="exempliGratia">
           &emsp;const <u><i>bcrypt</i></u> = require("bcrypt");<br/>
           &emsp;const <u><i>password</i></u> = "<u><i>NuncaParesDeAprender</i></u>";<br/>
           &emsp;bcrypt.hash( <u><i>password</i></u>, <u><i>5</i></u>, function( err, hash ){<br/>
           &emsp;&emsp;<u><i>console.log(hash);</i></u><br/>
           &emsp;} );<br/>
-          <i class="coment highlight">// El primer parametro es la contraseña, el segundo es la cantidad de veces que se aplicará el hash y el tercero es la función que retorna.</i><br/>
+          <i class="coment highlight">// El primer parámetro es la contraseña, el segundo es la cantidad de veces que se aplicará el hash y el tercero es la función que retorna.</i><br/>
           <i class="coment highlight">// Un hash es aplicar un algoritmo para poder cambiar el texto por una cadena de caracteres que no tenga nada que ver con la contraseña inicial.</i><br/>
           <i class="coment highlight">// el hash entrega una contraseña distinta en cada ejecución del bcrypt, para evaluar si una contraseña concuerda con un hash se utiliza un compare.</i><br/>
           &emsp;<u><i>bcrypt</i></u>.compare( <u><i>password</i></u>, hash, function( error, result ){<br/>
@@ -100,8 +100,8 @@
           <i class="coment highlight">// Devuelve true o false en el result.</i>
         </aside>
         <h3>Moment.js</h3>
-        <p>Moment es una librería que permite trabajar con fechas y manejar tiempos facilmente.</p>
-        <p>Primero es necesario instalarla a traves de la terminal con la instrucción <b>npm install moment</b></p>
+        <p>Moment es una librería que permite trabajar con fechas y manejar tiempos fácilmente.</p>
+        <p>Primero es necesario instalarla a través de la terminal con la instrucción <b>npm install moment</b></p>
         <aside class="exempliGratia">
           &emsp;const <u><i>moment</i></u> = require('moment')<br/>
           &emsp;const <u><i>ahora</i></u> = moment();<br/><br/>
@@ -112,7 +112,7 @@
           <i class="coment highlight">// Para darle formato a la fecha:</i><br/>
           &emsp;console.log(<u><i>ahora</i></u>.format('MM/DD/YYYY HH:MM A')); <i class="coment highlight">// 04/11/2021 20:10 PM</i><br/><br/>
           <i class="coment highlight">// Para validad una fecha</i><br/>
-          &emsp;console.log(moment('2021-08-10').isValid()); <i class="coment highlight">// Retorna un true o false dependiendo de si la fecha es valida o no</i><br/><br/>
+          &emsp;console.log(moment('2021-08-10').isValid()); <i class="coment highlight">// Retorna un true o false dependiendo de si la fecha es válida o no</i><br/><br/>
           <i class="coment highlight">// Para encontrar cuanto tiempo ha pasado hasta hoy</i><br/>
           &emsp;console.log(moment('2018-04-11').fromNow()); 
           <i class="coment highlight">// Hace 2 años</i><br/><br/>
@@ -122,12 +122,12 @@
           <i class="coment highlight">// 2019-04-11</i><br/>
         </aside>
         <h3>Sharp</h3>
-        <p>Sharp trabaja con la libreria de manejo de imágenes en c++ que permite convertir imágenes grandes en imágenes JPEG, PNG más pequeñas o compatibles con la web de diferentes dimensiones.</p>
+        <p>Sharp trabaja con la librería de manejo de imágenes en c++ que permite convertir imágenes grandes en imágenes JPEG, PNG más pequeñas o compatibles con la web de diferentes dimensiones.</p>
         <aside class="exempliGratia">
           &emsp;const <u><i>sharp</i></u> = require('sharp')<br/>
-          <i class="coment highlight">// Reducira una imagen de cualquier tamaño a 80x80 y la guardara en una imagen mas pequeña sin eliminr la original.</i><br/>
+          <i class="coment highlight">// Reducira una imagen de cualquier tamaño a 80x80 y la guardara en una imagen más pequeña sin eliminr la original.</i><br/>
           &emsp;<u><i>sharp</i></u>( '<u><i>imagen.png</i></u>' )<br/>
-          <i class="coment highlight">// Si a resize se le coloca solo un numero se tomará como porcentaje, pero si se colocan 2 los tomará como el largo y el ancho.</i><br/>
+          <i class="coment highlight">// Si a resize se le coloca solo un número se tomará como porcentaje, pero si se colocan 2 los tomará como el largo y el ancho.</i><br/>
           &emsp;&emsp;.resize( <u><i>80</i></u>, <u><i>80</i></u> )<br/>
           <i class="coment highlight">// Convierte la imagen en blanco y negro.</i><br/>
           &emsp;&emsp;.grayscale()<br/>
@@ -140,8 +140,8 @@
     <section class="container">
       <div>
         <h2 class="textCenter">Memoria.</h2>
-        <cite>El disco duro es como mi abuelita, es lenta pero tiene mucha experiencia y todo se le queda grabado. La RAM es como yo, depende si tengo corriente o no, muy rápido, pero nada se me queda en la cabeza.<br/> De: alguien alguna vez.</cite>
-        <p>Un buffer es basicamente un montón de datos y un stream basicamente es un proceso donde pasan un montón de datos.</p>
+        <cite>El disco duro es como mi abuelita, es lenta, pero tiene mucha experiencia y todo se le queda grabado. La RAM es como yo, depende si tengo corriente o no, muy rápido, pero nada se me queda en la cabeza.<br/> De: alguien alguna vez.</cite>
+        <p>Un buffer es básicamente un montón de datos y un stream es básicamente un proceso donde pasan un montón de datos.</p>
         <h3>Buffer.</h3>
         <p>Un buffer es un espacio de memoria (en la memoria RAM), en el que se almacenan datos de manera temporal.</p>
         <p>Es la forma mas cruda en la que se pueden almacenar los datos. El buffer almacena los datos en bytes de forma binaria, pero la representa en la consola en forma hexadecimal en espacios de 2 dígitos.</p>
@@ -151,7 +151,7 @@
           &emsp;console.log( <u><i>myBuffer1</i></u> );<br/>
           <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 00 00 00 00&#62;</i>
           <hr class="link"/>
-          <i class="coment highlight">// Creación de un Buffer con datos numericos en un arreglo.</i><br/>
+          <i class="coment highlight">// Creación de un Buffer con datos numéricos en un arreglo.</i><br/>
           &emsp;let <u><i>myBuffer2</i></u> = Buffer.from( [ <u><i>1, 2, 3</i></u> ] );<br/>
           &emsp;console.log( <u><i>myBuffer2</i></u> );<br/>
           <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 01 02 03&#62;</i>
@@ -173,8 +173,8 @@
           <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 61 62 63 ... 79 7a&#62;<br/>// abcde...xyz</i>
         </aside>
         <h3>Stream.</h3>
-        <p>Un Stream es el proceso de ir consumiendo datos al tiempo en que se reciben. Por ejemplo, al momento de ver un video en Youtube se estan consumiendo datos por medio de streaming (readable stream, porque solo se pueden ver videos mas no editarlos) ya que se reproduce al mismo tiempo en que este se está descargando, de lo contrario habría que esperar a que se descargue el video por completo para poder verlo.</p>
-        <p>Si en el caso anterior, mientras se ve el video fallara el internet, así sea por un segundo, la reproducción se pararía instantáneamente, pero en realidad no se detiene, el video continúa reproduciéndose por un tiempo mas. Esto es gracias a la implementación de un buffer el cuál es un espacio en memoria RAM en donde la información proveniente del servidor llega por fragmentos (chunks), para luego ser consumido, y como ese almacenamiento de datos en el buffer se hace a bajo nivel, de forma binaria, el proceso es mucho mas rápido de lo que se consume. Es por eso que cuando se reproduce un video en Youtube se ve que éste se carga mas rápido (dependiendo del ancho de banda).</p>
+        <p>Un Stream es el proceso de ir consumiendo datos al tiempo en que se reciben. Por ejemplo, al momento de ver un video en Youtube se están consumiendo datos por medio de streaming (readable stream, porque solo se pueden ver videos mas no editarlos) ya que se reproduce al mismo tiempo en que este se está descargando, de lo contrario habría que esperar a que se descargue el video por completo para poder verlo.</p>
+        <p>Si en el caso anterior, mientras se ve el video fallara el internet, así sea por un segundo, la reproducción se pararía instantáneamente, pero en realidad no se detiene, el video continúa reproduciéndose por un tiempo más. Esto es gracias a la implementación de un buffer el cuál es un espacio en memoria RAM en donde la información proveniente del servidor llega por fragmentos (chunks), para luego ser consumido, y como ese almacenamiento de datos en el buffer se hace a bajo nivel, de forma binaria, el proceso es mucho más rápido de lo que se consume. Es por eso que cuando se reproduce un video en Youtube se ve que éste se carga más rápido (dependiendo del ancho de banda).</p>
         <p>Existen tres tipos de stream:</p>
         <ul>
           <li>El de lectura es cuando existe un origen que proporciona los datos y se van recogiendo para utilizarlos.</li>
@@ -184,30 +184,30 @@
         <h4 class="textCenter">Stream de lectura.</h4>
         <aside class="exempliGratia">
           <i class="coment highlight block textCenter">// ***input.txt***</i><br/>
-          &emsp;Archivo que va a ser leido =B
+          &emsp;Archivo que va a ser leído =B
           <hr class="link"/>
           <i class="coment highlight block textCenter">// ***streamLectura.js***</i>
           &emsp;const <u><i>myFs</i></u> = require('fs');<br/>
           &emsp;let <u><i>data</i></u> = '';<br/>
           <i class="coment highlight">// Para leer el stream .</i><br/>
           &emsp;let <u><i>readableStream</i></u> = <u><i>myFs</i></u>.createReadStream( __dir+  '<u><i>input</i></u>.txt' );<br/>
-          <i class="coment highlight">// Para que el chunk no entregue un formato Buffer lo codificamos a UTF8 que es el estandar internacional de caracteres.</i><br/>
+          <i class="coment highlight">// Para que el chunk no entregue un formato Buffer lo codificamos a UTF8 que es el estándar internacional de caracteres.</i><br/>
           &emsp;<u><i>readableStream</i></u>.setEncoding('UTF8');<br/>
           <i class="coment highlight">// Para escuchar el evento en donde vienen los datos.</i><br/>
           &emsp;<u><i>readableStream</i></u>.on('data', function (chunk){<br/>
           <i class="coment highlight">// Si el archivo fuera enorme, chunk lo trae por fragmentos de información y para ver la información continua se guarda cada fragmento en la variable data.</i><br/>
           &emsp;&emsp;<u><i>data</i></u> += chunk;<br/>
           &emsp;});<br/>
-          <i class="coment highlight">// Para saber cuando termina el archivo y deje de enviar fragmentos a data, se crea un listener "end" y se imprime el resultado.</i><br/>
+          <i class="coment highlight">// Para saber cuándo termina el archivo y deje de enviar fragmentos a data, se crea un listener "end" y se imprime el resultado.</i><br/>
           &emsp;<u><i>readableStream</i></u>.on('end', function (){<br/>
           &emsp;&emsp;console.log(data);<br/>
           &emsp;});
         </aside>
-        <p>Ésto se nota en la memoria cuando se trabajan en archivos muy grandes o que no se conoce el tamaño del archivo, es de ayuda mandar o recibir archivos fragmentados en paquetes.</p>
+        <p>Esto se nota en la memoria cuando se trabajan en archivos muy grandes o que no se conoce el tamaño del archivo, es de ayuda mandar o recibir archivos fragmentados en paquetes.</p>
         <h4 class="textCenter">Stream de lectura.</h4>
         <aside class="exempliGratia">
           <i class="coment highlight block textCenter">// ***input.txt***</i><br/>
-          &emsp;Archivo que va a ser leido y modificado =B
+          &emsp;Archivo que va a ser leído y modificado =B
           <hr class="link"/>
           <i class="coment highlight block textCenter">// ***streamDobleSentido.js***</i>
           <i class="coment highlight">// .</i><br/>
@@ -228,13 +228,13 @@
           &emsp;util.inherits(<u><i>mayusc</i></u>, <u><i>tranform</i></u>);<br/>
           <i class="coment highlight">// Se genera lo necesario para la transformación accediendo a su prototipo e indicando que se trabaja en su transform en una función personalizada con el chunk, la codificación y el callback como parámetros.</i><br/>
           &emsp;<u><i>mayusc</i></u>.prototype._transform = function( chunk, codif, cb ) {<br/>
-          <i class="coment highlight">// El chunk se pasa a string y a mayusculas.</i><br/>
+          <i class="coment highlight">// El chunk se pasa a string y a mayúsculas.</i><br/>
           &emsp;&emsp;<u><i>chunkMayusc</i></u> = chunk.toString().toUpperCase();<br/>
           <i class="coment highlight">// Con el push se envía el chunk y se ejecuta el callback.</i><br/>
           &emsp;&emsp;this.push( chunkMayusc );<br/>
           &emsp;&emsp;cb();<br/>
           &emsp;}<br/>
-          <i class="coment highlight">// Se crea la trasformación utilizando readableStream para mandar la tranformación de un lado a otro.</i><br/>
+          <i class="coment highlight">// Se crea la trasformación utilizando readableStream para mandar la transformación de un lado a otro.</i><br/>
           &emsp;let <u><i>aMayuscula</i></u> = new <u><i>mayusc</i></u>();<br/>
           &emsp;readableStream<br/>
           <i class="coment highlight">// Se mandan los datos a aMayuscula.</i><br/>

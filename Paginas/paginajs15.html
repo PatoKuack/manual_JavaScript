@@ -34,14 +34,14 @@
         <h2 class="titCentrado">Window</h2>
         <p class="contenido">
           <h3>Objetos.</h3>
-          <p>A continuación se presentan los principales objetos que nos ayudan a utilizar el objeto window.</p>
+          <p>A continuación, se presentan los principales objetos que nos ayudan a utilizar el objeto window.</p>
           <dl>
             <dt>console</dt>
             <dd>Es el objeto que entrega información en consola y tiene varios métodos como .log(), .debug(), .clear(), etc.</dd>
             <dt>navigator</dt>
             <dd>Es el objeto que da información sobre el navegador.</dd>
             <dt>location</dt>
-            <dd>Es el objeto que da información sobre la URL de la página en la que se esta pocicionado.</dd>
+            <dd>Es el objeto que da información sobre la URL de la página en la que se está posicionado.</dd>
             <dt>history</dt>
             <dd>Es el objeto que da información sobre el historial del navegador.</dd>
           </dl>
@@ -105,7 +105,7 @@
             <em class="coment">// Todos los links internos de la página en donde se encuentre el navegador obtendrán un fondo rosa.</em>
           </span>
           <dt>hostname</dt>
-          <dd>Devuelve unicamente el nombre del dominio.</dd>
+          <dd>Devuelve únicamente el nombre del dominio.</dd>
           <dt>port</dt>
           <dd>Devuelve el puerto.</dd>
           <dt>protocol</dt>
@@ -113,7 +113,7 @@
           <dt>origin</dt>
           <dd>Devuelve el protocolo más el dominio.</dd>
           <dt>hash</dt>
-          <dd>Detecta si la pagina tiene hash (#). Los hash se utilizan para hacer enlaces internos en las páginas</dd>
+          <dd>Detecta si la página tiene hash (#). Los hash se utilizan para hacer enlaces internos en las páginas</dd>
           <span class="consola">
             location.hash
           </span>
@@ -122,7 +122,7 @@
           <span class="consola">
             location.pathname<br/>
             <em class="coment">/*<br/>
-            si el navegador esta posicionado en:<br/>
+            si el navegador está posicionado en:<br/>
             https://ed.team/cursos/js-dom<br/>
             nos devolverá:<br/>
             /cursos/js-dom<br/>
@@ -137,7 +137,7 @@
         <h3>Métodos.</h3>
         <dl>
           <dt>reload()</dt>
-          <dd>Recarga la pagina.</dd>
+          <dd>Recarga la página.</dd>
           <span class="consola">location.reload()</span>
           <dt>assign(URL)</dt>
           <dd>Redirecciona la página a la URL especificada.</dd>
@@ -153,12 +153,12 @@
       <div class="contenedor" id="parent">
         <h2 class="titCentrado">Objeto history.</h2>
         <p class="contenido">
-          Como ya se mencionó, el objeto history contiene el historial de navegación de la pestaña, no de todo el navegador. Y no es para devolver un historial con todas las URL, sino para detectar las flechas de retoceso o adelanto.
+          Como ya se mencionó, el objeto history contiene el historial de navegación de la pestaña, no de todo el navegador. Y no es para devolver un historial con todas las URL, sino para detectar las flechas de retroceso o adelanto.
         </p>
         <h3>Propiedades.</h3>
         <dl>
           <dt>length</dt>
-          <dd>Muestra la cantidad de elementos que hay en el historial incluiyendo la página actual, es decir la cantidad de páginas a las que se puede acceder usando las flechas de "volver a la página anterior" o "avanzar a la página siguiente".</dd>
+          <dd>Muestra la cantidad de elementos que hay en el historial incluyendo la página actual, es decir la cantidad de páginas a las que se puede acceder usando las flechas de "volver a la página anterior" o "avanzar a la página siguiente".</dd>
         </dl>
         <h3>Métodos.</h3>
         <dl>
@@ -185,21 +185,21 @@
       <div class="contenedor" id="parent">
         <h2 class="titCentrado">Objeto navigator.</h2>
         <p class="contenido">
-          Nos ayuda a detectar si el navegador que se esta usando cuenta con las características (features) necesarias para usar nuestros códigos como <i>geolocation</i>, <i>deviceMemory</i>, <i>cookieEnabled</i>.
+          Nos ayuda a detectar si el navegador que se está usando cuenta con las características (features) necesarias para usar nuestros códigos como <i>geolocation</i>, <i>deviceMemory</i>, <i>cookieEnabled</i>.
         </p>
         <p>
           También se puede utilizar CSS, JavaScript o modernizr para detectar las características habilitadas en el navegador que se está utilizando. <a class="enlace" href="https://modernizr.com/" target="blank">Modernizr</a> es una librería que permite detectar si un navegador tiene características que se utilizan en las páginas.
         </p>
         <span class="ejemplo">
           if(modernizr.grid) { ... } else { ... }<br/>
-          <em class="coment">// Si esta habilitada la caracteristica grid en el navegador ... sino ...</em>
+          <em class="coment">// Si está habilitada la característica grid en el navegador ... sino ...</em>
         </span>
         <p class="contenido">
           El operador <i>in</i> se puede usar para preguntar si una propiedad existe en un objeto, en este caso podría preguntase mediante JavaScript si la propiedad 'Promise' existe en el objeto window.
         </p>
         <span class="ejemplo">
           'Promise' in window
-          <em class="coment">// devuelve un True si existe la propuedad en window o False si no existe.</em>
+          <em class="coment">// devuelve un True si existe la propiedad en window o False si no existe.</em>
         </span>
       </div>
     </section>
@@ -208,11 +208,11 @@
       <div class="contenedor" id="parent">
         <h2 class="titCentrado">Timers.</h2>
         <p class="contenido">
-          Permiten ejecutar acciones después de un periodo de tiempo o acciones que se repitan periodicamente.
+          Permiten ejecutar acciones después de un periodo de tiempo o acciones que se repitan periódicamente.
         </p>
         <dl>
           <dt>setTimeOut(<u>callback</u>, <u>ms</u>)</dt>
-          <dd>Ejecuta lo que esta en el primer parámetro el cual tiene que ser un callback (función) después de cierta cantidad de milisegundos especificadas en el segúndo parámetro.</dd>
+          <dd>Ejecuta lo que está en el primer parámetro el cual tiene que ser un callback (función) después de cierta cantidad de milisegundos especificadas en el segundo parámetro.</dd>
           <span class="ejemplo">
             setTimeOut(() => {<br/>
             &emsp;alert('¡Holaaaa enfermere!');<br/>
@@ -267,19 +267,19 @@
           <dt>new Date()</dt>
           <dd>Proporciona la fecha actual desde años hasta segundos y la zona horaria (GMT).</dd>
           <dt>new Date(year,month,day)</dt>
-          <dd>Proporciona la fecha con la zona horaria y el día de la semana, indicando en el parámetro el año, mes y día en forma numerica. El mes va de 0 a 11 donde 0 será Enero y 11 será Diciembre.</dd>
+          <dd>Proporciona la fecha con la zona horaria y el día de la semana, indicando en el parámetro el año, mes y día en forma numérica. El mes va de 0 a 11 donde 0 será enero y 11 será diciembre.</dd>
           <span class="ejemplo">
             const aniversario = new Date(2022,8,19);<br/>
             console.log(aniversario);
           </span>
           <dt>new Date(year,month,day,hours,minutes,seconds)</dt>
-          <dd>Proporciona la fecha con la zona horaria y el día de la semana, indicando en el parámetro el año, mes, día, hora, minuto y segundo en forma numerica. El mes va de 0 a 11 donde 0 será Enero y 11 será Diciembre.</dd>
+          <dd>Proporciona la fecha con la zona horaria y el día de la semana, indicando en el parámetro el año, mes, día, hora, minuto y segundo en forma numérica. El mes va de 0 a 11 donde 0 será enero y 11 será diciembre.</dd>
           <span class="ejemplo">
             const aniversario = new Date(2022,8,19,17,25,36);<br/>
             console.log(aniversario);
           </span>
           <dt>new Date(strings)</dt>
-          <dd>Proporciona la fecha por medio de un string, el string se coloca en los parámetros y tiene que tener el formato original del objeto, es decir, el día de la semana y el mes con las primeras tres letras de su nombre en ingles, y los demás datos en forma numerica. Pueden omitirse datos siempre que se respete el formato.</dd>
+          <dd>Proporciona la fecha por medio de un string, el string se coloca en los parámetros y tiene que tener el formato original del objeto, es decir, el día de la semana y el mes con las primeras tres letras de su nombre en inglés, y los demás datos en forma numérica. Pueden omitirse datos siempre que se respete el formato.</dd>
           <span class="ejemplo">
             const aniversario = new Date(May 21 2021 18:07:31 GMT-0500);<br/>
             console.log(aniversario);
@@ -296,21 +296,21 @@
           <dt>getDate()</dt>
           <dd>Devuelve el día del mes.</dd>
           <dt>getDay()</dt>
-          <dd>Devuelve el día de la semana de 0 a 6) (Lunes = 0, Domingo = 6).</dd>
+          <dd>Devuelve el día de la semana de 0 a 6) (lunes = 0, domingo = 6).</dd>
           <dt> getMonth()</dt>
-          <dd>Devuelve los meses de 0 a 11 (Enero = 0, Diciembre = 11.</dd>
+          <dd>Devuelve los meses de 0 a 11 (enero = 0, diciembre = 11.</dd>
           <dt>getTime()</dt>
-          <dd>Devuelve los milisegundos trancurridos desde el 1 de enero de 1970 hasta la fecha.</dd>
+          <dd>Devuelve los milisegundos transcurridos desde el 1 de enero de 1970 hasta la fecha.</dd>
           <span class="ejemplo">
             let transcurrido = new Date(1969,11,31,18,0,0).getTime();<br/>
-            <em class="coment">// Nos indicará que han pasado 0 milisegundos desde la fecha pibote.</em><br/>
-            <em class="coment">// Tal vez la fecha pibote de 1970/1/1 esta en otra zona horaria desfazada 6 horas de la CDMX O.O</em>
+            <em class="coment">// Nos indicará que han pasado 0 milisegundos desde la fecha pivote.</em><br/>
+            <em class="coment">// Tal vez la fecha pivote de 1970/1/1 está en otra zona horaria desfazada 6 horas de la CDMX O.O</em>
           </span>
           <dt>getTimezoneOffset()</dt>
           <dd>Devuelve la diferencia de tu zona horaria al Meridiano de Greenwich que es la referencia de zona horaria para todos los países. Se utiliza para adaptar nuestra zona horaria con el del usuario.</dd>
           <span class="ejemplo">
             const zonaHoraria = new Date().getTimezoneOffset();<br/>
-            <em class="coment">// (yo que vivo en CDMX) me devuelve 300 que s la diferencia entre la zona horaria de referencia para todos los países y mi zona horaria.</em><br/>
+            <em class="coment">// (yo que vivo en CDMX) me devuelve 300 que es la diferencia entre la zona horaria de referencia para todos los países y mi zona horaria.</em><br/>
             <em class="coment">// A mi zona horaria le sumaré esos 300 en los minutos para obtener la zona horaria internacional.</em>
           </span>
         </dl>

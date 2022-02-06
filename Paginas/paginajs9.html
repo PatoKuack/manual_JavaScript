@@ -18,13 +18,13 @@
   <div class="medio">
     <h2>ECMAScript6+</h2>
     <div>
-      <p>ECMA es una institución que dicta estándares o funcionalidades que deben adaptarse o añadirse a los engines de Js. Puesto que Js es un lenguaje interpretado y con muchos motores que lo interpretan/compilan, se vió la necesidad de hacer un estándar que todos esos motores siguieran, para tener consistencia en nuestros desarrollo a lo largo de todos los navegadores.</p>
+      <p>ECMA es una institución que dicta estándares o funcionalidades que deben adaptarse o añadirse a los engines de Js. Puesto que Js es un lenguaje interpretado y con muchos motores que lo interpretan/compilan, se vio la necesidad de hacer un estándar que todos esos motores siguieran, para tener consistencia en nuestro desarrollo a lo largo de todos los navegadores.</p>
       <p>ECMAScript es la especificación del lenguaje JavaScript propuesto por ECMA Internacional.</p>
-      <p>JavaScript es un lenguaje de programación o de secuencias de comandos que permite implementar funciones complejas en páginas web, éste lenguaje utiliza las especificaciones propuestas por ECMA, que van siendo añadidas a ECMAScript cada año a partir del 2015, cuando fue lanzado ES6.</p>
+      <p>JavaScript es un lenguaje de programación o de secuencias de comandos que permite implementar funciones complejas en páginas web, este lenguaje utiliza las especificaciones propuestas por ECMA, que van siendo añadidas a ECMAScript cada año a partir del 2015, cuando fue lanzado ES6.</p>
       <p>La especificación ECMA-262 de ECMASCRIPT es un manual de más de 800 páginas que muestra todo acerca del lenguaje JavaScript.</p>
     </div>
     <div>
-      <p>En ECMAScript 6 se agregarón varias caraterpisticas:</p>
+      <p>En ECMAScript 6 se agregaron varias características:</p>
       <h3>Parámetros por defecto.</h3>
       <p>Permiten establecer los valores por defecto que se le pasan a una función.</p>
       <form action="#" class="ejFormato">
@@ -168,7 +168,7 @@
           { name: 'Brandon', age: 22}<br/>
         ]<br/>
         let listOfNames = names.map ( item => {<br/>
-          console.log( item.name ); <em class="coment">// Se establece como una función anonima que retornará cada uno de los nombres del objeto.</em><br/>
+          console.log( item.name ); <em class="coment">// Se establece como una función anónima que retornará cada uno de los nombres del objeto.</em><br/>
         } )<br/>
       </span>
       <h3>Promesas.</h3>
@@ -184,7 +184,7 @@
       <span class="ejAfter blind" id="ejAfterPromise">
         const helloPromise = () => {<br/>
           return new Promise((resolve, reject) => {<br/>
-            <em class="coment">// *Promise debe escribirse con mayuscula para que sea efectivo.</em>
+            <em class="coment">// *Promise debe escribirse con mayúscula para que sea efectivo.</em>
             <em class="coment">// Retornará una nueva promesa al arrow function con dos parámetros que indicarán si la promesa es aceptada o rechazada.</em><br/>
             if (true) {<br/>
               resolve ( '¡Hey!' );<br/>
@@ -234,7 +234,7 @@
         <em class="coment">// Se llama a la clase con su función "sum" y se le pasan los valores a sumar.</em><br/>
       </span>
       <h3>Módulos (import y export).</h3>
-      <p>Permite separar en módulos la lógica de un programa conectando funciones o variables de diferentes archivos a traves de exportaciones e importaciones.</p>
+      <p>Permite separar en módulos la lógica de un programa conectando funciones o variables de diferentes archivos a través de exportaciones e importaciones.</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejModulo" class="falseTrue">
@@ -250,7 +250,7 @@
         </span>
         <span class="ejBefore">
           const dabaDu = require('<u>directorio</u>');<br/>
-          <em class="coment">// Importa la función "dabaDu" desde un documento externo, para esto se debe colocar la ruta del documento que generalemente es "./module" ya que los modulos se guardan en una carpeta contigua a la carpeta de los scripts en un proyecto.</em><br/>
+          <em class="coment">// Importa la función "dabaDu" desde un documento externo, para esto se debe colocar la ruta del documento que generalmente es "./module" ya que los módulos se guardan en una carpeta contigua a la carpeta de los scripts en un proyecto.</em><br/>
           console.log(dabaDu());<br/>
           <em class="coment">// Después se puede utilizar la función o variable como si fuera parte del código.</em><br/>
         </span>
@@ -265,7 +265,7 @@
         </span>
         <span class="ejAfter">
           import { dabaDu, enfado as enano } from '<u>directorio</u>';<br/>
-          <em class="coment">// Importa las funciones y variables que se requieran (pueden ser apodadas como en el caso de "enfado") desde un documento externo, para esto se debe colocar la ruta del documento que generalemente es "./module" ya que los modulos se guardan en una carpeta contigua a la carpeta de los scripts en un proyecto.</em><br/>
+          <em class="coment">// Importa las funciones y variables que se requieran (pueden ser apodadas como en el caso de "enfado") desde un documento externo, para esto se debe colocar la ruta del documento que generalmente es "./module" ya que los modulos se guardan en una carpeta contigua a la carpeta de los scripts en un proyecto.</em><br/>
           console.log(dabaDu());<br/>
           console.log(enano);<br/>
           <em class="coment">// Después se pueden utilizar las funciones o variables como si fueran parte del código.</em><br/><br/>
@@ -274,7 +274,7 @@
         </span>
       </span>
       <h3>Generadores</h3>
-      <p>Permite retornar una serie de valores según el algoritmo definido a traves de una función especial.</p>
+      <p>Permite retornar una serie de valores según el algoritmo definido a través de una función especial.</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejGenerator" class="falseTrue">
@@ -286,7 +286,7 @@
       <span class="ejAfter blind" id="ejAfterGenerator">
         function* congratulation ( ) {<br/>
           <em class="coment">// Se coloca un asterisco para indicar que es un generador.</em><br/>
-          <em class="coment">// Según la compocición del algoritmo es como se retornarán los valores.</em><br/>
+          <em class="coment">// Según la composición del algoritmo es como se retornarán los valores.</em><br/>
           if ( true ) {<br/>
             yield 'Happy ';<br/>
             <em class="coment">// yield permite retornar un valor y guardarlo de forma interna.</em><br/>
@@ -299,7 +299,7 @@
         console.log(generatorCongrat.next().value);<br/>
         <em class="coment">// next permite utilizar el valor del primer yield.</em><br/>
         console.log(generatorCongrat.next().value);<br/>
-        <em class="coment">// El primer yield giarda en memoria interna que ha sido usado y cuando se utiliza otro next le permite al segundo yield mandar su valor.</em><br/>
+        <em class="coment">// El primer yield guarda en memoria interna que ha sido usado y cuando se utiliza otro next le permite al segundo yield mandar su valor.</em><br/>
         console.log(generatorCongrat.next().value);<br/>
         <em class="coment">// Cuando ya no hay yields con valores disponibles se obtiene un "undefined".</em><br/>
       </span>
@@ -316,20 +316,20 @@
       <span class="ejAfter blind" id="ejAfterInclude">
         let numbers = [1, 2, 3, 4, 5];<br/>
         if ( numbers.includes( 8 ) ) {<br/>
-          console.log('El array incluye ése numero.')<br/>
+          console.log('El array incluye ése número.')<br/>
         } else {<br/>
-        console.log('El array no incluye ése numero.')<br/>
+        console.log('El array no incluye ése número.')<br/>
       }
       </span>
       <h3>Operaciones con exponencial.</h3>
-      <p>Permite elevar un numero a la enecima potencia.</p>
+      <p>Permite elevar un numero a la enésima potencia.</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejExponente" class="falseTrue">
         <b>ES7</b>
       </form>
       <span class="ejBefore seer" id="ejBeforeExponente">
-        Antes se tenía que utlizar la librería Math.
+        Antes se tenía que utilizar la librería Math.
       </span>
       <span class="ejAfter blind" id="ejAfterExponente">
         let base = 5;<br/>
@@ -339,7 +339,7 @@
         <em class="coment">// imprime el resultado de 5<sup>3</sup>: 125</em>
       </span>
       <h3>Object con entries.</h3>
-      <p>Permite obtener una matriz de pares propios de una propiedad enumerable [key, value] de un objeto dado.</p>
+      <p>Permite obtener una matriz de pares propios de una propiedad numerable [key, value] de un objeto dado.</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejOEntries" class="falseTrue">
@@ -366,7 +366,7 @@
         ]<br/></em>
       </span>
       <h3>Object con values.</h3>
-      <p>Permite obtener un array que contenga los valores de las propiedades enumerables de un objeto dado</p>
+      <p>Permite obtener un array que contenga los valores de las propiedades numerables de un objeto dado</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejOValues" class="falseTrue">
@@ -389,7 +389,7 @@
           [ 'Nigel', 'Hoagle', 'Kuki', ... ]</em>
       </span>
       <h3>String con padStart y padEnd.</h3>
-      <p>Permite agregar un caracter al inicio o al fnal de un string.</p>
+      <p>Permite agregar un carácter al inicio o al final de un string.</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejPadSE" class="falseTrue">
@@ -399,9 +399,9 @@
         ...
       </span>
       <span class="ejAfter blind" id="ejAfterPadSE">
-        const frase = 'Hi Ho Silver'; <em class="coment">// Tiene 12 caracteres.</em>
-        console.log(frase.padStart(15, '¡¡¡')); <em class="coment">// A los 12 caracteres se les agrega 3 y en total serán 15.</em>
-        console.log(frase.padEnd(15, '!!!')); <em class="coment">// A los 12 caracteres se les agrega 3 y en total serán 15.</em>
+        const frase = 'Hi Ho Silver'; <em class="coment">// Tiene 12 carácteres.</em>
+        console.log(frase.padStart(15, '¡¡¡')); <em class="coment">// A los 12 carácteres se les agrega 3 y en total serán 15.</em>
+        console.log(frase.padEnd(15, '!!!')); <em class="coment">// A los 12 carácteres se les agrega 3 y en total serán 15.</em>
       </span>
       <h3>Trailing commas para objetos.</h3>
       <p>Permite dejar una coma “volando” dentro de un objeto sin necesidad de añadir un nuevo valor y no se marcará un error en el código. Se utiliza para evitar errores al añadir nuevos valores al objeto o función.</p>
@@ -461,7 +461,7 @@
         <hr/>
         <em class="coment">// También se puede usar un try-catch en un async para atrapar los errores y poder manejarlos.</em><br/>
         const anotherFunction = async ( ) => {<br/>
-          <em class="coment">// Se crea la función indicando la palabra reserada async para indicar que se utilizarán awaits.</em><br/>
+          <em class="coment">// Se crea la función indicando la palabra reservada async para indicar que se utilizarán awaits.</em><br/>
           try {<br/>
             const whatsUp = await helloWorld ( );<br/>
             console.log ( whatsUp );<br/>
@@ -490,7 +490,7 @@
           provenance: 'tree',<br/>
         }<br/>
         let { name, ...all } = obj;<br/>
-        <em class="coment">// Se extraerá todo el contenido (...all) con referencia al dato "name", todo ésto se aplicará al objeto "obj".</em><br/>
+        <em class="coment">// Se extraerá todo el contenido (...all) con referencia al dato "name", todo esto se aplicará al objeto "obj".</em><br/>
         console.log( name, all );<br/>
         <em class="coment">// Imprime: Orange { color: 'orange', provenance: 'tree' }</em>
         <hr/>
@@ -544,7 +544,7 @@
         .then(response => console.log(response));<br/>
         .catch(error => console.log(error));<br/>
         .finally(() => console.log('Ended'));<br/>
-        <em class="coment">// Al correr este código se imprime el mensaje de aprovación y el mensaje de .finally que indica que ya finalizó el código.</em>
+        <em class="coment">// Al correr este código se imprime el mensaje de aprobación y el mensaje de .finally que indica que ya finalizó el código.</em>
       </span>
       <h3>Regex.</h3>
       <p>Permite agrupar bloques del Regex y poder acceder a cada uno de ellos.</p>
@@ -642,7 +642,7 @@
       </span>
       <h3>FromEntries.</h3>
       <p>Permite transformar una matriz clave/valor en un objeto por medio de la función object.fromEntries(). Lo inverso a Object.entries() que convierte un objeto en una matriz clave/valor.</p>
-      <p>Es de ayuda cuando se trabaja con arreglos que se quieren transformar en objetoso viceversa.</p>
+      <p>Es de ayuda cuando se trabaja con arreglos que se quieren transformar en objetos o viceversa.</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejFEntries" class="falseTrue">
@@ -657,7 +657,7 @@
         <em class="coment">// { name: 'alex', age: 21 }</em>
       </span>
       <h3>Symbol.</h3>
-      <p>Permite acceder a la descripción de un elemento de tipo simbolo por medio de la función symbol.prototype.description.</p>
+      <p>Permite acceder a la descripción de un elemento de tipo símbolo por medio de la función symbol.prototype.description.</p>
       <form action="#" class="ejFormato">
         <b>antes</b>
         <input type="range" min="0" max="1" value="0" id="ejSymbol" class="falseTrue">
@@ -669,7 +669,7 @@
       <span class="ejAfter blind" id="ejAfterSymbol">
         let mySymbol = 'My Symbol';<br/>
         let symbol = Symbol(mySymbol);<br/>
-        <em class="coment">// La varible "symbol" se le adiciona el tipo symbol y la variable obtiene una descripción.</em><br/>
+        <em class="coment">// La variable "symbol" se le adiciona el tipo symbol y la variable obtiene una descripción.</em><br/>
         console.log(symbol.description);<br/>
         <em class="coment">// Se imprime la descripción de la variable symbol que es: My Symbol</em>
       </span>

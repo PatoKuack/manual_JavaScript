@@ -32,9 +32,9 @@
           <li>Después se crean los archivos de configuración en la carpeta raíz del proyecto:</li>
           <dl>
             <dt>.gitignore</dt>
-            <dd>Aquí es en donde se colocaran los archivos ignorados para git. En <a href="https://www.toptal.com/developers/gitignore" target="_blank" rel="noopener noreferrer">gitignore.io</a> se puede obtener una configuración lista para copiar y pegar con todo lo necesario, solo se coloca en la sección de busqueda el entorno (Node) y el sistema operativo (Windows, Linux y macOS).</dd>
+            <dd>Aquí es en donde se colocarán los archivos ignorados para git. En <a href="https://www.toptal.com/developers/gitignore" target="_blank" rel="noopener noreferrer">gitignore.io</a> se puede obtener una configuración lista para copiar y pegar con todo lo necesario, solo se coloca en la sección de búsqueda el entorno (Node) y el sistema operativo (Windows, Linux y macOS).</dd>
             <dt>.editorconfig</dt>
-            <dd>Esta configuración se asegura de que todos los desarrolladores del proyecto tengan la misma configuración del editor, para ésto se recomiendo utilizar la extención llamada "<b>EtidotConfig for VS Code</b>". Con el siguiente código insertado en el archivo se asegura de que todos trabajen de una misma manera.</dd>
+            <dd>Esta configuración se asegura de que todos los desarrolladores del proyecto tengan la misma configuración del editor, para esto se recomiendo utilizar la extensión llamada "<b>EtidotConfig for VS Code</b>". Con el siguiente código insertado en el archivo se asegura de que todos trabajen de una misma manera.</dd>
             <aside class="exempliGratia">
               # Editor configuration, see https://&emsp;editorconfig.org<br/>
               &emsp;root = true<br/><br/>
@@ -51,7 +51,7 @@
               &emsp;trim_trailing_whitespace = false
             </aside>
             <dt>.eslintrc.json</dt>
-            <dd>Aquí es en donde se alojan todas las reglas de las buenas practicas, se indica que se manejará ECMAScript 6 y prettier con recomendaciones generales del estandar eslint.</dd>
+            <dd>Aquí es en donde se alojan todas las reglas de las buenas prácticas, se indica que se manejará ECMAScript 6 y prettier con recomendaciones generales del estándar eslint.</dd>
             <aside class="exempliGratia">
               &emsp;{<br/>
               &emsp;&emsp;"parserOptions": {<br/>
@@ -111,9 +111,9 @@
         <aside class="exempliGratia">
           <i class="coment highlight">// Se manda a llamar a express.</i><br/>
           &emsp;const <u><i>myExpress</i></u> = require("express");<br/>
-          <i class="coment highlight">// express es un metodo que construye la aplicación.</i><br/>
+          <i class="coment highlight">// express es un método que construye la aplicación.</i><br/>
           &emsp;const <u><i>app</i></u> = <u><i>myExpress</i></u>();<br/>
-          <i class="coment highlight">// Se indica en que puerto se desea iniciar la app, es comun que se usen los puertos 3000.</i><br/>
+          <i class="coment highlight">// Se indica en que puerto se desea iniciar la app, es común que se usen los puertos 3000.</i><br/>
           &emsp;const <u><i>port</i></u> = <u><i>3000</i></u>;<br/><br/>
           <i class="coment highlight">// Se crea la respuesta que se le enviará al cliente y se le indica al puerto que escuche cuando se esté ejecutando y mande una respuesta de confirmación.</i><br/>
           &emsp;<u><i>app</i></u>.get('/', (req, res) =>{<br/>
@@ -157,16 +157,16 @@
           </span>
         </aside>
         <p>Para visualizar la respuesta enviada con res.send, se debe colocar en la URL del navegador el host más la extensión, por ejemplo en este caso: <b>localhost:3000/patiruta-objeto</b></p>
-        <p>Existe una herramienta útil para leer los archivos.json en cada navegador, es bueno instalar o buscar una de ellas para leer facilmente éstos archivos ya que suelen ser muy amplios con datos diversos.</p>
+        <p>Existe una herramienta útil para leer los archivos.json en cada navegador, es bueno instalar o buscar una de ellas para leer fácilmente estos archivos ya que suelen ser muy amplios con datos diversos.</p>
       </div>
     </section>
     <!-- REST -->
     <section class="container">
       <div>
         <h2 class="textCenter">REST (Representational State Transfer).</h2>
-        <p>Es una conveccion que se refiere a servicios web por protocolo HTTP. REST permite mandar json, xml, binarios (imágenes, documentos), text, etc.</p>
+        <p>Es una convención que se refiere a servicios web por protocolo HTTP. REST permite mandar json, xml, binarios (imágenes, documentos), text, etc.</p>
         <p>Es conveniente utilizar REST cuando se desean realizar interacciones simples como agregar recursos, quitarlos o modificarlos. También es conveniente cuando los recursos que se desean manejar son limitados.</p>
-        <p>En cambio no es conveniente utilizar REST cuando se desean realizar interacciones más complejas, por ejemplo cuándo es necesario que el servidor aporte más lógica como la validación de un documento.</p>
+        <p>En cambio, no es conveniente utilizar REST cuando se desean realizar interacciones más complejas, por ejemplo, cuándo es necesario que el servidor aporte más lógica como la validación de un documento.</p>
         <p>Una petición REST completa se basa en:</p>
         <ul>
           <li>URL(Dominio, protocolo).</li>
@@ -244,7 +244,7 @@
           &emsp;&emsp;});<br/>
           &emsp;});
         </aside>
-        <p>Una forma más fácil de incluír el id solicitado es utilizando la destructuración de ECMAScript la cuál indica que desde los parametros requerídos, sólo debe interesarse por el id:</p>
+        <p>Una forma más fácil de incluir el id solicitado es utilizando la restructuración de ECMAScript la cual indica que desde los parámetros requeridos, sólo debe interesarse por el id:</p>
         <aside class="exempliGratia">
           &emsp;<u><i>app</i></u>.get('/patiruta-array/:patoId', (req, res) => {<br/>
           &emsp;&emsp;const { patoId } = req.params;<br/>
@@ -312,7 +312,7 @@
           &emsp;&emsp;res.json(<u><i>pproducts</i></u>);<br/>
           &emsp;});
         </aside>
-        <p>A continuación se muestra una pequeña modificación del código para que se pueda especificar el numero de productos que se mostrarán:</p>
+        <p>A continuación, se muestra una pequeña modificación del código para que se pueda especificar el número de productos que se mostrarán:</p>
         <aside class="exempliGratia">
           <span class="highlight">
             &emsp;<u><i>app</i></u>.get('/<u><i>patitoProducts</i></u>', (req, res) => {<br/>
@@ -330,7 +330,7 @@
             <i class="coment highlight">// Para utilizar éste parámetro se coloca después del endpoint:</i> ?size=<u><i>10000</i></u>
           </span>
         </aside>
-        <!-- <p>Una forma más compleja de hacerla es creando los datos en archivo.js y exportando su contenido a otro archivo.js que utilice éstos datos, ejemplo:</p>
+        <!-- <p>Una forma más compleja de hacerla es creando los datos en archivo.js y exportando su contenido a otro archivo.js que utilice estos datos, ejemplo:</p>
         <aside class="exempliGratia">
           <i class="coment highlight block textCenter">// *** users.js ***</i><br/>
           <i class="coment highlight">// En éste archivo se crea el arreglo con los datos iniciales</i><br/>
@@ -396,7 +396,7 @@
           &emsp;const <u><i>myRouter</i></u> = myExpress.Router();<br/><br/>
           <i class="coment highlight">// Se crea un routing para sustituir al app.</i><br/>
           &emsp;<u><i>myRouter</i></u>.get('/', (req, res) => {<br/>
-          <i class="coment highlight">// Se deja la ruta unicamente con el slash ya que el archivo principal controlará esta ruta.</i><br/>
+          <i class="coment highlight">// Se deja la ruta únicamente con el slash ya que el archivo principal controlará esta ruta.</i><br/>
           <span class="highlight">
             &emsp;&emsp;res.json([<br/>
             &emsp;&emsp;&emsp;{ ... },<br/>
@@ -429,7 +429,7 @@
           <i class="coment highlight">// Se crea una función que recibirá la aplicación como parámetro de entrada.</i><br/>
           &emsp;&emsp;<u><i>app</i></u>.use( '/<u><i>products</i></u>', <u><i>productsRouter</i></u> );<br/>
           &emsp;&emsp;<u><i>app</i></u>.use( '/<u><i>users</i></u>', <u><i>usersRouter</i></u> );<br/>
-          <i class="coment highlight">// Se define el endpoint de productos asignandole el módulo importado.</i><br/>
+          <i class="coment highlight">// Se define el endpoint de productos asignándole el módulo importado.</i><br/>
           &emsp;}<br/><br/>
           &emsp;module.exports = <u><i>routerApi</i></u>;<br/>
           <i class="coment highlight">// Se exporta la función routerApi.</i>
@@ -446,8 +446,8 @@
           &emsp;routerApi(app);<br/>
           <i class="coment highlight">// Se manda a llamar a la función routerApi con el parámetro app.</i>
         </aside>
-        <p>Debido a que a las aplicaciones se les deben dar mantenimiento, se les coloca una ruta padre, por ejemplo si es una api en la versión 1 (/api/v1), a todos los edpoint de ésta versión se les anexa este fragmento a su ruta.</p>
-        <p>Se mantienen los routers de cada versión en el código por si algún usuario esta consumiento alguna de las versiones ateriores y gracias a las rutas padre o rutas globales se pueden mantener los routers de cada versión sin que hagan estragos entre ellas mismas.</p>
+        <p>Debido a que a las aplicaciones se les deben dar mantenimiento, se les coloca una ruta padre, por ejemplo, si es un api en la versión 1 (/api/v1), a todos los edpoint de esta versión se le anexa este fragmento a su ruta.</p>
+        <p>Se mantienen los routers de cada versión en el código por si algún usuario este consumiendo alguna de las versiones anteriores y gracias a las rutas padre o rutas globales se pueden mantener los routers de cada versión sin que hagan estragos entre ellas mismas.</p>
         <aside class="exempliGratia">
           <i class="coment highlight">// Se importa express.</i><br/>
           &emsp;const myExpress = require('express');<br/><br/>
@@ -455,7 +455,7 @@
           &emsp;const categoriesRouter = require('./categoriesRouter');<br/>
           &emsp;const userRouter = require('./userRouter');<br/><br/>
           &emsp;function routerApi(app){<br/>
-          <i class="coment highlight">// Se genera una ruta global para todos los endpoints de alguna version en especifico.</i><br/>
+          <i class="coment highlight">// Se genera una ruta global para todos los endpoints de alguna versión en específico.</i><br/>
           &emsp;&emsp;const myRouter = myExtress.Router();<br/>
           &emsp;&emsp;app.use('api/v1', myRouter);<br/>
           <i class="coment highlight">// Endpoints de versión 1:</i><br/>
@@ -481,7 +481,7 @@
           <i class="coment highlight block textCenter">// *** routs/productsRoute.js ***</i><br/>
           <i class="coment highlight">// Se atenderá desde el pathing (ruta) principal.</i><br/>
           &emsp;router.post('/', (req, res) => {<br/>
-          <i class="coment highlight">// Apartir del atributo body se resiven todos los parámetros enviados por algún cliente.</i><br/>
+          <i class="coment highlight">// A partir del atributo body se reciben todos los parámetros enviados por algún cliente.</i><br/>
           &emsp;&emsp;const myBody = req.body;<br/>
           <i class="coment highlight">// Se manda una respuesta de tipo json.</i><br/>
           &emsp;&emsp;res.json({<br/>
@@ -494,7 +494,7 @@
         </aside>
         <p>El término <b>middleware</b> se refiere a un sistema de software que ofrece servicios y funciones comunes para las aplicaciones. En general, el middleware se encarga de las tareas de gestión de datos, servicios de aplicaciones, mensajería, autenticación y gestión de API.</p>
         <p>Ayuda a los desarrolladores a diseñar aplicaciones con mayor eficiencia. Además, actúa como hilo conductor entre las aplicaciones, los datos y los usuarios.</p>
-        <p>Se puede implementar un middleware nativo de express que ayudará a que se capture el body de los datos que manda el cliente y los reenvie como respuesta para visualizar a lo que se hizo POST.</p>
+        <p>Se puede implementar un middleware nativo de express que ayudará a que se capture el body de los datos que manda el cliente y los reenvíe como respuesta para visualizar a lo que se hizo POST.</p>
         <aside class="exempliGratia">
           <i class="coment highlight block textCenter">index.js</i><br/>
           <span class="highlight">

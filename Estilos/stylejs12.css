@@ -1,5 +1,5 @@
 .coordenadas{
-  width:    var(--imahen1);
+  max-width:    var(--imahen1);
   opacity:  80%;
 }
 

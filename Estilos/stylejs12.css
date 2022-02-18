@@ -5,6 +5,7 @@
 
 .bubbleman{
   width: var(--imahen2);
+  opacity: 50%;
 }
 [class^="bubble"]:not(.bubbleman){
   border:     var(--paddNieto) solid var(--colorInteract);

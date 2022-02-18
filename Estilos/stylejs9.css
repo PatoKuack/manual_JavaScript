@@ -1,6 +1,7 @@
 .ejBefore, .ejAfter{
   background-color: rgba(255, 228, 196, 0.5);
   font-weight: bold;
+  overflow-wrap: break-word;
 }
 .ejBefore{
   box-shadow: 0px 0px 45px 7px rgba(119, 78, 31, 0.5) inset;

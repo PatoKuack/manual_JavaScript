@@ -57,6 +57,7 @@
   margin:           var(--paddHijo) auto;
   padding:          var(--paddHijo);
   font-weight:      bold;
+  overflow-wrap:    break-word;
 }
 
 .interaccion{

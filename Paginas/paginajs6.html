@@ -18,26 +18,58 @@
     <h2>Colecciones de datos.</h2>
     <div>
       <h3>Array.</h3>
-      Es una zona de almacenamiento contiguo que contiene una serie de elementos del mismo tipo.<br>
-      Sus sintaxis es de las siguientes maneras:
+      <p>Es una zona de almacenamiento contiguo que contiene una serie de elementos del mismo tipo.<br/>
+      Sus sintaxis es de las siguientes maneras:</p>
       <span>
-        <b>let <u><i>array-de-valores</i></u> = [ <u><i>valor0</i></u>, <u><i>valor1</i></u> ]</b>
+        <b>let <u><i>array-de-valores</i></u> = [ <u><i>valor0</i></u>, <u><i>valor1</i></u>, <u><i>valor2</i></u> ];</b>
       </span>
-      Con la instrucción <b><i><u>array</u></i>[ <i><u>número-de-valor</u></i> ]</b> se obtiene el valor que esté ubicado en la posición especificada, siendo que el primer valor está en la posición 0, el segundo valor en la posición 1, etc., ejemplo: console.log(menu[0])<br/>
+      <p>Con la instrucción <b><i><u>array</u></i>[ <i><u>número-de-valor</u></i> ]</b> se obtiene el valor que esté ubicado en la posición especificada, siendo que el primer valor está en la posición 0, el segundo valor en la posición 1, etc.</p>
+      <span>
+        <b>let menu = ["huevo", "leche", "pan"];<br/>
+        console.log(menu[0]);</b><br/>
+        <i>// imprime: huevo</i>
+      </span>
+      <h3>Array de objetos.</h3>
+      <p>Un objeto es una colección de diferentes tipos de variables con sus respectivos valores.</p>
       <span>
         <b>let <u><i>array-de-objetos</i></u> = [<br>
-          {</b> // objeto 0<br>
-            <b><u><i>atributo1</i></u> : <u><i>valor1</i></u>,<br>
-            <u><i>atributo2</i></u> : <u><i>valor2</i></u><br>
-          },<br>
-          {</b> // objeto 1<br>
-            <b><u><i>atributo3</i></u> : <u><i>valor3</i></u>,<br>
-            <u><i>atributo4</i></u> : <u><i>valor4</i></u><br>
-          }<br>
+          &emsp;{</b> // objeto 0<br>
+            &emsp;&emsp;<b><u><i>atributo1</i></u> : <u><i>valor1</i></u>,<br>
+            &emsp;&emsp;<u><i>atributo2</i></u> : <u><i>valor2</i></u><br>
+          &emsp;},<br>
+          &emsp;{</b> // objeto 1<br>
+            &emsp;&emsp;<b><u><i>atributo3</i></u> : <u><i>valor3</i></u>,<br>
+            &emsp;&emsp;<u><i>atributo4</i></u> : <u><i>valor4</i></u><br>
+          &emsp;}<br>
           ]</b>
       </span>
-      Con la instrucción <b><i><u>array</u></i>[ <i><u>número-de-conjunto</u></i> ].nombre-de-atributo</b> se obtiene el valor que esté contenido en el atributo especificado y en el objeto ubicado en la posición especificada, siendo que el primer objeto está en la posición 0, el segundo objeto en la posición 1, etc., ejemplo: console.log(libreria[0].nombreLibro)<br/>
-      Se puede escribir directamente en la consola el nombre del array para visualizarlo.
+      <p>Con la instrucción <b><i><u>array</u></i>[ <i><u>número-de-conjunto</u></i> ].nombre-de-atributo</b> se obtiene el valor que esté contenido en el atributo especificado y en el objeto ubicado en la posición especificada, siendo que el primer objeto está en la posición 0, el segundo objeto en la posición 1, etc., ejemplo: console.log(libreria[0].nombreLibro).</p>
+      <p>Se puede escribir directamente en la consola el nombre del array para visualizarlo.</p>
+      <span>
+        <b>let <u><i>aguasFrescas</i></u> = [<br>
+        &emsp;{</b> // objeto 0<br>
+          &emsp;&emsp;<b><u><i>Agua</i></u> : <u><i>"limón"</i></u>,<br>
+          &emsp;&emsp;<u><i>Apariencia</i></u> : <u><i>"tamarindo"</i></u>,<br>
+          &emsp;&emsp;<u><i>Sabor</i></u> : <u><i>"jamaica"</i></u><br>
+        &emsp;},<br>
+        &emsp;{</b> // objeto 1<br>
+          &emsp;&emsp;<b><u><i>Agua</i></u> : <u><i>"jamaica"</i></u>,<br>
+          &emsp;&emsp;<u><i>Apariencia</i></u> : <u><i>"limón"</i></u>,<br>
+          &emsp;&emsp;<u><i>Sabor</i></u> : <u><i>"tamarindo"</i></u><br>
+        &emsp;},<br>
+        &emsp;{</b> // objeto 2<br>
+          &emsp;&emsp;<b><u><i>Agua</i></u> : <u><i>"tamarindo"</i></u>,<br>
+          &emsp;&emsp;<u><i>Apariencia</i></u> : <u><i>"jamaica"</i></u>,<br>
+          &emsp;&emsp;<u><i>Sabor</i></u> : <u><i>"limón"</i></u><br>
+        &emsp;},<br>
+        ]<br/><br/>
+        console.log(aguasFrescas[1]);</b><br/>
+        <i>// imprime el segundo objeto.</i><br/>
+        <b>console.log(Object.keys(aguasFrescas[1]));</b><br/>
+        <i>// imprime un Array con 3 elementos: ["Agua", "Apariencia", "Sabor"]</i><br/>
+        <b>console.log(Object.values(aguasFrescas[1]));</b><br/>
+        <i>// imprime un Array con 3 elementos: ["jamaica", "limón", "Tamarindo"]</i>
+      </span>
     </div>
     <h2>Métodos</h2>
     <div>
@@ -210,6 +242,11 @@
           });<br>
           <em class="coment">// items is ['adieu', 'café', 'communiqué', 'éclair', 'premier', 'réservé']</em><br>
         </b>
+      </span>
+      <p>También se puede utilizar para crear funciones de comparación:</p>
+      <span>
+        <b>let ordenar = <u>array</u>.sort((<u>element1</u>, <u>element2</u>) => (<u>element1</u>.<u>variable</u> < <u>element2</u>.<u>variable</u>) ? 1 : (<u>element1</u>.<u>variable</u> > <u>element2</u>.<u>variable</u>) ? -1 : 0);</b><br/>
+        <i>// Se comparan dos objetos, si el primer elemento es menor al segundo devuelve un 1. Si el primer elemento es mayor que el segundo devuelve un -1. Si son iguales devuelve un 0.</i>
       </span>
     </div>
     <div>

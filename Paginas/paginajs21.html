@@ -31,9 +31,9 @@
         <p>En la página se encuentran dos opciones:</p>
         <ul>
           <li>La LTS que brinda un soporte a todos los features (características) que están añadidos en esa versión y es mejor para entornos de desarrollo y producción.</li>
-          <li>La Current (que es la que se instalará) contiene todos lo features que han salido hasta ahora.</li>
+          <li>La Current (que es la que se descargará e instalará) contiene todos lo features que han salido hasta ahora.</li>
         </ul>
-        <p>Una vez instalado, se procede a abrir el entorno del software que es una terminal de comandos. En la terminal se utilizarán las siguientes instrucciones:</p>
+        <p>Una vez instalado (dando en toda la instalación NEXT), se procede a abrir el entorno del software que es una terminal de comandos. En la terminal se utilizarán las siguientes instrucciones:</p>
         <dl>
           <dt>node -v</dt>
           <dd>Muestra la versión que se tiene de node.</dd>
@@ -48,10 +48,10 @@
     <section class="container">
       <div>
         <h2 class="textCenter">Inicializar proyecto.</h2>
-        <p>Se crea la carpeta que contendrá al proyecto usando el comando <b>mkdir <u>nombre</u></b>. Después se accede a esa carpeta usando el comando <b>cd <u>nombre</u></b>.</p>
+        <p>Se crea la carpeta que contendrá al proyecto usando el comando <b>mkdir <u>nombre</u></b>, después se accede a esa carpeta usando el comando <b>cd <u>nombre</u></b> y ya adentro se ejecutan los siguientes comandos:</p>
         <dl>
           <dt>git init</dt>
-          <dd>Se inicializa el repositorio local del proyecto en github para tener el control de cambios y versiones en nuestro proyecto.</dd>
+          <dd>Inicializa el repositorio local del proyecto en github para tener el control de cambios y versiones en nuestro proyecto.</dd>
           <dt>npm init</dt>
           <dd>
             Crea el archivo package.json con el cual se tendrá una configuración establecida, una descripción del proyecto y ciertos valores que se necesita.
@@ -101,7 +101,7 @@
         <p>Se crea el archivo index.js con el comando <i>touch <u>index.js</u></i> que es el archivo que consumirá los recursos que se han descargado.</p>
         <p>Desde la raíz del proyecto se instalan las dependencias o recursos que se utilizarán en el proyecto.</p>
         <p class="bold">Una dependencia de software es: un paquete, biblioteca, o conjunto de estos, necesarios para que otro paquete pueda instalarse y ejecutarse.</p>
-        <p>Al momento de agregar dependencias se creará una carpeta en el proyecto llamada "node_modules" la cual debe ser ignorada por medio del documento ".gitignore", dentro de este documento se colocará la leyenda: node_modules/</p>
+        <p>Al momento de agregar dependencias se crea automáticamente una carpeta en el proyecto llamada "node_modules", en esta carpeta es donde se instalan los módulos que se agregan al proyecto. Esta carpeta es importante para que el proyecto funcione, pero no debe de ser enviada a ningún repositorio por lo que se debe ignorar apenas se crea. Para ignorarla se agrega en el archivo <b>.gitignore</b> el texto <i>node_modules/</i></p>
         <dl>
           <dt>npm install <u>paquete</u><span class="highlight"> --save-dev</span></dt>
           <dd>Con esta instrucción se instala un paquete y con la palabra anexa "--save" se indica que el paquete se agregará al proyecto que se subirá al servidor, si no se agrega la palabra "--save" no se subirá al servidor. La palabra anexa "-dev" indica que el paquete es necesario en el entorno de desarrollo, si no se agrega la palabra "-dev" se indica que se utilizará el paquete sólo en el entorno local.</dd>
@@ -291,7 +291,7 @@
         <p>Se crea una carpeta llamada <b>bin</b> en la misma carpeta donde se encuentra la "<i>src</i>". En esta carpeta <i>bin</i> se creará el archivo <b>global.js</b> que es en donde se estará definida la configuración para que el paquete que se está creando en este proyecto sea un paquete que se instala de forma global.</p>
         <aside class="exempliGratia">
           &emsp;<i class="coment highlight">// Se establece que es un elemento que se ejecutará dentro del sistema bash.</i><br/>
-          &emsp;#!usr/bin/env node<br/>
+          &emsp;#!/usr/bin/env node<br/>
           &emsp;<i class="coment highlight">// Se crea una variable que pida como requerimiento el archivo index.js</i><br/>
           &emsp;let proyectoPaq = require('../src/index.js');<br/>
           &emsp;<i class="coment highlight">// Se declara la ejecución del paquete:</i><br/>
@@ -311,15 +311,16 @@
         </aside>
         <p>Se prueba el paquete de manera local para garantizar que cumple con el funcionamiento que se desea, para esto se utiliza un recurso de NPM para hacer un link de este proyecto para implementar el paquete en otros proyectos o instalarlo de manera global. Desde la terminal y estando posicionado en la carpeta del proyecto se ejecuta el comando:</p>
         <aside class="exempliGratia">
-          &emsp;sudo npm link
+          <i class="coment highlight"># Si trabajas en una distribución linux, utiliza "sudo".</i><br/>
+          &emsp;<i class="coment">sudo</i> npm link
         </aside>
         <p>Con <i>link</i> se hace una referencia al paquete del proyecto instalándolo en el sistema como si hubiera sido instalado desde los servidores de NPM. Para comprobar se encuentra en el sistema se ejecuta desde la terminal con la palabra reservada definida en el archivo <i>global.js</i> (en este caso en proPaquete).</p>
         <p>Si modificamos nuestro paquete se puede actualizar en el sistema para seguir probando su funcionamiento con la siguiente instrucción:</p>
         <aside class="exempliGratia">
           &emsp;<i class="coment highlight"># Desde la terminal y posicionados en la carpeta del proyecto:</i><br/>
-          &emsp;sudo npm install -g <u>ruta del proyecto</u><br/>
-          &emsp;<i class="coment highlight"># También se puede utilizar una virgulilla:</i><br/>
-          &emsp;sudo npm install -g <u>~</u><br/>
+          &emsp;<i class="coment">sudo</i> npm install -g <u>ruta del proyecto</u><br/>
+          &emsp;<i class="coment highlight"># También se puede utilizar una virgulilla para las distribuciones de linux:</i><br/>
+          &emsp;<i class="coment">sudo</i> npm install -g <u>~</u><br/>
         </aside>
         <p>Para poder mandar el paquete a NPM y poderlo publicar, primero se tiene que crear una cuenta  o iniciar sesión en ella en <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer"> la página de NPM</a>, después se tiene que loggear en esta cuenta desde la terminal con el comando <b>npm adduser</b>, se pedirán nombre de usuario, contraseña e e-mail.</p>
         <p>Para publicar el paquete se utiliza la instrucción <b>npm publish</b> la cual lee la configuración del archivo <i>package.json</i> y establece el manejador de paquetes que sería <i>npmjs.org</i></p>
@@ -331,15 +332,15 @@
           &emsp;<i class="coment highlight"># Ejemplo de un repositorio en GitHub</i><br/>
           &emsp;<i class="coment highlight"># Desde la terminal y posicionados en la carpeta del proyecto:</i><br/>
           &emsp;git init<br/>
-          &emsp;git remote add origin https:github.com/....git
+          &emsp;git remote add origin https://github.com/....git
         </aside>
         <p>Se debe colocar una buena descripción en inglés en el archivo package.json</p>
         <p>Se debe abordar en el archivo package.json la parte de pruebas o test (<a href="/Paginas/paginajs25.html">pruebas unitarias con Jest</a>).</p>
         <p>Una vez construido el proyecto y asignado al repositorio se utiliza el comando <b>npm init</b> para que el proyecto genere en el archivo package.json la sección en donde se encuentra el repositorio, en donde se reportarán los bugs y la página principal del proyecto (también se pueden crear estas secciones en el archivo a mano).</p>
         <p>Después se realiza un commit para actualizar los cambios en el proyecto en el repositorio y se actualiza la versión dependiendo de si es un parche, un cambio menor o uno mayor y se publica de nuevo el paquete para que este disponible la nueva versión con todos sus cambios para los usuarios:</p>
         <aside class="exempliGratia">
-          &emsp;npm versión <span class="highlight">patch | minor | major</span><br/>
-          &emsp;sudo npm install -g npm<br/>
+          &emsp;npm version <span class="highlight">patch | minor | major</span><br/>
+          &emsp;<i class="coment">sudo</i> npm install -g npm<br/>
           &emsp;npm publish<br/>
         </aside>
       </div>
@@ -350,7 +351,10 @@
       <div>
         <h3>Recursos:</h3>
         <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">Buscar paquetes NPM.</a><br/>
-        <a href="https://www.npmjs.com/package/funny-commit" target="_blank" rel="noopener noreferrer">Package: primer commit.</a>
+        <a href="https://www.npmjs.com/package/funny-commit" target="_blank" rel="noopener noreferrer">Package: primer commit.</a><br/>
+        <a href="https://javascript.plainenglish.io/what-the-dependency-types-of-dependencies-in-a-node-js-application-explained-904a5424fbd3" target="_blank" rel="noopener noreferrer">Flags utilizados en instalación de paquetes.</a><br/>
+        <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json" target="_blank" rel="noopener noreferrer">Documentación de npm.</a><br/>
+        
       </div>
     </section>
   </footer>

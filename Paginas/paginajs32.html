@@ -2,28 +2,682 @@
 <html lang="es">
 <head>
   <!-- No guardar cache en navegadores -->
-  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="expires" content="0">
+  <meta http-equiv="Expires" content="0">
   <!-- ------------------- -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs1.css">
-  <link rel="stylesheet" href="../Estilos/stylejs2.css">
-  <title>Postman</title>
+  <link rel="stylesheet" href="../Estilos/stylejs31.css">
+  <title>React</title>
 </head>
-<body>
-  <header></header>
+<body class="body">
+  <header>
+    <section class="container">
+      <h1 class="text-center">Introducción a React.</h1>
+      <p>React facilita la forma de escribir HTML y CSS desde JavaScript utilizando JSX dandole un orden al código (React es más librería que framework).</p>
+      <p>JSX es una sintaxis especial de JavaScript para escribir elementos y componentes de React que se siente como HTML.</p>
+    </section>
+  </header>
   <main>
-    <section>
-      <div class="medio">
-        <h1 class="white">Postman</h1>
-        <div>
-          <p>Con <a href="https://www.postman.com/" target="_blank" rel="noopener noreferrer">Postman</a> podemos ver la documentación de otras APIs de una forma más fácil.</p>
-        </div>
-      </div>
+    <!-- Maquetación con React -->
+    <section class="container">
+      <h2>Maquetación con React.</h2>
+      <h3>Instalación.</h3>
+      <p>Desde la terminal se coloca la instrucción:</p>
+      <code class="idEst">
+        npx create-react-app <u>miProyecto</u>
+      </code>
+      <p><b>npx</b> instala temporalmente las herramientas para ejecutarlas y después eliminarlas de la computadora.</p>
+      <p><b>create-react-app</b> crea un entorno de desarrollo con varios archivos esenciales para un proyecto.</p>
+      <p>
+        <i>Nota:<br/>
+        Si se tiene creada la carpeta donde se alojará el proyecto y se esta posicionada en ella, se escribe el comando:</i> <code>npx create-react-app ./</code>
+      </p>
+      <p>Después para ejecutar el servidor de desarrollo se utiliza la siguiente instrucción:</p>
+      <code class="idEst">
+        npm start
+      </code>
+      <h3>Renderización y código.</h3>
+      <p>Por esta vez, para facilitar la comprención del código, se reducirá el código del archivo <b>index.js</b> a:</p>
+      <code class="idEst">
+        import React from 'react';<br/>
+        import ReactDOM from 'react-dom';<br/>
+        import './index.css';<br/>
+        import App from './App';<br/>
+        ReactDOM.render(<br/>
+        &emsp;&#60;App /&#62;,<br/>
+        &emsp;document.getElementById('root')<br/>
+        );
+      </code>
+      <p>Los componentes son grupos de elementos, reciben propiedades (props) y pueden crear estados o efectos.</p>
+      <p>Los elementos reciben atributos o eventos y (casi siempre) se transforman en etiquetas de HTML.</p>
+      <p>React renderiza un componente llamado <b>App</b> ubicado en el documento <b>App.js</b>. En este archivo se visualiza que por defecto tiene importaciones de imágen y estilos, además tiene una función el cual es el componente App, se sabe que es un componente porque inicia con mayúscula el nombre de la función.</p>
+      <p>El componente App retorna una serie de elementos que tienen la sintaxis JSX que es una combinación de HTML y JavaScript.</p>
+      <code class="idEst">
+        import logo from './logo.svg';<br/>
+        import './App.css';<br/><br/>
+        function App() {<br/>
+        &emsp;return (<br/>
+        &emsp;&emsp;&#60;div className="App"&#62;<br/>
+        &emsp;&emsp;&emsp;&#60;header className="App-header"&#62;<br/>
+        &emsp;&emsp;&emsp;&emsp;&#60;img src={logo} ...
+      </code>
+      <p>En el archivo <b>index.js</b> se pide renderizar el componente App, sin embargo en la página no aparecerá ninguna etiqueta con el nombre "App", esto se debe a que los componentes son invisibles para HTML, pero si lo son para Rect, lo que sí renderiza React son los elementos que estan en los componentes (como el &#60;header&#62;&#60;header/&#62;), estos elementos se transforman en etiquetas (gracias a Babel o algun otro transpilador) al compilar el código.</p>
+      <p>Las importaciones de los archivos .js a los archivos .js no se suelen colocar con la extención por ejemplo: <i>import App from "./App</i> en ese caso "./App" no tiene la extensión .js porque si se modifica la estructura de archivos dentro del proyecto, el código buscará una carpeta llamada App si no encuentra App.js y utilizará el index.js de esa carpeta.</p>
+      <p>En los ejemplos se manejará todo en la raíz de la carpeta <i>src</i>, pero es preferible crear una carpeta para cada componente, ejemplo:</p>
+      <code class="idEst">
+        src<br/>
+        - App<br/>
+        - - App.css<br/>
+        - - index.js<br/>
+        - ComponentButton<br/>
+        - - Button.css<br/>
+        - - index.js<br/>
+        - index.css<br/>
+        - index.js<br/>
+        - .gitignore
+      </code>
+      <p>El archivo index.js que llama al componente proncipal no se guarda en una carpeta porque es el que renderiza la aplicación y el entorno del proyecto lo necesita en la raíz de src.</p>
+      <h3>Propiedades.</h3>
+      <p>Cuando una parte del código esta encerrada entre llaves se transforma en JavaScript, ésto es útil cuando se utlizan variables globales con variables que no son fijas.</p>
+      <p>Para asignarle clases a los elementos, se utiliza <b>className=" "</b> en vez del <b>class=" "</b> de HTML, esto evita confuciones con las clases de JavaScript.</p>
+      <p>Los atributos de los elementos como className=" ", src=" ", title=" ", etc. son considerados como propiedades. Las propiedades de los componentes son lo que serían parámetros o atributos, ejemplo:</p>
+      <code class="idEst">
+        <div class="text-center">src/index.js</div><br/>
+        <span class="highlight">...<br/>ReactDOM.render(<br/>
+        &emsp;&#60;App</span> saludo="Ola k ace?" <span class="highlight">/&#62;</span>,<br/>...
+      </code>
+      <code class="idEst">
+        <div class="text-center">src/App.js</div><br/>
+        <span class="highlight">...<br/>function App(</span>props<span class="highlight">) {<br/>
+          &emsp;return ( ...<br/>
+          &emsp;&#60;a ...&#62;</span><br/>
+          &emsp;&emsp;{props.saludo}<br/>
+          &emsp;<span class="highlight">&#60;/a&#62;<br/>...</span>
+      </code>
+      <p>En el caso anterior se anexará el string "Ola k ace?" en el contenido de la etiqueta &#60;a&#62; &#60;/a&#62;</p>
+      <p>A los componentes también se les pueden agregar una propiedad especial llamada <b>children</b> que permite agregar elementos y propiedades, esta propiedad inserta todo el contenido que se encuentre dentro del componente <b>App</b> del archivo <b>index.js</b>, pero para esto se debe mandar a llamar la propiedad <b>props.children</b> (se utiliza "props" como una convención para utilizar propiedades) dentro del archivo <b>App.js</b> de la siguiente manera:</p>
+      <code class="idEst">
+        <div class="text-center">src/index.js</div><br/>
+        <span class="highlight">
+          ...<br/>
+          ReactDOM.render(<br/>
+        </span>
+        &emsp;&#60;App saludo="holi holilla"&#62;<br/>
+        &emsp;&emsp;&#60;p&#62;<br/>
+        &emsp;&emsp;&emsp;¿Cómo t va?<br/>
+        &emsp;&emsp;&#60;/p&#62;<br/>
+        &emsp;&#60;/App&#62;<span class="highlight">,<br/>
+        &emsp;document.getElementById('root');<br/>
+        );</span>
+      </code>
+      <code class="idEst">
+        <div class="text-center">src/App.js</div><br/>
+        <span class="highlight">
+          ...<br/>
+          function App(</span>props<span class="highlight">) {<br/>
+          &emsp;return ( ...<br/>
+          &emsp;&#60;a ...&#62;</span><br/>
+          &emsp;&emsp;{saludo}<br/>
+          &emsp;&emsp;{props.children}<br/>
+          &emsp;<span class="highlight">&#60;/a&#62;<br/>...</span>
+      </code>
+      <p>Cuando se imorta un componente y este componente tiene una lista, para renderizar los elementos de la lista se debe agregar una propiedad especial llamada <b>key={}</b>, esto ayuda a que React identifique los elementos mutables e inmutables de la lista evitandoq ue renderice elementos que no son modificables.</p>
+      <code class="idEst">
+        <div class="text-center">src/OtroComponente.js</div><br/>
+        <span class="highlight">
+          import React from 'react';<br/>
+          function OtroComponente(</span>props<span class="highlight">){<br/>
+          &emsp;return(<br/>
+          &emsp;&emsp;&#60;li&#62;<br/>
+          &emsp;&emsp;&emsp;&#60;p&#62; El item es: </span>{props.text}<span class="highlight">&#60;/p&#62;<br/>
+          &emsp;&emsp;&#60;/li&#62;<br/>
+          &emsp;);<br/>
+          }<br/>
+          export { OtroComponente };
+        </span>
+      </code>
+      <code class="idEst">
+        <div class="text-center">src/App.js</div><br/>
+        <span class="highlight">
+          import React from 'react';<br/>
+          import { OtroComponente } from './OtroComponente';<br/><br/>
+          const otrosItems = [<br/>
+          &emsp;{text: "Uno", completed: false },<br/>
+          &emsp;{text: "Dos", completed: false },<br/>
+          &emsp;{text: "Tres", completed: false },<br/>
+          ];<br/><br/>
+          function App(){<br/>
+          &emsp;return(<br/>
+          &emsp;&emsp;&#60;ComponenteLista&#62;<br/>
+          &emsp;&emsp;&emsp;{otrosItems.map(</span>otroItem<span class="highlight"> => (<br/>
+          &emsp;&emsp;&emsp;&emsp;&#60;OtroComponente</span> key={otroItem.text} text={otroItem.text}<span class="highlight"> /&#62;<br/>
+          &emsp;&emsp;&emsp;))}<br/>
+          &emsp;&emsp;&#60;/ComponenteLista&#62;<br/>
+          &emsp;);<br/>
+          }
+        </span>
+      </code>
+      <h3>Componente.</h3>
+      <p>Cada componente de React necesita que se le envíe solamente un componente o elemento, por lo que se debe anexar todo el contenido de un componente, elemento (&#60;div&#62; &#60;/div&#62;), elemento vacío (&#60;&#62; &#60;/&#62;) o en el componente &#60;React.Fragment&#62; &#60;/React.Fragment&#62; que se convierte en una etiqueta invisible al renderizarse (es importante colocarle las primeras letras de las palabras en mayúsculas porque es un componente).</p>
+      <p>La desventaja de utilizar div es que se creará un div por cada componente pudiendo crear problemas en el CSS, además de crear código de más.</p>
+      <code class="idEst">
+        <div class="text-center">src/App.js</div><br/>
+        <span class="highlight">
+          ...<br/>
+          function App() {<br/>
+          &emsp;return (<br/>
+        </span>
+        &emsp;&emsp;&#60;React.Fragment&#62;<br/>
+        &emsp;&emsp;&emsp;<span class="highlight">...</span><br/>
+        &emsp;&emsp;&#60;/React.Fragment&#62;<br/>
+        <span class="highlight">
+          &emsp;);
+        </span>
+      </code>
+      <p>Cuando se crea un componente se debe crear su propio archivo en la carpeta <b>src</b> y exportarlo a <b>App.js</b>:</p>
+      <code class="idEst">
+        <div class="text-center">src/CompEjemplo.js</div><br/>
+        <i class="coment">/* En cada componente se importa el método React desde la librería de react */</i><br/>
+        import React from 'react';<br/>
+        function CompEjemplo(){<br/>
+        &emsp;return (<br/>
+        &emsp;&emsp;<i class="coment">/* Se coloca el código a utilizar */</i><br/>
+        &emsp;);<br/>
+        }<br/>
+        <i class="coment">/* Se puede exportar el componente de 2 maneras: */</i><br/>
+        <i class="coment">/* Exportación por default: permite renombrar al componente cuando se importe en el archivo App.js */</i><br/>
+        export default CompEjemplo;<br/>
+        <i class="coment">/* Exportación nombrada: permite definir el nombre del componente al importarlo en el archivo App.js */</i><br/>
+        export { CompEjemplo };<br/>
+      </code>
+      <code class="idEst">
+        <div class="text-center">src/App.js</div><br/>
+        import React from 'react';<br/>
+        <i class="coment">/* Con la exportación por default: */</i><br/>
+        import CompEjDefault from './Compejemplo';<br/>
+        <i class="coment">/* Con la exportación nombrada: */</i><br/>
+        import { CompEjemplo } from './CompEjemplo';
+      </code>
+      <h3>Estilos.</h3>
+      <p>Existen diferentes formas de agregar CSS en un proyecto en React, pero en las formas que implican usar CSS en archivos JavaScript se deben colocar las propiedades sin guiones y con formato <b>camel case</b>, además de que los valores se colocan entre comillas como strings (backgroundColor: 'pink',).</p>
+      <p>Una manera de agregar estilos es directamente desde los archivos .js. Se crea un objeto que contendrá los estilos y éste objeto será colocado en el elemento principal que agrupa todo en el return (no funciona en React.Fragment por ser un elemento invisible en el navegador), ejemplo:</p>
+      <code class="idEst">
+        <span class="highlight">import React from 'react';</span><br/>
+        <span class="highlight">function Component2() {<br/>
+        &emsp;return(</span><br/>
+        &emsp;&emsp;<i class="coment">/* Se tiene que colocar doble llave. */</i><br/>
+        &emsp;&emsp;&#60;div style={ {<br/>
+        &emsp;&emsp;&emsp;backgroundColor: 'rgb(22, 143, 141)',<br/>
+        &emsp;&emsp;&emsp;color: 'aliceblue',<br/>
+        &emsp;&emsp;} }&#62;<br/>
+        &emsp;&emsp;&emsp;...<br/>
+        &emsp;&emsp;&#60;/div&#62;<br/>
+        &emsp;<span class="highlight">);<br/>
+        }</span>
+      </code>
+    <p>Otra manera de agregar estilos en línea similar a la anterior es creando un objeto afuera de la función.</p>
+    <code class="idEst">
+      <span class="highlight">import React from 'react';</span><br/>
+      const estilos = {<br/>
+      &emsp;backgroundColor: "rgb(22, 143, 141)",<br/>
+      }<br/>
+      <span class="highlight">function Component2() {<br/>
+      &emsp;return(</span><br/>
+      &emsp;&emsp;&#60;div style={estilos}&#62;<br/>
+      &emsp;&emsp;&emsp;...<br/>
+      &emsp;&emsp;&#60;/div&#62;<br/>
+      &emsp;<span class="highlight">);<br/>
+      }</span>
+    </code>
+    <p>Otra forma es importando un documento .css el cual se creará en la carpeta <b>src</b> y en éste se utilizará sintaxis normal de CSS, además en el archivo .js se le deben colocar las clases a los elementos con el atributo <b>className=" "</b>, ejemplo:</p>
+    <code class="idEst">
+      <div class="text-center">src/Menu.js</div><br/>
+      <span class="highlight">import React from "react";</span><br/>
+      import "menu.css";<br/>
+      function Menu() {<br/>
+      &emsp;&emsp;<span class="highlight">return(</span><br/>
+      &emsp;&emsp;&#60;nav className="menu"&#62;<br/>
+      &emsp;&emsp;&emsp;<span class="highlight">...</span><br/>
+      &emsp;&emsp;&#60;/nav&#62;<br/>
+      &emsp;<span class="highlight">);</span><br/>
+      }
+    </code>
+    <p>Se pueden definir las clases usando código de JavaScript para manipular las clases de acuerdo a condicionales. Se tiene que utilizar <b>comillas invetidas</b>, ejemplo:</p>
+    <code class="idEst">
+      <div class="text-center">src/FormItems.js</div><br/>
+      <span class="highlight">import React from "react";<br/>
+      function FormItems(</span>props<span class="highlight">) {<br/>
+      &emsp;return(</span><br/>
+      &emsp;&emsp;&#60;li className="class-item"&#62;<br/>
+      <i class="coment">/* Al elemento p se le agregará la clase "class-item__p y además, si la propiedad especificada (props.completed) marca true se le anexará una segunda clase la cual será class-item__completed" */</i><br/>
+      &emsp;&emsp;&emsp;&#60;p className={`class-item__p ${props.completed && 'class-item__completed'}`}&#62;<br/>
+      &emsp;&emsp;&emsp;&emsp;{props.text}<br/>
+      &emsp;&emsp;&emsp;&#60;/p&#62;<br/>
+      &emsp;&emsp;&#60;/li&#62;<br/>
+      &emsp;<span class="highlight">);<br/>
+      }<br/>
+      ...</span>
+    </code>
+    <code class="idEst">
+      <div class="text-center">src/App.js</div><br/>
+      <span class="highlight">
+        ...<br/>
+        &#60;React.Fragment&#62;<br/>
+      </span>
+      &emsp;&#60;Form&#62;<br/>
+      &emsp;&emsp;{listItems.map( item => (<br/>
+      &emsp;&emsp;&emsp;&#60;FormItems<br/>
+      &emsp;&emsp;&emsp;&emsp;key={item.text}<br/>
+      &emsp;&emsp;&emsp;&emsp;text={item.text}<br/>
+      &emsp;&emsp;&emsp;&emsp;completed={item.completed}<br/>
+      &emsp;&emsp;&emsp;/&#62;<br/>
+      &emsp;&emsp;))}<br/>
+      &emsp;&#60;/Form&#62;<br/>
+      <span class="highlight">
+        &#60;/React.Fragment&#62;<br/>
+        ...
+      </span>
+    </code>
+    </section>
+    <!-- Interacción con React -->
+    <section class="container">
+      <h2>Interacción con React.</h2>
+      <h3>Eventos.</h3>
+      <p>Los eventos se declaran en formato camelCase y sus acciones se colocan entre llaves, estas acciones se formulan en forma de función ya que, si se coloca la acción directamente, se ejecutará sin necesidad de activar el evento.</p>
+      <code class="idEst">
+        <div class="text-center">src/FormButton.js</div><br/>
+        <span class="highlight">import React from "react";<br/>
+        import './FormButton.css';<br/>
+        function FormButton() {<br/>
+        &emsp;return(</span><br/>
+        &emsp;&emsp;&#60;button <br/>
+        &emsp;&emsp;&emsp;<span class="highlight">className="form-button"</span><br/>
+        &emsp;&emsp;&emsp;onClick={() => console.log('clic')}<br/>
+        &emsp;&emsp;&#62;<br/>
+        &emsp;&emsp;&emsp;<span class="highlight">Texto de botón</span><br/>
+        &emsp;&emsp;&#60;/button&#62;<br/>
+        &emsp;<span class="highlight">);<br/>
+        }<br/>...</span>
+      </code>
+      <p>También se puede colocar la función del evento en una constante para tener un código más limpio.</p>
+      <code class="idEst">
+        <div class="text-center">src/FormButton.js</div><br/>
+        <span class="highlight">import React from "react";<br/>
+        import './FormButton.css';<br/>
+        function FormButton() {</span><br/><br/>
+        &emsp;const <u>onClickButton</u> = () => {<br/>
+        &emsp;&emsp;console.log('clic');<br/>
+        &emsp;}<br/><br/>
+        &emsp;<span class="highlight">return(<br/>
+        &emsp;&emsp;&#60;button <br/>
+        &emsp;&emsp;&emsp;className="form-button"</span><br/>
+        &emsp;&emsp;&emsp;onClick={<u>onClickButton</u>}<br/>
+        &emsp;&emsp;&#62;<span class="highlight"><br/>
+        &emsp;&emsp;&emsp;&#60;Texto de botón<br/>
+        &emsp;&emsp;&#60;/button&#62;<br/>
+        &emsp;);<br/>
+        }<br/>...</span>
+      </code>
+      <p>Si se mandara un parámetro en la función, se tendría que mandar envuelta en otra función, ya que aunque ya sea una función, si se manda directamente se ejecuta automaticamente la función al renderizar el elemento sin activar el evento.</p>
+      <code class="idEst">
+        <div class="text-center">src/FormButton.js</div><br/>
+        <span class="highlight">import React from "react";<br/>
+        import './FormButton.css';<br/>
+        function FormButton() {</span><br/><br/>
+        &emsp;const onClickButton = (<u>message</u>) => {<br/>
+        &emsp;&emsp;console.log(<u>message</u>);<br/>
+        &emsp;}<br/><br/>
+        &emsp;<span class="highlight">return(<br/>
+        &emsp;&emsp;&#60;button <br/>
+        &emsp;&emsp;&emsp;className="form-button"</span><br/>
+        &emsp;&emsp;&emsp;onClick={() => onClickButton("<u>se ha cliqueado</u>")}<br/>
+        &emsp;&emsp;&#62;<span class="highlight"><br/>
+        &emsp;&emsp;&emsp;&#60;Texto de botón<br/>
+        &emsp;&emsp;&#60;/button&#62;<br/>
+        &emsp;);<br/>
+        }<br/>...</span>
+      </code>
+      <h3>Estados.</h3>
+      <p>Para agregar estados a los componentes que no se crearon como clases, sino como funciones, se utiliza el hook <b>React.useState()</b> este hook requiere dos valores, el valor por default y el valor que sustituirá al original.</p>
+      <p>En el siguiente ejemplo se cambiará el parentesis del <i>return</i> por corchetes para que poder convertirlo en un array y poder mandar más de un elemento separados por comas (aunque también se puede utilizar React.Fragment u algún otro método):</p>
+      <code class="idEst">
+        <div class="text-center">src/FormInput.js</div><br/>
+        <span class="highlight">import React from "react";<br/>
+        import './FormInput.css';<br/>
+        function FormInput() {</span><br/><br/>
+        &emsp;const [myMessage, setMyMessage] = React.useState('Has escrito algo');<br/><br/>
+        &emsp;return[<br/>
+        &emsp;&emsp;&#60;input <br/>
+        &emsp;&emsp;&emsp;<span class="highlight">className="form-input"</span><br/>
+        &emsp;&emsp;&emsp;onChange={() => setMyMessage('Segui escribiendo =B')}<br/>
+        &emsp;&emsp;/&#62;,<br/>
+        &emsp;&emsp;&#60;p&#62;{myMessage}&#60;/p&#62;<br/>
+        &emsp;];<br/>
+        <span class="highlight">}<br/>
+        export { FormInput };</span>
+      </code>
+      <p>Un ejemplo práctico sería que apareciera en otra etiqueta lo que se esta escribiendo en el input:</p>
+      <code class="idEst">
+        <div class="text-center">src/FormInput.js</div><br/>
+        <span class="highlight">import React from "react";<br/>
+        import './FormInput.css';<br/>
+        
+        function FormInput() {</span><br/><br/>
+        &emsp;const [myMessage, setMyMessage] = React.useState('');<br/>
+        &emsp;<i class="coment">/* La siguiente función le asigna a "setMyMessage" el valor que se encuentra en el campo de input */</i><br/>
+        &emsp;const onWriteValueChange = (myEvent) => {<br/>
+        &emsp;&emsp;setMyMessage(myEvent.target.Value);<br/>
+        &emsp;}<br/><br/>
+        &emsp;return[<br/>
+        &emsp;&emsp;&#60;input <br/>
+        &emsp;&emsp;&emsp;<span class="highlight">className="form-input"</span><br/>
+        <i class="coment">/*  &#11088; Para <u>conectar el hook con el elemento</u> input se le asigna en la propiedad "value" el valor original del hook */</i><br/>
+        &emsp;&emsp;&emsp;value={myMessage}<br/>
+        &emsp;&emsp;&emsp;onChange={onWriteValueChange}<br/>
+        &emsp;&emsp;/&#62;,<br/>
+        &emsp;&emsp;<i class="coment">/* Al final se coloca el valor de "myMessage" en el elemento "p" */</i><br/>
+        &emsp;&emsp;&#60;p&#62;{myMessage}&#60;/p&#62;<br/>
+        &emsp;];<br/>
+        <span class="highlight">}<br/>
+        export { FormInput };</span>
+      </code>
+      <p>Ahora, tomando al ejemplo anterior, para compartir los valores del hook con otros componentes se le coloca al componente FormInput dos propiedades (props) que serán los valores que utiliza el hook (React.useState), de esta forma se podrán obtener estos valores desde el componente padre (App) y así poder compartir los valores con otros componentes:</p>
+      <code class="idEst">
+        <div class="text-center">src/FormInput.js</div><br/>
+        <span class="highlight">import React from "react";<br/>
+        import './FormInput.css';</span><br/>
+        <i class="coment">/* Se agrega como propiedades del componente a myMessage y a setMyMessage para que sus valores sean pasados desde el componente padre App */</i><br/>
+        <span class="highlight">function FormInput(</span>{myMessage, setMyMessage}<span class="highlight">) {<br/><br/>
+        &emsp;const onWriteValueChange = (myEvent) => {<br/>
+        &emsp;&emsp;setMyMessage(myEvent.target.Value);<br/>
+        &emsp;}<br/><br/>
+        <i class="coment">/* Se cambian los corchetes de return por parentesis y se elimina el elemento p */</i><br/>
+        &emsp;return</span>(<br/>
+        &emsp;&emsp;<span class="highlight">&#60;input <br/>
+        &emsp;&emsp;&emsp;className="form-input"<br/>
+        &emsp;&emsp;&emsp;value={myMessage}<br/>
+        &emsp;&emsp;&emsp;onChange={onWriteValueChange}<br/>
+        &emsp;&emsp;/&#62;<br/>
+        &emsp;</span>);<br/>
+        <span class="highlight">}<br/>
+        export { FormInput };</span>
+      </code>
+      <p>Después en el componente App se agrega un estado y se mandan las propiedades al componente Form que es llamado dentro del componente App.</p>
+      <code class="idEst">
+        <div class="text-center">src/App.js</div><br/>
+        import { FormInput } from "./FormInput";<br/>
+        <span class="highlight">...<br/>
+        function App() {</span><br/>
+        &emsp;const [myMessage, setMyMessage] = React.useState('');<br/>
+        &emsp;&emsp;&#60;FormInput<br/>
+        &emsp;&emsp;&emsp;myMessage={myMessage}<br/>
+        &emsp;&emsp;&emsp;setMyMessage={setMyMessage}<br/>
+        &emsp;&emsp;/&#62;<br/>
+        <span class="highlight">...<br/>
+        }</span>
+      </code>
+      <h3>Persistencia de datos.</h3>
+      <p><b>local.storage</b> es una herramienta de los navegadores que ayuda a guardar información (en forma de string) de la página, esta información no expira aunque se apague el dispositivo que se utiliza y esta disponible en la web de forma global. Esta herramienta también permite utilizar su información guardada para interactuar con el usuario.</p>
+      <p>Existe otra herramienta para almacenar información, <b>session.storage</b> solo esta disponible en la ventana del navegador actual y si se cierra la ventana se pierde su información.</p>
+      <p>Desde la consola del navegador se puede escribir <b>localStorage</b> para visualizar la información que tiene guardada.</p>
+      <p>Debido a que localStorage solo almacena información en texto, para poder guardar la información que se desee se utiliza una función llamada <b>JSON.stringify()</b>, en ella se colocan los datos que se quieran transformar a string como objetos, arrays o array de objetos, ejemplo: JSON.stringifly([{text: 'mytext', completed: 'false'}])</p>
+      <p>Y si se desea transformar el contenido del localStore a un formato de código como en objetos o en arrays se utiliza la función <b>JSON.parse()</b></p>
+      <p>Para insertar información en el local storage, se utiliza la instrucción <b>localStorage.setItem('<u>variable</u>', '<u>valor</u>')</b>. Como primer parámetro se coloca la variable en forma de string que almacenará el valor y como segundo parámetro se coloca el valor, también en forma de string.</p>
+      <p>Para obtener un parámetro se utiliza la instrucción <b>localStorage.getItem('<u>variable</u>')</b>.</p>
+      <h3>React Hook.</h3>
+      <p>Los React Hooks son como funciones normales, solo que los cambios dentro de los React Hooks le avisan a React que debe hacer un nuevo render del componente; por esto también se utilizan para hacer renders de partes especificas del código dependiendo de algunas condiciones.</p>
+      <p>Los custom hook siempre deben comenzar por la palabra <b>use</b> (ejemplo: useLocalStorage) y como es una funcion debe recibir mínimo 2 parámetros:</p>
+      <ul>
+        <li>El nombre de lo que buscará o creará.</li>
+        <li>El estado inicial de la variable (puede ser un objeto {}, un array [], un string vacío " ", etc.).</li>
+      </ul>
+      <p>Un hook muy útil es <b>React.useEffect()</b>, este hook ejecuta el código cuando la aplicación esta cargada y lista para renderizarse, pero aún no se ha renderizado.</p>
+      <code class="idEst">
+        console.log("Queso");<br/>
+        React.useEffect(<br/>
+        &emsp;console.log("Carne");<br/>
+        );<br/>
+        console.log("Pan");<br/>
+        <i class="coment">
+          --------impresión en consola:--------<br/>
+          Queso<br/>Pan<br/>Carne
+        </i>
+      </code>
+      <p>En el ejemplo anterior se imprime primero Queso y Pan porque React realiza los calculos del código y genera las impresiones en consola y después de realizar los calculos y preparar la aplicación se ejecuta el hook de Effect.</p>
+      <p>Para que este hook no se ejecute siempre que se renderice la aplicación se le coloca una función como primer argumento y como segundo argumento un array que le indicará al hook cuando ejecutarse.</p>
+      <p>Si se coloca un arrray vacío, el hook se ejecutará solo la primera vez que se vaya a renderizar la página (solo se ejecuta una sola vez).</p>
+      <p>Si al array se le coloca un componente, el hook se ejecutará cuando se realice un cámbio en ese componente.</p>
+      <code class="idEst">
+        React.useEffect( () => {<br/>
+        &emsp;<span class="highlight">console.log("Carne");</span><br/>
+        }, [ myComponent ]);<br/>
+      </code>
+      <p>Otro hook parecido es <b>React.useLayoutEffect()</b>, este hook ejecuta el código cuando la aplicación ya se ha renderizado.</p>
+      <h3>React Context.</h3>
+      <p>Es una herramienta de React que permite utilizar providers y consumers para que el estado de los componentes se pueda compartir entre los diferentes componentes de la aplicación, para esto se crea una carpeta en la que se alojará el archivo con el código necesario para compartir estados entre los componentes.</p>
+      <p><b>React.createContext()</b> es una herramienta de React que permite crear contextos los cuales permiten crear providers y consumers.</p>
+      <p><b>&#60;MyContxt.Provider&#62;&#60;/MyContxt.Provider&#62;</b> se utiliza para envolver toda la aplicación del componente de App.js (la etiqueta comienza con letra mayúscula).</p>
+      <p><b>&#60;MyContxt.Consumer&#62;&#60;/MyContxt.Consumer&#62;</b> se utiliza en cualquier lugar de los componentes que requiera información de algún estado compartido (la etiqueta comienza con letra mayúscula).</p>
+      <p>Lo primero que se hace es crear el contexto y el Provider:</p>
+      <code class="idEst">
+        <div class="text-center">src/MyContext/index.js</div><br/>
+        import React from 'react';<br/>
+        const MyContext = React.createContext();<br/>
+        <i class="coment">/* La siguiente función se utiliza para compartir información del provider al consumer. */</i><br/>
+        function MyProvider(props) {<br/>
+        &emsp;return (<br/>
+        &emsp;&emsp;&#60;MyContext.Provider&#62;<br/>
+        &emsp;&emsp;&emsp;<i class="coment">/* Cualquier componente que llame al componente MyProvider lo mandará a props.children y podrá utilizar el consumidor */</i><br/>
+        &emsp;&emsp;&emsp;{props.children}<br/>
+        &emsp;&emsp;&#60;/MyContext.Provider&#62;<br/>
+        &emsp;);<br/>
+        }<br/>
+      </code>
+      <p>Después se colocan los estados y elementos que se compartirán entre componentes y se exporta el Provider:</p>
+      <code class="idEst">
+        <div class="text-center">src/MyContext/index.js</div><br/>
+        import React from 'react';<br/>
+        const MyContext = React.createContext();<br/>
+        function MyProvider(props) {<br/>
+        &emsp;<i class="coment">/* Antes del return se coloca el código que abarcan los estados que se van a compartir (variables, constantes y funciones) */</i><br/>
+        &emsp;return (<br/>
+        &emsp;<i class="coment">/* Para indicarle al Provider cuales son los estado que se compartirán en los componentes, se utiliza la propiedad value */</i><br/>
+        &emsp;&emsp;&#60;MyContext.Provider value={{<br/>
+        &emsp;&emsp;&emsp;<i class="coment">/* Aquí se colocan todas las propiedades que se utilizan en los estados (utilizar sintaxis .js no .jsx) */</i><br/>
+        &emsp;&emsp;}}&#62;<br/>
+        &emsp;&emsp;&emsp;{props.children}<br/>
+        &emsp;&emsp;&#60;/MyContext.Provider&#62;<br/>
+        &emsp;);<br/>
+        }<br/>
+        <i class="coment">/* Se exporta el contexto y el atajo Provider. */</i><br/>
+        export { MyContext, MyProvider };
+      </code>
+      <p>Después se importa el Provider en el archivo App.js (index.js) y </p>
+      <code class="idEst">
+        <div class="text-center">src/App/index.js</div><br/>
+        import { MyProvider } from ../MyContext;<br/>
+        <span class="highlight">
+          import React from 'react';<br/>
+          function App() {<br/>
+          &emsp;return(<br/>
+        </span>
+        &emsp;&emsp;<i class="coment">/* Los componentes o componentes dentro de otros componentes pueden utilizar el Consumer para compartir estados siempre que el componente padre se coloque dentro del Provider: */</i><br/>
+        &emsp;&emsp;&#60;MyProvider&#62;<br/>
+        &emsp;&emsp;&emsp;<span class="highlight">...</span><br/>
+          &emsp;&emsp;&#60;/MyProvider&#62;<br/>
+        <span class="highlight">
+          &emsp;<span>);<br/>
+          }<br/>
+          export default App;
+        </span>
+      </code>
+      <p>Para que un componente pueda consumir un estado guardado dentro del Context, se llama al Consumer; dentro del Consumer se utiliza una sintaxis llamada Render Props que implica enviar el código .jsx dentro de una función:</p>
+      <code class="idEst">
+        &#60;MyContext.Consumer&#62;<br/>
+        &emsp;<i class="coment">/* Se manda a llamar a la propiedad value del componente MyContext.Provider para poder recibir toda su información. */</i><br/>
+        &emsp;{value => {<br/>
+        &emsp;&emsp;return (<br/>
+        &emsp;&emsp;&emsp;<i class="coment">/* Dentro del return se utilizan los componentes que usarán la información de value. */</i><br/>
+        &emsp;&emsp;&emsp;<i class="coment">/* Cada que se utilice un valor de value se utilizará de la siguiente forma: */</i><br/>
+        &emsp;&emsp;&emsp;<span class="highlight">&#60;MyComponent&#62;<br/>
+        &emsp;&emsp;&emsp;&emsp;{</span>value.error<span class="highlight"> ...}<br/>
+        &emsp;&emsp;&emsp;&emsp;{</span>value.loading<span class="highlight"> ...}<br/>
+        &emsp;&emsp;&emsp;&#60;/MyComponent&#62;</span><br/>
+        &emsp;&emsp;);<br/>
+        &emsp;}}<br/>
+        &#60;/MyContext.Consumer&#62;<br/>
+      </code>
+      <p>Si dentro del componente anterior hubiera otro componente, se tendrían que agregar los estados q utilizarán esos componentes hijos en sus respectivas props.</p>
+      <p>Para evitar colocar el value en cada valor que se quiera llamar desde el Context, se insertan los estados directamente (separados por comas) en vez del value:</p>
+      <code class="idEst">
+        &#60;MyContext.Consumer&#62;<br/>
+        &emsp;<i class="coment">/* En vez del value se abre un bloque de llaves y se colocan adentro los estados a utilizar. */</i><br/>
+        &emsp;{{error, loading, ...} => {<br/>
+        &emsp;&emsp;return (<br/>
+        &emsp;&emsp;&emsp;<span class="highlight">&#60;MyComponent&#62;<br/>
+        &emsp;&emsp;&emsp;&emsp;{</span>error <span class="highlight">...}<br/>
+        &emsp;&emsp;&emsp;&emsp;{</span>loading <span class="highlight">...}<br/>
+        &emsp;&emsp;&emsp;&#60;/MyComponent&#62;</span><br/>
+        &emsp;&emsp;);<br/>
+        &emsp;}}<br/>
+        &#60;/MyContext.Consumer&#62;<br/>
+      </code>
+      <p>Una manera más óptima de utilizar el Consumer es llamando a los estados que se utilizarán atravez del hook <b>React.useContext()</b> y así evitar utilizar llamar al componente Consumer</p>
+      <code class="idEst">
+        import { MyContext } from '../MyContext/'<br/>
+        <span class="highlight">
+          ...<br/>
+          function MyComponent(){<br/>
+        </span>
+        &emsp;<i class="coment">/* Se puede utilizar la variable "value" del Provider o directamente colocar los estados que se utilizarán,<br/>
+        &emsp;en vez de:<br/>
+        &emsp;<b>const value = React.useContext(MyContext);</b><br/>
+        &emsp;para evitar llamar a value.error o value.loading se utiliza: */</i><br/>
+        &emsp;const { error, loading, ... } = React.useContext(MyContext);<br/>
+        <span class="highlight">
+          &emsp;&emsp;return (<br/>
+          &emsp;&emsp;&emsp;&#60;AnotherComponent&#62;<br/>
+          &emsp;&emsp;&emsp;&emsp;{error ...}<br/>
+          &emsp;&emsp;&emsp;&emsp;{loading ...}<br/>
+          &emsp;&emsp;&emsp;&#60;/AnotherComponent&#62;<br/>
+          &emsp;&emsp;);<br/>
+        }
+      </span>
+      </code>
+      <p>Este método se utiliza también en cada componente que se encuentre dentro del componente que utilice este hook. Se pueden eliminar los estados que se llamen a traves de los props al utilizar este hook en los componentes hijos.</p>
+    </section>
+    <!-- Modales y formaularios -->
+    <section class="container">
+      <h2>Modales y formularios.</h2>
+      <h3>React portals.</h3>
+      <p>Permiten teletrasportar componentes a un nodo de HTML distinto al nodo donde hace render el resto de la aplicación..</p>
+      <p>React renderiza toda la aplicación gracias al elemento con el id="root" del archivo src/index.js, con los React portals se pueden renderizar los componentes de la página en otro lugar, en otro nodo y aún así se pueden seguir comunicando los estados de los nodos.</p>
+      <code class="idEst">
+        <div class="text-center">src/Modal/index.js</div><br/>
+        import React from 'react';<br/>
+        import ReactDOM from 'react-dom';<br/><br/>
+        function Modal() {<br/>
+        &emsp;return ReactDOM.createPortal(<br/>
+        &emsp;&emsp;<i class="coment">/* Aquí se pueden colocar elementos o componentes para mostrar algo especifico y estatico o algo dinamico que sea reutilisable */</i><br/>
+        &emsp;);<br/>
+        }
+      </code>
+      <p>Después se colocan los argumentos:</p>
+      <ol>
+        <li>En el primer argumento se coloca lo que se mandará en el portal (en el siguiente ejemplo será un children).</li>
+        <li>En el segundo argumento se coloca el nodo del código HTML a donde se mandará el contenido del componente modal.</li>
+      </ol>
+      <code class="idEst">
+        <div class="text-center">src/Modal/index.js</div><br/>
+        <span class="highlight">
+          import React from 'react';<br/>
+          import ReactDOM from 'react-dom';<br/><br/>
+          function Modal(</span>{ children }<span class="highlight">) {<br/>
+          &emsp;return ReactDOM.createPortal(<br/>
+          &emsp;&emsp;</span>children,<br/>
+          &emsp;&emsp;document.getElementById('modal')<span class="highlight"><br/>
+          &emsp;);<br/>
+          }<br/>
+        </span>
+        export { Modal };
+      </code>
+      <code class="idEst">
+        <div class="text-center">public/index.html</div><br/>
+        <span class="highlight">
+          ...<br/>
+          &emsp;&#60;body&#62;<br/>
+          &emsp;&emsp;&#60;noscript&#62;...&#60;/noscript&#62;<br/>
+          &emsp;&emsp;&#60;div id="root"&#62;&#60;/div&#62;<br/>
+        </span>
+        &emsp;&emsp;&#60;div id="modal"&#62;&#60;/div&#62;<br/>
+        <span class="highlight">
+          &emsp;&#60;/body&#62;<br/>
+          &#60;/html&#62;<br/>
+        </span>
+      </code>
+      <p>Una vez exportado se puede importar a otros archivos para poder utilizarlo en otros componentes. Es recomendable utilizar el modal hasta el final de los componentes.</p>
+      <code class="idEst">
+        import { Modal } from "../Modal";<br/>
+        <span class="highlight">import ...<br/>
+        function ...</span><br/>
+        &#60;Modal&#62;<br/>
+        &emsp;&#60;p&#62;¡Código para el modal!&#60;/p&#62;<br/>
+        &#60;/Modal&#62;<br/>
+        <span class="highlight">...</span>
+      </code>
+    </section>
+    <!-- GitHub-pages con React -->
+    <section class="container">
+      <h2>GitHub-pages con React.</h2>
+      <p>Desde la terminal se posicionandose en la raíz del proyecto se utiliza la siguiente instrucción:</p>
+      <code class="idEst">
+        npm install --save-dev gh-pages
+      </code>
+      <p>Esta instrucción ayuda a mandar el código del proyecto a <i>GitHub pages</i> para visualizar su funcionamiento.</p>
+      <p>Después en el archivo <b>package.json</b> se le anexará la instrucción que le indica a la dependencia de desarrollo que se instaló (gh-pages) en donde se debe subir el proyecto:</p>
+      <code class="idEst">
+        <span class="highlight">
+          {<br/>
+          &emsp;...<br/>
+          &emsp;"scripts": {<br/>
+          &emsp;&emsp;...</span>,<br/>
+          &emsp;&emsp;"predeploy": "npm run build",<br/>
+          &emsp;&emsp;"deploy": "gh-pages -d build"<br/>
+          &emsp;&emsp;<i class="coment">/* Para ejecutar el deploy se debe primero ejecutar "build", para ahorrarse una instrucción se utiliza un "pre" */</i><br/>
+          &emsp;&emsp;<i class="coment">/* El "pre___" se ejecutará automáticamente cuando se detecte que se va a ejecutar el comando original, es decir, en este caso si se ejecuta "deploy" se ejecutará automáticamente "predeploy" el cual ejecuta "build" */</i><br/>
+          <span class="highlight">
+          &emsp;},<br/>
+          &emsp;...<br/>
+        </span>
+        <i class="coment">/* Esta parte se agrega al completar la instalación de gh-pages */</i><br/>
+        <span class="highlight">
+          &emsp;"devDependencies": {<br/>
+          &emsp;&emsp;"gh-pages": "^3.2.3"<br/>
+          &emsp;},<br/>
+        </span>
+        <i class="coment">/* ----------------- */</i><br/>
+        &emsp;"homepage": "https://<b><u>user-name en GitHub</u></b>.github.io/<b><u>repository-name del proyecto</u></b>"<br/>
+        <span class="highlight">
+          }<br/>
+        </span>
+      </code>
     </section>
   </main>
+  <footer>
+    <section class="containe">
+      <h3>Referencias:</h3>
+      <p>
+        <a class="link" href="https://platzi.com/blog/tutorial-como-crear-una-animacion-de-carga-de-contenido-tipo-facebook/" target="_blank" rel="noopener noreferrer">Loading skeletons (esqueletos de carga).</a><br/>
+        <a class="link" href="https://skeletonreact.com/" target="_blank" rel="noopener noreferrer">Create React Content Loader.</a><br/>
+        <a class="link" href="https://platzi.com/blog/ui-stack/" target="_blank" rel="noopener noreferrer">5 estados clave para crear interfaces coherentes.</a><br/>
+        <a class="link" href="https://material.io/design/iconography/system-icons.html" target="_blank" rel="noopener noreferrer">Guía sobre diseño de íconos.</a><br/>
+        <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a> -->
+      </p>
+    </section>
+  </footer>
 </body>
 </html>

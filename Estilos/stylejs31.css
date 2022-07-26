@@ -1,41 +1,44 @@
 :root{
   /* COLORS */
   /* https://www.w3.org/TR/css-color-3/#svg-color */
-  --background1:  rgb(0, 157, 168);
-  --background2:  rgb(0, 117, 126);
-  --bgContainer:  rgba(134, 2, 223, 0.3);
-  --bgBorder:     rgb(252, 206, 5);
-  --letterActive: rgba(190, 255, 250, 0.863);
-  --letterColor:  rgba(255, 255, 255, 0.863);
-  --highlight:    pink;
-  --transparent:  transparent;
+  
+  --bg-color:       rgba(22, 143, 141, 0.997);
+  --shadow:         rgb(0, 255, 251);
+  --letter-active:  rgb(126, 255, 255);
+  --letter-color:   rgb(240, 248, 255);
+  --highlight:      rgb(16, 207, 207);
+  --coment:         rgb(255, 192, 203);
+  --transparent:    transparent;
 }
 
 .body{
-  background-image:       radial-gradient(circle, var(--background1) 40%, var(--background2) 40%, var(--background2) 80%, var(--background1) 80%);
+  background-color:       var(--bg-color);
   background-size:        50rem 50rem;
   background-repeat:      repeat;
   background-position:    40% 28%;
-  color:                  var(--letterColor);
+  color:                  var(--letter-color);
 }
 
 .container{
   max-width:        750px;
-  background-color: var(--bgContainer);
-  border:           .3em solid var(--bgBorder);
   border-radius:    10px;
   margin:           1.5em auto;
   padding:          1.2em;
   padding-top:      .5em;
-  box-shadow:       0px 4px 70px -20px var(--bgBorder) inset;
+  box-shadow:       0px 4px 70px -20px var(--shadow) inset;
 }
 
-.exempliGratia{
-  background-color: var(--bgContainer);
-  border:           .2em dotted var(--bgBorder);
+.idEst{
+  display:          block;
+  background-color: darkslategray;
+  border:           .2em dotted rgb(255, 208, 0);
   padding:          .7em;
   font-weight:      bold;
   overflow-wrap:    break-word;
+}
+.coment{
+  color:            var(--coment);
+  font-weight:      normal;
 }
 
 .table tr, .table th, .table td{
@@ -47,6 +50,11 @@
   border: .1em solid var(--letterColor);
 }
 
+.image-default{
+  max-width: 88%;
+  margin: 0 auto;
+  display: block;
+}
 
 
 .link{
@@ -56,7 +64,7 @@
   color:        var(--letterColor);
 }
 
-.bold{
+.font-bold{
   font-weight:  bold;
 }
 .font-normal{
@@ -67,16 +75,13 @@
   color:        var(--highlight);
 }
 
-.textCenter{
+.text-center{
   text-align:   center;
 }
-.marginCenter{
+.margin-center{
   margin-left:  auto;
   margin-right: auto;
 }
-.block{
+.display-block{
   display: block;
-}
-.li-square{
-  list-style-type: square;
 }

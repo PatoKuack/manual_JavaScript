@@ -50,7 +50,12 @@
             <dt>open()</dt>
             <dd>Permite abrir una nueva instancia (ventana) del navegador, pero deben estar permitidos los pop-ups en la configuración del navegador.</dd>
             <span class="consola">
-              window.open('<u>URL</u>', '<u>Nombre de ventana</u>', 'width=<u>200</u>,height=<u>400</u>')
+              window.open('<u>URL</u>', '<u>Nombre de ventana</u>', 'width=<u>200</u>, height=<u>400</u>');
+            </span>
+            <dd>También se puede utilizar para abrir nuevas pestañas con la URL especificada:</dd>
+            <span class="ejemplo">
+              window.open('<u>URL</u>', '<u>_blank</u>');<br/>
+              <i class="coment">// Se puede utilizar en los atributos onclick de los botones.</i>
             </span>
             <dt>close()</dt>
             <dd>Permite cerrar una instancia (ventana) que se haya abierto únicamente con open()</dd>
@@ -86,23 +91,23 @@
           <dd>Es una propiedad de lectura y escritura, devuelve la URL de la página en donde se encuentra el navegador (lectura) o puede redireccionar a una URL especificada (escritura).</dd>
           <span class="consola">
             location.href;<br/>
-            <em class="coment">// Devuelve la URL de la página en donde se encuentra el navegador.</em>
+            <i class="coment">// Devuelve la URL de la página en donde se encuentra el navegador.</i>
             <hr/>
             location.href = '<u>URL</u>';<br/>
-            <em class="coment">// Redirecciona la URL a la especificada en las comillas.</em>
+            <i class="coment">// Redirecciona la URL a la especificada en las comillas.</i>
           </span>
           <dt>host</dt>
           <dd>Devuelve el nombre del dominio y el puerto, también ayuda a saber si una URL es externa o interna.</dd>
           <span class="consola">
             location.host
-            <em class="coment">// Devuelve el dominio y el puerto de la página en donde se encuentra el navegador.</em>
+            <i class="coment">// Devuelve el dominio y el puerto de la página en donde se encuentra el navegador.</i>
             <hr/>
             const links = document.links;<br/>
             for( let link of links ){<br/>
             &emsp;if( link.href.includes( location.host ) ) {<br/>
             &emsp;&emsp;link.style.background = "pink";<br/>
             } }<br/>
-            <em class="coment">// Todos los links internos de la página en donde se encuentre el navegador obtendrán un fondo rosa.</em>
+            <i class="coment">// Todos los links internos de la página en donde se encuentre el navegador obtendrán un fondo rosa.</i>
           </span>
           <dt>hostname</dt>
           <dd>Devuelve únicamente el nombre del dominio.</dd>
@@ -121,17 +126,17 @@
           <dd>Devuelve la ruta interna luego del dominio.</dd>
           <span class="consola">
             location.pathname<br/>
-            <em class="coment">/*<br/>
+            <i class="coment">/*<br/>
             si el navegador está posicionado en:<br/>
             https://ed.team/cursos/js-dom<br/>
             nos devolverá:<br/>
             /cursos/js-dom<br/>
-            */</em>
+            */</i>
             <hr/>
             if(location.pathname.includes('about-me')){<br/>
             &emsp;document.nav.classList.add('highlightAM')<br/>
             }<br/>
-            <em class="coment">// Si el pathname incluye "about-me" se le agregará la clase "highlightAM" al navegador.</em>
+            <i class="coment">// Si el pathname incluye "about-me" se le agregará la clase "highlightAM" al navegador.</i>
           </span>
         </dl>
         <h3>Métodos.</h3>
@@ -192,14 +197,14 @@
         </p>
         <span class="ejemplo">
           if(modernizr.grid) { ... } else { ... }<br/>
-          <em class="coment">// Si está habilitada la característica grid en el navegador ... sino ...</em>
+          <i class="coment">// Si está habilitada la característica grid en el navegador ... sino ...</i>
         </span>
         <p class="contenido">
           El operador <i>in</i> se puede usar para preguntar si una propiedad existe en un objeto, en este caso podría preguntase mediante JavaScript si la propiedad 'Promise' existe en el objeto window.
         </p>
         <span class="ejemplo">
           'Promise' in window
-          <em class="coment">// devuelve un True si existe la propiedad en window o False si no existe.</em>
+          <i class="coment">// devuelve un True si existe la propiedad en window o False si no existe.</i>
         </span>
       </div>
     </section>
@@ -221,16 +226,16 @@
           <dt>setInterval(<u>callback</u>, <u>ms</u>)</dt>
           <dd>Ejecuta una función varias veces con un intervalo indicado en milisegundos.</dd>
           <span class="ejemplo">
-            <em class="coment titCentrado block-centrado">// En HTML</em>
+            <i class="coment titCentrado block-centrado">// En HTML</i>
             &#60;div class="reloj"&#62;&emsp;&#60;/div&#62;
             <hr class="enlace"/>
-            <em class="coment titCentrado block-centrado">// En JavaScript</em>
+            <i class="coment titCentrado block-centrado">// En JavaScript</i>
             console.log(new Date().toLocaleTimeString())<br/>
-            <em class="coment">// Nos imprime la hora, minuto y segundo actuales.</em><br/>
+            <i class="coment">// Nos imprime la hora, minuto y segundo actuales.</i><br/>
             setInterval(() => {<br/>
             &emsp;const reloj = document.getElementById('reloj');
             if(reloj) reloj.textContent = new Date().toLocaleTimeString()<br/>
-            <em class="coment">// Actualiza el reloj.</em><br/>
+            <i class="coment">// Actualiza el reloj.</i><br/>
             }, 1000);<br/>
           </span>
           <dt>clearInterval(<u>función</u>)</dt>
@@ -303,15 +308,15 @@
           <dd>Devuelve los milisegundos transcurridos desde el 1 de enero de 1970 hasta la fecha.</dd>
           <span class="ejemplo">
             let transcurrido = new Date(1969,11,31,18,0,0).getTime();<br/>
-            <em class="coment">// Nos indicará que han pasado 0 milisegundos desde la fecha pivote.</em><br/>
-            <em class="coment">// Tal vez la fecha pivote de 1970/1/1 está en otra zona horaria desfazada 6 horas de la CDMX O.O</em>
+            <i class="coment">// Nos indicará que han pasado 0 milisegundos desde la fecha pivote.</i><br/>
+            <i class="coment">// Tal vez la fecha pivote de 1970/1/1 está en otra zona horaria desfazada 6 horas de la CDMX O.O</i>
           </span>
           <dt>getTimezoneOffset()</dt>
           <dd>Devuelve la diferencia de tu zona horaria al Meridiano de Greenwich que es la referencia de zona horaria para todos los países. Se utiliza para adaptar nuestra zona horaria con el del usuario.</dd>
           <span class="ejemplo">
             const zonaHoraria = new Date().getTimezoneOffset();<br/>
-            <em class="coment">// (yo que vivo en CDMX) me devuelve 300 que es la diferencia entre la zona horaria de referencia para todos los países y mi zona horaria.</em><br/>
-            <em class="coment">// A mi zona horaria le sumaré esos 300 en los minutos para obtener la zona horaria internacional.</em>
+            <i class="coment">// (yo que vivo en CDMX) me devuelve 300 que es la diferencia entre la zona horaria de referencia para todos los países y mi zona horaria.</i><br/>
+            <i class="coment">// A mi zona horaria le sumaré esos 300 en los minutos para obtener la zona horaria internacional.</i>
           </span>
         </dl>
       </div>

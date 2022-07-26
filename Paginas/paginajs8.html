@@ -17,7 +17,8 @@
   <div class="medio">
     <div>
       <h2>Objetos.</h2>
-      Se define como una variable normal y se colocan sus atributos entre llaves, ejemplo:<br>
+      <p>Es una colección de datos relacionados con múltiples variables de diferente tipo y con sus respectivos valores.</p>
+      <p>Se crea como una variable normal y se colocan sus atributos entre llaves, ejemplo:</p>
       <span>
         <b>let <u><i>objeto</i></u> = {<br>
             <u><i>atributo1</i></u> : <u><i>valor1</i></u>,<br>
@@ -41,6 +42,21 @@
         //se manda a llamar la función del atributo del objeto así:<br>
         <b>videojuego.lanzamiento();</b>
       </span>
+      <p>Existen formas más complejas, pero reducidas de obtener datos del objeto:</p>
+      <span>
+        <b>
+          function <u>myFunction</u>(myObject) {<br/>
+          &emsp;for (let myElement in myObject) {<br/>
+          &emsp;&emsp;console.log(`the ${myElement} is: ${myObject[myElement]} =D`);<br/>
+          &emsp;}<br/>
+          }<br/>
+        </b>
+        <i>// imprimirá cada una de las variables con su respectivo valor del objeto especificado.</i>
+      </span>
+      <p>Con la sentencia <b>Object.entries(<u><i>objeto</i></u>)</b> se convierte cada atributo con su respectivo valor en un array y todos los arrays creados por los atributos se guardarán en conjunto dentro de un único array.</p>
+      <p>Con la sentencia <b>Object.entries(<u><i>objeto</i></u>)[<u><i>0</i></u>]</b> se obtiene el primer array del array de arrays, es decir, convierte el primer atributo y su valor en un array, ejemplo: Array [ "atributo1", "valor1" ]</p>
+      <p>Con la sentencia <b>Object.entries(<u><i>objeto</i></u>.<u><i>atributo</i></u>)</b> se convierte cada caracter del atributo especificado en un array y todos los arrays creados por los caracteres se guardarán en conjunto dentro de un único array.</p>
+      <p>Con la sentencia <b>Object.assign(<u><i>objeto1</i></u>, <u><i>objeto2</i></u>)</b> se puede unir los objetos colocados en el parámetro creando un nuevo objeto con todos los atributos y sus valores.</p>
     </div>
     <div>
       <h3>Math.</h3>
@@ -96,9 +112,14 @@
         //uso:<br>
         //los valores colocados llevan comillas si son strings, pero no las llevan si son números o booleanos.<br>
         <b>
-          var <u><i>objeto1</i></u> = new <u><i>función</i></u>("<u><i>valor1</i></u>", <u><i>valor2</i></u>)
+          var <u><i>objeto1</i></u> = new <u><i>función</i></u>("<u><i>valor1</i></u>", <u><i>valor2</i></u>);
         </b>
       </span>
+    </div>
+    <div>
+      <h3>Referencias y ayudas:</h3>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in" target="_blank" rel="noopener noreferrer">Objeto - for ... in</a><br/>
+      <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object#m%C3%A9todos_est%C3%A1ticos" target="_blank" rel="noopener noreferrer">Métodos de los objetos.</a><br/>
     </div>
   </div>
   <script src="../Js/programajs8.js"></script>

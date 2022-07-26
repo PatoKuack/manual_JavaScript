@@ -43,7 +43,7 @@
   max-width:        var(--maxWNormal);
   margin:           var(--paddNormal) auto;
   padding:          var(--paddNormal);
-  background-image: linear-gradient(var(--bckGndNode1)1%, var(--bckGndNode2) 70%);
+  background-image: linear-gradient(var(--bckGndNode1) 1%, var(--bckGndNode2) 70%);
   border:           .2em double var(--colorBorde);
   color:            var(--colorTexto);
   box-shadow:       .5em .5em 1em var(--colorTexto);

@@ -1,0 +1,25 @@
+Se instala node desde https://nodejs.org/en/
+se verifica desde la terminal que este instalado con node -v
+se verifica que npm se haya instalado también con npm -v
+
+
+
+git init
+npm init
+npm set init.author.email "your@email"
+npm set init.author.name "your name"
+npm set init.license "license name"
+
+clase-11:
+npm audit
+
+npm install webpack webpack-cli -D
+npx webpack
+npx webpack --mode production
+
+clase-5
+
+npm install -D babel-loader @babel/core @babel/preset-env @babel/plugin-transform-runtime
+
+clase-6
+

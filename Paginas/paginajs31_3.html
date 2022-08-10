@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Versionado</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Versionado -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Versionado semántico.</h2>
+        <p>En el archivo package.json en la parte de dependencias se tienen tres valores numéricos separados por un punto, éstos valores se encuentran al lado de cada paquete y se establecen dentro del versionado. Cada uno de los dígitos tiene un significado:</p>
+        <ul>
+          <li>Primer dígito: son cambios mayores (versión 1, versión 3, etc.).</li>
+          <li>Segundo dígito: añaden funcionalidades que no representan un gran paso en el paquete como para considerarlo como una nueva versión.</li>
+          <li>Tercer dígito: estos son patch (parches), bug fixes o cambios menores.</li>
+        </ul>
+        <h3>Símbolos.</h3>
+        <dl>
+          <dt>^</dt>
+          <dd>Cuando se mantiene el símbolo ^ (acento circunflejo o caret) dentro de la configuración del package.json, se garantiza que cuando se haga una actualización o un cambio, se actualizan sólo los cambios menores y los parches o bug fix de este paquete. Si se desea mantener el control sobre las actualizaciones garantizando que se queden en cierta versión lo mejor es elimina el caret (^).</dd>
+          <dt>~</dt>
+          <dd>Cuando se coloca el símbolo ~ (virgulilla o tilde) se recibirán actualizaciones o cambios que son parch o bug fixes.</dd>
+          <dt>&#60;</dt>
+          <dd>Se reciben versiones menores a la indicada.</dd>
+          <dt>&#60;=</dt>
+          <dd>Se reciben versiones menores o iguales a la indicada.</dd>
+          <dt>&#62;</dt>
+          <dd>Se reciben versiones mayores a la indicada.</dd>
+          <dt>&#62;=</dt>
+          <dd>Se reciben versiones mayores o iguales a la indicada.</dd>
+        </dl>
+        <aside class="exempliGratia">
+          &emsp;"dependencies": {<br/>
+          &emsp;&emsp;"json-server": "0.15.1",<br/>
+          &emsp;&emsp;"moment": "^2.26.0",<br/>
+          &emsp;&emsp;"date-fns": "~2.14.0",<br/>
+          &emsp;&emsp;"react": "&#62;=16.12.0"<br/>
+          &emsp;}
+        </aside>
+        <p>A partir de la versión 5 de npm se crea un archivo llamado package-lock.json que permite tener configuraciones visibles del proyecto como las versiones, los paquetes y las dependencias que se encuentran dentro del proyecto, se puede compartir este documento con los demás desarrolladores y garantizar que las versiones que se están instalando sean las correctas, también sirve para que el servidor instale de manera automática todas estas dependencias cuando los proyectos estén en la nube.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section class="container">
+      <div>
+        <h3>Recursos:</h3>
+        <a href="https://javascript.plainenglish.io/what-the-dependency-types-of-dependencies-in-a-node-js-application-explained-904a5424fbd3" target="_blank" rel="noopener noreferrer">Flags utilizados en instalación de paquetes.</a><br/>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

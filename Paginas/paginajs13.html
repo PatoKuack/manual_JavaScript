@@ -13,77 +13,74 @@
   <link rel="stylesheet" href="../Estilos/Normalizecss.css">
   <!-- Estilo personalizado -->
   <link rel="stylesheet" href="../Estilos/stylejs11.css">
-  <title>Manipulación del DOM</title>
+  <title>Asincronismo</title>
 </head>
 <body class="cuerpo">
-  <header></header>
-  <main class="contenedor">
-    <p>Existen propiedades, métodos y eventos de JavaScript de cada objeto del HTML para poder manipularlo atravez de JavaScript.</p>
-    <h2>Audio</h2>
-    <p>Se pueden conseguir los valores de un audio que se incruta por medio de JavaScript utilizando el siguiente código en JavaScript:</p>
-    <article class="ejemplo">
-      let myAudio = new Audio();<br/>
-      <i class="coment">// Se indica el recurso de la variable: myAudio</i><br/>
-      myAudio.src = "./audio.mp3";<br/>
-      <i class="coment">// Se puede obtener la duración del audio y muchos otros valores útiles a traves de la variable que se definió como myAudio</i><br/>
-      let trackDuration = myAudio.duration;<br/>
-    </article>
-    <p>Lo malo es que el audio que se incrusta por medio de JavaScript no se puede manipular por medio de la página web, sino que se deberían incrustar más elementos individuales para vincularlos al audio y poder manipularlo.</p>
-    <p>Es más fácil utilizar un audio incrustado en el HTML con la etiqueta  audio y se pueden obtener sus valores casi del mismo modo:</p>
-    <article class="ejemplo">
-      const myAudio = document.querySelector("audio");<br/>
-      let trackDuration = audio.duration;<br/>
-    </article>
-    <h3>Propiedades.</h3>
-    <p>Se pueden obtener varios valores, pero los siguientes son los más utiles:</p>
-    <dl>
-      <dt>.duration</dt>
-      <dt>.volume</dt>
-      <dt>.currentTime</dt>
-      <dt>.ended</dt>
-      <dt>.paused</dt>
-      <dt>.muted</dt>
-      <dt>.controls</dt>
-      <dd>Muestra los controles (play, pausa, tiempo, etc...) del elemento multimedia.</dd>
-      <dt>.loop</dt>
-      <dd>Una vez el audio llegue a su fin, volverá a empezar.</dd>
-    </dl>
-    <h3>Métodos.</h3>
-    <dl>
-      <dt>.play()</dt>
-      <dt>.pause()</dt>
-    </dl>
-    <audio class="block-centrado" src="../Binarios/JungleSouthAmerica.mp3" controls preload="auto"></audio>
-    <h2>Formulario</h2>
-    <h3>Propiedades.</h3>
-    <dl>
-      <dt>action</dt>
-      <dd>Es la acción que queremos realizar cuando se submite un formulario. Se coloca generalmente una dirección de correo o la URL a la que le mandaremos los datos. Corresponde con el atributo ACTION del formulario.</dd>
-      <dt>.elements</dt>
-      <dd>La matriz de elementos contiene cada uno de los campos del formulario.</dd>
-      <dt>.encoding</dt>
-      <dd>El tipo de codificación del formulario.</dd>
-      <dt>.length</dt>
-      <dd>El número de campos del formulario.</dd>
-      <dt>.method</dt>
-      <dd>El método por el que mandamos la información. Corresponde con el atributo METHOD del formulario.</dd>
-      <dt>.name</dt>
-      <dd>El nombre del formulario, que corresponde con el atributo NAME del formulario.</dd>
-      <dt>.target</dt>
-      <dd>La ventana o frame en la que está dirigido el formulario. Cuando se submita se actualizará la ventana o frame indicado. Corresponde con el atributo target del formulario. </dd>
-    </dl>
-    <h3>Métodos.</h3>
-    <dl>
-      <dt>.submit()</dt>
-      <dd>Para hacer que el formulario se submita, aunque no se haya pulsado el botón de submit.</dd>
-      <dt>.reset()</dt>
-      <dd>Para reinicializar todos los campos del formulario, como si se hubiese pulsado el botón de reset.</dd>
-      <dt>.preventDefault()</dt>
-      <dd>Para prevenir q se recargue la página al mandar el formulario.</dd>
-    </dl>
-    <p>El formulario a su vez tiene elementos que tienen sus propias propiedades.</p>
+  <header>
+    <section>
+      <div class="contenedor">
+        <h1 class="titCentrado">Asicronismo</h1>
+        <p class="contenido">JavaScript es síncrono, pero gracias a la ayuda del navegador puede funcionar de forma asíncrona ayudándole a JavaScript a ejecutar más de una tarea a la vez.</p>
+      </div>
+    </section>
+  </header>
+  <main>
+    <!-- Asincronismo -->
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Asincronismo.</h2>
+        <h3>Call Stack.</h3>
+        <p class="contenido">Es la lista de todas las tareas que realiza el programa, la forma en que se mandan a llamar las variables y las funciones. Las tareas en el callstack se apilan de abajo hacia arriba y se llaman desde la última que mandamos a llamar hasta la más antigua. En la base de la pila reposa el Global Object, si una función llama a otra, coloca la función que es llamada encima de la pila.</p>
+        <p class="contenido">Se ejecuta una tarea a la vez (síncronía), una vez que se van ejecutando las tareas se van retirando de la pila y al ejecutar todas las tareas se retira el Global object.</p>
+        <h3>Memory Heap.</h3>
+        <p class="contenido">Es un espacio de memoria compartido para toda la aplicación ubicada en la RAM en donde se almacenan objetos y funciones en bloques de memoria de forma arbitraría y sin un orden, los cuales pueden ser usados múltiples veces a través de una referencia única.</p>
+        <h3>API.</h3>
+        <p class="contenido">Una API es una herramienta que puedes usar para pasar información de una pieza de software a otra, puedes acceder a datos o enviarlos desde tu sitio o tu app, por ejemplo, puedes usar la API Facebook para enviarle el comportamiento de un usuario en tu e-commers y así Facebook te ayude a filtrar usuarios para enviarles publicidad especifica.</p>
+        <h3>Web APIs.</h3>
+        <p class="contenido">Existen API que nos ayudan a manipular el DOM, a manipular el tiempo de respuesta que tienen algunas funciones y a generar peticiones. Éstas API se encuentran en el navegador, con la palabra reservada <b>window</b> o <b>this</b> se pueden visualizar las funciones que ofrece el navegador.</p>
+        <h3>Callback Queue.</h3>
+        <p class="contenido">El código de JavaScript manda las funciones que no le competen hacia al navegador y se apilan en el Callback Queue para irse ejecutando una por una y mientras se ejecutan estas funciones, el código JavaScript ejecuta sus propias tareas. Entonces el Callback Queue es como un área de espera donde el navegador coloca sus tareas pendientes.</p>
+        <h3>Event Loop.</h3>
+        <p class="contenido">Es un watcher u observador que mueve las tareas del Callback Queue (lado del navegador) hacia el Call Stack (lado de JavaScript) una vez que el Callback Queue está vacío para que sus tareas sean ejecutadas.</p>
+        <h3>Garbage Collection.</h3>
+        <p class="contenido">Limpia la memoria de los datos no utilizados para no sobrecargarla y seguir trabajando sin problemas.</p>
+        <p class="contenido">El algoritmo Mark & Sweep hace referencia a cuando un tipo de dato se vuelve inalcanzable para el programa.</p>
+        <p class="contenido">Se toma una raíz la cual es el Objeto Global y a medida que el programa avanza, los objetos van creando o borrando referencias a sus raíces.</p>
+        <p class="contenido">Cuando un objeto se queda con 0 referencias, se dice que el objeto es inalcanzable y es aquí cuando el Garbage Collector entra a hacer su trabajo (Liberar el espacio que usaban esas variables u objetos).</p>
+        <p class="contenido">Desde 2012 los navegadores usan un Garbage Collector basado en este algoritmo, que ha ido recibiendo mejoras en su implementación constantemente.</p>
+        <h3>Stack Overflow.</h3>
+        <p class="contenido">Es cuando tenemos más de las tareas de las que podemos procesar en el Call Stack.</p>
+        <p class="contenido">Se genera cuando el Call Stack se llena completamente (pila de tareas). Esto pasa cuando se genera o se trabaja con bucles infinitos, recursividad y funciones. Entonces este entra en stack overflow.</p>
+        <span>
+          <b>
+            function overflow(){<br/>
+            &emsp;overflow();<br/>
+            }<br/>
+            overflow();
+          </b>
+        </span>
+        <figcaption class="titCentrado">
+          <img class="gif" src="../Binarios/stack_overflow.gif" alt="Ejemplo de desbordamiento graficamente" title="Stack Overflow">
+        </figcaption>
+      </div>
+    </section>
   </main>
-  <footer></footer>
-  <script src="../Js/programajs13.js"></script>
+  <footer class="contenedor">
+    <h3>Referencias:</h3>
+    <p class="contenido">
+      <a class="enlace" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Memory_Management" target="_blank" rel="noopener noreferrer">Gestión de memoria.</a><br/>
+      <a class="enlace" href="https://www.xataka.com/basics/api-que-sirve" target="_blank" rel="noopener noreferrer">¿Qué es una API?</a><br/>
+      <a class="enlace" href="https://medium.com/@ubykuo/event-loop-la-naturaleza-asincr%C3%B3nica-de-javascript-78d0a9a3e03d" target="_blank" rel="noopener noreferrer">Event Loop.</a><br/>
+    </p>
+    <h3>Recursos:</h3>
+    <p class="contenido">
+      <a class="enlace" href="https://github.com/public-apis/public-apis" target="_blank" rel="noopener noreferrer">APIs públicas.</a><br/>
+      <a class="enlace" href="https://rickandmortyapi.com/" target="_blank" rel="noopener noreferrer">API de Rick y Morty.</a><br/>
+      <a class="enlace" href="https://developer.marvel.com/" target="_blank" rel="noopener noreferrer">API de Marvel.</a><br/>
+
+      
+    </p>
+  </footer>
+  <script src="../Js/programajsHelp.js"></script>
 </body>
 </html>

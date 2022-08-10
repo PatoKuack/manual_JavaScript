@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Dependencias</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Instalar dependencias -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Instalación de dependencias.</h2>
+        <p>Lo primero que se hace es crear la carpeta que contendrá el proyecto generalmente llamado <i>src</i>.</p>
+        <p>Se crea el archivo index.js con el comando <i>touch <u>index.js</u></i> que es el archivo que consumirá los recursos que se han descargado.</p>
+        <p>Desde la raíz del proyecto se instalan las dependencias o recursos que se utilizarán en el proyecto.</p>
+        <p class="bold">Una dependencia de software es: un paquete, biblioteca, o conjunto de estos, necesarios para que otro paquete pueda instalarse y ejecutarse.</p>
+        <p>Al momento de agregar dependencias se crea automáticamente una carpeta en el proyecto llamada "node_modules", en esta carpeta es donde se instalan los módulos que se agregan al proyecto. Esta carpeta es importante para que el proyecto funcione, pero no debe de ser enviada a ningún repositorio por lo que se debe ignorar apenas se crea. Para ignorarla se agrega en el archivo <b>.gitignore</b> el texto <i>node_modules/</i></p>
+        <dl>
+          <dt>npm install <u>paquete</u><span class="highlight"> --save-dev</span></dt>
+          <dd>Con esta instrucción se instala un paquete y con la palabra anexa "--save" se indica que el paquete se agregará al proyecto que se subirá al servidor, si no se agrega la palabra "--save" no se subirá al servidor. La palabra anexa "-dev" indica que el paquete es necesario en el entorno de desarrollo, si no se agrega la palabra "-dev" se indica que se utilizará el paquete sólo en el entorno local.</dd>
+        </dl>
+        <dt>npm i <u>paquete</u><span class="highlight"> -S-D</span></dt>
+        <dd>Es una forma abreviada de pedir que se instale una dependencia a npm y que se guarde como parte del proyecto y como una dependencia de desarrollo.</dd>
+        <dt>sudo npm istall -g nodemon</dt>
+        <dd>Permite generar un demonio que se encarga de escuchar un cambio de algún valor sin detener algún proceso que se esté ejecutando. Este paquete funciona de manera global, en todos los archivos.</dd>
+        <p>Demonio: Servicio que corre en segundo plano en el sistema</p>
+        <dt>npm list -g --depth 0</dt>
+        <dd>Muestra un listado de paquetes instalados de forma global (depth es la profundidad que va a buscar dentro de los paquetes).</dd>
+        <dt>npm install <u>paquete</u> -O</dt>
+        <dd>Permite instalar de forma opcional un paquete.</dd>
+        <dt>npm install <u>paquete</u> --dry-run</dt>
+        <dd>Simula la instalación del paquete especificado. Este flag indica que el paquete no va a ser instalado dentro del proyecto, simplemente es una simulación y nos muestra el output como si fuese instalado, después de esto nosotros decidimos si la instalamos o no.</dd>
+        <dt>npm install <u>paquete</u> <span class="highlight">-f | --force</span></dt>
+        <dd>Instala el paquete de forma forzada obligándolo a que sea desde el último recurso o versión y desde el servidor de NPM.</dd>
+        <dt>npm install</dt>
+        <dd>Vuelve a instalar todas las dependencias que están en el package.json</dd>
+        <dt>npm install <u>paquete</u>@<u>versión</u></dt>
+        <dd>Instala el paquete con la versión especificada, esto puede ser necesario cuando tenemos que darle mantenimiento a una app con una versión anterior de algún paquete o quizás la versión actual es beta (ejemplo: npm install json-server@0.15.0).</dd>
+      </div>
+    </section>
+    <!-- Actualizar paquetes -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Actualizar paquetes.</h2>
+        <dl>
+          <dt>npm list</dt>
+          <dd>Muestra un listado de todo lo instalado, los paquetes con su jerarquía.</dd>
+          <dt>npm outdate</dt>
+          <dd>Muestra los paquetes que están desactualizados.</dd>
+          <dt>npm outdate --dd</dt>
+          <dd>"--dd" devuelve u  output o salida más detallada del comando, en este caso muestra los paquetes desactualizados con información más detallada con la versión que se tiene de node y de npm, la sesión que se está utilizando y donde se encuentran ciertas configuraciones del proyecto.</dd>
+          <dt>npm update</dt>
+          <dd>Actualiza los paquetes que no están en la última versión.</dd>
+          <dt>npm install <u>paquete</u>@latest</dt>
+          <dd>Actualiza un paquete específico.</dd>
+        </dl>
+      </div>
+    </section>
+    <!-- Eliminar paquetes -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Eliminar paquetes.</h2>
+        <dl>
+          <dt>npm uninstall <u>paquete</u></dt>
+          <dd>Elimina un paquete de node_modules y del archivo package.json</dd>
+          <dt>npm uninstall <u>paquete</u> --no-save</dt>
+          <dd>Desinstala un paquete de node_modules, pero no del archivo package.json</dd>
+        </dl>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section class="container">
+      <div>
+        <h3>Recursos:</h3>
+        <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">Buscar paquetes NPM.</a><br/>
+        <a href="https://www.npmjs.com/package/funny-commit" target="_blank" rel="noopener noreferrer">Package: primer commit.</a><br/>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

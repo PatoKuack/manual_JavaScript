@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>NPM</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Inicializar -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Inicializar proyecto.</h2>
+        <p>Se crea la carpeta que contendrá al proyecto usando el comando <b>mkdir <u>nombre</u></b>, después se accede a esa carpeta usando el comando <b>cd <u>nombre</u></b> y ya adentro se ejecutan los siguientes comandos:</p>
+        <dl>
+          <dt>git init</dt>
+          <dd>Inicializa el repositorio local del proyecto en github para tener el control de cambios y versiones en nuestro proyecto.</dd>
+          <dt>npm init</dt>
+          <dd>
+            Crea el archivo package.json con el cual se tendrá una configuración establecida, una descripción del proyecto y ciertos valores que se necesita.
+            <p>Al ejecutar este comando se mostrará en la terminal una introducción sobre el archivo y pedirá los siguientes datos:</p>
+          <dl>
+            <dt>package name</dt>
+            <dd>Pide el nombre del proyecto, generalmente es el nombre de la carpeta. Si se da enter sin especificar un nombre se colocará el nombre por default mostrado entre paréntesis.
+              <p>*ATENCÓN, el nombre debe ser original, si existe un paquete con el mismo nombre de otro paquete subido por otro usuario en el manejador de paquetes, marcará un error 403.</p>
+            </dd>
+            <dt>versión</dt>
+            <dd>Pide la versión con la que se inicia el proyecto, generalmente aparece 1.0.0 entre paréntesis que si se da enter se guarda esa versión inicial, aunque se puede colocar manualmente la versión deseada.</dd>
+            <dt>description</dt>
+            <dd>Pide una descripción breve del proyecto.</dd>
+            <dt>entry point</dt>
+            <dd>Pide el punto de acceso al proyecto, se puede dar enter para dejar el archivo que se sugiere entre paréntesis o se coloca la ruta o nombre del archivo que se desee (ejemplo: src/index.js).</dd>
+            <dt>test command</dt>
+            <dd>Pide comando para gestionar los test o scripts que serán importantes al correr comandos específicos a la hora de trabajar en el proyecto. Se puede dar enter sin especificar alguno y configurar esta parte más adelante.</dd>
+            <dt>git repository</dt>
+            <dd>Pide el repositorio de github u otro servicio. Se puede dar enter sin especificar alguno y especificarlo más adelante</dd>
+            <dt>keywords</dt>
+            <dd>Pide las palabras claves del proyecto, las palabras que más se cree que se utilizarán en el proyecto.</dd>
+            <dt>author</dt>
+            <dd>Pide el nombre del autor del proyecto y el correo electrónico entre signos de menor y mayor que &#60;<i>correo@mail.com</i>&#62;</dd>
+            <dt>license</dt>
+            <dd>Pide la licencia que tendrá el proyecto, como la del MIT que permite trabajar con proyectos opensource.</dd>
+          </dl>
+          </dd>
+          <p>Una vez que se termina de ingresar los datos, se muestra una previsualización del archivo package.json. Si todo está correcto con el archivo se da enter o se escribe la palabra <b>yes</b></p>
+        </dl>
+        <p>El archivo package.json es el documento principal donde se especifica toda la configuración y los recursos informativos del proyecto.</p>
+        <dl>
+          <dt>npm set init.author.name "Fulanito"</dt>
+          <dd>Añade en la configuración de npm el nombre del autor.</dd>
+          <dt>npm set init.author.email "correo@mail.com"</dt>
+          <dd>Añade en la configuración de npm el e-mail del autor.</dd>
+          <dt>npm set init.license "MIT"</dt>
+          <dd>Añade en la configuración de npm la licencia deseada.</dd>
+          <dt>npm init <span class="highlight">-y|-yes</span></dt>
+          <dd>Crea un package.json con los datos por default y los añadidos al npm.</dd>
+      </div>
+    </section>
+  </main>
+  <!-- <footer>
+    <section class="container">
+      <div>
+        <h3>Recursos:</h3>
+        <a href="" target="_blank" rel="noopener noreferrer">.</a><br/>
+      </div>
+    </section>
+  </footer> -->
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>
+<!-- A producción, financiamiento -->

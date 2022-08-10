@@ -2,16 +2,48 @@
 <html lang="es">
 <head>
   <!-- No guardar cache en navegadores -->
-  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="expires" content="0">
+  <meta http-equiv="Expires" content="0">
   <!-- ------------------- -->
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pruebas unitarias con Jest</title>
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Webpack</title>
 </head>
-<body>
-  
+<body class="body">
+  <header>
+    <section class="container">
+      <h1 class="textCenter">Webpack</h1>
+      <p>Es un empaquetador de archivos para aplicaciones JavaScript modernas, totalmente configurable y se conoce el origen y todo se compila en un único archivo.</p>
+      <p>Crea una gráfica de todas las dependencias de la aplicación. Tiene un archivo de configuración, denominado webpack.config.js, donde se define todo el proceso de construcción en un objeto JS.</p>
+      <p><i>Webpack permite trabajar con HTML, CSS, JavaScript, archivos estáticos, imágenes y fuentes, también permite gestionar dependencias, ejecutar tareas, convertir archivos y trabajar en módulos obteniendo un código separado en desarrollo para hace pruebas del proyecto y otro en producción y por último permite tener módulos de JS en formato AMD, Common JS y ES15.</i></p>
+      <p>Webpack tiene 4 conceptos clave:</p>
+      <ol>
+        <li><b>Entry</b>: Indica cuál es el punto(s) de entrada.</li>
+        <li><b>Output</b>: Indica cuál es el punto(s) de salida. Este archivo es el bundle o el archivo de salida, sería una caja en donde se empaqueta toda la aplicación, normalmente este archivo final se crea en una carpeta llamada dist.</li>
+        <li><b>Loaders</b>: Realizan transformaciones en los archivos. Permite hacer un bundle de cualquier recurso estático más allá de JavaScript.</li>
+        <li><b>Plugins</b>: Realizan acciones en los archivos. Extienden recursos para añadir configuraciones y particularidades de recursos externos.</li>
+      </ol>
+      <dl>
+        <dt>Module bundlers</dt>
+        <dd>Son herramientas de frontend que permiten usar archivos con módulos JavaScript (entre otras características) y convertirlos a un JavaScript el cual el navegador pueda entender (como webpack).</dd>
+      </dl>
+    </section>
+  </header>
+  <main>
+  </main>
+  <footer class="container">
+    <h3>Rederencias:</h3>
+    <p>
+      <a href="https://youtu.be/vF2emKbaP4M" target="_blank" rel="noopener noreferrer">Clase de uso de webpack (youtube).</a><br/>
+      <a class="link" href="https://www.fayerwayer.com/2020/07/windows-nombres-prohibidos-en-carpetas/#:~:text=Nombres%20prohibidos%20para%20crear%20carpetas%20y%20archivos%20en%20Windows&text=CLOCK%24.,%2C%20LPT7%2C%20LPT8%2C%20LPT9." target="_blank" rel="noopener noreferrer">Nombre para carpeta prohibidos en Windows.</a><br/>
+      <a class="link" href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">Sitio oficial.</a><br/>
+      <a class="link" href="https://webpack.js.org/concepts/" target="_blank" rel="noopener noreferrer">Conceptos básicos.</a><br/>
+      <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer">.</a><br/> -->
+    </p>
+  </footer>
 </body>
 </html>

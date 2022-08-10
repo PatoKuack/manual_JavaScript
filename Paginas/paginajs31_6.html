@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Seguridad</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Seguridad -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Seguridad.</h2>
+        <p>Se debe garantizar de que el proyecto no contenga softwares maliciosos y que cumpla con las normas de trabajo. Para evitar ésto se puede utilizar NPM para analizar el proyecto y detectar vulnerabilidades.</p>
+        <dl>
+          <dt>npm audit</dt>
+          <dd>Sirve para ver las vulnerabilidades del proyecto.</dd>
+          <dt>npm audit --json</dt>
+          <dd>Genera un archivo .json con información más detallada de lo que está pasando con los paquetes instalados.</dd>
+        </dl>
+        <p>Una ves sepamos cual es la vulnerabilidad se procede a actualizar cualquiera de los paquetes.</p>
+        <dl>
+          <dt>npm update <u>paquete</u> --depth 2</dt>
+          <dd>Instala todas las dependencias del archivo en un nivel de profundidas de 2.</dd>
+          <dt>npm audit fix</dt>
+          <dd>Soluciona las vulnerabilidades del proyecto y actualiza a la última versión los paquetes con las dependencias que requieren.</dd>
+          <p>Se puede correr de nuevo el comando <i>npm audit</i> para verificar que ya no haya vulnerabilidades. Si aún hay vulnerabilidades, es recomendable actualizar uno por uno, paquete por paquete.</p>
+        </dl>
+        <p><a href="https://snyk.io/" target="_blank" rel="noopener noreferrer">snyk.io</a> es una herramienta que garantiza estar siempre actualizados con las dependencias del proyecto.</p>
+      </div>
+    </section>
+  </main>
+  <!-- <footer>
+    <section class="container">
+      <div>
+        <h3>Recursos:</h3>
+        <a href="" target="_blank" rel="noopener noreferrer">.</a><br/>
+      </div>
+    </section>
+  </footer> -->
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>
+<!-- A producción, financiamiento -->

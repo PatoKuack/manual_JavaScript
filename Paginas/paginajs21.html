@@ -9,356 +9,357 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs21.css">
-  <title>NPM</title>
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../Estilos/Normalizecss.css">
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
+  <title>DOM</title>
 </head>
-<body class="body">
+<body class="cuerpo">
   <header>
-    <!-- Introducción -->
-    <section class="container">
-      <div>
-        <h1 class="textCenter">NPM.</h1>
-        <p>NPM o node package manager, es un gestor de paquetes, el más popular que tiene JavaScript, donde se encuentra una gran cantidad de recursos para poder implementar en los proyectos. También permite crear paquetes propios y compartirlos con toda la comunidad.</p>
-      </div>
-    </section>
+  <!-- DOM -->
+    <div class="contenedor">
+      <h1 class="titulo titCentrado">DOM</h1>
+      <p class="contenido">
+        Document Object Model (modelo de objetos de documentos), <i>"Document"</i> hace referencia a que todo el HTML es un <i>documento</i>, <i>"Object"</i> hace referencia a que es un elemento independiente con propiedades y métodos, y <i>"Model"</i> hace referencia a que es la estructura en particular que tienen los objetos en HTML.<br/>
+        El DOM es la transformación de nuestro html en objetos entendibles para el navegador.(el DOM no es parte de la especificación de JavaScript, sino que es una web API)<br/>
+        Toda etiqueta de HTML es un objeto en el DOM y cada objeto puede tener hijos (el contenido de una etiqueta se considera un hijo).
+      </p>
+      <h3>CSSOM</h3>
+      <p>
+        CSS object model es la transformación de nuestro css en objetos entendibles para el navegador.
+      </p>
+      <h3>Render Tree</h3>
+      <p>
+        Es la suma del DOM + CSSOM renderizado por nuestro navegador.
+      </p>
+    </div>
   </header>
   <main>
-    <!-- Instalación de Node -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Instalación de Node en Windows.</h2>
-        <p>Para instalar NPM en Windows es necesario ir a la página de node: <a href="https://nodejs.org/es/" target="_blank" rel="noopener noreferrer">nodejs.org</a>, para instalar node y la versión de NPM.</p>
-        <p>En la página se encuentran dos opciones:</p>
-        <ul>
-          <li>La LTS que brinda un soporte a todos los features (características) que están añadidos en esa versión y es mejor para entornos de desarrollo y producción.</li>
-          <li>La Current (que es la que se descargará e instalará) contiene todos lo features que han salido hasta ahora.</li>
-        </ul>
-        <p>Una vez instalado (dando en toda la instalación NEXT), se procede a abrir el entorno del software que es una terminal de comandos. En la terminal se utilizarán las siguientes instrucciones:</p>
+    <section>
+    <!-- Document -->
+      <div class="contenedor">
+        <h2>Document</h2>
+        <p>
+          El DOM parte de un objeto global llamado <b>document</b> que representa un objeto que contiene todo lo que se ve en la página web.<br/>
+          Se pueden acceder rápidamente a determinados elementos del DOM con el objeto <b>document</b> desde la consola del navegador (presionando F12), ejemplo:
+        </p>
         <dl>
-          <dt>node -v</dt>
-          <dd>Muestra la versión que se tiene de node.</dd>
-          <dt>npm -v</dt>
-          <dd>Muestra la versión que se tiene de npm.</dd>
-          <dt>npm install -g npm@latest</dt>
-          <dd>Comprueba si existe una versión más resiente de npm y si es así se instala en el sistema.</dd>
+          <dt>document.<u>head</u></dt>
+          <dd>nos mostrará la etiqueta head que se encuentra en el código HTML de la página y su contenido.</dd>
+          <dt>document.body.<u>classmain</u>.<u>classsection</u></dt>
+          <dd>nos mostrará el contenido de la ruta especificada, el contenido de la clase classsection que está dentro de la clase classmain que está en el body.</dd>
+          <dt>document.<u>charset</u></dt>
+          <dd>nos mostrará el contenido de este atributo, no funciona con todos los atributos como por ejemplo lang.</dd>
+          <dt>document.scripts[0]</dt>
+          <dd>nos mostrará el primer script vinculado en el documento HTML de la página web.</dd>
+          <dt>document.links</dt>
+          <dd>nos devuelve todos los enlaces que haya en la página web.</dd>
+          <dt>document.getSelection()</dt>
+          <dd>este es un método por lo que requiere los paréntesis, este método nos devuelve la ruta en el documento HTML de un fragmento de texto que hayamos seleccionado (sombreado o marcado) en la página web.</dd>
+          <dt>document.getSelection().toString()</dt>
+          <dd>estos métodos juntos nos devuelven únicamente el fragmento de texto que hemos seleccionado (sombreado o marcado) en la página web.</dd>
         </dl>
       </div>
     </section>
-    <!-- Inicializar -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Inicializar proyecto.</h2>
-        <p>Se crea la carpeta que contendrá al proyecto usando el comando <b>mkdir <u>nombre</u></b>, después se accede a esa carpeta usando el comando <b>cd <u>nombre</u></b> y ya adentro se ejecutan los siguientes comandos:</p>
+    <section>
+      <!-- Nodos -->
+      <div class="contenedor">
+        <h2 id="nodoEjemplo">Nodos</h2>
+        <p>
+          Toda etiqueta HTML (excluyendo su contenido) es un elemento. Los nodos son todo elemento, atributos y/o contenido de las etiquetas.
+        </p>
         <dl>
-          <dt>git init</dt>
-          <dd>Inicializa el repositorio local del proyecto en github para tener el control de cambios y versiones en nuestro proyecto.</dd>
-          <dt>npm init</dt>
+          <dt>$0</dt>
           <dd>
-            Crea el archivo package.json con el cual se tendrá una configuración establecida, una descripción del proyecto y ciertos valores que se necesita.
-            <p>Al ejecutar este comando se mostrará en la terminal una introducción sobre el archivo y pedirá los siguientes datos:</p>
-          <dl>
-            <dt>package name</dt>
-            <dd>Pide el nombre del proyecto, generalmente es el nombre de la carpeta. Si se da enter sin especificar un nombre se colocará el nombre por default mostrado entre paréntesis.
-              <p>*ATENCÓN, el nombre debe ser original, si existe un paquete con el mismo nombre de otro paquete subido por otro usuario en el manejador de paquetes, marcará un error 403.</p>
-            </dd>
-            <dt>versión</dt>
-            <dd>Pide la versión con la que se inicia el proyecto, generalmente aparece 1.0.0 entre paréntesis que si se da enter se guarda esa versión inicial, aunque se puede colocar manualmente la versión deseada.</dd>
-            <dt>description</dt>
-            <dd>Pide una descripción breve del proyecto.</dd>
-            <dt>entry point</dt>
-            <dd>Pide el punto de acceso al proyecto, se puede dar enter para dejar el archivo que se sugiere entre paréntesis o se coloca la ruta o nombre del archivo que se desee (ejemplo: src/index.js).</dd>
-            <dt>test command</dt>
-            <dd>Pide comando para gestionar los test o scripts que serán importantes al correr comandos específicos a la hora de trabajar en el proyecto. Se puede dar enter sin especificar alguno y configurar esta parte más adelante.</dd>
-            <dt>git repository</dt>
-            <dd>Pide el repositorio de github u otro servicio. Se puede dar enter sin especificar alguno y especificarlo más adelante</dd>
-            <dt>keywords</dt>
-            <dd>Pide las palabras claves del proyecto, las palabras que más se cree que se utilizarán en el proyecto.</dd>
-            <dt>author</dt>
-            <dd>Pide el nombre del autor del proyecto y el correo electrónico entre signos de menor y mayor que &#60;<i>correo@mail.com</i>&#62;</dd>
-            <dt>license</dt>
-            <dd>Pide la licencia que tendrá el proyecto, como la del MIT que permite trabajar con proyectos opensource.</dd>
-          </dl>
+            es una herramienta en la "consola" del navegador que nos permite llamar un elemento seleccionado (sombreado) previamente en la pestaña "elementos" del inspector.
           </dd>
-          <p>Una vez que se termina de ingresar los datos, se muestra una previsualización del archivo package.json. Si todo está correcto con el archivo se da enter o se escribe la palabra <b>yes</b></p>
+          <dt><u>$0</u>.nodeName</dt>
+          <dd>
+            nos devuelve en consola los caracteres en mayúscula de la etiqueta llamada con $0 o de alguna otra que especifiquemos, esto es muy útil para validar si el usuario hizo clic sobre un enlace o título.
+          </dd>
+          <dt><u>$0</u>.childNodes[<u>0</u>]</dt>
+          <dd>
+            nos devuelve el primer nodo hijo del documento HTML o del nodo que especifiquemos.
+          </dd>
+          <dt><u>$0</u><b>.nodeType</b></dt>
+          <dd>
+            nos devuelve en consola un número <u>del 1 al 12</u> que identifica el tipo de nodo (o sea la etiqueta llamada con $0).
+          </dd>
         </dl>
-        <p>El archivo package.json es el documento principal donde se especifica toda la configuración y los recursos informativos del proyecto.</p>
-        <dl>
-          <dt>npm set init.author.name "Fulanito"</dt>
-          <dd>Añade en la configuración de npm el nombre del autor.</dd>
-          <dt>npm set init.author.email "correo@mail.com"</dt>
-          <dd>Añade en la configuración de npm el e-mail del autor.</dd>
-          <dt>npm set init.license "MIT"</dt>
-          <dd>Añade en la configuración de npm la licencia deseada.</dd>
-          <dt>npm init <span class="highlight">-y|-yes</span></dt>
-          <dd>Crea un package.json con los datos por default y los añadidos al npm.</dd>
+        <hr class="enlace">
+        <h3>Tipos de nodos</h3>
+        <p>
+          Existen <a class="enlace" targer="_blank" href="https://developer.mozilla.org/es/docs/Web/API/Node/nodeType" title="tipos y ejemplos">12 tipos de nodo</a> de los cuales, algunos se han ido quedando en desuso y los navegadores ya no los reconocen.<br/>
+          Los tipos de nodos más importantes son:
+          <ul>
+            <li>1: ELEMENT_NODE</li>
+            <li>2: ATTRIBUTE_NODE</li>
+            <li>3: TEXT_NODE</li>
+            <li>8: COMMENT_NODE</li>
+          </ul>
+        </p>
       </div>
-    </section>
-    <!-- Instalar dependencias -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Instalación de dependencias.</h2>
-        <p>Lo primero que se hace es crear la carpeta que contendrá el proyecto generalmente llamado <i>src</i>.</p>
-        <p>Se crea el archivo index.js con el comando <i>touch <u>index.js</u></i> que es el archivo que consumirá los recursos que se han descargado.</p>
-        <p>Desde la raíz del proyecto se instalan las dependencias o recursos que se utilizarán en el proyecto.</p>
-        <p class="bold">Una dependencia de software es: un paquete, biblioteca, o conjunto de estos, necesarios para que otro paquete pueda instalarse y ejecutarse.</p>
-        <p>Al momento de agregar dependencias se crea automáticamente una carpeta en el proyecto llamada "node_modules", en esta carpeta es donde se instalan los módulos que se agregan al proyecto. Esta carpeta es importante para que el proyecto funcione, pero no debe de ser enviada a ningún repositorio por lo que se debe ignorar apenas se crea. Para ignorarla se agrega en el archivo <b>.gitignore</b> el texto <i>node_modules/</i></p>
+      <!-- Seleccionar nodos -->
+      <div class=contenedor>
+        <h2>Seleccionar nodos</h2>
+        <p>
+          Para seleccionar nodos existen varias formas pero hay 3 muy importantes:
+        </p>
         <dl>
-          <dt>npm install <u>paquete</u><span class="highlight"> --save-dev</span></dt>
-          <dd>Con esta instrucción se instala un paquete y con la palabra anexa "--save" se indica que el paquete se agregará al proyecto que se subirá al servidor, si no se agrega la palabra "--save" no se subirá al servidor. La palabra anexa "-dev" indica que el paquete es necesario en el entorno de desarrollo, si no se agrega la palabra "-dev" se indica que se utilizará el paquete sólo en el entorno local.</dd>
+          <dt>document.getElementById('__')</dt>
+          <dd>
+            Nos devuelve un único elemento del documento del DOM colocando como parámetro el id del elemento buscado, gracias a que selecciona el elemento por medio de una referencia única es muy eficiente para el rendimiento del código en la página.
+          </dd>
+          <span class="ejemplo">
+            const elementoEj = document.getElementById('nodoEjemplo');<br/>
+            <em class="coment">//se guarda la selección en una variable</em><br/>
+            let elemEj1 = elementoEj.nodeName;<br/>
+            <em class="coment">//se guarda el resultado que devuelve el objeto en una nueva variable para imprimirla o utilizarla</em><br/>
+            console.log(`nodeName: ${elemEj1}`);
+          </span>
+          <dt>document.querySelector('__') o element.querySelector('__')</dt>
+          <dd>
+            El elemento devuelto puede venir del documento (el nivel más alto del DOM) o de un elemento, en sus parámetros se colocan selectores CSS (h2, #id > .class).
+          </dd>
+          <span class="ejemplo">
+            const selectorEj = document.querySelector('#nodoEjemplo');<br/>
+            let selecEj2 = selectorEj.childNodes[0];<br/>
+            console.log(`childNodes: ${selecEj2}`);
+          </span>
+          <dt>document.querySelectorAll('__') o element.querySelectorAll('__')</dt>
+          <dd>Nos devuelve una lista de elementos (no un Array) conformada por nodos que pueden venir del documento (el nivel más alto del DOM) o de un elemento, en sus parámetros se colocan selectores CSS (ul li:nth-child(2), #id, .class)</dd>
+          <span class="ejemplo">
+            const selectorAllEj = document.querySelectorAll('#nodoEjemplo');<br/>
+            let selecAllEj3 = selectorAllEj[0].nodeType;<br/>
+            console.log(`nodeType: ${selecAllEj3}`);
+          </span>
         </dl>
-        <dt>npm i <u>paquete</u><span class="highlight"> -S-D</span></dt>
-        <dd>Es una forma abreviada de pedir que se instale una dependencia a npm y que se guarde como parte del proyecto y como una dependencia de desarrollo.</dd>
-        <dt>sudo npm istall -g nodemon</dt>
-        <dd>Permite generar un demonio que se encarga de escuchar un cambio de algún valor sin detener algún proceso que se esté ejecutando. Este paquete funciona de manera global, en todos los archivos.</dd>
-        <p>Demonio: Servicio que corre en segundo plano en el sistema</p>
-        <dt>npm list -g --depth 0</dt>
-        <dd>Muestra un listado de paquetes instalados de forma global (depth es la profundidad que va a buscar dentro de los paquetes).</dd>
-        <dt>npm install <u>paquete</u> -O</dt>
-        <dd>Permite instalar de forma opcional un paquete.</dd>
-        <dt>npm install <u>paquete</u> --dry-run</dt>
-        <dd>Simula la instalación del paquete especificado. Este flag indica que el paquete no va a ser instalado dentro del proyecto, simplemente es una simulación y nos muestra el output como si fuese instalado, después de esto nosotros decidimos si la instalamos o no.</dd>
-        <dt>npm install <u>paquete</u> <span class="highlight">-f | --force</span></dt>
-        <dd>Instala el paquete de forma forzada obligándolo a que sea desde el último recurso o versión y desde el servidor de NPM.</dd>
-        <dt>npm install</dt>
-        <dd>Vuelve a instalar todas las dependencias que están en el package.json</dd>
-        <dt>npm install <u>paquete</u>@<u>versión</u></dt>
-        <dd>Instala el paquete con la versión especificada, esto puede ser necesario cuando tenemos que darle mantenimiento a una app con una versión anterior de algún paquete o quizás la versión actual es beta (ejemplo: npm install json-server@0.15.0).</dd>
+        <p>otra forma de seleccionar:</p>
+        <dl>
+          <dt>document.getElementsByTagName('__')</dt>
+          <dd>Nos devuelve una lista (no Array) de puros elementos.</dd>
+        </dl>
+        <p>
+          Existen objetos que nos permiten utilizar CSS desde el código JavaSript, por ejempo:
+        </p>
+        <dl>
+          <dt><u>nodo</u>.style.<u>background = "yellow"</u></dt>
+          <dd>
+            nos permite ingresar a las propiedades CSS y agregárselas al nodo especificado, en este caso se seleccionó la propiedad background.
+          </dd>
+        </dl>
+        <hr class="enlace"/>
+        <h3>Colecciones de nodos <small>(lista -> array)</small>.</h3>
+        <p>
+          Para convertir una lista de Nodos a un Array, se utilizan <b>Spread Opeators</b> (...) que convierte a cada elemento de la lista como un elemento único, es necesario colocarla entre corchetes, ejemplo:
+        </p>
+        <span class="ejemplo">
+          const nodeList = [...document.querySelectorAll('dt')]
+        </span>
+        <p>
+          Una forma más segura y recomendada de convertir una lista de Nodos a un Array, es con el prototipo <b>Array</b> y el método <b>from</b> así se indica que se cree un array desde la lista que se le pasa como parámetro. 
+        </p>
+        <span class="ejemplo">
+          const dataTitle = Array.from(document.getElementsByTagName('dt'));<br/>
+          dataTitle.map(adicion => adicion.classList.add('negrita'));<br/>
+          <em class="coment">
+            //se agregó, desde java script, la clase "negrita" a todas las etiquetas "dt" del documento HTML
+          </em>
+        </span>
+        <span class="ejemplo">
+          const nodeList = Array.from(document.querySelectorAll('dt'))<br/><br/>
+          <em class="coment">/* Ejemplo de uso utilizando <b>.trim</b> para eliminar espacios en la búsqueda de contenido y <b>.remove</b> para <u>eliminar el resultado del DOM</u>: */</em><br/><br/>
+          nodeList.map( eliminar => {<br/>
+            if(eliminar.textContent.trim().toUpperCase() === 'OBJECT') {<br/>
+            eliminar.remove()<br/>
+            }<br/>
+          })
+        </span>
+        <p>
+          Otra forma para convertir una lista de Nodos a un Array es utilizando un <b>for(of)</b>, ejemplo:
+        </p>
+        <span class="ejemplo">
+          const nodeList = (document.querySelectorAll('dt'))<br/>
+          for(let eliminar of nodeList) {<br/>
+            if(eliminar.textContent.trim().toUpperCase() === 'OBJECT') {<br/>
+              eliminar.remove()<br/>
+            }<br/>
+          }
+        </span>
       </div>
     </section>
-    <!-- Actualizar paquetes -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Actualizar paquetes.</h2>
+    <section>
+      <!-- Atributos -->
+      <div class="contenedor">
+        <h2 class="atributoClass">Atributos</h2>
         <dl>
-          <dt>npm list</dt>
-          <dd>Muestra un listado de todo lo instalado, los paquetes con su jerarquía.</dd>
-          <dt>npm outdate</dt>
-          <dd>Muestra los paquetes que están desactualizados.</dd>
-          <dt>npm outdate --dd</dt>
-          <dd>"--dd" devuelve u  output o salida más detallada del comando, en este caso muestra los paquetes desactualizados con información más detallada con la versión que se tiene de node y de npm, la sesión que se está utilizando y donde se encuentran ciertas configuraciones del proyecto.</dd>
-          <dt>npm update</dt>
-          <dd>Actualiza los paquetes que no están en la última versión.</dd>
-          <dt>npm install <u>paquete</u>@latest</dt>
-          <dd>Actualiza un paquete específico.</dd>
+          <dt>setAttribute( '_', '_' )</dt>
+          <dd>
+            Se utiliza para definir un atributo del elemento especificado colocando en su parámetro dos valores, el tipo de atributo que se desea y el valor, ejemplo:
+            <span class="ejemplo">
+              const attribEj = document.querySelector('h2.atributoClass');<br/>
+              console.log(attribEj);<br/>
+              attribEj.setAttribute('id', 'atributoId');
+            </span>
+          </dd>
+          <dt>getAttribute( '_' )</dt>
+          <dd>
+            Se utiliza para obtener el atributo del elemento especificado colocando en su parámetro el tipo de atributo que se desea (id, class, value), ejemplo:
+            <span class="ejemplo">
+              var attribGet = attribEj.getAttribute('id');<br/>
+              console.log(`Se colocó un id "${attribGet}"`);<br/>
+              console.log(attribEj);
+            </span>
+          </dd>
+          <dt>value</dt>
+          <dd>
+            Se utiliza en los inputs de formulario para obtener el valor introducido por un usuario.
+          </dd>
+          <dt>id</dt>
+          <dd>
+            Se utiliza en casi todo, ejemplo:
+            <span class="ejemplo">
+              const attribEj2 = document.getElementById('atributoId');<br/>
+              attribEj.id = "attribId";<br/>
+              var attribGet2 = attribEj.getAttribute('id');<br/>
+              console.log(`Se modificó el id por "${attribGet2}"`);<br/>
+              console.log(attribEj);<br/>
+              <em class="coment">//se cambió el id de 'atributoId' a 'attribId'</em>
+            </span>
+          </dd>
+        </dl>
+        <hr class="enlace"/>
+        <h3 class="clsLst">classList</h3>
+        <p>Devuelve una lista de clases si se utiliza sola, pero tiene 3 métodos para darle otras funcionalidades:</p>
+        <dl>
+          <dt>classList.add()</dt>
+          <dd>
+            Añade clases al elemento especificado colocando la o las clases como parámetros.
+            <span class="ejemplo">
+              const claseEj = document.querySelector('h3.clsLst');<br/>
+              claseEj.classList.add('momOso', 'dadoso', 'babyoso');<br/>
+              console.log(claseEj);<br/>
+              <em class="coment">//se agregó a mamá, papá y bebé osos</em>
+            </span>
+          </dd>
+          <dt>classList.remove()</dt>
+          <dd>
+            Elimina clases al elemento especificado colocando la o las clases como parámetros.
+            <span class="ejemplo">
+              claseEj.classList.remove('momOso', 'dadoso');<br/>
+              console.log(claseEj);<br/>
+              <em class="coment">//se eliminó a mamá y papá osos</em>
+            </span>
+          </dd>
+          <dt>classList.toggle()</dt>
+          <dd>
+            Añade clases al elemento especificado si la clase introducida en los parámetros no existe o elimina la clase si ya existe en el elemento.
+            <span class="ejemplo">
+              claseEj.classList.toggle('babyoso');<br/>
+              claseEj.classList.toggle('ricitosOro');<br/>
+              console.log(claseEj);<br/>
+              <em class="coment">//se eliminó a bebé oso y después se agregó a ricitos de oro</em>
+            </span>
+          </dd>
+        </dl>
+        <em>
+          Siempre se debe validar la existencia de los elementos, ejemplo:<br/>
+          <i>if(<u>elemento</u>){<u>código</u>}</i>
+        </em>
+      </div>
+    </section>
+    <section>
+      <!-- Contenido -->
+      <div class="contenedor">
+        <h2 id="tcont"><ejemplo>Contenido</ejemplo></h2>
+        <dl>
+          <dt>textContent</dt>
+          <dd>Devuelve solo texto, el contenido del elemento especificado, ejemplo:</dd>
+          <span class="ejemplo">
+            const contenidoEj = document.querySelector('#tcont');<br/>
+            console.log(contenidoEj.textContent);
+          </span>
+          <dt>innerHTML</dt>
+          <dd>Devuelve HTML, lo que contenga la etiqueta especificada junto con elementos hijos o nietos, ejemplo:</dd>
+          <span class="ejemplo">
+            console.log(contenidoEj.innerHTML);
+          </span>
+          <dt>outerHTML</dt>
+          <dd>Devuelve HTML, toda la etiqueta especificada junto con sus atributos y contenido, ejemplo:</dd>
+          <span class="ejemplo">
+            console.log(contenidoEj.outerHTML);
+          </span>
+          <p>Ejemplo utilizando los métodos desde el script:</p>
+          <span class="ejemplo">
+            const title = document.querySelector('h2')<br/>
+            title.innerHTML = 'Hello < em >bear < /em >'<br/>
+            <em class="coment">//desde el script, le coloca al h2 el conenido "Hello <i>bear</i>"</em><br/>
+            <em class="coment">//en cambio si usamos textContent aparecería "Hello < em >Bear < /em >"</em>
+          </span>
         </dl>
       </div>
     </section>
-    <!-- Eliminar paquetes -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Eliminar paquetes.</h2>
+    <section>
+      <!-- Crear elementos -->
+      <div class="contenedor">
+        <h2>Crear elementos</h2>
         <dl>
-          <dt>npm uninstall <u>paquete</u></dt>
-          <dd>Elimina un paquete de node_modules y del archivo package.json</dd>
-          <dt>npm uninstall <u>paquete</u> --no-save</dt>
-          <dd>Desinstala un paquete de node_modules, pero no del archivo package.json</dd>
+          <dt>document.createElement('_')</dt>
+          <dd>Crea un elemento <u>en memoria</u> (es decir, no aparece en la página web) vacío colocando entre sus parámetros la etiqueta HTML, para ingresarle un contenido, se debe utilizar el nombre de la constante y asignarle un textContent o un innertHTML y para ingresarle una clase o id se debe asignarle a la constante un classList.add o un setAtribute, ejemplo:</dd>
+          <span class="ejemplo">
+            const animal = document.createElement('div');<br/>
+            animal.textContent = 'Pejelagarto'<br/>
+            animal.classList.add('reptilia');<br/>
+            animal.id='oviparidad';<br/>
+            console.log(animal.outerHTML);
+          </span>
+          <dt>document.<i>elemento</i>.appendChild(<i>elemento</i>)</dt>
+          <dd>Inserta el elemento especificado en los parámetros en algún lugar del DOM, y lo inserta como el último hijo del elemento especificado antes del método, esto sirve para colocar datos que se personalicen en el momento dentro de la página web, ejemplo:</dd>
+          <span class="ejemplo">
+            document.body.appendChild(animal);
+          </span>
+          <p class="interaccion" id="interact1">Ejemplo de colocación de información con una interacción:<br/>
+          ¿Te llamas <span id="interact2"></span>?</p>
+          <span class="ejemplo">
+            var interact3 = prompt('Ingresa tu nombre en la consola', "ej: Peter Pan");<br/>
+            <em class="coment">//cuadro emergente que pide datos</em><br/>
+            const interact4 = document.createElement('em');<br/>
+            <em class="coment">//crea elemento (etiqueta) em</em><br/>
+            const interact5 = document.getElementById('interact1');<br/>
+            <em class="coment">//busca el elemento con el id = "interact1"</em><br/>
+            interact4.textContent = interact3;<br/>
+            <em class="coment">//inserta el dato del cuadro emergente en el elemento em</em><br/>
+            if(interact5 && interact5.querySelector('#interact2')){<br/>
+              interact5.querySelector( '#interact2' ).appendChild(interact4);<br/>
+            }<br/>
+            <em class="coment">//valida si existe el elemento y su hijo, en donde se colocará el em con el dato<br/>
+            //si existe inserta el em al final de la etiqueta correspondiente</em>
+          </span>
         </dl>
-      </div>
-    </section>
-    <!-- Versionado -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Versionado semántico.</h2>
-        <p>En el archivo package.json en la parte de dependencias se tienen tres valores numéricos separados por un punto, éstos valores se encuentran al lado de cada paquete y se establecen dentro del versionado. Cada uno de los dígitos tiene un significado:</p>
-        <ul>
-          <li>Primer dígito: son cambios mayores (versión 1, versión 3, etc.).</li>
-          <li>Segundo dígito: añaden funcionalidades que no representan un gran paso en el paquete como para considerarlo como una nueva versión.</li>
-          <li>Tercer dígito: estos son patch (parches), bug fixes o cambios menores.</li>
-        </ul>
-        <h3>Símbolos.</h3>
-        <dl>
-          <dt>^</dt>
-          <dd>Cuando se mantiene el símbolo ^ (acento circunflejo o caret) dentro de la configuración del package.json, se garantiza que cuando se haga una actualización o un cambio, se actualizan sólo los cambios menores y los parches o bug fix de este paquete. Si se desea mantener el control sobre las actualizaciones garantizando que se queden en cierta versión lo mejor es elimina el caret (^).</dd>
-          <dt>~</dt>
-          <dd>Cuando se coloca el símbolo ~ (virgulilla o tilde) se recibirán actualizaciones o cambios que son parch o bug fixes.</dd>
-          <dt>&#60;</dt>
-          <dd>Se reciben versiones menores a la indicada.</dd>
-          <dt>&#60;=</dt>
-          <dd>Se reciben versiones menores o iguales a la indicada.</dd>
-          <dt>&#62;</dt>
-          <dd>Se reciben versiones mayores a la indicada.</dd>
-          <dt>&#62;=</dt>
-          <dd>Se reciben versiones mayores o iguales a la indicada.</dd>
-        </dl>
-        <aside class="exempliGratia">
-          &emsp;"dependencies": {<br/>
-          &emsp;&emsp;"json-server": "0.15.1",<br/>
-          &emsp;&emsp;"moment": "^2.26.0",<br/>
-          &emsp;&emsp;"date-fns": "~2.14.0",<br/>
-          &emsp;&emsp;"react": "&#62;=16.12.0"<br/>
-          &emsp;}
-        </aside>
-        <p>A partir de la versión 5 de npm se crea un archivo llamado package-lock.json que permite tener configuraciones visibles del proyecto como las versiones, los paquetes y las dependencias que se encuentran dentro del proyecto, se puede compartir este documento con los demás desarrolladores y garantizar que las versiones que se están instalando sean las correctas, también sirve para que el servidor instale de manera automática todas estas dependencias cuando los proyectos estén en la nube.</p>
-      </div>
-    </section>
-    <!-- Scripts -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Scripts.</h2>
-        <p>Los scripts en NPM son comandos que pueden ser establecidos para ejecutarlos de forma nativa dentro de nuestra terminal con el fin de obtener salidas específicas. Se puede crear la cantidad de scrips que se desee.</p>
-        <aside class="exempliGratia">
-          &emsp;"scripts": {<br/>
-            &emsp;&emsp;"build": "webpack --mode production",<br/>
-            &emsp;&emsp;"hola": "node"<br/>
-          &emsp;}
-        </aside>
-        <p>Para ejecutar estos scripts se utiliza desde la terminal la instrucción: <b>npm run <u><i>script</i></u></b></p>
-        <p>También se puede especificar scripts con el prefijo “pre” que se ejecutarán automáticamente antes del comando que que se ejecutó. Por ejemplo, si se define el comando build y prebuild, cuando se corra <i>npm run build</i>, el comando <i>prebuild</i> se ejecutará primero. Esto sirve para poder ejecutar tareas que hagan algún tipo de preparación necesaria para correr el comando principal. Sin embargo, hay que hacer notar que si el comando pre falla (retorna un valor que no es 0) el comando principal no se ejecutará. Si el proceso de preparación no se realiza de forma exitosa, puede que genere problemas al querer ejecutar la tarea principal.</p>
-        <p>En algunas ocasiones, sin embargo, la tarea previa puede fallar sin que eso afecte la ejecución de la tarea principal. En esos casos se puede usar <i>|| exit 0</i> para retornar 0:</p>
-        <aside class="exempliGratia">
-          &emsp;"presass-build": "(rm css/*.css; rm css/*.css.map) || exit 0",<br/>
-          &emsp;"build": "webpack --mode production",<br/>
-        </aside>
-      </div>
-    </section>
-    <!-- Solución de problemas -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Solución de problemas.</h2>
-        <p>Cuando se trabaja con proyectos que están usando NPM aparece una gran cantidad de posibles errores. Estos errores pueden ser desde la configuración, desde el sistema operativo, por espacios, por no haber configurado correctamente GitHub, no haber establecido bien los datos del package, haber dejado un typo o algún elemento extraño dentro de esta configuración, así como una serie de errores que pueden generarse sin estar ligados directamente a NPM.</p>
-        <p>Para solucionar estos errores se debe leer detenidamente lo que nos imprime la consola y si la instrucción fue correctamente escrita.</p>
-        <p>En caso de que los archivos de node_module no estén bien instalados, se tenga un valor corrupto o se tenga una versión anterior, se puede eliminar la carpeta o limpiar el cache existente.</p>
-        <aside class="exempliGratia">
-          <i class="coment highlight"># Para limpiar el cache del sistema:</i><br/>
-          &emsp;npm cache clean --force<br/>
-          <i class="coment highlight"># Para verificar que se limpió:</i><br/>
-          &emsp;npm cache verify
-        </aside>
-        <aside class="exempliGratia">
-          <i class="coment highlight"># Para eliminar la carpeta node_modules:</i><br/>
-          &emsp;rm -rf node_modules<br>
-          <i class="coment highlight"># Para reinstalar todas la dependencias:</i><br>
-          &emsp;npm install
-        </aside>
-        <aside class="exempliGratia">
-          <i class="coment highlight"># Otra alternativa para eliminar de forma segura una carpeta (sobre todo en sistemas Window) es instalando el siguiente paquete con permisos de administrador:</i><br/>
-          &emsp;sudo npm install -g rimraf<br/>
-          <i class="coment highlight"># Después se elimina la carpeta node_modules:</i><br/>
-          &emsp;rimraf node_modules<br/>
-          <i class="coment highlight"># Y se instala de nuevo paquetes</i><br/>
-          &emsp;npm install<br/>
-        </aside>
-      </div>
-    </section>
-    <!-- Seguridad -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Seguridad.</h2>
-        <p>Se debe garantizar de que el proyecto no contenga softwares maliciosos y que cumpla con las normas de trabajo. Para evitar ésto se puede utilizar NPM para analizar el proyecto y detectar vulnerabilidades.</p>
-        <dl>
-          <dt>npm audit</dt>
-          <dd>Sirve para ver las vulnerabilidades del proyecto.</dd>
-          <dt>npm audit --json</dt>
-          <dd>Genera un archivo .json con información más detallada de lo que está pasando con los paquetes instalados.</dd>
-        </dl>
-        <p>Una ves sepamos cual es la vulnerabilidad se procede a actualizar cualquiera de los paquetes.</p>
-        <dl>
-          <dt>npm update <u>paquete</u> --depth 2</dt>
-          <dd>Instala todas las dependencias del archivo en un nivel de profundidas de 2.</dd>
-          <dt>npm audit fix</dt>
-          <dd>Soluciona las vulnerabilidades del proyecto y actualiza a la última versión los paquetes con las dependencias que requieren.</dd>
-          <p>Se puede correr de nuevo el comando <i>npm audit</i> para verificar que ya no haya vulnerabilidades. Si aún hay vulnerabilidades, es recomendable actualizar uno por uno, paquete por paquete.</p>
-        </dl>
-        <p><a href="https://snyk.io/" target="_blank" rel="noopener noreferrer">snyk.io</a> es una herramienta que garantiza estar siempre actualizados con las dependencias del proyecto.</p>
-      </div>
-    </section>
-    <!-- Uso de paquetes NPM -->
-    <section class="container">
-      <div>
-        <h3 class="textCenter">Uso de paquetes NPM</h3>
-        <p>Los paquetes que se instalan y sobre todo de los que dependerá nuestro proyecto deben de tener un buen soporte, buenas actualizaciones y haber sido ampliamente testeados por muchos usuarios.</p>
-        <p>Si se desea verificar el código del paquete se debe abrir el archivo index.js en el repositorio de github.</p>
-        <p>En <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">esta página</a> se puede buscar un paquete y revisar su versión, última actualización, numero de descargas y más. También se puede verificar cuantas dependencias tiene el paquete, las dependencias son los paquetes que utiliza un paquete para funcionar y al instalar un paquete puede que se tengan que instalar varios más por estas dependencias y por las dependencias de las dependencias.</p>
-        <p>Para poder utilizar el paquete en un proyecto se debe hacer de la siguiente forma:</p>
-        <aside class="exempliGratia">
-          &emsp;const <u>función</u> = require('<u>nombre-del-paquete</u>');<br/>
-          &emsp;<u>función</u>( <u>parámetros</u> );
-        </aside>
-      </div>
-    </section>
-    <!-- Crear paquetes -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Creación de paquetes.</h2>
-        <p>Primero se debe crear la carpeta donde se alojará el proyecto y desde la terminal se posiciona en esa carpeta. Aún desde la terminal se inicializa el repositorio en git (git init), se inicializa la configuración del proyecto con NPM (npm init) y se abre el editor de código.</p>
-        <p>En el editor se crea por buenas prácticas una carpeta en donde se alojará el código creado, generalmente esta se llama <b>src</b> y dentro de esta carpeta se crea el documento <b>index.js</b> que es donde se alojará el código:</p>
-        <aside class="exempliGratia">
-          &emsp;<i class="coment highlight">// Se crea el código del proyecto:</i><br/>
-          &emsp;const proyectoPaquete = () => {...}<br/>
-          &emsp;<i class="coment highlight">// Se exporta:</i><br/>
-          &emsp;module.exports = { proyectoPaquete }
-        </aside>
-        <p>Se crea una carpeta llamada <b>bin</b> en la misma carpeta donde se encuentra la "<i>src</i>". En esta carpeta <i>bin</i> se creará el archivo <b>global.js</b> que es en donde se estará definida la configuración para que el paquete que se está creando en este proyecto sea un paquete que se instala de forma global.</p>
-        <aside class="exempliGratia">
-          &emsp;<i class="coment highlight">// Se establece que es un elemento que se ejecutará dentro del sistema bash.</i><br/>
-          &emsp;#!/usr/bin/env node<br/>
-          &emsp;<i class="coment highlight">// Se crea una variable que pida como requerimiento el archivo index.js</i><br/>
-          &emsp;let proyectoPaq = require('../src/index.js');<br/>
-          &emsp;<i class="coment highlight">// Se declara la ejecución del paquete:</i><br/>
-          &emsp;proyectoPaq.proyectoPaquete();<br/>
-        </aside>
-        <p>Desde el archivo <i>package.json</i> se creará al final del documento un apartado llamado <b>bin</b> en donde se agregará la configuración para llamar al paquete registrando la palabra que se utilizará para llamarlo desde el archivo <i>global.js</i></p>
-        <p>Para que sea un paquete global se coloca en "true" el valor "preferGlobal".</p>
-        <aside class="exempliGratia">
-          &emsp;&emsp;...<br/>
-          &emsp;&emsp;"author": "... &#60;...&#62;",<br/>
-          &emsp;&emsp;"license": "...",<br/>
-          &emsp;&emsp;"bin": {<br/>
-          &emsp;&emsp;&emsp;"proPaquete": "./bin/global.js"<br/>
-          &emsp;&emsp;},<br/>
-          &emsp;&emsp;"preferGlobal": true<br/>
-          &emsp;}
-        </aside>
-        <p>Se prueba el paquete de manera local para garantizar que cumple con el funcionamiento que se desea, para esto se utiliza un recurso de NPM para hacer un link de este proyecto para implementar el paquete en otros proyectos o instalarlo de manera global. Desde la terminal y estando posicionado en la carpeta del proyecto se ejecuta el comando:</p>
-        <aside class="exempliGratia">
-          <i class="coment highlight"># Si trabajas en una distribución linux, utiliza "sudo".</i><br/>
-          &emsp;<i class="coment">sudo</i> npm link
-        </aside>
-        <p>Con <i>link</i> se hace una referencia al paquete del proyecto instalándolo en el sistema como si hubiera sido instalado desde los servidores de NPM. Para comprobar se encuentra en el sistema se ejecuta desde la terminal con la palabra reservada definida en el archivo <i>global.js</i> (en este caso en proPaquete).</p>
-        <p>Si modificamos nuestro paquete se puede actualizar en el sistema para seguir probando su funcionamiento con la siguiente instrucción:</p>
-        <aside class="exempliGratia">
-          &emsp;<i class="coment highlight"># Desde la terminal y posicionados en la carpeta del proyecto:</i><br/>
-          &emsp;<i class="coment">sudo</i> npm install -g <u>ruta del proyecto</u><br/>
-          &emsp;<i class="coment highlight"># También se puede utilizar una virgulilla para las distribuciones de linux:</i><br/>
-          &emsp;<i class="coment">sudo</i> npm install -g <u>~</u><br/>
-        </aside>
-        <p>Para poder mandar el paquete a NPM y poderlo publicar, primero se tiene que crear una cuenta  o iniciar sesión en ella en <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer"> la página de NPM</a>, después se tiene que loggear en esta cuenta desde la terminal con el comando <b>npm adduser</b>, se pedirán nombre de usuario, contraseña e e-mail.</p>
-        <p>Para publicar el paquete se utiliza la instrucción <b>npm publish</b> la cual lee la configuración del archivo <i>package.json</i> y establece el manejador de paquetes que sería <i>npmjs.org</i></p>
-        <p>En la página web de NPM, en una sección llamada "packages" en la parte de la cuenta, se puede encontrar el paquete</p>
-        <p>Después de loggear el paquete ya se puede descargar y utilizar por cualquiera que tenga NPM instalado, pero se deben implementar algunos atributos en el paquete para que sea óptimo para otros usuarios como crear un buen README.md, conectarlo a un repositorio y mantener actualizado el paquete.</p>
-        <p>En el README.md se explica lo que hace el paquete, como se instala, los comandos que contiene y una invitación a que contribuyan a mejorar el proyecto. El README.md debe estar en inglés.</p>
-        <p>Una de las opciones que muestran los paquetes una vez que están publicados es la del repositorio, los errores que tiene, si alguien los reportó y las correcciones que se le han hecho al proyecto. Es por eso que es importante conectar el proyecto con un repositorio en la nube.</p>
-        <aside class="exempliGratia">
-          &emsp;<i class="coment highlight"># Ejemplo de un repositorio en GitHub</i><br/>
-          &emsp;<i class="coment highlight"># Desde la terminal y posicionados en la carpeta del proyecto:</i><br/>
-          &emsp;git init<br/>
-          &emsp;git remote add origin https://github.com/....git
-        </aside>
-        <p>Se debe colocar una buena descripción en inglés en el archivo package.json</p>
-        <p>Se debe abordar en el archivo package.json la parte de pruebas o test (<a href="/Paginas/paginajs25.html">pruebas unitarias con Jest</a>).</p>
-        <p>Una vez construido el proyecto y asignado al repositorio se utiliza el comando <b>npm init</b> para que el proyecto genere en el archivo package.json la sección en donde se encuentra el repositorio, en donde se reportarán los bugs y la página principal del proyecto (también se pueden crear estas secciones en el archivo a mano).</p>
-        <p>Después se realiza un commit para actualizar los cambios en el proyecto en el repositorio y se actualiza la versión dependiendo de si es un parche, un cambio menor o uno mayor y se publica de nuevo el paquete para que este disponible la nueva versión con todos sus cambios para los usuarios:</p>
-        <aside class="exempliGratia">
-          &emsp;npm version <span class="highlight">patch | minor | major</span><br/>
-          &emsp;<i class="coment">sudo</i> npm install -g npm<br/>
-          &emsp;npm publish<br/>
-        </aside>
+        <hr  class="enlace"/>
+        <p>Si se desea solamente colocar texto dentro de HTML desde Java Script, se recomienda usar la instrucción .innerText="<u><i>contenido</i></u>" que puede agregar texto y sobre escribir ese mismo texto si se desea agregar otro texto diferente a diferencia de la creación de un elemento que necesita recargar la página web para actualizar el texto, de lo contrario se acumularían los elementos creados.</p>
+        <span class="ejemplo">
+          const <u><i>variable</i></u> = document.getElementById("<u><i>element_id</i></u>");<br/>
+          <em class="coment">//busca el elemento por medio de su Id en HTML en donde se desea colocar un texto.</em>
+          <u><i>variable</i></u>.innerText = <u><i>text_add</i></u>;<br>
+          <em class="coment">//inserta el texto en el elemento deseado.</em>
+        </span>
       </div>
     </section>
   </main>
+  <section>
+    <!-- Referencias -->
+    <div class="contenedor">
+      Referencias:<br/>
+      <a class="enlace" targer="_blank" href="https://developer.mozilla.org/es/docs/Web/API/Node/nodeType">Tipos de nodos y sus ejemplos</a><br/>
+      <a class="enlace" target="_blank" href="https://es.stackoverflow.com/questions/22538/diferencia-entre-queryselector-queryselectorall-getelementbyid-getelementbyta">Explicación de selecciones</a>
+    </div>
+  </section>
   <footer>
-    <section class="container">
-      <div>
-        <h3>Recursos:</h3>
-        <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">Buscar paquetes NPM.</a><br/>
-        <a href="https://www.npmjs.com/package/funny-commit" target="_blank" rel="noopener noreferrer">Package: primer commit.</a><br/>
-        <a href="https://javascript.plainenglish.io/what-the-dependency-types-of-dependencies-in-a-node-js-application-explained-904a5424fbd3" target="_blank" rel="noopener noreferrer">Flags utilizados en instalación de paquetes.</a><br/>
-        <a href="https://docs.npmjs.com/cli/v8/configuring-npm/package-json" target="_blank" rel="noopener noreferrer">Documentación de npm.</a><br/>
-        
-      </div>
-    </section>
+    
   </footer>
-  <script src="../Js/programajsHelp2.js"></script>
+  <script src="../Js/programajs11.js"></script>
+  <script src="../Js/programajsHelp.js"></script>
 </body>
 </html>
-<!-- A producción, financiamiento -->

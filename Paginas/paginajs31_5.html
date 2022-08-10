@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Solución de problemas</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Solución de problemas -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Solución de problemas.</h2>
+        <p>Cuando se trabaja con proyectos que están usando NPM aparece una gran cantidad de posibles errores. Estos errores pueden ser desde la configuración, desde el sistema operativo, por espacios, por no haber configurado correctamente GitHub, no haber establecido bien los datos del package, haber dejado un typo o algún elemento extraño dentro de esta configuración, así como una serie de errores que pueden generarse sin estar ligados directamente a NPM.</p>
+        <p>Para solucionar estos errores se debe leer detenidamente lo que nos imprime la consola y si la instrucción fue correctamente escrita.</p>
+        <p>En caso de que los archivos de node_module no estén bien instalados, se tenga un valor corrupto o se tenga una versión anterior, se puede eliminar la carpeta o limpiar el cache existente.</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight"># Para limpiar el cache del sistema:</i><br/>
+          &emsp;npm cache clean --force<br/>
+          <i class="coment highlight"># Para verificar que se limpió:</i><br/>
+          &emsp;npm cache verify
+        </aside>
+        <aside class="exempliGratia">
+          <i class="coment highlight"># Para eliminar la carpeta node_modules:</i><br/>
+          &emsp;rm -rf node_modules<br>
+          <i class="coment highlight"># Para reinstalar todas la dependencias:</i><br>
+          &emsp;npm install
+        </aside>
+        <aside class="exempliGratia">
+          <i class="coment highlight"># Otra alternativa para eliminar de forma segura una carpeta (sobre todo en sistemas Window) es instalando el siguiente paquete con permisos de administrador:</i><br/>
+          &emsp;sudo npm install -g rimraf<br/>
+          <i class="coment highlight"># Después se elimina la carpeta node_modules:</i><br/>
+          &emsp;rimraf node_modules<br/>
+          <i class="coment highlight"># Y se instala de nuevo paquetes</i><br/>
+          &emsp;npm install<br/>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <!-- <footer>
+    <section class="container">
+      <div>
+        <h3>Recursos:</h3>
+        <a href="" target="_blank" rel="noopener noreferrer">.</a><br/>
+      </div>
+    </section>
+  </footer> -->
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>
+<!-- A producción, financiamiento -->

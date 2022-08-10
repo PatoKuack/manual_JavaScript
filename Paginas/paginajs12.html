@@ -6,393 +6,685 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
   <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <link rel="stylesheet" href="../Estilos/stylejs9.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- normalize css -->
-  <link rel="stylesheet" href="../Estilos/Normalizecss.css">
-  <!-- Estilo personalizado -->
-  <link rel="stylesheet" href="../Estilos/stylejs11.css">
-  <link rel="stylesheet" href="../Estilos/stylejs12.css">
-  <title>Eventos</title>
+  <title>ECMAScript6+</title>
 </head>
-<body class="cuerpo" id="anochecer">
-  <header class="contenedor">
-    <h1 class="titulo titCentrado">Eventos</h1>
+<body>
+  <div class="medio">
+    <h2>ECMAScript6+</h2>
+    <div>
+      <p>ECMA es una institución que dicta estándares o funcionalidades que deben adaptarse o añadirse a los engines de Js. Puesto que Js es un lenguaje interpretado y con muchos motores que lo interpretan/compilan, se vio la necesidad de hacer un estándar que todos esos motores siguieran, para tener consistencia en nuestro desarrollo a lo largo de todos los navegadores.</p>
+      <p>ECMAScript es la especificación del lenguaje JavaScript propuesto por ECMA Internacional.</p>
+      <p>JavaScript es un lenguaje de programación o de secuencias de comandos que permite implementar funciones complejas en páginas web, este lenguaje utiliza las especificaciones propuestas por ECMA, que van siendo añadidas a ECMAScript cada año a partir del 2015, cuando fue lanzado ES6.</p>
+      <p>La especificación ECMA-262 de ECMASCRIPT es un manual de más de 800 páginas que muestra todo acerca del lenguaje JavaScript.</p>
+    </div>
+    <div>
+      <p>En ECMAScript 6 se agregaron varias características:</p>
+      <h3>Parámetros por defecto.</h3>
+      <p>Permiten establecer los valores por defecto que se le pasan a una función.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejDefault" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeDefault">
+        function newFunction(name, age){<br/>
+        var name = name || 'Fulanito';<br/>
+        var age = age || 18;<br/>
+        console.log(name, age);<br/>
+        }<br/>
+        newfunction(); <em class="coment">// imprime los valore por defecto: Fulanito 18</em><br/>
+        newfunction('Luis', 22); <em class="coment">// imprime los valores establecidos: Luis 22</em><br/>
+      </span>
+      <span class="ejAfter blind" id="ejAfterDefault">
+        function newFunction(name = 'Fulanito', age = 18){<br/>
+        console.log(name, age);<br/>
+        }<br/>
+        newfunction(); <em class="coment">// imprime los valore por defecto: Fulanito 18</em><br/>
+        newfunction('Luis', 22); <em class="coment">// imprime los valores establecidos: Luis 22</em><br/>
+      </span>
+      <h3>Template literals.</h3>
+      <p>Permiten separar o unir varios elementos.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejLiteral" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeLiteral">
+        let im = "Soy";<br/>
+        let a = "un";<br/>
+        let goofyGoober = "cacahuate";<br/>
+        let epicPhrase = im + ' ' + a + ' ' + goofyGoober; <em class="coment">// concatenación de valores con el signo +.</em><br/>
+        console.log(epicPhrase);
+      </span>
+      <span class="ejAfter blind" id="ejAfterLiteral">
+        let im = "Soy";<br/>
+        let a = "un";<br/>
+        let goofyGoober = "cacahuate";<br/>
+        let epicPhrase = `${im} ${a} ${goofyGoober}`; <em class="coment">// concatenación de valores con template literals ``.</em><br/>
+        console.log(epicPhrase);
+      </span>
+      <h3>Multilínea en strings.</h3>
+      <p>Permite agregar saltos de línea en las declaraciones de tipo string.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejMultilinea" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeMultilinea">
+        let mathProblem = "Si le das la mitad de tu manzana a un amigo, ¿Qué tienes? \n u... un amigo"; <em class="coment">// Se requiere un slash invertido con una ene para que se produzca un salto de línea en el string.</em><br/>
+        console.log(mathProblem);<br/>
+      </span>
+      <span class="ejAfter blind" id="ejAfterMultilinea">
+        let mathProblem = `Si le das la mitad de tu manzana a un amigo, ¿Qué tienes?<br/>
+        u... un amigo`; <em class="coment">// Solo se requiere un salto de línea para que se visualice en el string.</em><br/>
+        console.log(mathProblem);
+      </span>
+      <h3>Restructuración de elementos.</h3>
+      <p>Permite acceder y restructurar elementos de un objeto.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejRestruct" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeRestruct">
+        let person = {<br/>
+          'name': 'oscar';<br/>
+          'age':  '32';<br/>
+        }<br/>
+        console.log(person.name, person.age); <em class="coment">// Imprime los elementos de una forma un poco compleja, pero con un método fácil de recordar.</em>
+      </span>
+      <span class="ejAfter blind" id="ejAfterRestruct">
+        let person = {<br/>
+          'name': 'oscar';<br/>
+          'age':  '32';<br/>
+        }<br/>
+        let { name, age } = person;<br/>
+        console.log(name, age); <em class="coment">// Imprime los elementos de una forma menos compleja, pero con un método más difícil de recordar.</em>
+      </span>
+      <h3>Operador de propagación.</h3>
+      <p>Permite importar los elementos de un objeto.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejOPropaga" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeOPropaga">
+        let team1 = ['Vilma', 'Scooby', 'Shaggy'];<br/>
+        let team2 = ['Daphne', 'Fred'];<br/>
+        let mistery = ['Scrappy', 'Vilma', 'Scooby', 'Shaggy', 'Daphne', 'Fred']; <em class="coment">// Conjunto de los equipos de una forma laboriosa.</em><br/>
+        console.log(mistery);
+      </span>
+      <span class="ejAfter blind" id="ejAfterOPropaga">
+        let team1 = ['Vilma', 'Scooby', 'Shaggy'];<br/>
+        let team2 = ['Daphne', 'Fred'];<br/>
+        let mistery = ['Scrappy', ...team1, ...team2]; <em class="coment">// Conjunto de los equipos de una forma más fácil.</em><br/>
+        console.log(mistery);
+      </span>
+      <h3>Propiedad de objetos mejorada.</h3>
+      <p>Permite trabajar con objetos de una forma más fácil al querer asignarles valores a sus elementos.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejObjeto" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeObjeto">
+        let monster = 'Ickis';<br/>
+        let reportCard = 7;<br/>
+        school = { monster: monster, reportCard: reportCard }; <em class="coment">// Establece elementos para un objeto tomando variables para ello.</em><br/>
+        console.log(school);<br/>
+      </span>
+      <span class="ejAfter blind" id="ejAfterObjeto">
+        let monster = 'Ickis';<br/>
+        let reportCard = 7;<br/>
+        school = { monster, reportCard }; <em class="coment">// Establece elementos para un objeto tomando variables para ello de una forma simple.</em><br/>
+        console.log(school);<br/>
+      </span>
+      <h3>Arrow Function / Funciones de flecha.</h3>
+      <p>Permite tener una sintaxis más reducida y un <b>this</b> no vinculable.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejArrow" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeArrow">
+        const names = [<br/>
+          { name: 'Oscar', age: 32}<br/>
+          { name: 'Brandon', age: 22}<br/>
+        ]<br/>
+        let listOfNames = names.map (<br/>
+          function ( item ) {<br/>
+            console.log( item.name ); <em class="coment">// Imprime cada uno de los nombres del objeto.</em><br/>
+        } )<br/>
+      </span>
+      <span class="ejAfter blind" id="ejAfterArrow">
+        const names = [<br/>
+          { name: 'Oscar', age: 32}<br/>
+          { name: 'Brandon', age: 22}<br/>
+        ]<br/>
+        let listOfNames = names.map ( item => {<br/>
+          console.log( item.name ); <em class="coment">// Se establece como una función anónima que retornará cada uno de los nombres del objeto.</em><br/>
+        } )<br/>
+      </span>
+      <h3>Promesas.</h3>
+      <p>Permite trabajar con el asincronismo de JavaScript (asincronismo se refiere a que no puede ejecutar más de una función al mismo tiempo), la promesa indica en el código que algo va a pasar en un momento especifico.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejPromise" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforePromise">
+        Se utilizaba callback hell que retornaba código difícil de leer.
+      </span>
+      <span class="ejAfter blind" id="ejAfterPromise">
+        const helloPromise = () => {<br/>
+          return new Promise((resolve, reject) => {<br/>
+            <em class="coment">// *Promise debe escribirse con mayúscula para que sea efectivo.</em>
+            <em class="coment">// Retornará una nueva promesa al arrow function con dos parámetros que indicarán si la promesa es aceptada o rechazada.</em><br/>
+            if (true) {<br/>
+              resolve ( '¡Hey!' );<br/>
+              <em class="coment">// Si se cumple la condición se ejecutará el elemento "resolve".</em><br/>
+            } else {<br/>
+              reject ( '¡Ups!' );<br/>
+              <em class="coment">// Si no se cumple la condición se ejecutará el elemento "reject".</em><br/>
+            }<br/>
+          })<br/>
+        }<br/>
+        helloPromise()<br/>
+        <em class="coment">// Se manda a llamar la función para ejecutar la promesa...</em><br/>
+          .then(response => console.log( response ));<br/>
+          <em class="coment">// Si se cumple la condición de la promesa descrita en la función, se imprimirá en consola el contenido ¡Hey!</em><br/>
+          .catch( error => console.log( error ));<br/>
+          <em class="coment">// Si no se cumple la condición de la promesa descrita en la función, se imprimirá en consola el contenido ¡Ups!</em><br/>
+      </span>
+      <h3>Clases.</h3>
+      <p>Permite aplicar la programación orientada a objetos, usando una sintaxis para manejar objetos y la herencia.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejClass" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeClass">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterClass">
+        class perrera {<br/>
+          <em class="coment">// Se genera una clase.</em><br/>
+          constructor() {<br/>
+            this.Hembras = 0;<br/>
+            this.Machos = 0;<br/>
+            <em class="coment">// Se genera un constructor con dos variables en scope global.</em><br/>
+          }<br/>
+          sum(Hembras, Machos) {<br/>
+            <em class="coment">// Se genera un método al que se le pasan las dos variables.</em><br/>
+            this.Hembras = Hembras;<br/>
+            this.Machos = Machos;<br/>
+            <em class="coment">// Se le asignan los valores recibidos por los argumentos a las variables.</em><br/>
+            return this.Hembras + this.Machos;<br/>
+            <em class="coment">// Se retorna la suma de las dos variables.</em><br/>
+          }<br/>
+        }<br/>
+        const total = new perrera();<br/>
+        console.log( total.sum( 2, 2 ) );<br/>
+        <em class="coment">// Se llama a la clase con su función "sum" y se le pasan los valores a sumar.</em><br/>
+      </span>
+      <h3>Módulos (import y export).</h3>
+      <p>Permite separar en módulos la lógica de un programa conectando funciones o variables de diferentes archivos a través de exportaciones e importaciones.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejModulo" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="seer" id="ejBeforeModulo">
+        <span class="ejBefore">
+          function dabaDu() {<br/>
+            return 'Yaba daba du';<br/>
+          }<br/>
+          module.exports = dabaDu;<br/>
+          <em class="coment">// Se exporta la función para q se use en otro archivo cuando se necesite.</em><br/>
+        </span>
+        <span class="ejBefore">
+          const dabaDu = require('<u>directorio</u>');<br/>
+          <em class="coment">// Importa la función "dabaDu" desde un documento externo, para esto se debe colocar la ruta del documento que generalmente es "./module" ya que los módulos se guardan en una carpeta contigua a la carpeta de los scripts en un proyecto.</em><br/>
+          console.log(dabaDu());<br/>
+          <em class="coment">// Después se puede utilizar la función o variable como si fuera parte del código.</em><br/>
+        </span>
+      </span>
+      <span class="blind" id="ejAfterModulo">
+        <span class="ejAfter">
+          export const dabaDu = () => {<br/>
+            return '¡Yaba daba du!';<br/>
+          }<br/>
+          export const enfado = '¡Enano!';<br/>
+          <em class="coment">// Se exportan las funciones para q se usen en otro archivo cuando se necesiten.</em><br/>
+        </span>
+        <span class="ejAfter">
+          import { dabaDu, enfado as enano } from '<u>directorio</u>';<br/>
+          <em class="coment">// Importa las funciones y variables que se requieran (pueden ser apodadas como en el caso de "enfado") desde un documento externo, para esto se debe colocar la ruta del documento que generalmente es "./module" ya que los modulos se guardan en una carpeta contigua a la carpeta de los scripts en un proyecto.</em><br/>
+          console.log(dabaDu());<br/>
+          console.log(enano);<br/>
+          <em class="coment">// Después se pueden utilizar las funciones o variables como si fueran parte del código.</em><br/><br/>
+          <em class="coment">// Se puede importar todo con: import * as todo from './module';</em><br/>
+          <em class="coment">// Y se utiliza: todo.dabaDu(); todo.enano;</em>
+        </span>
+      </span>
+      <h3>Generadores</h3>
+      <p>Permite retornar una serie de valores según el algoritmo definido a través de una función especial.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejGenerator" class="falseTrue">
+        <b>ES6</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeGenerator">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterGenerator">
+        function* congratulation ( ) {<br/>
+          <em class="coment">// Se coloca un asterisco para indicar que es un generador.</em><br/>
+          <em class="coment">// Según la composición del algoritmo es como se retornarán los valores.</em><br/>
+          if ( true ) {<br/>
+            yield 'Happy ';<br/>
+            <em class="coment">// yield permite retornar un valor y guardarlo de forma interna.</em><br/>
+          }<br/>
+          if ( true ) {<br/>
+            yield 'Birthday';<br/>
+        } }<br/>
+        const generatorCongrat = congratulation();<br/>
+        <em class="coment">// Se ejecutará el generador a travez de una constante.</em><br/>
+        console.log(generatorCongrat.next().value);<br/>
+        <em class="coment">// next permite utilizar el valor del primer yield.</em><br/>
+        console.log(generatorCongrat.next().value);<br/>
+        <em class="coment">// El primer yield guarda en memoria interna que ha sido usado y cuando se utiliza otro next le permite al segundo yield mandar su valor.</em><br/>
+        console.log(generatorCongrat.next().value);<br/>
+        <em class="coment">// Cuando ya no hay yields con valores disponibles se obtiene un "undefined".</em><br/>
+      </span>
+      <h3>Include.</h3>
+      <p>Permite saber si hay un elemento dentro de un arreglo o un string</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejInclude" class="falseTrue">
+        <b>ES7</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeInclude">
+        Antes se utilizaba indexOf y un código amplio.
+      </span>
+      <span class="ejAfter blind" id="ejAfterInclude">
+        let numbers = [1, 2, 3, 4, 5];<br/>
+        if ( numbers.includes( 8 ) ) {<br/>
+          console.log('El array incluye ése número.')<br/>
+        } else {<br/>
+        console.log('El array no incluye ése número.')<br/>
+      }
+      </span>
+      <h3>Operaciones con exponencial.</h3>
+      <p>Permite elevar un numero a la enésima potencia.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejExponente" class="falseTrue">
+        <b>ES7</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeExponente">
+        Antes se tenía que utilizar la librería Math.
+      </span>
+      <span class="ejAfter blind" id="ejAfterExponente">
+        let base = 5;<br/>
+        let esponente = 3;<br/>
+        let resultado = base ** exponente;<br/>
+        console.log ( resultado );<br/>
+        <em class="coment">// imprime el resultado de 5<sup>3</sup>: 125</em>
+      </span>
+      <h3>Object con entries.</h3>
+      <p>Permite obtener una matriz de pares propios de una propiedad numerable [key, value] de un objeto dado.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejOEntries" class="falseTrue">
+        <b>ES8</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeOEntries">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterOEntries">
+        const knd = {<br/>
+        planeación: 'Nigel',<br/>
+        tecnología: 'Hoagle',<br/>
+        táctica: 'Kuki',<br/>
+        ejecución: 'Wallabee',<br/>
+        supervición: 'Abigail',<br/>
+        }<br/>
+        const entradas = Object.entries(knd);<br/>
+        console.log( entradas );<br/>
+        <em class="coment">// Devuelve arreglos con strings:<br/>
+        [<br/>
+        [ 'planeación', 'Nigel' ],<br/>
+        [ 'tecnología', 'Hoagle' ],<br/>
+        ...<br/>
+        ]<br/></em>
+      </span>
+      <h3>Object con values.</h3>
+      <p>Permite obtener un array que contenga los valores de las propiedades numerables de un objeto dado</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejOValues" class="falseTrue">
+        <b>ES8</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeOValues">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterOValues">
+        const knd = {<br/>
+          planeación: 'Nigel',<br/>
+          tecnología: 'Hoagle',<br/>
+          táctica: 'Kuki',<br/>
+          ejecución: 'Wallabee',<br/>
+          supervición: 'Abigail',<br/>
+          }<br/>
+          const valores = Object.values(knd);<br/>
+          console.log( valores );<br/>
+          <em class="coment">// Devuelve un arreglo con strings:<br/>
+          [ 'Nigel', 'Hoagle', 'Kuki', ... ]</em>
+      </span>
+      <h3>String con padStart y padEnd.</h3>
+      <p>Permite agregar un carácter al inicio o al final de un string.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejPadSE" class="falseTrue">
+        <b>ES8</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforePadSE">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterPadSE">
+        const frase = 'Hi Ho Silver'; <em class="coment">// Tiene 12 carácteres.</em>
+        console.log(frase.padStart(15, '¡¡¡')); <em class="coment">// A los 12 carácteres se les agrega 3 y en total serán 15.</em>
+        console.log(frase.padEnd(15, '!!!')); <em class="coment">// A los 12 carácteres se les agrega 3 y en total serán 15.</em>
+      </span>
+      <h3>Trailing commas para objetos.</h3>
+      <p>Permite dejar una coma “volando” dentro de un objeto sin necesidad de añadir un nuevo valor y no se marcará un error en el código. Se utiliza para evitar errores al añadir nuevos valores al objeto o función.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejComas" class="falseTrue">
+        <b>ES8</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeComas">
+        let manadas = {<br/>
+          cerdos: 'piara',
+          perros: 'jauría',
+          vacas: 'vacada',
+          ovejas: 'rebaño',
+          cabras: 'rebaño',
+        }<br/>
+        <em class="coment">// en ES5 solo se utilizaba en arrays y objetos.</em><br/>
+      </span>
+      <span class="ejAfter blind" id="ejAfterComas">
+        function manadas( animal1, animal2, )<br/>
+        {...}<br/>
+        <em class="coment">// en ES8 se utiliza también en parámetros y argumentos de funciones y en clases.</em><br/>
+      </span>
+      <h3>Async await</h3>
+      <p>La expresión await provoca que la ejecución de una función async sea pausada hasta que una Promise sea terminada o rechazada, y regresa a la ejecución de la función async después de que termine. Al regreso de la ejecución, el valor de la expresión await es la regresada por una promesa terminada.</p>
+      <p>Si la Promise es rechazada, el valor de la expresión await tendrá el valor de rechazo.</p>
+      <p>Si el valor de la expresión seguida del operador await no es una promesa, será convertido a una resolved Promise.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejAsync" class="falseTrue">
+        <b>ES8</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeAsync">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterAsync">
+        const helloWorld = () => {<br/>
+          return new Promise (( resolve, reject ) => {<br/>
+            <em class="coment">// Se crea una promesa dentro de la función con un estado de aceptación y uno de rechazo.</em><br/>
+            ( true )<br/>
+            <em class="coment">// Se crea una condicional para identificar si se detona la aceptación o el rechazo.</em><br/>
+            ? setTimeout ( ( ) => resolve ( 'Hello World' ), 3000 );<br/>
+            <em class="coment">// Si se cumple se ejecuta una función que retarda 3 segundos la aceptación.</em><br/>
+            : reject ( new Error ( 'Test Error' ) );<br/>
+            <em class="coment">// Si no se cumple se ejecuta el rechazo.</em><br/>
+          });<br/>
+        }<br/>
+        <hr/>
+        const helloAsync = async ( ) => {<br/>
+          <em class="coment">// Se crea una constante con una función que utiliza la palabra reservada "async" para indicar que se trata de un async que utilizará awaits.</em><br/>
+          const whatsUp = await helloWorld ( );<br/>
+          console.log ( whatsUp );<br/>
+          <em class="coment">// Se ejecuta la función "helloWorld" con un await para que se verifique si se acepta o rechaza la promesa.</em><br/>
+        }<br/>
+        helloAsync ( );<br/>
+        <em class="coment">// Se ejecuta la función de async.</em>
+        <hr/>
+        <em class="coment">// También se puede usar un try-catch en un async para atrapar los errores y poder manejarlos.</em><br/>
+        const anotherFunction = async ( ) => {<br/>
+          <em class="coment">// Se crea la función indicando la palabra reservada async para indicar que se utilizarán awaits.</em><br/>
+          try {<br/>
+            const whatsUp = await helloWorld ( );<br/>
+            console.log ( whatsUp );<br/>
+            <em class="coment">// Se indica al código que trate (try) de ejecutar el await con la promesa.</em><br/>
+          } catch ( errorBye ) {<br/>
+            console.log ( errorBye );<br/>
+            <em class="coment">// Si no se cumple la promesa y se rechaza se ejecutará eta parte y mostrará el error con los datos explicados de la causa.</em><br/>
+        } }<br/>
+        anotherFunction ( );<br/>
+        <em class="coment">// Se manda a llamar la función para ejecutarla.</em>
+      </span>
+      <h3>Operador de reposo (Spread operator).</h3>
+      <p>Permite extraer las propiedades de un objeto que aún no se ha construido.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejReposo" class="falseTrue">
+        <b>ES9</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeReposo">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterReposo">
+        const obj = {<br/>
+          name: 'Orange',<br/>
+          color: 'orange',<br/>
+          provenance: 'tree',<br/>
+        }<br/>
+        let { name, ...all } = obj;<br/>
+        <em class="coment">// Se extraerá todo el contenido (...all) con referencia al dato "name", todo esto se aplicará al objeto "obj".</em><br/>
+        console.log( name, all );<br/>
+        <em class="coment">// Imprime: Orange { color: 'orange', provenance: 'tree' }</em>
+        <hr/>
+        let { provenance, ...all } = obj;<br/>
+        <em class="coment">// Se extraerá todo el contenido (...all) con excepción del dato "provenance".</em><br/>
+        console.log(all);<br/>
+        <em class="coment">// Imprime: { name: 'Orange', color: 'orange' }</em>
+      </span>
+      <h3>Propiedades de propagación.</h3>
+      <p>Permite unir varios elementos de un objeto en otro objeto.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejPPropaga" class="falseTrue">
+        <b>ES9</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforePPropaga">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterPPropaga">
+        const obj1 = {<br/>
+          jewelry: 'The Hope Diamond',<br/>
+          costNumber: 250000000,<br/>
+        }<br/>
+        <em class="coment">// Objeto 1 con elementos.</em><br/>
+        const obj2 = {<br/>
+          ...obj,<br/>
+          costText: '250 millions of dollar',<br/>
+        }<br/>
+        <em class="coment">// Objeto 2 con sus elementos y la adición del objeto 1.</em><br/>
+        console.log(obj2);
+      </span>
+      <h3>Promise.finally</h3>
+      <p>Permite saber cuándo ha terminado un llamado y para poder ejecutar una lógica de código.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejFinally" class="falseTrue">
+        <b>ES9</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeFinally">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterFinally">
+        const food = () => {<br/>
+          return new Promise((resolve, reject) => {<br/>
+            (true)<br/>
+            ? resolve('Food is delicious!');<br/>
+            : reject(new Error('Test error'));<br/>
+          });<br/>
+        }<br/>
+        food();<br/>
+        .then(response => console.log(response));<br/>
+        .catch(error => console.log(error));<br/>
+        .finally(() => console.log('Ended'));<br/>
+        <em class="coment">// Al correr este código se imprime el mensaje de aprobación y el mensaje de .finally que indica que ya finalizó el código.</em>
+      </span>
+      <h3>Regex.</h3>
+      <p>Permite agrupar bloques del Regex y poder acceder a cada uno de ellos.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejRegex" class="falseTrue">
+        <b>ES9</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeRegex">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterRegex">
+        const regexData = /([0-9]{4})-([0-9]{2})-([0-9]{2})/;<br/>
+        <em class="coment">// Se crea una constante para poder manejar el Regex.</em><br/>
+        const match = regexData.exec('2021-08-23');<br/>
+        const year = match[1];<br/>
+        <em class="coment">// Apunta al primer bloque del grupo del Regex y ese contenido se guardará en la constante "year".</em><br/>
+        const month = match[2];<br/>
+        <em class="coment">// Apunta al segundo bloque del grupo del Regex y guarda su contenido.</em><br/>
+        const day = match[3];<br/>
+        <em class="coment">// Apunta al tercer bloque y guarda su contenido.</em>
+        console.log(year, month, day);
+      </span>
+      <h3>Flat.</h3>
+      <p>Permite aplanar arreglos por medio de la función array.flat(nivel _de_profundidad)</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejFlat" class="falseTrue">
+        <b>ES10</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeFlat">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterFlat">
+        let array = [1,2,3, [1,2,3, [1,2,3]]];<br/>
+        console.log(array.flat());<br/>
+        <em class="coment">// Muestra la profundidad por default que es 1:<br/> [ 1, 2, 3, 1, 2, 3, [ 1, 2, 3 ] ]</em></br>
+        console.log(array.flat(2));<br/>
+        <em class="coment">// Muestra la profundidad de nivel 2:<br/> [<br/> 1, 2, 3, 1, 2,<br/> 3, 1, 2, 3<br/> ]</em>
+      </span>
+      <h3>FlatMap.</h3>
+      <p>Permite mapear cada elemento, pasarles una función y aplanar el resultado por medio de la función array.flatMap()</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejFlatMap" class="falseTrue">
+        <b>ES10</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeFlatMap">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterFlatMap">
+        let array = [1,2,3,4,5];<br/>
+        console.log(array.flatMap(value => [value, value * 2]));<br/>
+        <em class="coment">[<br/> 1, 2, 2, 4, 3,<br/> 6, 4, 8, 5, 10<br/>]</em>
+      </span>
+      <h3>Trim Start/End.</h3>
+      <p>Permite quitar los espacios al inicio o al final dependiendo de la funciona por medio de la función String.trimStart() o String.trimEnd()</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejTrim" class="falseTrue">
+        <b>ES10</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeTrim">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterTrim">
+        let space = '     ^u^     ';<br/>
+        console.log('¬_¬' + space + 'L_L');<br/>
+        <em class="coment">// Imprime: ¬_¬     ^u^     L_L</em><br/>
+        console.log('¬_¬' + space.trimStart() + 'L_L');<br/>
+        <em class="coment">// Imprime: ¬_¬^u^     L_L</em><br/>
+        console.log('¬_¬' + space.trimEnd() + 'L_L');<br/>
+        <em class="coment">// Imprime: ¬_¬     ^u^L_L</em>
+      </span>
+      <h3>Try/Catch</h3>
+      <p>Permite utilizar catch sin necesidad de especificar el elemento "error" como argumento.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejTCatch" class="falseTrue">
+        <b>ES10</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeTCatch">
+        try {<br/>
+        ...<br/>
+        } catch(error) {<br/>
+        error<br/>
+        }<br/>
+      </span>
+      <span class="ejAfter blind" id="ejAfterTCatch">
+        try {<br/>
+          ...<br/>
+          } catch {<br/>
+          error<br/>
+          }
+      </span>
+      <h3>FromEntries.</h3>
+      <p>Permite transformar una matriz clave/valor en un objeto por medio de la función object.fromEntries(). Lo inverso a Object.entries() que convierte un objeto en una matriz clave/valor.</p>
+      <p>Es de ayuda cuando se trabaja con arreglos que se quieren transformar en objetos o viceversa.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejFEntries" class="falseTrue">
+        <b>ES10</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeFEntries">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterFEntries">
+        let entries [["name", "alex"], ["age", 21]];<br/>
+        console.log(Object.fromEntries(entries));<br/>
+        <em class="coment">// { name: 'alex', age: 21 }</em>
+      </span>
+      <h3>Symbol.</h3>
+      <p>Permite acceder a la descripción de un elemento de tipo símbolo por medio de la función symbol.prototype.description.</p>
+      <form action="#" class="ejFormato">
+        <b>antes</b>
+        <input type="range" min="0" max="1" value="0" id="ejSymbol" class="falseTrue">
+        <b>ES10</b>
+      </form>
+      <span class="ejBefore seer" id="ejBeforeSymbol">
+        ...
+      </span>
+      <span class="ejAfter blind" id="ejAfterSymbol">
+        let mySymbol = 'My Symbol';<br/>
+        let symbol = Symbol(mySymbol);<br/>
+        <em class="coment">// La variable "symbol" se le adiciona el tipo symbol y la variable obtiene una descripción.</em><br/>
+        console.log(symbol.description);<br/>
+        <em class="coment">// Se imprime la descripción de la variable symbol que es: My Symbol</em>
+      </span>
+    </div>
+  </div>
+  <footer>
+    <h3>Referencias:</h3>
     <p>
-      Un evento es todo aquello que ocurre en la página como la interacción de un usuario, la carga de un recurso, que se complete una acción, etc. No necesariamente implicando una interacción del usuario.
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Trailing_commas" target="blank">Trailing commas.</a><br/>
+      <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank">Global objects.</a><br/>
+      <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/await" target="_blank">Await.</a><br/>
+      <a href="https://platzi.com/tutoriales/1789-asincronismo-js/5063-las-promesas-y-async-await-logicamente-no-son-iguales-y-te-explico-el-porque/" target="_blank">Promesas vs Async.</a><br/>
+      <a href="https://millionconverter.com/millionTobillion/" target="_blank">Escala numérica.</a><br/>
     </p>
-  </header>
-  <main>
-    <section>
-      <!-- Eventos -->
-      <div class="contenedor">
-        <h2>Eventos</h2>
-        <dl>
-          <dt>on<i>Event</i></dt>
-          <dd>Cuando utilizamos el objeto <i>$0</i> en la consola del navegador y colocamos un punto ($0.), se despliega una lista de propiedades y métodos que tiene el objeto que hace referencia a un elemento sombreado de la página. Dentro de esa lista existen unas opciones que inician con "on", todas esas opciones son <u>eventos</u> que pueden ser aplicadas al elemento al que señala el objeto $0.</dd>
-          <dt>addEventListener('_', _)</dt>
-          <dd>Este método es un escuchador de eventos, recibe un evento en forma de string y un callback (una función que se ejecuta cuando el evento ocurre), la función debe ser anónima ya que recibirá un parámetro y se ejecutará cuando se cumpla el evento.<br/>
-          El evento en este caso se coloca sin el <b>on</b></dd>
-          <p><b>window</b> es el objeto global de JavaScript, no hay ningún objeto por encima de este, todos descienden de este y es omisible al ejecutar especificaciones que lo involucren, ejemplo:<br/>
-          <u>window.</u>document.getElement...<br/>
-          document.getElement...<br/>
-          <u>window.</u>addEventListener...<br/>
-          addEventListener...</p>
-          <p class="titCentrado">Ejemplo con <b>onclick</b>:</p>
-          <span class="ejemplo">
-            const buton1 = document.getElementById('form1');<br/>
-            const saludo1 = () => { alert('Helloooooooo nurse =3')};<br/>
-            buton1.addEventListener('click', saludo1);
-          </span>
-          <form action="#" class="titCentrado" id="form1">
-            <input class="forminput" type="button" value="Clic" name="save">
-          </form>
-          <hr class="enlace">
-          <p class="titCentrado">Ejemplo con <b>ondblclick</b> (doble clic):</p>
-          <span class="ejemplo">
-            const <u>buton2</u> = document.getElementById(<u>'form2'</u>);<br/>
-            const <u>saludo2</u> = <u>texto2</u> => alert(<u>texto2</u>);<br/>
-            <u>buton2</u>.addEventListener('<u>dblclick</u>', <u>() => { saludo2('tock tock, ¿quién es? =P') }</u>);<br/>
-            <em class="coment">//cuando se cumpla el evento, se imprimirá en la alerta el saludo;</em>
-          </span>
-          <form action="#" class="titCentrado" id="form2">
-            <input class="forminput" type="button" value="Doble clic" name="save">
-          </form>
-          <hr class="enlace">
-          <p class="titCentrado">Ejemplo con <b>contextmenu</b> (clic derecho):</p>
-          <span class="ejemplo">
-            const <u>buton3</u> = document.getElementById(<u>'form3'</u>);<br/>
-            const <u>saludo3</u> = <u>texto3</u> => alert(`${<u>texto3.target.textContent</u>} \neste botón no contiene texto`);<br/>
-            <u>buton3</u>.addEventListener('<u>contextmenu</u>', <u>texto3</u> => <u>{<br/>
-              console.log(<u>texto3</u>.target);<br/>
-              <u>saludo3</u>(<u>texto3</u>);<br/>
-            }</u>);<br/>
-            <em class="coment">//"<u>texto3</u>.target" devuelve en consola el elemento del DOM en donde se origina el evento;</em>
-          </span>
-          <form action="#" class="titCentrado" id="form3">
-            <input class="forminput" type="button" value="Clic derecho" name="save">
-          </form>
-        </dl>
-      </div>
-      <!-- Del mouse -->
-      <div class="contenedor">
-        <h2>Eventos de mouse</h2>
-        <p>
-          Los principales eventos del mouse son los siguientes:
-        </p>
-        <dl>
-          <dt>click</dt>
-          <dd>detecta un click.</dd>
-          <dt>dblclick</dt>
-          <dd>detecta un click doble.</dd>
-          <dt>mouseenter</dt>
-          <dd>es equivalente al hover de CSS cuando el mouse entra.</dd>
-          <dt>mouseleave</dt>
-          <dd>es equivalente al hover de CSS cuando el mouse sale.</dd>
-          <dt>contextmenu</dt>
-          <dd>captura el click derecho.</dd>
-          <dt>mousedown</dt>
-          <dd>detecta cuando se deja presionado el click.</dd>
-          <dt>moseup</dt>
-          <dd>detecta cuando se suelta el click.</dd>
-          <dt>mousemove</dt>
-          <dd>detecta cuando se mueve dentro de un elemento.</dd>
-        </dl>
-        <hr class="enlace">
-        <h3>Otros métodos u objetos</h3>
-        <dl>
-          <dt>preventDefault()</dt>
-          <dd>Con este método se puede indicar al navegador que lo que debería hacer con una acción por defecto pare de hacerla. Por ejemplo, con el click derecho el navegador debería mostrar un menú contextual, pero al pasarle este método a una función, ya no lo mostrará.</dd>
-          <dt>event</dt>
-          <dd>Con este objeto se puede validar en que coordenadas está ubicado el mouse en el DOM pasándole las propiedades pageX, pageY. De esta manera se puede saber dónde ocurrió exactamente un evento.</dd>
-          <dt>clientX, clientY</dt>
-          <dd>Client es relativo a la parte visible de la página (en caso de que hagas scroll se tendrá en cuenta sólo la parte visible</dd>
-          <dt>pageX, pageY</dt>
-          <dd>Page es relativo a toda la página, incluyendo la parte oculta (nuevamente, al hacer scroll)</dd>
-          <dt>screenX, screenY</dt>
-          <dd>Screen es poco usado, su característica consiste en las coordenadas de TODA la pantalla.</dd>
-        </dl>
-        <div class="titCentrado">
-          <img src="../Binarios/coordenadas.png" alt="ejemplo de tipos de coordenadas" title="tipos de coordenadas" class="coordenadas">
-        </div>
-        <p class="titCentrado">Ejemplo (presiona clic derechos o clic aquí abajo):</p>
-        <span class="ejemplo" id="menuContext">
-          const menuEj = document.getElementById('menuContext');<br/>
-          <em class="coment">//Función para crear el menú</em><br/>
-          const miMenu1 = meniu =>{<br/>
-            const menuDiv = document.createElement('div');<br/>
-            const menuContext = document.getElementById('mContextual');<br/>
-            menuDiv.id = 'mContextual';<br/>
-            menuDiv.textContent = '¡Cha chan!';<br/>
-              if(menuContext) {<br/>
-                document.body.removeChild(menuContext);<br/>
-              } <em class="coment">//Si ya existe uno, lo elimina</em><br/>
-            document.body.appendChild(menuDiv);<br/>
-            <em class="coment">//Le agregamos unos estilos</em><br/>
-            menuDiv.style.padding = '1em';<br/>
-            menuDiv.style.background = '#fde38e';<br/>
-            menuDiv.style.position = 'fixed';<br/>
-            menuDiv.style.top = `${meniu.clientY}px`;<br/>
-            menuDiv.style.left = `${meniu.clientX}px`;<br/>
-          };<br/>
-          <em class="coment">//Función para cerrar el menú</em><br/>
-          const miMenu2 = meniu2 =>{<br/>
-            const menuQuit = document.getElementById('mContextual');<br/>
-            if(menuQuit) {<br/>
-              document.body.removeChild(menuQuit);<br/>
-            }<br/>
-          };<br/>
-          <em class="coment">//Escuchador para clic derecho (abrir menú)</em><br/>
-          menuEj.addEventListener('contextmenu', meniu => {<br/>
-            miMenu1(meniu);<br/>
-            meniu.preventDefault();<br/>
-          });<br/>
-          <em class="coment">//Escuchador para clic (cerrar menú)</em><br/>
-          menuEj.addEventListener('click', miMenu2);<br/>
-        </span>
-      </div>
-      <!-- Del teclado -->
-      <div class="contenedor">
-        <h2>Eventos del teclado</h2>
-        <p>
-          Los principales eventos del teclado son los siguientes:
-        </p>
-        <dl>
-          <dt>keydown</dt>
-          <dd>cuando presionas una tecla.</dd>
-          <dt>keyup</dt>
-          <dd>cuando sueltas una tecla.</dd>
-          <dt>keypress</dt>
-          <dd>cuando dejas presionada una tecla sin soltarla.</dd>
-        </dl>
-        <p>Al revisar en la consola en la sección <u><b>target (elemento donde se dispara el evento)</b></u> de los eventos del teclado que imprimimos, se puede observar que entre sus características existen variables como <b>key: "a"</b>, <b>ctrlkey: true</b> o <b>altkey: false</b> que nos pueden servir para saber que tecla presionó el usuario o si se presionó algún atajo del teclado</p>
-        <p class="titCentrado">Ejemplo (presiona control + y):</p>
-        <span class="ejemplo" id="tecleando">
-          document.addEventListener('keydown', tecla => {<br/>
-            let control = tecla.ctrlKey;<br/>
-            let alt = tecla.altKey;<br/>
-            if(control === true && tecla.key === "y"){<br/>
-              tecla.preventDefault();<br/>
-              alert('¡¡¡funcionó!!!');<br/>
-            };<br/>
-            console.log(tecla);<br/>
-          });
-        </span>
-        <span class="ejemplo">
-          let rBG = 0, gBG = 35, bBG = 100;<br/>
-          const colorear = () => {<br/>
-            cielo.style.backgroundImage = `radial-gradient(circle, rgb(241, 250, 255) 1%, rgb(${rBG}, ${gBG}, ${bBG}) 3%)`;<br/>
-          }<br/><br/>
-          const cielo = document.getElementById('anochecer');<br/>
-          cielo.addEventListener('keydown', bgColor => {<br/>
-            switch (bgColor.key){<br/>
-              case 'ArrowLeft':<br/>
-                rBG=rBG+5;<br/>
-                gBG=gBG-2;<br/>
-                bBG=bBG-5;<br/>
-                if(rBG>=255) rBG=255;<br/>
-                if(gBG<=0) gBG=0;<br/>
-                if(bBG<=0) bBG=0;<br/>
-                console.log(rBG, gBG, bBG);<br/>
-                colorear();<br/>
-                break;<br/>
-              case 'ArrowRight':<br/>
-                rBG=rBG-5;<br/>
-                gBG=gBG+2;<br/>
-                bBG=bBG+5;<br/>
-                if(rBG<=0) rBG=0;<br/>
-                if(gBG>=255) gBG=255;<br/>
-                if(bBG>=255) bBG=255;<br/>
-                console.log(rBG, gBG, bBG);<br/>
-                colorear();<br/>
-                break;<br/>
-              default:<br/>
-                break;<br/>
-            }<br/>
-          })
-        </span>
-      </div>
-      <!-- Del formulario -->
-      <div class="contenedor">
-        <h2>Eventos del formulario</h2>
-        <p>
-          Los principales eventos del formulario son los siguientes:
-        </p>
-        <dl>
-          <dt>submit</dt>
-          <dd>se ejecuta cuando el formulario se envía.</dd>
-          <dt>change</dt>
-          <dd>se ejecuta cuando un input del formulario cambia de valor (se puede utilizar el atributo <b>checked</b> para saber si una casilla se marca o no).</dd>
-          <dt>focus</dt>
-          <dd>se ejecuta al hacer click en un input</dd>
-          <dt>blur</dt>
-          <dd>se ejecuta cuando sales del <i>focus</i>.</dd>
-          <dt>reset</dt>
-          <dd>se ejecuta cuando reseteas el formulario.</dd>
-        </dl>
-        <p class="titCentrado" id="FormularioEventos">Ejemplo:</p>
-        <span class="ejemplo" id="instruccion">
-          <form action="#FormularioEventos" class="titCentrado" id="formulario">
-            <input class="forminput" type="checkbox" name="checkbox">
-            <input class="forminput" type="text" placeholder="Nombre / Name" name="text" id="formTexto">
-            <input class="forminput" type="submit" name="submit" value="Enviar">
-            <input class="forminput" type="reset" name="reset">
-          </form>
-          <div id="colocacion"></div>
-        </span>
-        <span class="ejemplo">
-          function insercion(datoEvent) {<br/>
-            const instruct = document.createElement('pre');<br/>
-            const division = document.getElementById('instruccion');<br/>
-            instruct.textContent = `${datoEvent}`;<br/>
-            if(division && division.querySelector('#colocacion')){<br/>
-              division.querySelector('#colocacion').appendChild(instruct);<br/>
-            }<br/>
-          };<br/>
-          const formEvent = document.getElementById('formulario');<br/>
-          formEvent.addEventListener('submit', enviado =>{<br/>
-            insercion(`Formulario enviado`);<br/>
-            console.log(enviado.target);<br/>
-          });
-        </span>
-      </div>
-      <!-- Del DOM y navegador -->
-      <div class="contenedor">
-        <h2>Eventos del DOM y del navegador</h2>
-        <p>El evento principal para el DOM es el siguiente:</p>
-        <dl>
-          <dt>DOMContentloaded</dt>
-          <dd>es un evento que ocurre cuando carga todo el DOM (Este evento es importante cuando no sabes en qué momento existirá el elemento al que vas a llamar), permite cargar lo básico del código HTML (aunque no carguen las imágenes o formularios) para luego ejecutar el código de este evento en js.</dd>
-        </dl>
-        <p class="titCentrado">Ejemplo:</p>
-        <span class="ejemplo">
-          addEventListener('DOMContentloaded', () =>{<br/>
-            ...<br/>
-          });
-        </span>
-        <p>Los principales eventos del navegador son los siguientes:</p>
-        <dl>
-          <dt>load</dt>
-          <dd>este es parecido al DOMContentloaded pero, este se ejecuta cuando carga toda la página, es decir con las imágenes o formularios, etc.</dd>
-          <dt>scroll</dt>
-          <dd>se ejecuta cuando haces scroll, se pueden utilizar los atributos <b>scrollX</b> y <b>scrollY</b> para saber el nivel de scroll que se tiene y con ello poder realizar acciones.</dd>
-          <dt>resize</dt>
-          <dd>se ejecuta cuando redimensionas la pantalla.</dd>
-        </dl>
-        <p><b>Inner</b> se refiere a la parte interna del navegador, la ventana o el viewport, y <b>outer</b> es toda la ventana del navegador en el sistema operativo.</p>
-        <p class="titCentrado">Ejemplo:</p>
-        <span class="ejemplo">
-          addEventListener('resize', redimencion => {<br/>
-            console.log(innerWidth, innerHeight);<br/>
-            console.log(outerWidth, outerHeight);<br/>
-          });
-        </span>
-      </div>
-      <!-- Multimedia -->
-      <div class="contenedor">
-        <h2>Eventos multimedia</h2>
-        <p>Los principales eventos multimedia son los siguientes:</p>
-        <dl>
-          <dt>play</dt>
-          <dd>se ejecuta con evento click</dd>
-          <dt>pause</dt>
-          <dd>se ejecuta con evento click</dd>
-        </dl>
-        <p>Los eventos aparte de ser escuchados también podrán ser ejecutados.</p>
-        <p class="titCentrado">Ejemplo:</p>
-        <span class="ejemplo">
-          <video src="../Binarios/pitufi_intro.mp4" controls width="300" id="multimedia" class="forminput block-centrado"></video>
-          <div class="titCentrado">
-            <button id="play" class="forminput">Reproducir</button>
-            <button id="pause" class="forminput">Pausar</button>
-          </div>
-        </span>
-        <span class="ejemplo">
-          const video = document.getElementById('multimedia'),<br/>
-          reproducir = document.getElementById('play'),<br/>
-          pausar = document.getElementById('pause');<br/>
-          reproducir.addEventListener('click', () => {<br/>
-            video.play();<br/>
-          });<br/>
-          pausar.addEventListener('click', () => {<br/>
-            video.pause();<br/>
-          });
-        </span>
-      </div>
-      <!-- Propagación de eventos -->
-      <div class="contenedor">
-        <h2>Propagación de eventos</h2>
-        <p>Cada vez que ocurre un evento, este ocurre en el elemento más profundo en el DOM pero, se propaga hacia afuera. El término utilizado para esto es bubble (burbujea).</p>
-        <p>Esto significa que cada vez que estás dentro de un elemento hijo de otro elemento, al mismo tiempo estás entrando en ambos elementos.</p>
-        <p class="titCentrado">Ejemplo:<br/>
-          (da clic en una de las 4 figuras):</p>
-        <div id="bubble1" class="bubble1">
-          <div id="bubble2" class="bubble2">
-            <div id="bubble3" class="bubble3">
-              <img src="../Binarios/bubbleman.png" alt="bubble man" title="haz clic en cada cuadro" class="bubbleman">
-            </div>
-          </div>
-        </div>
-        <span class="ejemplo" id="bubbleletter">
-          document.querySelectorAll( '[class^="bubble"]:not(.bubbleman)' ).forEach( burbujear => {<br/>
-            burbujear.addEventListener('click', burbuja => {
-              <br/>
-              console.log(`burbujeaste ${burbuja.target.id}`);<br/>
-            });<br/>
-          });
-        </span>
-        <p>Esta prolongación la hará hasta llegar al window.<br/>
-        Siempre tener pendiente que con <b>.target</b> podrás hacer énfasis solo a uno de los hijos, porque allí estaría el target en el elemento más profundo, pero teniendo en cuenta que de todas maneras seguirás pasando de igual forma por los padres.</p>
-        <p>Para detener esta propagación podrás usar el método <b>stopPropagation()</b></p>
-        <span class="ejemplo" id="bubbleletter">
-          document.querySelectorAll( '[class^="bubble"]:not(.bubbleman)' ).forEach( burbujear => {<br/>
-            burbujear.addEventListener('click', burbuja => {
-              <br/>
-              console.log(`burbujeaste ${burbuja.target.id}`);<br/>
-              burbuja<b>.stopPropagation()</b>;<br/>
-            });<br/>
-          });
-        </span>
-      </div>
-      <!-- Delegación de eventos -->
-      <div class="contenedor">
-        <h2>Delegación de eventos</h2>
-        <p>La delegación consta en detectar el evento en el elemento padre y luego detectar en cuál de los elementos hijos se hizo el target.</p>
-        <p class="titCentrado">Ejemplo:</p>
-        <div id="galeria" class="galeria">
-          <figure class="obra">&#128444;<figcaption>1</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>2</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>3</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>4</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>5</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>6</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>7</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>8</figcaption></figure>
-          <figure class="obra">&#128444;<figcaption>9</figcaption></figure>
-          <figure class="obra titCentrado" id="seleccionado">Costo<span id="obraNum"></span>:<br/>$<span id="costo"></span></figure>
-          <figure class="obra">&#128444;<figcaption>10</figcaption></figure>
-        </div>
-        <span class="ejemplo">
-          const gallery = document.getElementById('galeria');<br/>
-          gallery.addEventListener('click', foto => {<br/>
-            var posicion = foto.target,<br/>
-              obra = Array.from(gallery.querySelectorAll('figure')),<br/>
-              indice = obra.indexOf(posicion);<br/>
-              console.log(`Seleccionaste la obra número ${indice + 1}`);<br/>
-          });
-        </span>
-      </div>
-    </section>
-    <section>
-      <div class="contenedor">
-        <p>Referencias:</p>
-        <p><a class="enlace" target="_blank" href="https://stackoverflow.com/questions/6073505/what-is-the-difference-between-screenx-y-clientx-y-and-pagex-y">client, page, screen</a></p>
-      </div>
-    </section>
-  </main>
-  <footer></footer>
-  <script src="../Js/programajs12.js"></script>
-  <script src="../Js/programajsHelp.js"></script>
+  </footer>
+  <script src="../Js/programajs9.js"></script>
 </body>
 </html>

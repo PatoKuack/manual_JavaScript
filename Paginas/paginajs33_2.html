@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Recursividad.</title>
+</head>
+<body class="body">
+      <!-- Recursividad -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Recursividad.</h2>
+          <p>Los <b>callback Hell</b> se dan cuando se pasa una función como parámetro, que a su vez llama a otra función como parámetro, que llama a otra función como parámetro y así varias veces.</p>
+          <p>Una estrategia para trabajar con estas estructuras lógicas tan monolíticas es usar estructuras de control y funciones recursivas.</p>
+          <p>Las funciones recursivas hacen un llamado a sí mismas y mediante la estructura de control se indica cuantas veces se necesitará llamar la función a sí misma.</p>
+          <aside class="exempliGratia">
+            &emsp;function hola(nombre, miCallback) {<br/>
+            &emsp;&emsp;setTimeout(function () {<br/>
+            &emsp;&emsp;&emsp;console.log('Hey, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;miCallback(nombre);<br/>
+            &emsp;&emsp;}, 1500);<br/>
+            &emsp;}<br/><br/>
+            &emsp;function hablar(callbackHablar) {<br/>
+            &emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;console.log('bla bla bla bla...');<br/>
+            &emsp;&emsp;&emsp;callbackHablar();<br/>
+            &emsp;&emsp;}, 1000);<br/>
+            &emsp;}<br/><br/>
+            &emsp;function adios(nombre, otroCallback) {<br/>
+            &emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;console.log('Adios, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;otroCallback();<br/>
+            &emsp;&emsp;}, 1000);<br/>
+            &emsp;}<br/><br/>
+            <i class="coment highlight">
+              &emsp;/***********RECURSIVIDAD***********/<br/>
+              &emsp;//Se usan funciones recursivas porque se está llamando a la función conversación dentro de sí misma.<br/>
+              &emsp;//Mediante un If como estructura de control se le dice la cantidad de veces que va a ejecutarse la función hablar.
+          </i><br/><br/>
+            &emsp;function conversacion(nombre, veces, callback) {<br/>
+            &emsp;&emsp;if (veces > 0) {<br/>
+            &emsp;&emsp;&emsp;hablar(function () {<br/>
+            &emsp;&emsp;&emsp;&emsp;conversacion(nombre, --veces, callback);<br/>
+            &emsp;&emsp;&emsp;})<br/>
+            &emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;adios(nombre, callback);<br/>
+            &emsp;&emsp;}<br/>
+            &emsp;}<br/>
+            &emsp;console.log('Proceso iniciado...');<br/>
+            &emsp;hola('Calamardo', function (nombre) {<br/>
+            &emsp;&emsp;conversacion(nombre, 3, function() {<br/>
+            &emsp;&emsp;&emsp;console.log('Proceso terminado');<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;});<br/><br/>
+            <i class="coment highlight">
+              &emsp;/***********CALLBACK HELL***********/<br/>
+              &emsp;/*<br/>
+              &emsp;hola('Calamardo', function (nombre) {<br/>
+              &emsp;&emsp;hablar(function () {<br/>
+              &emsp;&emsp;&emsp;hablar(function () {<br/>
+              &emsp;&emsp;&emsp;&emsp;hablar(function () {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;adios(nombre, function() {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;console.log('Proceso terminado...');<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;});<br/>
+              &emsp;&emsp;&emsp;&emsp;});<br/>
+              &emsp;&emsp;&emsp;});<br/>
+              &emsp;&emsp;});<br/>
+              &emsp;});<br/>
+              &emsp;*/<br/>
+            </i>
+          </aside>
+        </div>
+      </section>
+      <!-- <footer>
+        <section>
+          <div class="container">
+            <h3>Referencias:</h3>
+            <p>
+              <a href="" target="_blank" rel="noopener noreferrer"></a><br/>
+            </p>
+          </div>
+        </section>
+      </footer> -->
+      <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

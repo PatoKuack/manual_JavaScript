@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Monohilo</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Monohilo -->
+    <section class="container">
+      <div>
+        <h1 class="textCenter">Monohilo.</h1>
+        <p><i>Un hilo o subproceso es una secuencia de tareas encadenadas muy pequeña que puede ser ejecutada por un sistema operativo.</i></p>
+        <p>El monohilo abre un proceso de Node, interpreta un archivo, lo convierte a código máquina, lo ejecuta y cierra el proceso.</p>
+        <p>Cuando ocurre un error dentro de alguno de los hilos y no se controla apropiadamente (catch); Node detiene todos los hilos en ejecución. Esto puede ser muy peligroso, debido a que es difícil determinar el origen del problema y en que punto de ejecución se encontraba cada hilo cuando fue detenido.</p>
+        <p>En el siguiente ejemplo la función no se detiene y continúa su ejecución al infinito repitiendo un texto cada segundo.</p>
+        <p>La ejecución de funciones que recaen en ciclos infinitos se detiene con <b>ctrl + alt + m</b> en Run Code, o con <b>ctrl + c</b> en la terminal.</p>
+        <p>Esta instrucción es asíncrona, por lo que se ejecuta en un n momento dejando que otras funciones declaradas posteriormente se ejecuten antes que ésta.</p>
+        <aside class="exempliGratia">
+          &emsp;console.log('Hola mundo');<br/>
+          &emsp;<i class="coment highlight">// SetInterval permite ejecutar una función cada n cantidad de tiempo, por lo que recibe como argumentos: Función a ejecutarse, intervalo de tiempo.</i><br/>
+          &emsp;let i = 0;<br/>
+          &emsp;setInterval(function(){<br/>
+          &emsp;&emsp;console.log(`Voy a contar hasta infinito, detén mi ejecución o consumo tu memoria ${i}`);<br/>
+          &emsp;&emsp;i++;<br/>
+          &emsp;}, 1000);<br/>
+          &emsp;console.log('Yo solo iba de paso =B');
+          <hr class="link">
+          &emsp;<i>Imprime en la terminal:</i><br/>
+          &emsp;Hola mundo<br/>
+          &emsp;Yo solo iba de paso =B<br/>
+          &emsp;Voy a contar hasta ... tu memoria 0<br/>
+          &emsp;Voy a contar hasta ... tu memoria 1<br/>
+          &emsp;Voy a contar hasta ... tu memoria 2<br/>
+          &emsp;^C
+        </aside>
+        <p>Al ser monohilo el peligro recae en que, si el código se efectúa y arroja un error dentro de sus acciones, puede detener toda la aplicación.</p>
+        <p>Escuchar los errores en todo el código es muy importante. Comprobar funciones y revisar lo que posiblemente puede fallar es clave para que no se corte la ejecución de la aplicación.</p>
+        <aside class="exempliGratia">
+          &emsp;console.log('Hola mundo');<br/>
+          &emsp;let i = 0;<br/>
+          &emsp;setInterval(function(){<br/>
+          &emsp;&emsp;console.log(`Voy a contar hasta infinito, detén mi ejecución o consumo tu memoria ${i}`);<br/>
+          &emsp;&emsp;if (i === 5) {<br/>
+          &emsp;&emsp;&emsp;console.log('forcé un error');<br/>
+          &emsp;&emsp;&emsp;var a = 3 + z;<br/>
+          &emsp;&emsp;}<br/>
+          &emsp;&emsp;i++;<br/>
+          &emsp;}, 1000);<br/>
+          &emsp;console.log('Yo solo iba de paso =B');
+          <hr class="link">
+          &emsp;<i>Imprime en la terminal:</i><br/>
+          &emsp;Hola mundo<br/>
+          &emsp;Yo solo iba de paso =B<br/>
+          &emsp;Voy a contar hasta ... tu memoria 0<br/>
+          &emsp;Voy a contar hasta ... tu memoria 1<br/>
+          &emsp;Voy a contar hasta ... tu memoria 2<br/>
+          &emsp;Voy a contar hasta ... tu memoria 3<br/>
+          &emsp;Voy a contar hasta ... tu memoria 4<br/>
+          &emsp;forcé un error<br/>
+          &emsp;<i>variable z no declarada.</i>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section class="container">
+      <div>
+        <h3>Referencias:</h3>
+        <p>
+          <a href="https://nodejs.org/en/blog/vulnerability/february-2020-security-releases/" target="_blank" rel="noopener noreferrer">Problemas de seguridad y Updates de monohilos.</a><br/>
+        </p>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

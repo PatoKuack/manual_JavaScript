@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Process</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Process -->
+    <section class="container">
+      <div>
+        <h3 class="textCenter">Process</h3>
+        <ul>
+          <li>El segundo paso es crear un archivo de extensión .js en la carpeta raíz del proyecto y anexarle el siguiente código:</li>
+        </ul>
+        <aside class="exempliGratia">
+          &emsp;const <u>funciónB</u> = require('process');
+        </aside>
+        <p>Como <i>process</i> está incluido dentro de los módulos globales, no se tiene que requerir el módulo de process, se puede acceder al process del módulo global que es el proceso en el que se está trabajando:</p>
+        <aside class="exempliGratia">
+          &emsp;process.on('beforeExit', () => {<br/>
+          &emsp;&emsp;console.log('El proceso está a punto de terminar.');<br/>
+          &emsp;});<br/><br/>
+          &emsp;process.on('uncaughtException', (err, origen) => {<br/>
+          &emsp;&emsp;console.error('¡Vaya!, se olvidó el capturar un error.');<br/>
+          &emsp;&emsp;console.error(err);<br/>
+          &emsp;})<br/>
+          <i class="coment highlight">// 'UncaughtException' permite capturar cualquier error que no fue capturado previamente. Esto evita que Node cierre todos los hijos al encontrar un error no manejado.</i><br/>
+          <i class="highlight">// process.on('unhandleRejection', <u>función</u>);</i><br/>
+          <i class="coment highlight">// También sirve para capturar promesas que se han rechazado y no han sido capturadas.</i><br/>
+          &emsp;funcionQueProvocaError();<br/>
+          &emsp;console.log('Si el error no se recoge, este mensaje no saldrá.');<br/>
+        </aside>
+        <aside class="exempliGratia">
+          &emsp;console.log('Esto SI se ejecutará.');<br/><br/>
+          &emsp;process.on('exit', () => {<br/>
+            &emsp;&emsp;console.log('El proceso terminó.');<br/>
+            &emsp;&emsp;setTimeout(() => {<br/>
+            &emsp;&emsp;&emsp;console.log('Esto NO se ejecutará.');<br/>
+            &emsp;&emsp;}, 0);<br/>
+            &emsp;});<br/><br/>
+            &emsp;setTimeout(() => {<br/>
+            &emsp;&emsp;console.log('Esto SI se ejecutará.');<br/>
+            &emsp;}, 0);<br/>
+            <i class="coment highlight">// Sirve para saber cuándo un proceso terminó, una vez que se escucha el 'exit' es porque el proceso se ha desconectado del EventLoop y no podrá ejecutar eventos en segundo hilo (en asincronía).</i>
+        </aside>
+        <p>El objecto process es una instancia de EventEmitter; y permite suscribirse a él para escuchar eventos de Node.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section>
+      <div class="container">
+        <h3>Referencias:</h3>
+        <p>
+          <a href="https://nodejs.org/docs/latest-v13.x/api/process.html#process_process_argv" target="_blank" rel="noopener noreferrer">process.argv</a><br/>
+          <!-- <a href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+        </p>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

@@ -37,7 +37,7 @@ div{
   border-radius: 1% 1%;
   padding: .5em 1em 1em 1em;
   /* background-color: rgba(72, 224, 174, 0.747); */
-  background-image: linear-gradient(150deg, rgba(81, 214, 231, 0.7) 15%, rgba(77, 219, 224, 0.7) 40%, rgba(21, 255, 177, 0.7) 70%);
+  background-image: linear-gradient(150deg, rgba(21, 255, 177, 0.7) 15%, rgba(77, 219, 224, 0.7) 40%, rgba(81, 214, 231, 0.7) 70%);
   margin-left: auto;
   margin-right: auto;
 }

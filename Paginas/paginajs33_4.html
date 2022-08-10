@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Async/Await.</title>
+</head>
+<body class="body">
+      <!-- Async/Await -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Async/Await.</h2>
+          <p>Es azúcar sintáctico, es decir, una forma muy legible y entendible de realizar código, un Async/Await no deja de ser una función asíncrona, la diferencia es que al usar esta sintaxis se podrá ver un código más legible.</p>
+          <p>Para usar correctamente esta sintaxis se usa Async para declarar una función asíncrona, cuando una función es asíncrona se puede usar dentro de su contexto el Await.</p>
+          <p>El Await es la manera en que se le indica al código que ha de esperar a que el evento indicado en el Await se resuelva y retorne un valor, ya que es importante para el proceso del código. Cuando este retorne un valor el código seguirá normalmente, no estará bloqueando el hilo principal, pues estará esperando a que se resuelva con el event loop.</p>
+          <aside class="exempliGratia">
+            <i class="coment highlight">// La palabra async convierte una función inmediatamente en asíncrona.</i><br/>
+            &emsp;async function hola(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function () {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Hey, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Error en Hola!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;async function hablar(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('bla bla bla bla...');<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Error en Hablar!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1000);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;async function adios(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Adios, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Error en Adios!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            <i class="coment highlight">// Await solo es válido dentro de una función asíncrona.</i><br/>
+            &emsp;async function main() {<br/>
+            <i class="coment highlight">// "try" se utiliza con los async/await cuando se quieren atrapar errores</i><br/>
+            &emsp;&emsp;try{<br/>
+            &emsp;&emsp;&emsp;let nombre = await hola('Hankok');<br/>
+            &emsp;&emsp;&emsp;await hablar();<br/>
+            <i class="coment highlight">// Para hacer que una instrucción no se ejecute en segundo plano no debe colca el await.</i><br/>
+            &emsp;&emsp;&emsp;hablar();<br/>
+            &emsp;&emsp;&emsp;await hablar();<br/>
+            &emsp;&emsp;&emsp;await adios(nombre);<br/>
+            &emsp;&emsp;}<br/>
+            &emsp;&emsp;.catch(error){<br/>
+            &emsp;&emsp;&emsp;console.log('Hubo un error:');<br/> 
+            &emsp;&emsp;&emsp;console.log(error);<br/>
+            &emsp;&emsp;}<br/>
+            &emsp;&emsp;console.log('Proceso terminado...');<br/>
+            &emsp;}<br/><br/>
+            <i class="coment highlight">// Esto nos permitirá saber si nuestra función se está ejecutando de forma asíncrona.</i><br/>
+            &emsp;console.log('Proceso iniciado...');<br/>
+            &emsp;main();<br/>
+            &emsp;console.log('Ésta será la segunda instrucción en ejecutarse saltándose los async.');<br/>
+          </aside>
+        </div>
+      </section>
+      <!-- <footer>
+        <section>
+          <div class="container">
+            <h3>Referencias:</h3>
+            <p>
+              <a href="" target="_blank" rel="noopener noreferrer"></a><br/>
+            </p>
+          </div>
+        </section>
+      </footer> -->
+      <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

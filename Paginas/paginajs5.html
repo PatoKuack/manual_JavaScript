@@ -6,50 +6,298 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
   <!-- ------------------- -->
+  <link rel="stylesheet" href="../Estilos/stylejs1.css">
+  <link rel="stylesheet" href="../Estilos/stylejs2.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs1.css">
-  <link rel="stylesheet" href="../Estilos/stylejs2.css">
-  <title>Engine</title>
+  <title>Array y métodos</title>
 </head>
 <body>
   <div class="medio">
-    <h2 class="white">Just in time compiler</h2>
-    <p class="white">Cuando se programa un código de JavaScript se genera una lista de tareas que harán didáctica a la página web.</p>
-    <p class="white">El proceso de "just in time compiler" o "compilación en tiempo real" es cuando el motor de JavaScript funciona como un intérprete entre el código y la computadora transformando el código JavaScript en código máquina o bitecode.</p>
+    <h2>Colecciones de datos.</h2>
     <div>
-      <h3>Global Environment.</h3>
-      <p>Una vez que el navegador recibe nuestro código, lo primero que hace es crear un entorno global el cual contiene tres cosas: un objeto global, una variable llamada "this" y un entorno de salida.</p>
-      <h3>Global Object.</h3>
-      <p>Este objeto es igual a Window.</p>
-      <h3>this.</h3>
-      <p>Esta variable depende mucho del contexto en el que se esté llamando, en el caso del entorno global, this es igual a este objeto global que también es igual a window.</p>
-      <h3>Outer Environment.</h3>
-      <p>También conocido como "ámbito léxico", es el bloque donde fue creada una función y que puede acceder a todos los demás elementos que están dentro del bloque de la función.</p>
-      <h3>Execution context.</h3>
-      <p>Después de que se generan los tres elementos del entorno global, se genera el contexto de ejecución que es conde se corre el código a través de un Stack de tareas que las apila una por una.</p>
-      <h3>Parser.</h3>
-      <p>Cuando empieza a interactuar JavaScript con el motor del navegador se realiza un parseo del documento completo para poder encontrar las llaves principales o Keywords.</p>
-      <h3>AST.</h3>
-      <p>Con las keywords del código se genera un "abstract syntax tree" o "árbol de sintaxis abstracta" que es una forma del código en donde las instrucciones se desglosan para mostrar sus componentes y las acciones que realiza.</p>
-      <h3>Bitecode</h3>
-      <p>El árbol sintáctico se interpreta y se convierte en bitecode el cual es un código muy básico que puede interpretar la máquina.</p>
-      <h3>Profiler.</h3>
-      <p>Si al interpretar el árbol sintáctico se encuentran código que se puede optimizar, el código pasa al "profiler" o "monitor" que optimiza el código, lo compila y lo regresa como bitecode para que la máquina lo pueda entender.</p>
-      <h3>Hoisting.</h3>
-      <p>En este último proceso (Profiler) se pueden generar errores por no utilizar bien el Hoisting que es declarar las variables y funciones de una forma adecuada para que funcionen al mandarlas llamar.</p>
+      <h3>Array.</h3>
+      <p>Es una lista de elementos.<br/>
+      Su declaración e inicialización se hacen de la siguiente manera:</p>
+      <span>
+        <b>let <u><i>array-de-valores</i></u> = [ <u><i>valor0</i></u>, <u><i>valor1</i></u>, <u><i>valor2</i></u> ];</b>
+      </span>
+      <p>Con la instrucción <b><i><u>array</u></i>[ <i><u>número-de-valor</u></i> ]</b> se obtiene el valor que esté ubicado en la posición especificada, siendo que el primer valor está en la posición 0, el segundo valor en la posición 1, etc.</p>
+      <span>
+        <b>let menu = [8, "jejeje", true, {aminal: oso, estado: peludo}];<br/>
+        console.log(menu[0]);</b><br/>
+        <i>// imprime: 8</i><br/>
+        console.log(menu[1]);</b><br/>
+        <i>// imprime: jejeje</i><br/>
+        console.log(menu[2]);</b><br/>
+        <i>// imprime: true</i>
+      </span>
+      <h3>Array de objetos.</h3>
+      <p>Un objeto es una lista de elementos, PERO cada elemento tiene un nombre clave.</p>
+      <span>
+        <b>let <u><i>array-de-objetos</i></u> = [<br>
+          &emsp;{</b> // objeto 0<br>
+            &emsp;&emsp;<b><u><i>atributo1</i></u> : <u><i>valor1</i></u>,<br>
+            &emsp;&emsp;<u><i>atributo2</i></u> : <u><i>valor2</i></u><br>
+          &emsp;},<br>
+          &emsp;{</b> // objeto 1<br>
+            &emsp;&emsp;<b><u><i>atributo3</i></u> : <u><i>valor3</i></u>,<br>
+            &emsp;&emsp;<u><i>atributo4</i></u> : <u><i>valor4</i></u><br>
+          &emsp;}<br>
+          ]</b>
+      </span>
+      <p>Con la instrucción <b><i><u>array</u></i>[ <i><u>número-de-conjunto</u></i> ].nombre-de-atributo</b> se obtiene el valor que esté contenido en el atributo especificado y en el objeto ubicado en la posición especificada, siendo que el primer objeto está en la posición 0, el segundo objeto en la posición 1, etc., ejemplo: console.log(libreria[0].nombreLibro).</p>
+      <p>Se puede escribir directamente en la consola el nombre del array para visualizarlo.</p>
+      <span>
+        <b>let <u><i>aguasFrescas</i></u> = [<br>
+        &emsp;{</b> // objeto 0<br>
+          &emsp;&emsp;<b><u><i>Agua</i></u> : <u><i>"limón"</i></u>,<br>
+          &emsp;&emsp;<u><i>Apariencia</i></u> : <u><i>"tamarindo"</i></u>,<br>
+          &emsp;&emsp;<u><i>Sabor</i></u> : <u><i>"jamaica"</i></u><br>
+        &emsp;},<br>
+        &emsp;{</b> // objeto 1<br>
+          &emsp;&emsp;<b><u><i>Agua</i></u> : <u><i>"jamaica"</i></u>,<br>
+          &emsp;&emsp;<u><i>Apariencia</i></u> : <u><i>"limón"</i></u>,<br>
+          &emsp;&emsp;<u><i>Sabor</i></u> : <u><i>"tamarindo"</i></u><br>
+        &emsp;},<br>
+        &emsp;{</b> // objeto 2<br>
+          &emsp;&emsp;<b><u><i>Agua</i></u> : <u><i>"tamarindo"</i></u>,<br>
+          &emsp;&emsp;<u><i>Apariencia</i></u> : <u><i>"jamaica"</i></u>,<br>
+          &emsp;&emsp;<u><i>Sabor</i></u> : <u><i>"limón"</i></u><br>
+        &emsp;},<br>
+        ]<br/><br/>
+        console.log(aguasFrescas[1]);</b><br/>
+        <i>// imprime el segundo objeto.</i><br/>
+        <b>console.log(Object.keys(aguasFrescas[1]));</b><br/>
+        <i>// imprime un Array con 3 elementos: ["Agua", "Apariencia", "Sabor"]</i><br/>
+        <b>console.log(Object.values(aguasFrescas[1]));</b><br/>
+        <i>// imprime un Array con 3 elementos: ["jamaica", "limón", "Tamarindo"]</i>
+      </span>
     </div>
+    <h2>Métodos</h2>
+    <div>
+      <h3>Array (push).</h3>
+      Agrega nuevos datos a un array.<br>
+      Se escribe la función, con un punto se indica que se hará un llamado a un método, se coloca el método deseado y después se colocan los parámetros, ejemplo:<br>
+      <b>let <i><u>variable</u></i> = [ <i><u>valores</u></i> ]<br>
+      <i><u>variable</u></i>.push( <i><u>elemento nuevo</u></i> )</b><br>
+      Se puede guardar la sentencia en otra variable y se obtiene el número de datos que contiene el array, ejemplo:<br>
+      <b>let <u><i>variable2</i></u> = <i><u>variable1</u></i>.push( <i><u>elemento nuevo</u></i> )<br>
+      // la variable2 tendrá un valor numérico el cual será el número de valores que contenga el array, es decir su tamaño.</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>buffete</i></u> = [ <u><i>"gelatina de moho", "telarañas cristalizadas", "aderezo de huesos", "sangre bajo en hierro", "sanguijuelas recién alimentadas"</i></u>]<br>
+        let <u><i>especial</i></u> = <i><u>buffete</u></i>.push( <i><u>"feto en su jugo"</u></i> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (unshift).</h3>
+      Funciona igual que <b>push</b>, pero envía el string indicado dentro de su parámetro al inicio del array y no al final.
+    </div>
+    <div>
+      <h3>Array (pop).</h3>
+      Elimina el último valor de un array.<br>
+      Si se guarda la sentencia de eliminación en una variable, ésta variable contendrá el dato que se está eliminando, ejemplo:<br>
+      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.pop()</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>agotado</i></u> = <i><u>buffete</u></i>.pop( )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (shift).</h3>
+      Funciona igual que <b>pop</b>, pero elimina el string indicado dentro de su parámetro <u>solamente</u> si ése string está al inicio del array.
+    </div>
+    <div>
+      <h3>Array (slice).</h3>
+      El método <b>slice</b> duplica el array, en el parámetro se indica desde que posición, hasta que posición se debe partir.<br>
+      Este método NO modifica el arreglo original como los métodos anteriores y aparte nos devuelve un arreglo extra.<br>
+      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.slice( 0 , 2 )<br>
+      //en esté caso nos copiará los datos de la posición 0 y 1 en un array guardado en la <u><i>variable2</i></u></b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>postres</i></u> = <i><u>buffete</u></i>.slice( <u><i>0, 2</i></u> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (splice).</h3>
+      Agrega, elimina o remplaza elementos del array modificando su contenido.
+      <span>
+        <b>let <u><i>variable</i></u> = ['<u><i>valor1</i></u>', '<u><i>valor3</i></u>', '<u><i>valor4</i></u>', '<u><i>valor5</i></u>'];<br>
+        <u><i>variable</i></u>.splice(<u><i>1</i></u>, <u><i>0</i></u>, '<u><i>valor2</i></u>', '<u><i>valorN</i></u>');</b><br>
+        <em class="coment">//se posiciona después del primer valor</em><br>
+        <em class="coment">//elimina cero elementos después de ese posicionamiento</em><br>
+        <em class="coment">//inserta los valore especificados (valor2, valorN) después de su posición.</em>
+        <hr>
+        <b><u><i>variable</i></u>.splice(<u><i>-2</i></u>, <u><i>1</i></u>);</b><br>
+        <em class="coment">//se posiciona después del segundo elemento (no difiere entre positivos y negativos)</em><br>
+        <em class="coment">//elimina el elemento que le precede (solo elimina 1 valor).</em>
+        <hr>
+        <b><u><i>variable</i></u>.splice(<u><i>2</i></u>);</b><br>
+        <em class="coment">//se posiciona después del segundo elemento y elimina todos los elementos que le preceden.</em>
+      </span>
+    </div>
+    <div>
+      <h3>Array (forEach).</h3>
+      Significa "para cada elemento". Este método no nos retorna valores ni los guarda. Necesita como parámetro una función con su propio parámetro y su código, el parámetro de la función dentro del forEach hará q se aplique el código de la función a cada uno de los datos obtenidos, ejemplo:<br>
+      <b>let <u><i>variable1</i></u> = [ <u><i>datos</i></u> ]<br>
+      <u><i>variable1</i></u>.forEach ( function ( <u><i>variable2</i></u> ){<br>
+      <u><i>código</i></u></b> // aplica el código a cada uno de los datos del array "variable1"<br>
+      <b>} )</b><br>
+      o también se puede declarar de la siguiente forma:<br>
+      <b>let <u><i>variable1</i></u> = [ <u><i>datos</i></u> ]<br>
+      <u><i>variable1</i></u>.forEach ( <u><i>variable2</i></u> => <u><i>código simple</i></u> )</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let i = 1<br>
+        <u><i>buffete</i></u>.forEach ( <u><i>platillos</i></u> => (console.log( <u><i>`Platillo ${i}: ${platillos}`</i></u> ), i++ ) )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (map).</h3>
+      Funciona igual que <b>forEach</b> solo que este método crea un array nuevo retornando cada uno de los valores modificados del array original, ejemplo:<br>
+      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.map ( <u><i>función</i></u> => <u><i>valor modificado</i></u> )</b><br>
+      En este caso, variable2 es un array vacío que se va llenando con cada valor retornado que genere cada valor del array.<br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let i = 1<br>
+        let <u><i>menu</i></u> = <u><i>buffete</i></u>.map ( <u><i>platillos</i></u> => <u><i>`Platillo ${i++}: ${platillos}`</i></u> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (filter).</h3>
+      Este método crea una copia del array original sin modificarlo, trabaja con elementos booleanos por lo que se utilizan comparaciones para obtenerlos, filtra los elementos de un array según una comparación, mostrando los elementos que devuelvan un <b>true</b>, ejemplo:<br>
+      <b>let <u><i>variable1</i></u> = [ <u><i>datos</i></u> ]<br>
+      let <u><i>variable2</i></u> = <u><i>variable1</i></u>.filter ( <u><i>función</i></u> => <u><i>comparación</i></u> )</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>vamplillos</i></u> = <u><i>buffete</i></u>.filter ( <u><i>sangre</i></u> => <u><i>sangre === "sangre bajo en hierro" || sangre === "sanguijuelas recién alimentadas"</i></u> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (find).</h3>
+      Encuentra el primer dato del array que cumpla con la comparación, ejemplo:<br>
+      <b>let <u><i>variable1</i></u> = [ <u><i>datos</i></u> ]<br>
+      let <u><i>variable2</i></u> = <u><i>variable1</i></u>.find ( <u><i>función</i></u> => <u><i>comparación</i></u> )</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>nombre</i></u> = <u><i>buffete</i></u>.find ( <u><i>nplatillo</i></u> => <u><i>nplatillo.length > 15</i></u> )</b><br>
+      </span>
+    </div>
+    <div>
+      <h3>Array (includes).</h3>
+      Verifica que el valor especificado se encuentre entre los datos del array y nos devuelve un valor booleano, ejemplo:<br>
+      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.includes (  <u><i>dato</i></u> )</b><br>
+      <span>
+        Ejemplo con valores:<br>
+      <b>let <u><i>especifico</i></u> = <u><i>buffete</i></u>.includes (  <u><i>"feto en su jugo"</i></u> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (some).</h3>
+      Comprueba si al menos algún elemento del array cumple la comparación y devuelve un booleano, ejemplo:<br>
+      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.some ( <u><i>función</i></u> => <u><i>comparación</i></u> )</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>nombre2</i></u> = <u><i>buffete</i></u>.some ( <u><i>typeplatillo</i></u> => <u><i>typeof typeplatillo === "number"</i></u> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (every).</h3>
+      Valida si todos los elementos del array cumplen con la condición y devuelve un booleano, ejemplo:<br>
+      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.every ( <u><i>función</i></u> => <u><i>comparación</i></u> )</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>nombre3</i></u> = <u><i>buffete</i></u>.every ( <u><i>typeplatillo</i></u> => <u><i>typeof typeplatillo === "string"</i></u> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (indexOf).</h3>
+      Encuentra el índice del valor que se le pasó por parámetro y regresa el índice si lo encuentra. Los índices son el número de posición de un elemento en el array y van de 0 a n, sino encuentra dicho valor (índice) entonces regresa '-1', ejemplo:<br>
+      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.indexOf ( <u><i>comparación</i></u> )</b><br>
+      <span>
+        Ejemplo con valores:<br>
+        <b>let <u><i>indice</i></u> = <u><i>buffete</i></u>.indexOf ( <u><i>"aderezo de huesos"</i></u> )</b>
+      </span>
+    </div>
+    <div>
+      <h3>Array (sort).</h3>
+      <span>
+        <b>
+          <em class="coment">--ORDENAR POR ABECEDARIO--</em><br>
+          let stringArray = ['Blue', 'Humpback', 'Beluga'];<br>
+          stringArray.join(); <em class="coment">// 'Blue,Humpback,Beluga'</em><br>
+          stringArray.sort(); <em class="coment">// ['Beluga', 'Blue', 'Humpback']</em>
+        <hr>
+        <em class="coment">--ORDENAR POR CANTIDAD--</em><br>
+          let numberArray = [40, 1, 5, 200];<br>
+          function compareNumbers(a, b) {<br>
+            return a - b;<br>
+          }<br>
+          numericStringArray.join(); <em class="coment">// '80,9,700'</em><br>
+          numericStringArray.sort(); <em class="coment">// [700, 80, 9]</em><br>
+          numericStringArray.sort(compareNumbers); <em class="coment">// [9, 80, 700]</em><br>
+          <hr>
+          <em class="coment">--ORDENAR POR ASCII--</em><br>
+          var items = ['réservé', 'premier', 'communiqué', 'café', 'adieu', 'éclair'];<br>
+          items.sort(function (a, b) {<br>
+            return a.localeCompare(b);<br>
+          });<br>
+          <em class="coment">// items is ['adieu', 'café', 'communiqué', 'éclair', 'premier', 'réservé']</em><br>
+        </b>
+      </span>
+      <p>También se puede utilizar para crear funciones de comparación:</p>
+      <span>
+        <b>let ordenar = <u>array</u>.sort((<u>element1</u>, <u>element2</u>) => (<u>element1</u>.<u>variable</u> < <u>element2</u>.<u>variable</u>) ? 1 : (<u>element1</u>.<u>variable</u> > <u>element2</u>.<u>variable</u>) ? -1 : 0);</b><br/>
+        <i>// Se comparan dos objetos, si el primer elemento es menor al segundo devuelve un 1. Si el primer elemento es mayor que el segundo devuelve un -1. Si son iguales devuelve un 0.</i>
+      </span>
+    </div>
+    <div>
+      <h3>Array (reduce).</h3>
+      Funciona como un ciclo generando una operación entre todos los valores de un array, es decir suma todos sus valores, divide, etc.<br>
+      Recibe una función como argumento, esta función debe contener dos parámetros, uno donde se vaya acumulando el resultado de las operaciones y otro donde reciba los nuevos valores.
+      <span>
+        Ejemplos con valores:<br>
+        <b>
+          function <u>calcMediaAritmetica</u>(<u>lista</u>) {<br>
+            <em class="coment">//se inicializa una función para mandarla a llamar y ejecutar todo el código del reduct.</em><br>
+            | const <u>sumaLista</u> = <u>lista</u>.reduce(<br>
+            | <em class="coment">//a el array que se reciba como argumento al llamar la función se le aplicará el reduct y se guardará en la constante "sumaLista".</em><br>
+              | | function (<u>valorAcumulado</u> = 0, <u>nuevoElemento</u>) {<br>
+                | | <em class="coment">//se declara la función que recibe como parámetro el método "reduct" con sus propios dos parámetros, uno de estos dos obtiene un valor por default de 0 si es que no recibe un valor.</em><br>
+                | | | return <u>valorAcumulado</u> + <u>nuevoElemento</u>;<br>
+                | | | <em class="coment">//retorna la indicación de que se tiene que hacer una suma con los valores del array.</em><br>
+              | | }<br>
+            | );<br>
+            | const <u>promedioLista</u> = <u>sumaLista</u> / <u>lista</u>.length;<br>
+            | return <u>promedioLista</u>;<br>
+            | <em class="coment">//se obtiene el promedio y se retorna.</em><br>
+          }
+          <hr>
+          const <u>array1</u> = [<u>1, 2, 3, 4</u>];<br>
+          <em class="coment">//se declara el array.</em><br>
+          const <u>multiplicador</u> = (<u>accumulator</u>, <u>currentValue</u>) => <u>accumulator</u> * <u>currentValue</u>;<br>
+          <em class="coment">//se crea la función para el parámetro del método "reduct" junto con su instrucción de multiplicar.</em><br>
+          <em class="coment">// 1 * 2 * 3 * 4</em><br>
+          console.log(<u>array1</u>.reduce(<u>multiplicador</u>));<br>
+          <em class="coment">//se imprime en consola el array con el método reduct y sus parámetros guardados en la constante "multiplicador".</em><br>
+          <em class="coment">//el resultado será 24.</em>
+        </b>
+      </span>
+    </div>
+    <!-- <div>
+      <h3>Spread Operators (...)</h3>
+      Convierte una "lista de elementos o nodos" a un "aray", ejemplo:<br>
+      <b>let <u><i>variable</i></u> = [...<u><i>lista-de-elementos</i></u>]</b><br>
+      Pero esta no es la forma mas segura de trabajarlo. La forma mas segura y recomendada es con el prototipo <b>Array</b> y el método <b>from</b> así le estarás indicando que te cree un array desde la lista que le estarás pasando como parámetro, ejemplo:<br>
+      <b>let <u><i>variable</i></u> = Array.from(<u><i>lista-de-elementos</i></u>)</b>
+    </div> -->
   </div>
   <footer>
     <h3>Referencias:</h3>
-    <p>
-      <a href="https://static.platzi.com/media/public/uploads/glosario_70bd6257-d472-4c07-a7fd-f379503ab370.pdf" target="_blank" rel="noopener noreferrer">Glosario de conceptos.</a><br/>
-      <a href="https://dev.to/lydiahallie/javascript-visualized-the-javascript-engine-4cdf" target="_blank" rel="noopener noreferrer">JavaScript Engine.</a><br/>
-      <a href="https://astexplorer.net/" target="_blank" rel="noopener noreferrer">Ejemplo de AST.</a><br/>
-
-      <a href="https://developer.mozilla.org/en-US/docs/Glossary/Parse" target="_blank" rel="noopener noreferrer">Parse.</a>
-    </p>
+    <a target="_blank" href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array#">Documentación del Array</a>
   </footer>
+  <script src="../Js/programajs6.js"></script>
 </body>
 </html>

@@ -21,18 +21,12 @@
   box-sizing: content-box;
 }
 
-.module{
-  padding-left: 1em;
-}
 .list{
   /* padding-left: 1em; */
   padding-right: .5em;
 }
 .subList{
   padding-left: 1em;
-}
-.module *{
-  list-style-type: none;
 }
 .item{
   padding-top: .2em;
@@ -44,13 +38,17 @@
 }
 
 .module{
+  padding-left: 1em;
   counter-reset: module;
 }
 .module > .item{
   counter-increment: module;
 }
 .module .titModule::after{
-  content: ' ' counter(module, decimal);
+  content: 'Módulo ' counter(module, decimal) ': ';
+}
+.module *{
+  list-style-type: none;
 }
 .list{
   counter-reset: theme;
@@ -71,6 +69,9 @@
 }
 .subList > .item::before{
   content: counter(theme, decimal) '.' counter(sub-theme, decimal) ' ';
+}
+.module h4{
+  margin: 1.2rem 0 .2rem 0;
 }
 
 .link{
@@ -137,9 +138,6 @@
 }
 .menu{
   margin: 1.1rem 0;
-}
-.titModule{
-  margin: 1.2rem 0 .2rem 0;
 }
 
 @media screen and (max-width: 500px){

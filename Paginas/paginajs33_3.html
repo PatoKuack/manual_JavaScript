@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Promesas.</title>
+</head>
+<body class="body">
+      <!-- Promesas -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Promesas.</h2>
+          <p>Las promesas son una sintaxis más elegante y legible de realizar callbacks, solo que las promesas cuentan con 3 estados: resuelta, en progreso y rechazada.</p>
+          <p>Para utilizar una promesa solo se debe de instanciar una nueva, una promesa en si es una función que recibe dos parámetros: resolve y reject.</p>
+          <p>Utilizamos resolve para retornar el valor deseado cuando una función se ejecute y utilizamos reject para cuando una función retorna un valor no deseado.</p>
+          <p>Para poder obtener los valores que retorna una función se utiliza su propiedad .then, esta propiedad es una función que recibe un callback el cual tendrá como parámetro el valor retornado con resolve o reject.</p>
+          <p>Siempre que se usa una promesa, además de llamar a la propiedad .then, es necesario invocar la propiedad .catch, la cual es un callback que recibe como parámetro el error ocurrido en caso de que se produzca alguno y evita que ése error cree problemas en el código.</p>
+          <aside class="exempliGratia">
+            &emsp;function hola(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function () {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Hey, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;} else {<br/>
+            &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Hay un error!');<br/>
+            &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;function hablar(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('bla bla bla bla...');<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+              &emsp;&emsp;&emsp;&emsp;} else {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Hay un error!');<br/>
+              &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 1000);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;function adios(nombre) {<br/>
+            &emsp;&emsp;return new Promise(function (resolve, reject) {<br/>
+            &emsp;&emsp;&emsp;setTimeout(function() {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.log('Adios, ' + nombre);<br/>
+            &emsp;&emsp;&emsp;&emsp;if(typeof nombre === string){<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;resolve(nombre);<br/>
+              &emsp;&emsp;&emsp;&emsp;} else {<br/>
+              &emsp;&emsp;&emsp;&emsp;&emsp;reject('¡Hay un error!');<br/>
+              &emsp;&emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;&emsp;}, 500);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;}<br/><br/>
+            &emsp;console.log('Proceso iniciado...');<br/>
+            &emsp;hola('Luffy');<br/>
+            &emsp;.then(hablar);<br/>
+            &emsp;.then(hablar);<br/>
+            &emsp;.then(hablar);<br/>
+            &emsp;.then(adios);<br/>
+            &emsp;&emsp;.then((nombre) => {<br/>
+            &emsp;&emsp;&emsp;console.log('Proceso terminado...');<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;.catch(error => {<br/>
+            &emsp;&emsp;console.log('Hubo un error:');<br/> 
+            &emsp;&emsp;console.log(error);<br/> 
+            &emsp;});<br/><br/>
+          </aside>
+        </div>
+      </section>
+      <!-- <footer>
+        <section>
+          <div class="container">
+            <h3>Referencias:</h3>
+            <p>
+              <a href="" target="_blank" rel="noopener noreferrer"></a><br/>
+            </p>
+          </div>
+        </section>
+      </footer> -->
+      <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

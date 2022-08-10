@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Memoria</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Memoria -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Memoria.</h2>
+        <cite>El disco duro es como mi abuelita, es lenta, pero tiene mucha experiencia y todo se le queda grabado. La RAM es como yo, depende si tengo corriente o no, muy rápido, pero nada se me queda en la cabeza.<br/> De: alguien alguna vez.</cite>
+        <p>Un buffer es básicamente un montón de datos y un stream es básicamente un proceso donde pasan un montón de datos.</p>
+        <h3>Buffer.</h3>
+        <p>Un buffer es un espacio de memoria (en la memoria RAM), en el que se almacenan datos de manera temporal.</p>
+        <p>Es la forma mas cruda en la que se pueden almacenar los datos. El buffer almacena los datos en bytes de forma binaria, pero la representa en la consola en forma hexadecimal en espacios de 2 dígitos.</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight">// Creación de un Buffer con 4 espacios.</i><br/>
+          &emsp;let <u><i>myBuffer1</i></u> = Buffer.alloc( <u><i>4</i></u> );<br/>
+          &emsp;console.log( <u><i>myBuffer1</i></u> );<br/>
+          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 00 00 00 00&#62;</i>
+          <hr class="link"/>
+          <i class="coment highlight">// Creación de un Buffer con datos numéricos en un arreglo.</i><br/>
+          &emsp;let <u><i>myBuffer2</i></u> = Buffer.from( [ <u><i>1, 2, 3</i></u> ] );<br/>
+          &emsp;console.log( <u><i>myBuffer2</i></u> );<br/>
+          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 01 02 03&#62;</i>
+          <hr class="link"/>
+          <i class="coment highlight">// Creación de un Buffer con datos de tipo string.</i><br/>
+          &emsp;let <u><i>myBuffer3</i></u> = Buffer.from( '<u><i>Hola</i></u>' );<br/>
+          &emsp;console.log( <u><i>myBuffer3</i></u> );<br/>
+          &emsp;console.log( <u><i>myBuffer3</i></u>.toString() );<br/>
+          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 48 6f 6c 61&#62;<br/>// Hola</i>
+          <hr class="link"/>
+          <i class="coment highlight">// Creación de un Buffer con datos posicionados en la tabla ascii comenzando por la "a" (97) hasta la "z" (122).</i><br/>
+          &emsp;let <u><i>myBuffer4</i></u> = Buffer.alloc( <u><i>26</i></u> );<br/>
+          &emsp;console.log( <u><i>myBuffer4</i></u> );<br/>
+          &emsp;for ( let i = 0; i &#60; 26; i++ ) {<br/>
+          &emsp;&emsp;<u><i>myBuffer4</i></u>[i] = i + 97;<br/>
+          &emsp;}<br/>
+          &emsp;console.log( <u><i>myBuffer4</i></u> );<br/>
+          &emsp;console.log( <u><i>myBuffer4</i></u>.toString() );<br/>
+          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 61 62 63 ... 79 7a&#62;<br/>// abcde...xyz</i>
+        </aside>
+        <h3>Stream.</h3>
+        <p>Un Stream es el proceso de ir consumiendo datos al tiempo en que se reciben. Por ejemplo, al momento de ver un video en Youtube se están consumiendo datos por medio de streaming (readable stream, porque solo se pueden ver videos mas no editarlos) ya que se reproduce al mismo tiempo en que este se está descargando, de lo contrario habría que esperar a que se descargue el video por completo para poder verlo.</p>
+        <p>Si en el caso anterior, mientras se ve el video fallara el internet, así sea por un segundo, la reproducción se pararía instantáneamente, pero en realidad no se detiene, el video continúa reproduciéndose por un tiempo más. Esto es gracias a la implementación de un buffer el cuál es un espacio en memoria RAM en donde la información proveniente del servidor llega por fragmentos (chunks), para luego ser consumido, y como ese almacenamiento de datos en el buffer se hace a bajo nivel, de forma binaria, el proceso es mucho más rápido de lo que se consume. Es por eso que cuando se reproduce un video en Youtube se ve que éste se carga más rápido (dependiendo del ancho de banda).</p>
+        <p>Existen tres tipos de stream:</p>
+        <ul>
+          <li>El de lectura es cuando existe un origen que proporciona los datos y se van recogiendo para utilizarlos.</li>
+          <li>El de escritura es cuando se tiene un stream con un destino al que se mandan los datos y que los recibe para utilizarlos.</li>
+          <li>El de doble sentido que manda y recibe los datos.</li>
+        </ul>
+        <h4 class="textCenter">Stream de lectura.</h4>
+        <aside class="exempliGratia">
+          <i class="coment highlight block textCenter">// ***input.txt***</i><br/>
+          &emsp;Archivo que va a ser leído =B
+          <hr class="link"/>
+          <i class="coment highlight block textCenter">// ***streamLectura.js***</i>
+          &emsp;const <u><i>myFs</i></u> = require('fs');<br/>
+          &emsp;let <u><i>data</i></u> = '';<br/>
+          <i class="coment highlight">// Para leer el stream .</i><br/>
+          &emsp;let <u><i>readableStream</i></u> = <u><i>myFs</i></u>.createReadStream( __dir+  '<u><i>input</i></u>.txt' );<br/>
+          <i class="coment highlight">// Para que el chunk no entregue un formato Buffer lo codificamos a UTF8 que es el estándar internacional de caracteres.</i><br/>
+          &emsp;<u><i>readableStream</i></u>.setEncoding('UTF8');<br/>
+          <i class="coment highlight">// Para escuchar el evento en donde vienen los datos.</i><br/>
+          &emsp;<u><i>readableStream</i></u>.on('data', function (chunk){<br/>
+          <i class="coment highlight">// Si el archivo fuera enorme, chunk lo trae por fragmentos de información y para ver la información continua se guarda cada fragmento en la variable data.</i><br/>
+          &emsp;&emsp;<u><i>data</i></u> += chunk;<br/>
+          &emsp;});<br/>
+          <i class="coment highlight">// Para saber cuándo termina el archivo y deje de enviar fragmentos a data, se crea un listener "end" y se imprime el resultado.</i><br/>
+          &emsp;<u><i>readableStream</i></u>.on('end', function (){<br/>
+          &emsp;&emsp;console.log(data);<br/>
+          &emsp;});
+        </aside>
+        <p>Esto se nota en la memoria cuando se trabajan en archivos muy grandes o que no se conoce el tamaño del archivo, es de ayuda mandar o recibir archivos fragmentados en paquetes.</p>
+        <h4 class="textCenter">Stream de lectura.</h4>
+        <aside class="exempliGratia">
+          <i class="coment highlight block textCenter">// ***input.txt***</i><br/>
+          &emsp;Archivo que va a ser leído y modificado =B
+          <hr class="link"/>
+          <i class="coment highlight block textCenter">// ***streamDobleSentido.js***</i>
+          <i class="coment highlight">// .</i><br/>
+          <!-- &emsp;process.stdout.write();<br/> -->
+          &emsp;const <u><i>myFs</i></u> = require('fs');<br/>
+          &emsp;const <u><i>mystream</i></u> = require('stream');<br/>
+          <i class="coment highlight">// La clase util permite trabajar con herencias.</i><br/>
+          &emsp;const <u><i>myUtil</i></u> = require( 'util' );<br/><br/>
+          &emsp;let <u><i>data</i></u> = '';<br/>
+          &emsp;let <u><i>readableStream</i></u> = <u><i>myFs</i></u>.createReadStream( __dir+  '<u><i>input</i></u>.txt' );<br/>
+          &emsp;<u><i>readableStream</i></u>.setEncoding('UTF8');<br/>
+          <i class="coment highlight">// Se crea un stream de transformación que al mismo tiempo puede leer y escribir.</i><br/>
+          &emsp;const <u><i>transform</i></u> = <u><i>myStream</i></u>.Transform;<br/>
+          &emsp;function <u><i>mayusc</i></u>() {<br/>
+          &emsp;&emsp;<u><i>transform</i></u>.call( this );<br/>
+          &emsp;}<br/>
+          <i class="coment highlight">// La función mayusc obtendrá todos los datos de la clase transform.</i><br/>
+          &emsp;util.inherits(<u><i>mayusc</i></u>, <u><i>tranform</i></u>);<br/>
+          <i class="coment highlight">// Se genera lo necesario para la transformación accediendo a su prototipo e indicando que se trabaja en su transform en una función personalizada con el chunk, la codificación y el callback como parámetros.</i><br/>
+          &emsp;<u><i>mayusc</i></u>.prototype._transform = function( chunk, codif, cb ) {<br/>
+          <i class="coment highlight">// El chunk se pasa a string y a mayúsculas.</i><br/>
+          &emsp;&emsp;<u><i>chunkMayusc</i></u> = chunk.toString().toUpperCase();<br/>
+          <i class="coment highlight">// Con el push se envía el chunk y se ejecuta el callback.</i><br/>
+          &emsp;&emsp;this.push( chunkMayusc );<br/>
+          &emsp;&emsp;cb();<br/>
+          &emsp;}<br/>
+          <i class="coment highlight">// Se crea la trasformación utilizando readableStream para mandar la transformación de un lado a otro.</i><br/>
+          &emsp;let <u><i>aMayuscula</i></u> = new <u><i>mayusc</i></u>();<br/>
+          &emsp;readableStream<br/>
+          <i class="coment highlight">// Se mandan los datos a aMayuscula.</i><br/>
+          &emsp;&emsp;.pipe(<u><i>aMayuscula</i></u>)<br/>
+          <i class="coment highlight">// Ya que pasa por aMayuscula se manda a la salida del sistema.</i><br/>
+          &emsp;.pipe(process.stdout);
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section>
+      <div class="container">
+        <h3>Referencias:</h3>
+        <p>
+          <a href="https://medium.com/free-code-camp/do-you-want-a-better-understanding-of-buffer-in-node-js-check-this-out-2e29de2968e8" target="_blank" rel="noopener noreferrer">Buffer, stream and binary data</a><br/>
+          <!-- <a href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+        </p>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

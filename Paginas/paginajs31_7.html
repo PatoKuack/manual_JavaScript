@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Paquetes (uso y creación)</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Uso de paquetes NPM -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Uso de paquetes NPM</h2>
+        <p>Los paquetes que se instalan y sobre todo de los que dependerá nuestro proyecto deben de tener un buen soporte, buenas actualizaciones y haber sido ampliamente testeados por muchos usuarios.</p>
+        <p>Si se desea verificar el código del paquete se debe abrir el archivo index.js en el repositorio de github.</p>
+        <p>En <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer">esta página</a> se puede buscar un paquete y revisar su versión, última actualización, numero de descargas y más. También se puede verificar cuantas dependencias tiene el paquete, las dependencias son los paquetes que utiliza un paquete para funcionar y al instalar un paquete puede que se tengan que instalar varios más por estas dependencias y por las dependencias de las dependencias.</p>
+        <p>Para poder utilizar el paquete en un proyecto se debe hacer de la siguiente forma:</p>
+        <aside class="exempliGratia">
+          &emsp;const <u>función</u> = require('<u>nombre-del-paquete</u>');<br/>
+          &emsp;<u>función</u>( <u>parámetros</u> );
+        </aside>
+      </div>
+    </section>
+    <!-- Crear paquetes -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Creación de paquetes.</h2>
+        <p>Primero se debe crear la carpeta donde se alojará el proyecto y desde la terminal se posiciona en esa carpeta. Aún desde la terminal se inicializa el repositorio en git (git init), se inicializa la configuración del proyecto con NPM (npm init) y se abre el editor de código.</p>
+        <p>En el editor se crea por buenas prácticas una carpeta en donde se alojará el código creado, generalmente esta se llama <b>src</b> y dentro de esta carpeta se crea el documento <b>index.js</b> que es donde se alojará el código:</p>
+        <aside class="exempliGratia">
+          &emsp;<i class="coment highlight">// Se crea el código del proyecto:</i><br/>
+          &emsp;const proyectoPaquete = () => {...}<br/>
+          &emsp;<i class="coment highlight">// Se exporta:</i><br/>
+          &emsp;module.exports = { proyectoPaquete }
+        </aside>
+        <p>Se crea una carpeta llamada <b>bin</b> en la misma carpeta donde se encuentra la "<i>src</i>". En esta carpeta <i>bin</i> se creará el archivo <b>global.js</b> que es en donde se estará definida la configuración para que el paquete que se está creando en este proyecto sea un paquete que se instala de forma global.</p>
+        <aside class="exempliGratia">
+          &emsp;<i class="coment highlight">// Se establece que es un elemento que se ejecutará dentro del sistema bash.</i><br/>
+          &emsp;#!/usr/bin/env node<br/>
+          &emsp;<i class="coment highlight">// Se crea una variable que pida como requerimiento el archivo index.js</i><br/>
+          &emsp;let proyectoPaq = require('../src/index.js');<br/>
+          &emsp;<i class="coment highlight">// Se declara la ejecución del paquete:</i><br/>
+          &emsp;proyectoPaq.proyectoPaquete();<br/>
+        </aside>
+        <p>Desde el archivo <i>package.json</i> se creará al final del documento un apartado llamado <b>bin</b> en donde se agregará la configuración para llamar al paquete registrando la palabra que se utilizará para llamarlo desde el archivo <i>global.js</i></p>
+        <p>Para que sea un paquete global se coloca en "true" el valor "preferGlobal".</p>
+        <aside class="exempliGratia">
+          &emsp;&emsp;...<br/>
+          &emsp;&emsp;"author": "... &#60;...&#62;",<br/>
+          &emsp;&emsp;"license": "...",<br/>
+          &emsp;&emsp;"bin": {<br/>
+          &emsp;&emsp;&emsp;"proPaquete": "./bin/global.js"<br/>
+          &emsp;&emsp;},<br/>
+          &emsp;&emsp;"preferGlobal": true<br/>
+          &emsp;}
+        </aside>
+        <p>Se prueba el paquete de manera local para garantizar que cumple con el funcionamiento que se desea, para esto se utiliza un recurso de NPM para hacer un link de este proyecto para implementar el paquete en otros proyectos o instalarlo de manera global. Desde la terminal y estando posicionado en la carpeta del proyecto se ejecuta el comando:</p>
+        <aside class="exempliGratia">
+          <i class="coment highlight"># Si trabajas en una distribución linux, utiliza "sudo".</i><br/>
+          &emsp;<i class="coment">sudo</i> npm link
+        </aside>
+        <p>Con <i>link</i> se hace una referencia al paquete del proyecto instalándolo en el sistema como si hubiera sido instalado desde los servidores de NPM. Para comprobar se encuentra en el sistema se ejecuta desde la terminal con la palabra reservada definida en el archivo <i>global.js</i> (en este caso en proPaquete).</p>
+        <p>Si modificamos nuestro paquete se puede actualizar en el sistema para seguir probando su funcionamiento con la siguiente instrucción:</p>
+        <aside class="exempliGratia">
+          &emsp;<i class="coment highlight"># Desde la terminal y posicionados en la carpeta del proyecto:</i><br/>
+          &emsp;<i class="coment">sudo</i> npm install -g <u>ruta del proyecto</u><br/>
+          &emsp;<i class="coment highlight"># También se puede utilizar una virgulilla para las distribuciones de linux:</i><br/>
+          &emsp;<i class="coment">sudo</i> npm install -g <u>~</u><br/>
+        </aside>
+        <p>Para poder mandar el paquete a NPM y poderlo publicar, primero se tiene que crear una cuenta  o iniciar sesión en ella en <a href="https://www.npmjs.com/" target="_blank" rel="noopener noreferrer"> la página de NPM</a>, después se tiene que loggear en esta cuenta desde la terminal con el comando <b>npm adduser</b>, se pedirán nombre de usuario, contraseña e e-mail.</p>
+        <p>Para publicar el paquete se utiliza la instrucción <b>npm publish</b> la cual lee la configuración del archivo <i>package.json</i> y establece el manejador de paquetes que sería <i>npmjs.org</i></p>
+        <p>En la página web de NPM, en una sección llamada "packages" en la parte de la cuenta, se puede encontrar el paquete</p>
+        <p>Después de loggear el paquete ya se puede descargar y utilizar por cualquiera que tenga NPM instalado, pero se deben implementar algunos atributos en el paquete para que sea óptimo para otros usuarios como crear un buen README.md, conectarlo a un repositorio y mantener actualizado el paquete.</p>
+        <p>En el README.md se explica lo que hace el paquete, como se instala, los comandos que contiene y una invitación a que contribuyan a mejorar el proyecto. El README.md debe estar en inglés.</p>
+        <p>Una de las opciones que muestran los paquetes una vez que están publicados es la del repositorio, los errores que tiene, si alguien los reportó y las correcciones que se le han hecho al proyecto. Es por eso que es importante conectar el proyecto con un repositorio en la nube.</p>
+        <aside class="exempliGratia">
+          &emsp;<i class="coment highlight"># Ejemplo de un repositorio en GitHub</i><br/>
+          &emsp;<i class="coment highlight"># Desde la terminal y posicionados en la carpeta del proyecto:</i><br/>
+          &emsp;git init<br/>
+          &emsp;git remote add origin https://github.com/....git
+        </aside>
+        <p>Se debe colocar una buena descripción en inglés en el archivo package.json</p>
+        <p>Se debe abordar en el archivo package.json la parte de pruebas o test (<a href="/Paginas/paginajs25.html">pruebas unitarias con Jest</a>).</p>
+        <p>Una vez construido el proyecto y asignado al repositorio se utiliza el comando <b>npm init</b> para que el proyecto genere en el archivo package.json la sección en donde se encuentra el repositorio, en donde se reportarán los bugs y la página principal del proyecto (también se pueden crear estas secciones en el archivo a mano).</p>
+        <p>Después se realiza un commit para actualizar los cambios en el proyecto en el repositorio y se actualiza la versión dependiendo de si es un parche, un cambio menor o uno mayor y se publica de nuevo el paquete para que este disponible la nueva versión con todos sus cambios para los usuarios:</p>
+        <aside class="exempliGratia">
+          &emsp;npm version <span class="highlight">patch | minor | major</span><br/>
+          &emsp;<i class="coment">sudo</i> npm install -g npm<br/>
+          &emsp;npm publish<br/>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <!-- <footer>
+    <section class="container">
+      <div>
+        <h3>Recursos:</h3>
+        <a href="" target="_blank" rel="noopener noreferrer">.</a><br/>
+      </div>
+    </section>
+  </footer> -->
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>
+<!-- A producción, financiamiento -->

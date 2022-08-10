@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Herramientas de desarrollo.</title>
+</head>
+<body class="body">
+  <header class="container">
+    <h1 class="textCenter">Herramientas de desarrollo.</h1>
+  </header>
+  <main>
+    <!-- Webpack Dev Server -->
+    <section class="container">
+      <h2>Webpack Dev Server.</h2>
+      <p>Esta herramienta permite ver los cambios en tiempo real en un navegador y es capaz de hostear aplicaciones con frameworks y librerías de JavaScript como Vue o React.</p>
+      <p><b>Se debe desactivar el watch</b> (en el archivo de configuración de desarrollo -> watch:false) <b>o cualquier otra herramienta que esté escuchando el código cuando se compila la aplicación.</b></p>
+      <p>Para utilizarla se instala con el comando:</p>
+      <article class="exempliGratia">
+        npm install -D webpack-dev-server
+      </article>
+      <p>Esta herramienta ayudara a ver cambios al momento de desarrollar la aplicación, por lo que se deben agregar las configuraciones de esta herramienta en el archivo de desarrollo <b>webpack.config.dev.js</b>:</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.dev.js</i><br/>
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;... ,<br/>
+        </span>
+        &emsp;devServer: {<br/>
+        &emsp;&emsp;static: {<br/>
+        &emsp;&emsp;&emsp;directory: path.join(__dirname, "dist"),<br/>
+        &emsp;&emsp;&emsp;watch: true,<br/>
+        &emsp;&emsp;},<br/>
+        &emsp;&emsp;<i class="highlight font-normal">//Para observa los cambios en todos los archivos y actualizar el navegador:</i><br/>
+        &emsp;&emsp;watchFiles: path.join(__dirname, "./**"),<br/>
+        &emsp;&emsp;<i class="highlight font-normal">// Para comprimir:</i><br/>
+        &emsp;&emsp;compress: true,<br/>
+        &emsp;&emsp;<i class="highlight font-normal">// Para obtener un historial del navegador:</i><br/>
+        &emsp;&emsp;historyApiFallback: true,<br/>
+        &emsp;&emsp;port: 3000,<br/>
+        &emsp;&emsp;<i class="highlight font-normal">// Para abrir en el navegador:</i><br/>
+        &emsp;&emsp;open: true,<br/>
+        &emsp;}<br/>
+        <span class="highlight">}</span>
+      </article>
+      <p>Como en los comandos anteriores, este se puede agregar en el archivo <b>package.json</b>, en la sección de <b>scripts</b> para evitar teclear comandos muy largos:</p>
+      <article class="exempliGratia">
+        <span class="highlight">
+          "scripts": {<br/>
+            &emsp;... ,<br/>
+        </span>
+        &emsp;"start": "webpack serve --config webpack.config.dev.js"<br/>
+        <span class="highlight">}</span>
+      </article>
+      <p>Y en la terminal se colocaría el siguiente comando:</p>
+      <article class="exempliGratia">
+        npm run start<br/>
+        <i class="higlight font-normal">
+          // en vez de teclear:<br/>
+          npx webpack serve --config webpack.config.dev.js
+        </i>
+      </article>
+      <p>Entre tanto, en la terminal devolverá una URL para visualizar la aplicación con sus cambios.</p>
+    </section>
+    <!-- Webpack Bundle Analyzer -->
+    <section class="container">
+      <h2>Webpack Bundle Analyzer.</h2>
+      <p>En un proyecto se debe revisar su impacto en tamaño, para ayudar a ésto, webpack ofrece un paquete para poder verificar y analizar el tamaño del bundle final. Para poder utilizar esta herramienta se tiene que instalar desde la terminal con el comando:</p>
+      <article class="exempliGratia">
+        npm install -D webpack-bundle-analyzer
+      </article>
+      <p>Después en el archivo de configuración <b>webpack.config.dev.js</b> se anexa lo siguiente:</p>
+      <article class="exempliGratia">
+        <span class="highlight">const ... ,</span><br/>
+        const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;<br/>
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;plugins: [<br/>
+          &emsp;&emsp;new ... ,<br/>
+        </span>
+        &emsp;&emsp;new BundleAnalyzerPlugin(),<br/>
+        <span class="highlight">
+          &emsp;],<br/>
+          &emsp;...<br/>
+          }
+        </span>
+      </article>
+      <p>Con el siguiente comando webpack analizará el proyecto y guardará un reporte, de las dependencias y recursos que se utilizan, en un archivo de tipo .json llamado stats:</p>
+      <article class="exempliGratia">
+        npx webpack --profile --json > stats.json
+      </article>
+      <p>Por último, con el siguiente comando webpack lee el reporte y lo presenta en una página web:</p>
+      <article class="exempliGratia">
+        npx webpack-bundle-analyzer stats.json
+      </article>
+    </section>
+    <!-- Webpack Dev Tools -->
+    <section class="container">
+      <h2>Webpack Dev Tools.</h2>
+      <p>Sirve para hacer debuggin al código de una forma muy fácil.</p>
+      <p>Primero se anexa el siguiente código al archivo <b>webpack.config.dev.js</b>:</p>
+      <article class="exempliGratia">
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;entry: ...,<br/>
+          &emsp;output: {...},<br/>
+          &emsp;mode: ... ,<br/>
+        </span>
+        &emsp;devtool: 'source-map',<br/>
+        <span class="highlight">
+          &emsp;resolve: {...},<br/>
+          &emsp;...<br/>
+          }
+        </span>
+      </article>
+      <p>Después se compila el proyecto en el modo desarrollo desde la terminal:</p>
+      <article class="exempliGratia">
+        npx webpack --mode development
+      </article>
+      <p>Se abre el proyecto con la herramienta de Visual studio <i>Live server</i> y en el navegador en el inspector de elementos, en la sección <i>source</i> se puede ver el código y si se da clic sobre el numero de línea de alguna línea de código se podrá visualizar la pieza de código separada que involucra a esa línea cliqueada.</p>
+    </section>
+  </main>
+  <footer class="container">
+    <h3>Rederencias:</h3>
+    <p>
+      <a class="link" href="https://webpack.js.org/configuration/dev-server/" target="_blank" rel="noopener noreferrer">DevServer.</a><br/>
+      <a class="link" href="https://dev.to/tanhauhau/what-is-module-bundler-and-how-does-it-work-3gp2" target="_blank" rel="noopener noreferrer">Module Blunder.</a><br/>
+      <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+    </p>
+  </footer>
+</body>
+</html>

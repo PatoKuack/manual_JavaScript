@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Callback.</title>
+</head>
+<body class="body">
+      <!-- Callback -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Callback.</h2>
+          <p>
+            Un callback es la acción de pasar por argumento a una función.
+          </p>
+          <p>
+            Los callback son el nombre de una convención para usar funciones que llaman a otras funciones en JavaScript. No hay una palabra reservada llamada “callback” en el lenguaje JavaScript que haga que nuestro código sea diferente o especial, es mas una convención. Sin embargo, <u>se utiliza la palabra callback en los parámetros como buena práctica</u> para indicar que estamos realizando un callback.
+          </p>
+          <p>
+            La función que recibe como argumento otras funciones es denominada función de orden superior (higher-order function), esta contiene la lógica correspondiente para ejecutar adecuadamente la función callback.
+          </p>
+          <p>
+            La mayoría estamos acostumbrados a programar de manera síncrona, es decir le indicamos al código que por ejemplo defina un Valor <i>“X”</i> y con otro valor <i>“Y”</i> y realizamos un cálculo (por ejemplo, una multiplicación).
+          </p>
+          <p>
+            El problema radica en que por ejemplo si quisiéramos crear un programa que nos convierta nuestra moneda (pesos) a su equivalente en Bitcoin,
+            podemos definir <i>“X”</i> (valor de nuestro dinero) pero NO podemos definir de manera implícita <i>“Y”</i> (precio del Bitcoin) porque es algo muy volátil. Entonces necesitamos obtener el precio del Bitcoin de una API, nuestro programa realiza una multiplicación de <i>X * Y</i> sin embargo no tenemos <i>“Y”</i> (precio del bitcoin) porque tenemos que esperar que el API nos conteste cual es este valor. Es ahí donde sirven los callback.
+          </p>
+          <p>
+            Existen dos métodos (A y B):
+            <ul>
+              <li>
+                El método A obtiene el precio del API de Bitcoin
+              </li>
+              <li>
+                El método B hace el cálculo de nuestros Pesos * PrecioBitcoin
+              </li>
+            </ul>
+            Entonces el método B es llamado por el método A cuando por fin lee y obtiene el precio del Bitcoin, solo hasta entonces tiene sentido que multipliquemos nuestros valores.
+          </p>
+          <aside class="exempliGratia">
+            function <u><i>suma</i></u>(<u><i>num1</i></u>, <u><i>num2</i></u>){<br/>
+            &emsp;return <u><i>num1</i></u> + <u><i>num2</i></u>;<br/>
+            }<br/><br/>
+            function <u><i>calculo</i></u>(<u><i>num1</i></u>, <u><i>num2</i></u>, <u><i>callback</i></u>){<br/>
+            &emsp;return <u><i>callback</i></u>(<u><i>num1</i></u>, <u><i>num2</i></u>);<br/>
+            }<br/><br/>
+            console.log(<u><i>calculo</i></u>(<u><i>4</i></u>, <u><i>1</i></u>, <u><i>suma</i></u>));
+          </aside>
+          <aside class="exempliGratia">
+            function <u><i>fecha</i></u>(<u><i>callback</i></u>){<br/>
+            &emsp;console.log(new Date);<br/>
+            <i class="coment highlight">// Con "new Date" se obtiene la fecha actual.</i><br/>
+            &emsp;setTimeout(function () {<br/>
+            <i class="coment highlight">// "setTimeout(f, #)" ejecuta una función con un retardo de milisegundos.</i><br/>
+            &emsp;&emsp;let <u><i>fechaDos</i></u> = new Date;<br/>
+            <i class="coment highlight">// "fechaDos" obtiene el valor de la fecha actual.</i><br/>
+            &emsp;&emsp;<u><i>callback</i></u>(<u><i>fechaDos</i></u>);<br/>
+            <i class="coment highlight">// El parámetro "callback" de esta función "fecha" incrustará un argumento (con el valor de la fecha actual) a la función que reciba.</i><br/>
+            &emsp;}, <u><i>3000</i></u> )<br/>
+            <i class="coment highlight">// La función "fecha" se ejecutará en 3000ms = 3seg.</i><br/>
+            }<br/>
+            <i class="coment highlight">// La función se interpretaría:<br/>
+            function fecha ( collback ( 2021-09-01 ) )</i><br/><br/>
+            function <u><i>mostrarFecha</i></u>(<u><i>fechaActual</i></u>){<br/>
+            &emsp;console.log(<u><i>fechaActual</i></u>);<br/>
+            }<br/><br/>
+            <u><i>fecha</i></u>(<u><i>mostrarFecha</i></u>);<br/>
+            <i class="coment highlight">// Al pasarle la función "mostrarFecha" como argumento a la función "fecha" se interpretaría:<br/>
+            fecha ( mostrarFecha ( 2021-09-01 ) )</i>
+            <br/>
+          </aside>
+        </div>
+      </section>
+      <!-- <footer>
+        <section>
+          <div class="container">
+            <h3>Referencias:</h3>
+            <p>
+              <a href="" target="_blank" rel="noopener noreferrer"></a><br/>
+            </p>
+          </div>
+        </section>
+      </footer> -->
+      <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

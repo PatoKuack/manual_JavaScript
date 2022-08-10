@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Child Process</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Child Process -->
+    <section>
+      <div class="container">
+        <h2 class="textCenter">Procesos hijo (child process).</h2>
+        <p>En Node se pueden crear procesos hijos que ejecuten cualquier acción del sistema operativo, como si se realizara desde la línea de comandos.</p>
+        <p>El módulo de procesos secundarios de Node.js (child_process) tiene dos funciones spawn y exec, mediante las cuales se puede iniciar un proceso secundario para ejecutar otros programas en el sistema.</p>
+        <aside class="exempliGratia">
+          &emsp;const { exec } = require("child_process");<br/>
+          <i class="coment highlight">// Esta primera línea es equivalente a: const exec = require("child_process").exec;</i><br/>
+          <i class="coment highlight">// Lo que hará es importar un grupo de objetos de este objeto llamado child_process.exec</i><br/>
+          &emsp;exec('Node indexjs.html', (err, stdout) => {<br/>
+          &emsp;&emsp;if(err) {<br/>
+          &emsp;&emsp;&emsp;console.error(err);<br/>
+          &emsp;&emsp;&emsp;return false;<br/>
+          &emsp;&emsp;}<br/>
+          &emsp;&emsp;console.log(stdout);<br/>
+          &emsp;});
+          <i class="coment highlight">
+            // Se colocan dos parámetros:<br/>
+            En el primero van las instrucciones entre comillas.<br/>
+            En el segundo y entre paréntesis el error, la salida principal estándar y el estándar error por si ha habido algún error.</i>
+        </aside>
+        <aside class="exempliGratia">
+          &emsp;const { exec, spawn } = require('child_process');<br/>
+          &emsp;let proceso = spawn('ls', ['-la']);<br/>
+          &emsp;console.log(proceso.pid);<br/>
+          &emsp;console.log(proceso.conected);<br/>
+          &emsp;proceso.stdout.on('data', function(dato) {<br/>
+          &emsp;&emsp;console.log(dato.toString());<br/>
+          &emsp;});<br/>
+          &emsp;proceso.on('exit', function() {<br/>
+          &emsp;&emsp;console.log('el proceso terminó');<br/>
+          &emsp;});<br/>
+        </aside>
+        <ul>
+          <li>Se usa <b>exec</b> para ejecuciones sencillas.</li>
+          <li>Se usa <b>exec</b> cuando se quiera que el proceso hijo devuelva mensajes de estado simple.</li>
+          <li>Se usa <b>exec</b> cuando se quiera recibir datos al final de la ejecución.</li>
+          <li>Se usa <b>spawn</b> cuando se quiera que el proceso hijo devuelva datos binarios enormes a Node.</li>
+          <li>Se usa <b>spawn</b> cuando se quiera recibir datos desde que el proceso arranca.</li>
+          <li>Se usa <b>spawn</b> para obtener el proceso.</li><br/>
+        </ul>
+        <p>La diferencia más significativa entre <b>child_process.spawn</b> y <b>child_process.exec</b> está en que spawn devuelve un stream y exec devuelve un buffer.</p>
+        <p>La ventaja de este enfoque es que se obtiene mayor control del proceso, y del estado en el que se encuentra.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section>
+      <div class="container">
+        <h3>Referencias:</h3>
+        <p>
+          <a href="https://nodejs.org/api/process.html" target="_blank" rel="noopener noreferrer">Documentaión de Node.js</a><br/>
+          <!-- <a href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+        </p>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

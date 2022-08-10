@@ -6,254 +6,332 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="expires" content="0">
   <!-- ------------------- -->
-  <link rel="stylesheet" href="../Estilos/stylejs21.css">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Módulos II</title>
+  <!-- normalize css -->
+  <link rel="stylesheet" href="../Estilos/Normalizecss.css">
+  <!-- Estilo personalizado -->
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
+  <title>Objetos del navegador</title>
 </head>
-<body class="body">
-  <header></header>
+<body class="cuerpo">
+  <header>
+    <section>
+      <div class="contenedor" >
+        <h1 class="titCentrado">Navegador</h1>
+        <p class="contenido">
+          El objeto <b>window</b> es el objeto de más alto nivel de JavaScript en el navegador (todos los objetos descienden de window), pero solo en el navegador, no en el servidor (usando node.js) ya que no existe el objeto window en el servidor.<br/>
+          La variable <b>this</b> al igual que <i>window</i> hace referencia al <b>objeto global</b>.
+        </p>
+      </div>
+    </section>
+  </header>
   <main>
-    <!-- Importar módulos -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Importar módulos.</h2>
-        <p>En Node se tienen dos formas de importar módulos:</p>
-        <ul>
-          <li>El método <b>require</b> es la forma por defecto de importar módulos, ya sean nuestros propios módulos como los de otras personas en nuestros proyectos JS.</li>
-        </ul>
-        <aside class="exempliGratia">
-          <i class="coment highlight textCenter block">// ***myModulo<b>.js</b>***</i>
-          &emsp;function <u>saludar</u>(){<br/>
-          &emsp;&emsp;<u>console.log("¡Hola mundo!");</u><br/>
-          &emsp;}<br/>
-          <i class="coment highlight">// Exporta la función "saludar" de myModulo.js</i><br/>
-          &emsp;module.exports = {<br/>
-          &emsp;&emsp;<u>saludar</u>,<br/>
-          &emsp;&emsp;<u>propiedad1: '¡Hello world!'</u><br/>
-          &emsp;};
-          <hr class="link"/>
-          <i class="coment highlight textCenter block">// ***index<b>.js</b>***</i>
-          <i class="coment highlight">// Importa el myModulo.js</i><br/>
-          &emsp;const <u>moduloX</u> = require('<u>./ruta-de-myModulo.js</u>');<br/>
-          <i class="coment highlight">// Muestra las propiedades del módulo</i><br/>
-          &emsp;<u>console.log(moduloX);</u><br/>
-          <i class="coment highlight">// Ejecuta una propiedad del myModulo.js</i><br/>
-          &emsp;<u>console.log(moduloX.propiedad1);;</u><br/>
-          <i class="coment highlight">// Ejecuta una función del myModulo.js</i><br/>
-          &emsp;<u>moduloX.saludar();</u><br/>
-          <hr class="link"/>
-          <i class="coment highlight textCenter block">// ***terminal***</i>
-          &emsp;nodemon <u>./ruta-de-index.js</u>
-        </aside><br/>
-        <ul>
-          <li>El método <b>import</b> es una forma nueva de importar módulos.</li>
-        </ul>
-        <p>Para utilizar éste método se añade en el fichero <b>package.json</b> una línea extra (en donde va name, version, author, etc.) que contenga lo siguiente: <b>"type": "module"</b></p>
-        <aside class="exempliGratia">
-          <i class="coment highlight block textCenter">// ***myModulo<b>.js</b>***</i>
-          &emsp;function saludar() {<br/>
-          &emsp;&emsp;console.log("¡Hola mundo!");<br/>
-          &emsp;}<br/>
-          <i class="coment highlight">// Exportar el módulo.</i><br/>
-          &emsp;export default {<br/>
-            &emsp;&emsp;saludar,<br/>
-          &emsp;&emsp;propiedad1: "¡Hello world!"<br/>
-          &emsp;}<br/>
-          <hr class="link"/>
-          <i class="coment highlight block textCenter">// ***index<b>.js</b>***</i>
-          <i class="coment highlight">// Importar módulo.</i><br/>
-          &emsp;import moduloY from './myModulo.js'<br/>
-          <i class="coment highlight">// Muestra las propiedades del módulo</i><br/>
-          &emsp;<u>console.log(moduloY);</u><br/>
-          <i class="coment highlight">// Ejecuta una propiedad del myModulo.js</i><br/>
-          &emsp;<u>console.log(moduloY.propiedad1);;</u><br/>
-          <i class="coment highlight">// Ejecuta una función del myModulo.js</i><br/>
-          &emsp;<u>moduloY.saludar();</u><br/>
-          <hr class="link"/>
-          <i class="coment highlight textCenter block">// ***terminal***</i>
-          &emsp;nodemon <u>./ruta-de-index.js</u>
-        </aside>
+    <!-- window -->
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Window</h2>
+        <p class="contenido">
+          <h3>Objetos.</h3>
+          <p>A continuación, se presentan los principales objetos que nos ayudan a utilizar el objeto window.</p>
+          <dl>
+            <dt>console</dt>
+            <dd>Es el objeto que entrega información en consola y tiene varios métodos como .log(), .debug(), .clear(), etc.</dd>
+            <dt>navigator</dt>
+            <dd>Es el objeto que da información sobre el navegador.</dd>
+            <dt>location</dt>
+            <dd>Es el objeto que da información sobre la URL de la página en la que se está posicionado.</dd>
+            <dt>history</dt>
+            <dd>Es el objeto que da información sobre el historial del navegador.</dd>
+          </dl>
+          <h3>Métodos.</h3>
+          <dl>
+            <dt>open()</dt>
+            <dd>Permite abrir una nueva instancia (ventana) del navegador, pero deben estar permitidos los pop-ups en la configuración del navegador.</dd>
+            <span class="consola">
+              window.open('<u>URL</u>', '<u>Nombre de ventana</u>', 'width=<u>200</u>, height=<u>400</u>');
+            </span>
+            <dd>También se puede utilizar para abrir nuevas pestañas con la URL especificada:</dd>
+            <span class="ejemplo">
+              window.open('<u>URL</u>', '<u>_blank</u>');<br/>
+              <i class="coment">// Se puede utilizar en los atributos onclick de los botones.</i>
+            </span>
+            <dt>close()</dt>
+            <dd>Permite cerrar una instancia (ventana) que se haya abierto únicamente con open()</dd>
+            <dt>alert(message)</dt>
+            <dd>Muestra un mensaje en un cuadro emergente con un botón de "Aceptar" para cerrarlo.</dd>
+            <span class="ejemplo">
+              alert(`¡Rápido, Di una mentira!`);
+            </span>
+            <dt>confirm(message)</dt>
+            <dd>Muestra un mensaje en un cuadro emergente con dos botones y devuelve un booleano dependiendo si el usuario selecciona <i>"Aceptar" = True</i> o <i>"Cancelar" = False</i>.</dd>
+            <span class="ejemplo">
+              let pinochio = confirm(`Traigo ropa interior de mujer...`);
+            </span>
+            <dt>prompt(message)</dt>
+            <dd>Muestra un mensaje en un cuadro emergente con una sección para escribir un texto el cual se puede guardar en una variable.</dd>
+            <span class="ejemplo">
+              let gato = prompt(`¿De qué clase?`);
+            </span>
+          </dl>
+        </p>
       </div>
     </section>
-    <!-- Módulos útiles -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Módulos útiles.</h2>
-        <h3>bcrypt</h3>
-        <p>La función de cifrado de bcrypt permite construir una plataforma de seguridad utilizando contraseñas encriptadas y poder verificar la autenticidad de la contraseña.</p>
-        <p>Primero es necesario instalarla a través de la terminal con la instrucción <b>npm install bcrypt</b></p>
-        <aside class="exempliGratia">
-          &emsp;const <u><i>bcrypt</i></u> = require("bcrypt");<br/>
-          &emsp;const <u><i>password</i></u> = "<u><i>NuncaParesDeAprender</i></u>";<br/>
-          &emsp;bcrypt.hash( <u><i>password</i></u>, <u><i>5</i></u>, function( err, hash ){<br/>
-          &emsp;&emsp;<u><i>console.log(hash);</i></u><br/>
-          &emsp;} );<br/>
-          <i class="coment highlight">// El primer parámetro es la contraseña, el segundo es la cantidad de veces que se aplicará el hash y el tercero es la función que retorna.</i><br/>
-          <i class="coment highlight">// Un hash es aplicar un algoritmo para poder cambiar el texto por una cadena de caracteres que no tenga nada que ver con la contraseña inicial.</i><br/>
-          <i class="coment highlight">// el hash entrega una contraseña distinta en cada ejecución del bcrypt, para evaluar si una contraseña concuerda con un hash se utiliza un compare.</i><br/>
-          &emsp;<u><i>bcrypt</i></u>.compare( <u><i>password</i></u>, hash, function( error, result ){<br/>
-          &emsp;&emsp;console.log(result);<br/>
-          &emsp;&emsp;console.log(error);<br/>
-          &emsp;} );<br/>
-          <i class="coment highlight">// Devuelve true o false en el result.</i>
-        </aside>
-        <h3>Moment.js</h3>
-        <p>Moment es una librería que permite trabajar con fechas y manejar tiempos fácilmente.</p>
-        <p>Primero es necesario instalarla a través de la terminal con la instrucción <b>npm install moment</b></p>
-        <aside class="exempliGratia">
-          &emsp;const <u><i>moment</i></u> = require('moment')<br/>
-          &emsp;const <u><i>ahora</i></u> = moment();<br/><br/>
-          <i class="coment highlight">// Para ver las opciones que tiene moment:</i><br/>
-          &emsp;console.log(<u><i>ahora</i></u>);<br/><br/>
-          <i class="coment highlight">// Para ver la fecha:</i><br/>
-          &emsp;console.log(<u><i>ahora</i></u>.toString());<br/><br/>
-          <i class="coment highlight">// Para darle formato a la fecha:</i><br/>
-          &emsp;console.log(<u><i>ahora</i></u>.format('MM/DD/YYYY HH:MM A')); <i class="coment highlight">// 04/11/2021 20:10 PM</i><br/><br/>
-          <i class="coment highlight">// Para validad una fecha</i><br/>
-          &emsp;console.log(moment('2021-08-10').isValid()); <i class="coment highlight">// Retorna un true o false dependiendo de si la fecha es válida o no</i><br/><br/>
-          <i class="coment highlight">// Para encontrar cuanto tiempo ha pasado hasta hoy</i><br/>
-          &emsp;console.log(moment('2018-04-11').fromNow()); 
-          <i class="coment highlight">// Hace 2 años</i><br/><br/>
-          <i class="coment highlight">// Para agregar o eliminar años, días o meses</i><br/>
-          &emsp;console.log(moment('2021-08-10').add(1, 'years')); <i class="coment highlight">// 2021-04-11</i><br/>
-          &emsp;console.log(moment('2021-08-10').subtract(1, 'years')); 
-          <i class="coment highlight">// 2019-04-11</i><br/>
-        </aside>
-        <h3>Sharp</h3>
-        <p>Sharp trabaja con la librería de manejo de imágenes en c++ que permite convertir imágenes grandes en imágenes JPEG, PNG más pequeñas o compatibles con la web de diferentes dimensiones.</p>
-        <aside class="exempliGratia">
-          &emsp;const <u><i>sharp</i></u> = require('sharp')<br/>
-          <i class="coment highlight">// Reducira una imagen de cualquier tamaño a 80x80 y la guardara en una imagen más pequeña sin eliminr la original.</i><br/>
-          &emsp;<u><i>sharp</i></u>( '<u><i>imagen.png</i></u>' )<br/>
-          <i class="coment highlight">// Si a resize se le coloca solo un número se tomará como porcentaje, pero si se colocan 2 los tomará como el largo y el ancho.</i><br/>
-          &emsp;&emsp;.resize( <u><i>80</i></u>, <u><i>80</i></u> )<br/>
-          <i class="coment highlight">// Convierte la imagen en blanco y negro.</i><br/>
-          &emsp;&emsp;.grayscale()<br/>
-          <i class="coment highlight">// Guarda la imagen modificada en tamaño y color en una imagen nueva con un nuevo nombre especificado.</i><br/>
-          &emsp;&emsp;.toFile( '<u><i>imagen80x80.png</i></u>' );
-        </aside>
+    <!-- Objeto location -->
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Objeto location.</h2>
+        <p class="contenido">
+          Como ya se mencionó, el objeto location te devolverá información sobre la URL.
+        </p>
+        <h3>Popiedades.</h3>
+        <dl>
+          <dt>href</dt>
+          <dd>Es una propiedad de lectura y escritura, devuelve la URL de la página en donde se encuentra el navegador (lectura) o puede redireccionar a una URL especificada (escritura).</dd>
+          <span class="consola">
+            location.href;<br/>
+            <i class="coment">// Devuelve la URL de la página en donde se encuentra el navegador.</i>
+            <hr/>
+            location.href = '<u>URL</u>';<br/>
+            <i class="coment">// Redirecciona la URL a la especificada en las comillas.</i>
+          </span>
+          <dt>host</dt>
+          <dd>Devuelve el nombre del dominio y el puerto, también ayuda a saber si una URL es externa o interna.</dd>
+          <span class="consola">
+            location.host
+            <i class="coment">// Devuelve el dominio y el puerto de la página en donde se encuentra el navegador.</i>
+            <hr/>
+            const links = document.links;<br/>
+            for( let link of links ){<br/>
+            &emsp;if( link.href.includes( location.host ) ) {<br/>
+            &emsp;&emsp;link.style.background = "pink";<br/>
+            } }<br/>
+            <i class="coment">// Todos los links internos de la página en donde se encuentre el navegador obtendrán un fondo rosa.</i>
+          </span>
+          <dt>hostname</dt>
+          <dd>Devuelve únicamente el nombre del dominio.</dd>
+          <dt>port</dt>
+          <dd>Devuelve el puerto.</dd>
+          <dt>protocol</dt>
+          <dd>Devuelve el protocolo si es http o https.</dd>
+          <dt>origin</dt>
+          <dd>Devuelve el protocolo más el dominio.</dd>
+          <dt>hash</dt>
+          <dd>Detecta si la página tiene hash (#). Los hash se utilizan para hacer enlaces internos en las páginas</dd>
+          <span class="consola">
+            location.hash
+          </span>
+          <dt>pathname</dt>
+          <dd>Devuelve la ruta interna luego del dominio.</dd>
+          <span class="consola">
+            location.pathname<br/>
+            <i class="coment">/*<br/>
+            si el navegador está posicionado en:<br/>
+            https://ed.team/cursos/js-dom<br/>
+            nos devolverá:<br/>
+            /cursos/js-dom<br/>
+            */</i>
+            <hr/>
+            if(location.pathname.includes('about-me')){<br/>
+            &emsp;document.nav.classList.add('highlightAM')<br/>
+            }<br/>
+            <i class="coment">// Si el pathname incluye "about-me" se le agregará la clase "highlightAM" al navegador.</i>
+          </span>
+        </dl>
+        <h3>Métodos.</h3>
+        <dl>
+          <dt>reload()</dt>
+          <dd>Recarga la página.</dd>
+          <span class="consola">location.reload()</span>
+          <dt>assign(URL)</dt>
+          <dd>Redirecciona la página a la URL especificada.</dd>
+          <span class="consola">location.assign(<u>URL</u>)</span>
+          <dt>replace(URL)</dt>
+          <dd>También redirecciona la página a la URL especificada.</dd>
+          <span class="consola">location.replace(<u>URL</u>)</span>
+        </dl>
       </div>
     </section>
-    <!-- Memoria -->
-    <section class="container">
-      <div>
-        <h2 class="textCenter">Memoria.</h2>
-        <cite>El disco duro es como mi abuelita, es lenta, pero tiene mucha experiencia y todo se le queda grabado. La RAM es como yo, depende si tengo corriente o no, muy rápido, pero nada se me queda en la cabeza.<br/> De: alguien alguna vez.</cite>
-        <p>Un buffer es básicamente un montón de datos y un stream es básicamente un proceso donde pasan un montón de datos.</p>
-        <h3>Buffer.</h3>
-        <p>Un buffer es un espacio de memoria (en la memoria RAM), en el que se almacenan datos de manera temporal.</p>
-        <p>Es la forma mas cruda en la que se pueden almacenar los datos. El buffer almacena los datos en bytes de forma binaria, pero la representa en la consola en forma hexadecimal en espacios de 2 dígitos.</p>
-        <aside class="exempliGratia">
-          <i class="coment highlight">// Creación de un Buffer con 4 espacios.</i><br/>
-          &emsp;let <u><i>myBuffer1</i></u> = Buffer.alloc( <u><i>4</i></u> );<br/>
-          &emsp;console.log( <u><i>myBuffer1</i></u> );<br/>
-          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 00 00 00 00&#62;</i>
-          <hr class="link"/>
-          <i class="coment highlight">// Creación de un Buffer con datos numéricos en un arreglo.</i><br/>
-          &emsp;let <u><i>myBuffer2</i></u> = Buffer.from( [ <u><i>1, 2, 3</i></u> ] );<br/>
-          &emsp;console.log( <u><i>myBuffer2</i></u> );<br/>
-          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 01 02 03&#62;</i>
-          <hr class="link"/>
-          <i class="coment highlight">// Creación de un Buffer con datos de tipo string.</i><br/>
-          &emsp;let <u><i>myBuffer3</i></u> = Buffer.from( '<u><i>Hola</i></u>' );<br/>
-          &emsp;console.log( <u><i>myBuffer3</i></u> );<br/>
-          &emsp;console.log( <u><i>myBuffer3</i></u>.toString() );<br/>
-          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 48 6f 6c 61&#62;<br/>// Hola</i>
-          <hr class="link"/>
-          <i class="coment highlight">// Creación de un Buffer con datos posicionados en la tabla ascii comenzando por la "a" (97) hasta la "z" (122).</i><br/>
-          &emsp;let <u><i>myBuffer4</i></u> = Buffer.alloc( <u><i>26</i></u> );<br/>
-          &emsp;console.log( <u><i>myBuffer4</i></u> );<br/>
-          &emsp;for ( let i = 0; i &#60; 26; i++ ) {<br/>
-          &emsp;&emsp;<u><i>myBuffer4</i></u>[i] = i + 97;<br/>
-          &emsp;}<br/>
-          &emsp;console.log( <u><i>myBuffer4</i></u> );<br/>
-          &emsp;console.log( <u><i>myBuffer4</i></u>.toString() );<br/>
-          <i class="coment highlight">// Salida de la consola:<br/>// &#60;Buffer 61 62 63 ... 79 7a&#62;<br/>// abcde...xyz</i>
-        </aside>
-        <h3>Stream.</h3>
-        <p>Un Stream es el proceso de ir consumiendo datos al tiempo en que se reciben. Por ejemplo, al momento de ver un video en Youtube se están consumiendo datos por medio de streaming (readable stream, porque solo se pueden ver videos mas no editarlos) ya que se reproduce al mismo tiempo en que este se está descargando, de lo contrario habría que esperar a que se descargue el video por completo para poder verlo.</p>
-        <p>Si en el caso anterior, mientras se ve el video fallara el internet, así sea por un segundo, la reproducción se pararía instantáneamente, pero en realidad no se detiene, el video continúa reproduciéndose por un tiempo más. Esto es gracias a la implementación de un buffer el cuál es un espacio en memoria RAM en donde la información proveniente del servidor llega por fragmentos (chunks), para luego ser consumido, y como ese almacenamiento de datos en el buffer se hace a bajo nivel, de forma binaria, el proceso es mucho más rápido de lo que se consume. Es por eso que cuando se reproduce un video en Youtube se ve que éste se carga más rápido (dependiendo del ancho de banda).</p>
-        <p>Existen tres tipos de stream:</p>
-        <ul>
-          <li>El de lectura es cuando existe un origen que proporciona los datos y se van recogiendo para utilizarlos.</li>
-          <li>El de escritura es cuando se tiene un stream con un destino al que se mandan los datos y que los recibe para utilizarlos.</li>
-          <li>El de doble sentido que manda y recibe los datos.</li>
-        </ul>
-        <h4 class="textCenter">Stream de lectura.</h4>
-        <aside class="exempliGratia">
-          <i class="coment highlight block textCenter">// ***input.txt***</i><br/>
-          &emsp;Archivo que va a ser leído =B
-          <hr class="link"/>
-          <i class="coment highlight block textCenter">// ***streamLectura.js***</i>
-          &emsp;const <u><i>myFs</i></u> = require('fs');<br/>
-          &emsp;let <u><i>data</i></u> = '';<br/>
-          <i class="coment highlight">// Para leer el stream .</i><br/>
-          &emsp;let <u><i>readableStream</i></u> = <u><i>myFs</i></u>.createReadStream( __dir+  '<u><i>input</i></u>.txt' );<br/>
-          <i class="coment highlight">// Para que el chunk no entregue un formato Buffer lo codificamos a UTF8 que es el estándar internacional de caracteres.</i><br/>
-          &emsp;<u><i>readableStream</i></u>.setEncoding('UTF8');<br/>
-          <i class="coment highlight">// Para escuchar el evento en donde vienen los datos.</i><br/>
-          &emsp;<u><i>readableStream</i></u>.on('data', function (chunk){<br/>
-          <i class="coment highlight">// Si el archivo fuera enorme, chunk lo trae por fragmentos de información y para ver la información continua se guarda cada fragmento en la variable data.</i><br/>
-          &emsp;&emsp;<u><i>data</i></u> += chunk;<br/>
-          &emsp;});<br/>
-          <i class="coment highlight">// Para saber cuándo termina el archivo y deje de enviar fragmentos a data, se crea un listener "end" y se imprime el resultado.</i><br/>
-          &emsp;<u><i>readableStream</i></u>.on('end', function (){<br/>
-          &emsp;&emsp;console.log(data);<br/>
-          &emsp;});
-        </aside>
-        <p>Esto se nota en la memoria cuando se trabajan en archivos muy grandes o que no se conoce el tamaño del archivo, es de ayuda mandar o recibir archivos fragmentados en paquetes.</p>
-        <h4 class="textCenter">Stream de lectura.</h4>
-        <aside class="exempliGratia">
-          <i class="coment highlight block textCenter">// ***input.txt***</i><br/>
-          &emsp;Archivo que va a ser leído y modificado =B
-          <hr class="link"/>
-          <i class="coment highlight block textCenter">// ***streamDobleSentido.js***</i>
-          <i class="coment highlight">// .</i><br/>
-          <!-- &emsp;process.stdout.write();<br/> -->
-          &emsp;const <u><i>myFs</i></u> = require('fs');<br/>
-          &emsp;const <u><i>mystream</i></u> = require('stream');<br/>
-          <i class="coment highlight">// La clase util permite trabajar con herencias.</i><br/>
-          &emsp;const <u><i>myUtil</i></u> = require( 'util' );<br/><br/>
-          &emsp;let <u><i>data</i></u> = '';<br/>
-          &emsp;let <u><i>readableStream</i></u> = <u><i>myFs</i></u>.createReadStream( __dir+  '<u><i>input</i></u>.txt' );<br/>
-          &emsp;<u><i>readableStream</i></u>.setEncoding('UTF8');<br/>
-          <i class="coment highlight">// Se crea un stream de transformación que al mismo tiempo puede leer y escribir.</i><br/>
-          &emsp;const <u><i>transform</i></u> = <u><i>myStream</i></u>.Transform;<br/>
-          &emsp;function <u><i>mayusc</i></u>() {<br/>
-          &emsp;&emsp;<u><i>transform</i></u>.call( this );<br/>
-          &emsp;}<br/>
-          <i class="coment highlight">// La función mayusc obtendrá todos los datos de la clase transform.</i><br/>
-          &emsp;util.inherits(<u><i>mayusc</i></u>, <u><i>tranform</i></u>);<br/>
-          <i class="coment highlight">// Se genera lo necesario para la transformación accediendo a su prototipo e indicando que se trabaja en su transform en una función personalizada con el chunk, la codificación y el callback como parámetros.</i><br/>
-          &emsp;<u><i>mayusc</i></u>.prototype._transform = function( chunk, codif, cb ) {<br/>
-          <i class="coment highlight">// El chunk se pasa a string y a mayúsculas.</i><br/>
-          &emsp;&emsp;<u><i>chunkMayusc</i></u> = chunk.toString().toUpperCase();<br/>
-          <i class="coment highlight">// Con el push se envía el chunk y se ejecuta el callback.</i><br/>
-          &emsp;&emsp;this.push( chunkMayusc );<br/>
-          &emsp;&emsp;cb();<br/>
-          &emsp;}<br/>
-          <i class="coment highlight">// Se crea la trasformación utilizando readableStream para mandar la transformación de un lado a otro.</i><br/>
-          &emsp;let <u><i>aMayuscula</i></u> = new <u><i>mayusc</i></u>();<br/>
-          &emsp;readableStream<br/>
-          <i class="coment highlight">// Se mandan los datos a aMayuscula.</i><br/>
-          &emsp;&emsp;.pipe(<u><i>aMayuscula</i></u>)<br/>
-          <i class="coment highlight">// Ya que pasa por aMayuscula se manda a la salida del sistema.</i><br/>
-          &emsp;.pipe(process.stdout);
-        </aside>
+      <!-- Objeto history -->
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Objeto history.</h2>
+        <p class="contenido">
+          Como ya se mencionó, el objeto history contiene el historial de navegación de la pestaña, no de todo el navegador. Y no es para devolver un historial con todas las URL, sino para detectar las flechas de retroceso o adelanto.
+        </p>
+        <h3>Propiedades.</h3>
+        <dl>
+          <dt>length</dt>
+          <dd>Muestra la cantidad de elementos que hay en el historial incluyendo la página actual, es decir la cantidad de páginas a las que se puede acceder usando las flechas de "volver a la página anterior" o "avanzar a la página siguiente".</dd>
+        </dl>
+        <h3>Métodos.</h3>
+        <dl>
+          <dt>back()</dt>
+          <dd>Regresa a la página anterior del historial de la pestaña.</dd>
+          <span class="consola">
+            history.back()
+          </span>
+          <dt>forward()</dt>
+          <dd>Avanza a la página siguiente del historial de la pestaña.</dd>
+          <span class="consola">
+            history.forward()
+          </span>
+          <dt>go(<u>position</u>)</dt>
+          <dd>Regresa o avanza a la posición que se indique, siendo -1 = back y 1 = forward</dd>
+          <span class="consola">
+            history.go(-3);
+          </span>
+        </dl>
+      </div>
+    </section>
+    <!-- Objeto navigator -->
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Objeto navigator.</h2>
+        <p class="contenido">
+          Nos ayuda a detectar si el navegador que se está usando cuenta con las características (features) necesarias para usar nuestros códigos como <i>geolocation</i>, <i>deviceMemory</i>, <i>cookieEnabled</i>.
+        </p>
+        <p>
+          También se puede utilizar CSS, JavaScript o modernizr para detectar las características habilitadas en el navegador que se está utilizando. <a class="enlace" href="https://modernizr.com/" target="blank">Modernizr</a> es una librería que permite detectar si un navegador tiene características que se utilizan en las páginas.
+        </p>
+        <span class="ejemplo">
+          if(modernizr.grid) { ... } else { ... }<br/>
+          <i class="coment">// Si está habilitada la característica grid en el navegador ... sino ...</i>
+        </span>
+        <p class="contenido">
+          El operador <i>in</i> se puede usar para preguntar si una propiedad existe en un objeto, en este caso podría preguntase mediante JavaScript si la propiedad 'Promise' existe en el objeto window.
+        </p>
+        <span class="ejemplo">
+          'Promise' in window
+          <i class="coment">// devuelve un True si existe la propiedad en window o False si no existe.</i>
+        </span>
+      </div>
+    </section>
+    <!-- Timers -->
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Timers.</h2>
+        <p class="contenido">
+          Permiten ejecutar acciones después de un periodo de tiempo o acciones que se repitan periódicamente.
+        </p>
+        <dl>
+          <dt>setTimeOut(<u>callback</u>, <u>ms</u>)</dt>
+          <dd>Ejecuta lo que está en el primer parámetro el cual tiene que ser un callback (función) después de cierta cantidad de milisegundos especificadas en el segundo parámetro.</dd>
+          <span class="ejemplo">
+            setTimeOut(() => {<br/>
+            &emsp;alert('¡Holaaaa enfermere!');<br/>
+            }, 3000);<br/>
+          </span>
+          <dt>setInterval(<u>callback</u>, <u>ms</u>)</dt>
+          <dd>Ejecuta una función varias veces con un intervalo indicado en milisegundos.</dd>
+          <span class="ejemplo">
+            <i class="coment titCentrado block-centrado">// En HTML</i>
+            &#60;div class="reloj"&#62;&emsp;&#60;/div&#62;
+            <hr class="enlace"/>
+            <i class="coment titCentrado block-centrado">// En JavaScript</i>
+            console.log(new Date().toLocaleTimeString())<br/>
+            <i class="coment">// Nos imprime la hora, minuto y segundo actuales.</i><br/>
+            setInterval(() => {<br/>
+            &emsp;const reloj = document.getElementById('reloj');
+            if(reloj) reloj.textContent = new Date().toLocaleTimeString()<br/>
+            <i class="coment">// Actualiza el reloj.</i><br/>
+            }, 1000);<br/>
+          </span>
+          <dt>clearInterval(<u>función</u>)</dt>
+          <dd>Detiene el setInterval.</dd>
+          <span class="ejemplo">
+            let contador = 0;<br/>
+            const elefantes = setInterval(() => {<br/>
+            &emsp;contador++<br/>
+            &emsp;if(contador > 1){<br/>
+            &emsp;&emsp;console.log(`${contador} elefantes se columpiaban...`);<br/>
+            &emsp;} else {<br/>
+            &emsp;&emsp;console.log(`${contador} elefante se columpiaba...`);<br/>
+            &emsp;}<br/>
+            &emsp;if(contador === 5){<br/>
+            &emsp;&emsp;clearInterval(elefantes);<br/>
+            &emsp;}<br/>
+            }, 1000);<br/>
+          </span>
+        </dl>
+      </div>
+    </section>
+    <!-- Date -->
+    <section>
+      <div class="contenedor" id="parent">
+        <h2 class="titCentrado">Date.</h2>
+        <p class="contenido">
+          Date es un objeto que trae las fechas del sistema operativo, no del navegador.
+        </p>
+        <p class="contenido">
+          Para trabajar con este objeto se debe instanciarlo. Si se quiere conseguir una fecha lo que se debe hacer es: crear una constate y asignarle la palabra reservada new y el objeto Date.
+        </p>
+        <h3>Instanciar</h3>
+        <dl>
+          <dt>new Date()</dt>
+          <dd>Proporciona la fecha actual desde años hasta segundos y la zona horaria (GMT).</dd>
+          <dt>new Date(year,month,day)</dt>
+          <dd>Proporciona la fecha con la zona horaria y el día de la semana, indicando en el parámetro el año, mes y día en forma numérica. El mes va de 0 a 11 donde 0 será enero y 11 será diciembre.</dd>
+          <span class="ejemplo">
+            const aniversario = new Date(2022,8,19);<br/>
+            console.log(aniversario);
+          </span>
+          <dt>new Date(year,month,day,hours,minutes,seconds)</dt>
+          <dd>Proporciona la fecha con la zona horaria y el día de la semana, indicando en el parámetro el año, mes, día, hora, minuto y segundo en forma numérica. El mes va de 0 a 11 donde 0 será enero y 11 será diciembre.</dd>
+          <span class="ejemplo">
+            const aniversario = new Date(2022,8,19,17,25,36);<br/>
+            console.log(aniversario);
+          </span>
+          <dt>new Date(strings)</dt>
+          <dd>Proporciona la fecha por medio de un string, el string se coloca en los parámetros y tiene que tener el formato original del objeto, es decir, el día de la semana y el mes con las primeras tres letras de su nombre en inglés, y los demás datos en forma numérica. Pueden omitirse datos siempre que se respete el formato.</dd>
+          <span class="ejemplo">
+            const aniversario = new Date(May 21 2021 18:07:31 GMT-0500);<br/>
+            console.log(aniversario);
+          </span>
+        </dl>
+        <h3>Métodos</h3>
+        <dl>
+          <dt>getFullYear()</dt>
+          <dd>Devuelve el año.</dd>
+          <dt>getMinutes()</dt>
+          <dd>Devuelve los minutos.</dd>
+          <dt>getSeconds()</dt>
+          <dd>Devuelve los segundos.</dd>
+          <dt>getDate()</dt>
+          <dd>Devuelve el día del mes.</dd>
+          <dt>getDay()</dt>
+          <dd>Devuelve el día de la semana de 0 a 6) (lunes = 0, domingo = 6).</dd>
+          <dt> getMonth()</dt>
+          <dd>Devuelve los meses de 0 a 11 (enero = 0, diciembre = 11.</dd>
+          <dt>getTime()</dt>
+          <dd>Devuelve los milisegundos transcurridos desde el 1 de enero de 1970 hasta la fecha.</dd>
+          <span class="ejemplo">
+            let transcurrido = new Date(1969,11,31,18,0,0).getTime();<br/>
+            <i class="coment">// Nos indicará que han pasado 0 milisegundos desde la fecha pivote.</i><br/>
+            <i class="coment">// Tal vez la fecha pivote de 1970/1/1 está en otra zona horaria desfazada 6 horas de la CDMX O.O</i>
+          </span>
+          <dt>getTimezoneOffset()</dt>
+          <dd>Devuelve la diferencia de tu zona horaria al Meridiano de Greenwich que es la referencia de zona horaria para todos los países. Se utiliza para adaptar nuestra zona horaria con el del usuario.</dd>
+          <span class="ejemplo">
+            const zonaHoraria = new Date().getTimezoneOffset();<br/>
+            <i class="coment">// (yo que vivo en CDMX) me devuelve 300 que es la diferencia entre la zona horaria de referencia para todos los países y mi zona horaria.</i><br/>
+            <i class="coment">// A mi zona horaria le sumaré esos 300 en los minutos para obtener la zona horaria internacional.</i>
+          </span>
+        </dl>
       </div>
     </section>
   </main>
-  <footer>
-    <section class="container">
-      <div>
-        <h3>Referencias:</h3>
-        <a href="https://lenguajejs.com/javascript/caracteristicas/modulos-es6/" target="_blank" rel="noopener noreferrer">Módulos ECMAScript.</a><br/>
-        <a href="https://medium.com/free-code-camp/do-you-want-a-better-understanding-of-buffer-in-node-js-check-this-out-2e29de2968e8" target="_blank" rel="noopener noreferrer">Buffer, stream and binary data</a>
-      </div>
-    </section>
+  <footer class="contenedor">
+    <h3>Referencias:</h3>
+    <p>
+      <a class="enlace" href="https://developer.mozilla.org/es/docs/Web/API/Window/open" target="blank" rel="noopener noreferrer">Método open()</a><br/>
+      <a class="enlace" href="https://ed.team/blog/css-si-tiene-condicionales-y-deberias-estar-usandolas" target="blank" rel="noopener noreferrer">Condicionales de CSS.</a><br/>
+      <a class="enlace" href="https://www.youtube.com/watch?v=ZbF5qomB8XM" target="blank" rel="noopener noreferrer">Crear un contador con JavaScript.</a><br/>
+      <a class="enlace" href="https://nodejs.org/api/globals.html" target="_blank" rel="noopener noreferrer">Métodos globales.</a><br/>
+      <a class="enlace" href="https://www.w3schools.com/jsref/met_win_setinterval.asp" target="_blank" rel="noopener noreferrer">SetInterval.</a><br/>
+    </p>
   </footer>
-  <script src="../Js/programajsHelp2.js"></script>
+  <script src="../Js/programajsHelp.js"></script>
 </body>
 </html>

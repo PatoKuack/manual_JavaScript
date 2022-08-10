@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Deploy</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Deploy -->
+    <section class="container">
+      <h1 class="textCenter">Deploy.</h1>
+      <p>Es recomendable tener separadas las configuraciones del modo desarrollo y del modo producción, para ello se crean un archivo extra de configuración.</p>
+      <h3>Modo desarrollo.</h3>
+      <p>En la raíz del proyecto se crea un archivo llamado <b>webpack.config.dev.js</b> y se copia en éste todo el código del archivo webpack.config.js con exepción del fragmento <i>optimization</i> y al no tener esta sección de optimización, entonces también se eliminan las constantes declaradas al inicio del archivo que no se utilizan.</p>
+      <p>Se puede especificar al archivo que tiene la configuración especifica para el modo desarrollo con el siguiente fragmento de .código.</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.dev.js</i><br/>
+        <span class="highlight">
+          module.exports = { ...,<br/>
+        &emsp;output = {...},<br/>
+        </span>
+        &emsp;mode: 'development',<br/>
+        <span class="highlight">... }</span>
+      </article>
+      <p>Al compilar el proyecto desde la terminal se especifica que se utilice el archivo de desarrollo con el comando:</p>
+      <article class="exempliGratia">
+        npx webpack --config webpack.config.dev.js
+      </article>
+    </section>
+    <!-- Modo producción -->
+    <section class="container">
+      <h2>Modo producción.</h2>
+      <p>El archivo de configuración <b>webpack.config.js</b> sirve para utilizar el modo producción, pero al compilarlo se debe asegurar de que el proyecto sea limpiado de archivos repetidos los cuales se fueron acumulando por compilaciones anteriores, para esto se instala clean-webpack desde la terminal:</p>
+      <article class="exempliGratia">
+        npm install -D clean-webpack-plugin
+      </article>
+      <p>En el archivo de configuración <b>webpack.config.js</b> se agrega lo siguiente:</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
+        const { CleanWebpackPlugin } = require('clean-webpack-plugin');<br/>
+        <span class="highlight">
+          &emsp;plugins: [<br/>
+          &emsp;&emsp;... ,<br/>
+          &emsp;&emsp;new Dotenv(),<br/>
+        </span>
+        &emsp;&emsp;new CleanWebpackPlugin(),<br/>
+        &emsp;<span class="highlight">],</span>
+      </article>
+      <p>Al compilar el proyecto desde la terminal se especifica que se utilice el archivo de producción con el comando:</p>
+      <article class="exempliGratia">
+        npx webpack --mode production --config webpack.config.js
+      </article>
+      <p>Hay una <a href="https://webpack.js.org/configuration/output/#outputclean" target="_blank" rel="noopener noreferrer" class="link">alternativa</a> en implementada recientemente en la cual se coloca <i>clean: true</i> y limpia el directorio cada que se compile.</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;...<br/>
+          &emsp;output: {<br/>
+        </span>
+        &emsp;&emsp;clean: true,<br/>
+        <span class="highlight">
+          &emsp;},<br/>
+          };
+        </span>
+      </article>
+    </section>
+    <!-- Webpack watch -->
+    <section class="container">
+      <h2>Webpack watch.</h2>
+      <p>El modo watch hace que el proyecto se compile de forma automática al realizar cambios en él. La desventaja esta en que si se aplica el webpack-watch en modo producción, se tomara más tiempo entre más grande sea el proyecto porque se optimizan los recursos, en cambio, en el modo desarrollo se salta ese paso y es más rápida la compilación.</p>
+      <p>Para activarlo se coloca el siguiente código en el archivo de configuración de desarrollo <b>webpack.config.dev.js</b></p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.dev.js</i><br/>
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;...<br/>
+          &emsp;output: {...},<br/>
+        </span>
+        &emsp;watch: true,<br/>
+        <span class="highlight">
+          };
+        </span>
+      </article>
+      <p>Después se compila el modo desarrollo desde la terminal y la terminal se quedará escuchando los cambios del proyecto para compilarlo con cada cambio que se haga. Para detener el webpack-watch se presiona <code>control + C</code>.</p>
+      <p>Otra manera es compilar desde la terminal e indicar que se active el webpack-watch mediante el comando.</p>
+      <article class="exempliGratia">
+        npx webpack --watch --config webpack.config.dev.js
+      </article>
+    </section>
+    <!-- Deploy a Netlify -->
+    <section class="container">
+      <h2>Deploy a Netlify.</h2>
+      <p>Para que el proyecto se visualice en internet se puede subir a <a href="webpack --config webpack.config.dev.js --watch" target="_blank" rel="noopener noreferrer" class="link">Netlify</a>.</p>
+      <p>Primero se debe crear en la raíz del proyecto el archivo <b>netlify.toml</b> y se especifica en éste atraves de un buld, que carpeta del proyecto se debe publicar y el comando que se utilizará para desplegar la aplicación.</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// netlify.toml</i><br/>
+        [build]<br/>
+        &emsp;publish: "dist"<br/>
+        &emsp;command: "npm run build"
+      </article>
+      <p>A través de la página de Netlify se elige el repositorio, la rama y también el comando y la carpeta que se especifica en el archivo <i>netlify.toml</i>.</p>
+      <p>Después se crea, en la raíz del proyecto, la carpeta <b>scripts</b> y adentro de esta carpeta se crea el archivo <b>create-env.js</b> y en este script se coloca el siguiente código:</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// create-env.js</i><br/>
+        <i class="highlight font-normal">// Se llama un recurso para crear archivos de forma local.</i><br/>
+        const fs = require('fs');<br/>
+        <i class="highlight font-normal">// Se crea el archivo .env y se le agrega de contenido el ejemplo de variable de entorno antes visto.</i>
+        fs.writeFileSync('./.env', `API=${process.env.API}\n`);
+      </article>
+      <p>Para que Netlify acepte las variables de entorno fue necesario crear el archivo anterior además de que en la página de Netlify se deben agregar en las sección <b>Build & deploy</b> en la parte de <b>variables de entorno</b> se agregan las variables del proyecto y así solamente Netlify podrá ver y usar estas variables.</p>
+      <p>Por último se compila el proyecto colocando primero el script creado:</p>
+      <article class="exempliGratia">
+        npx node ./scripts/create-env.js && webpack --mode production --config webpack.config.js
+      </article>
+    </section>
+  </main>
+  <!-- <footer class="container">
+    <h3>Rederencias:</h3>
+    <p>
+      <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/>
+    </p>
+  </footer> -->
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Scripts</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Scripts -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Scripts.</h2>
+        <p>Los scripts en NPM son comandos que pueden ser establecidos para ejecutarlos de forma nativa dentro de nuestra terminal con el fin de obtener salidas específicas. Se puede crear la cantidad de scrips que se desee.</p>
+        <aside class="exempliGratia">
+          &emsp;"scripts": {<br/>
+            &emsp;&emsp;"build": "webpack --mode production",<br/>
+            &emsp;&emsp;"hola": "node"<br/>
+          &emsp;}
+        </aside>
+        <p>Para ejecutar estos scripts se utiliza desde la terminal la instrucción: <b>npm run <u><i>script</i></u></b></p>
+        <p>También se puede especificar scripts con el prefijo “pre” que se ejecutarán automáticamente antes del comando que que se ejecutó. Por ejemplo, si se define el comando build y prebuild, cuando se corra <i>npm run build</i>, el comando <i>prebuild</i> se ejecutará primero. Esto sirve para poder ejecutar tareas que hagan algún tipo de preparación necesaria para correr el comando principal. Sin embargo, hay que hacer notar que si el comando pre falla (retorna un valor que no es 0) el comando principal no se ejecutará. Si el proceso de preparación no se realiza de forma exitosa, puede que genere problemas al querer ejecutar la tarea principal.</p>
+        <p>En algunas ocasiones, sin embargo, la tarea previa puede fallar sin que eso afecte la ejecución de la tarea principal. En esos casos se puede usar <i>|| exit 0</i> para retornar 0:</p>
+        <aside class="exempliGratia">
+          &emsp;"presass-build": "(rm css/*.css; rm css/*.css.map) || exit 0",<br/>
+          &emsp;"build": "webpack --mode production",<br/>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <!-- <footer>
+    <section class="container">
+      <div>
+        <h3>Recursos:</h3>
+        <a href="" target="_blank" rel="noopener noreferrer">.</a><br/>
+      </div>
+    </section>
+  </footer> -->
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

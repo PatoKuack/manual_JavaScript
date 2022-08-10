@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Manejo del asincronismo.</title>
+</head>
+<body class="body">
+      <!-- Errores -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">Errores.</h2>
+          <p>Cuando aparece un error en el inspector se indican dos números (4:15), el primero indica el origen del error y el segundo número indica la línea en donde se rompió el código, por ejemplo, si el error se localiza en una variable de la línea 30 que adquirió un valor generado en una función de la línea 11 entonces el error aparecerá con los dígitos 11:30</p>
+        </div>
+      </section>
+      <!-- Try/Catch -->
+      <section>
+        <div class="container">
+          <h2 class="textCenter">try/catch</h2>
+          <p>Con Node se pueden manejar los errores de una manera muy optima, pero primero se debe entender como Node maneja los errores por defecto.</p>
+          <p>Cuando sucede un error en Node, este por defecto terminara todo el proceso del código para avisar que ha ocurrido un error, esto puede ser fatal para los proyectos.</p>
+          <p>Los errores además se notifican por hilos, es decir que, si un error sucede en el hilo principal del event loop, es decir, el evento queue, el error se avisara desde este mismo hilo, pero si un error sucede antes desde otro hilo como el hilo de las funciones asíncronas, el error se avisara desde aquel hilo sin dejar mostrar el error del hilo principal.</p>
+          <p>Se puede manejar este flujo de errores para que Node no se detenga al momento de que ocurra un error y genere una acción deseada, para esto usamos try y catch.</p>
+          <p><b>try</b> es el bloque de código que ejecutará la función que puede o no fallar y <b>catch</b> la función que atrapará el error y decidirá qué hacer con él.</p>
+          <span class="block textCenter">try/catch en una función <b>síncrona</b>.</span>
+          <aside class="exempliGratia">
+            &emsp;function otraFunction(){<br/>
+            &emsp;&emsp;rompeSincrono();<br/>
+            &emsp;}<br/>
+            &emsp;function rompeSincrono(){<br/>
+            &emsp;&emsp;return (3 + z);<br/>
+            &emsp;}<br/>
+            &emsp;try{<br/>
+            &emsp;&emsp;otraFuncion();<br/>
+            &emsp;} catch(err){<br/>
+            &emsp;&emsp;console.error("¡Algo se ha roto!");<br/>
+            &emsp;&emsp;console.error(err.message);<br/>
+            <i class="coment highlight">// Con la variable "err" y su atributo "message" se muestra el mensaje litera que proporciona el navegador que indica la razón por la que se rompió el código.</i><br/>
+            &emsp;&emsp;console.log("Pero no pasa nada UuU");<br/>
+            &emsp;}<br/>
+            &emsp;console.log("Final del código.");<br/>
+          </aside>
+          <span class="block textCenter">try/catch en una función <b>asíncrona</b>.</span>
+          <aside class="exempliGratia">
+            &emsp;function rompeAsincrono(callback){<br/>
+            &emsp;&emsp;setTimeout(function(){<br/>
+            &emsp;&emsp;&emsp;try{<br/>
+            &emsp;&emsp;&emsp;&emsp;return (3 + z);<br/>
+            &emsp;&emsp;&emsp;} catch (err) {<br/>
+            &emsp;&emsp;&emsp;&emsp;console.error("Error en la función asíncrona.");<br/>
+            &emsp;&emsp;&emsp;&emsp;callback(err);<br/>
+            &emsp;&emsp;&emsp;}<br/>
+            &emsp;&emsp;})<br/>
+            &emsp;}<br/>
+            &emsp;try{<br/>
+            &emsp;&emsp;rompeAsincrono(function(err){<br/>
+            &emsp;&emsp;&emsp;console.log(err.message);<br/>
+            &emsp;&emsp;});<br/>
+            &emsp;} catch(err) {<br/>
+            &emsp;&emsp;console.error("Algo crasheó:");<br/>
+            &emsp;&emsp;console.error(err);<br/>
+            &emsp;&emsp;console.log("pero no pasa nada UuU");<br/>
+            &emsp;}<br/>
+            &emsp;console.log("Final del código.");
+          </aside>
+        </div>
+      </section>
+      <footer>
+        <section>
+          <div class="container">
+            <h3>Referencias:</h3>
+            <p>
+              <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/try...catch" target="_blank" rel="noopener noreferrer">Try...catch</a><br/>
+              <!-- <a href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+            </p>
+          </div>
+        </section>
+      </footer>
+      <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

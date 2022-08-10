@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Loaders y Plugins</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Loaders y Plugins -->
+    <section class="container">
+      <h1 class="textCenter">Loaders y plugins.</h1>
+      <p>Webpack solamente entiende JavaScript y JSON por lo que los loaders ayudan procesando archivos de otros tipos para convertirlos en módulos válidos para webpack que serán consumidos por la aplicación que se cree y serán agregados como dependencias.</p>
+      <p>En alto nivel, los loaders poseen 2 configuraciones principales:</p>
+      <ol>
+        <li>
+          <b>test</b> - propiedad que identifica cuáles archivos deberán ser transformados.
+        </li>
+        <li>
+          <b>use</b> - propiedad que identifica el loader que será usado para transformar a dichos archivos.
+        </li>
+      </ol>
+      <p>Los plugins son utilizados para extender tareas específicas, como la optimización de paquetes, la gestión de activos y la inyección de variables de entorno. Una vez importado el plugin, se pueden personalizar.</p>
+    </section>
+    <!-- Loader Babel -->
+    <section class="container">
+      <h2>Loader Babel.</h2>
+      <p><b>Babel</b> ayuda a que el código JavaScript sea compatible con todos los navegadores.</p>
+      <p><b>babel-loader</b> es un loader que permite usar Babel con webpack, para instalarlo se utiliza la siguiente instrucción desde la terminal:</p>
+      <article class="exempliGratia">
+        npm install -D babel-loader @babel/core @babel/preset-env @babel/preset-react @babel/plugin-transform-runtime<br/>
+        <i class="highlight font-normal">
+          @babel/core permite utilizar babel en general.<br/>
+          @babel/preset-env permite utilizar las últimas características de JavaScript.<br/>
+          @babel/preset-react permite utilizar las la sintaxis de react y poder identificar los archivos .jsx.<br/>
+          @babel/plugin-transform-runtime permite trabajar con asincronismo, por ejemplo con async y await.
+        </i>
+      </article>
+      <p>Como se agrega la instrucción <b>-D</b>, las dependencias se colocan en el área de devDependencies del archivo <b>package.json</b></p>
+      <p>Después se crea, en la raíz del proyecto, un archivo de configuración de Babel con el nombre <b>.babelrc</b> (el punto en el nombre indica que será un archivo oculto, esto se utiliza para los archivos de configuración), en el archivo se crea un objeto donde se añaden las configuraciones como <b>presets</b> para traajar con JavaScript moderno y <b>plugins</b> que utilizará Babel.</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// .babelrc</i><br/>
+        {<br/>
+        &emsp;"presets": [<br/>
+        &emsp; &emsp;"@babel/preset-env",<br/>
+        &emsp; &emsp;"@babel/preset-react"<br/>
+        &emsp;],<br/>
+        &emsp;"plugins": [<br/>
+        &emsp; &emsp;"@babel/plugin-transform-runtime"<br/>
+        &emsp;]<br/>
+        }
+      </article>
+      <p>Para comenzar a utilizar webpack se debe agregar la siguiente configuración en <b>webpack.config.js</b>:</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;...,<br/>
+          &emsp;resolve: {<br/>
+          &emsp;&emsp;...<br/>
+          &emsp;},<br/>
+        </span>
+        &emsp;module: {<br/>
+        &emsp;&emsp;rules: [<br/>
+        &emsp;&emsp;&emsp;{<br/>
+        &emsp;&emsp;&emsp;&emsp;<i class="highlight font-normal">// Con test se indica que el loader utilizará archivos con las extenciones .mjs o .js</i><br/>
+        &emsp;&emsp;&emsp;&emsp;test: /\.(mjs|js|jsx)$/,<br/>
+        <!-- &emsp;&emsp;&emsp;&emsp;test: /\.(m?js|jsx)$/,<br/> -->
+        &emsp;&emsp;&emsp;&emsp;<i class="highlight font-normal">// Con exclude se indica que se excluirá lo que provenga de la dirección node_modules.</i><br/>
+        &emsp;&emsp;&emsp;&emsp;exclude: /node_modules/,<br/>
+        &emsp;&emsp;&emsp;&emsp;<i class="highlight font-normal">// Use es un arreglo u objeto donde se especifica que loader se aplicaran.</i><br/>
+        &emsp;&emsp;&emsp;&emsp;use: {<br/>
+        &emsp;&emsp;&emsp;&emsp;&emsp;loader: "babel-loader"<br/>
+        &emsp;&emsp;&emsp;&emsp;},<br/>
+        &emsp;&emsp;&emsp;}<br/>
+        &emsp;&emsp;]<br/>
+        &emsp;}<br/>
+        <span class="highlight">}</span>
+      </article>
+      <p>Por ultimo, se compila webpack para añadir las configuraciones de Babel, utilizando la instrucción definida <i>npm run build</i> o la instrucción de default <i>npx webpack --mode production --config webpack.config.js</i></p>
+    </section>
+    <!-- Plugin HTML -->
+    <section class="container">
+      <h2>Plugin HTML.</h2>
+      <p><b>htmlWebpackPlugin</b> es un plugin para inyectar javascript, css, favicons y facilitar la tarea de enlazar los bundles al template HTML. Para utilizarlo primero se debe instalar el plugin desde la configuración de webpack a traves de la siguiente instrucción en la terminal:</p>
+      <article class="exempliGratia">
+        npm i html-webpack-plugin -D
+      </article>
+      <p>Después se agrega en el archivo de configuración <b>webpack.config.js</b> de la siguiente forma:</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
+        <span class="highlight">const path ...;</span><br/>
+        const HtmlWebpackPlugin = require('html-webpack-plugin');<br/>
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;...,<br/>
+          &emsp;module: {<br/>
+          &emsp;&emsp;...<br/>
+          &emsp;},<br/>
+        </span>
+        &emsp;plugins: [<br/>
+        &emsp;&emsp;<i class="highlight font-normal">// Se agrega un nuevo plugin utilizando la constante declarada al inicio del documento y dentro se coloca un objeto para definir las configuraciones de este.</i><br/>
+        &emsp;&emsp;new HtmlWebpackPlugin({<br/>
+          &emsp;&emsp;&emsp;<i class="highlight font-normal">// Se especifica que se autorice la inyección de los elementos.</i><br/>
+        &emsp;&emsp;&emsp;inject: true,<br/>
+        &emsp;&emsp;&emsp;<i class="highlight font-normal">// Se indica la ruta del template.</i><br/>
+        &emsp;&emsp;&emsp;template: './public/index.html',<br/>
+        &emsp;&emsp;&emsp;<i class="highlight font-normal">// Se indica el nombre final del archivo que por estandar es index.html.</i><br/>
+        &emsp;&emsp;&emsp;filename: './index.html'<br/>
+        &emsp;&emsp;})<br/>
+        &emsp;]<br/>
+        <span class="highlight">
+          }
+        </span>
+      </article>
+      <p>Al compilar el proyecto con webpack se creará en el archivo index.html, al final de la etiqueta head una etiqueta script que llama al main.js (si se había creado otro script se podría borrar si es redundante el uso, es decir, si es llamado otra vez el main.js o el index.js).</p>
+    </section>
+    <!-- Loader CSS -->
+    <section class="container">
+      <h2>Loader CSS.</h2>
+      <p>Se instala el loader para css y si se desea se instala el loader para sass y para stylus.</p>
+      <article class="exempliGratia">
+        npm install mini-css-extract-plugin css-loader style-loader sass sass-loader -D<br/>
+        <!-- npm i -D node-sass sass-loader<br/> -->
+        npm i -D stylus stylus-loader<br/>
+        <!-- npm i -D stylus -->
+      </article>
+      <p>Después se elimina del archivo <b>index.html</b> la etiqueta link que vincula el main.css con el proyecto.</p>
+      <p>En el archivo <b>index.js</b> se importan los estilos.</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// index.js</i><br/>
+        import './styles/main.css';<br/>
+        <i class="highlight font-normal">
+          // también podría ser un archivo sass y lo compila automaticamente, ejemplos:<br/>
+          // import './styles/main.scss';<br/>
+          // import './styles/vars.styl';
+        </i>
+      </article>
+      <p>En el archivo de configuración de webpack <b>webpack.config.js</b> se anexa lo siguiente:</p>
+      <article class="exempliGratia">
+        <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
+        <span class="highlight">const ...;</span><br/>
+        const MiniCssExtractPlugin = require('mini-css-extract-plugin');<br/>
+        <span class="highlight">
+          module.exports = {<br/>
+          &emsp;...,<br/>
+          &emsp;module: {<br/>
+          &emsp;&emsp;rules: [<br/>
+          &emsp;&emsp;&emsp;{...},<br/>
+        </span>
+          &emsp;&emsp;&emsp;{<br/>
+          &emsp;&emsp;&emsp;&emsp;test: /\.s?css|.styl|.sass$/i,<br/>
+          &emsp;&emsp;&emsp;&emsp;use: [MiniCssExtractPlugin.loader,<br/>
+          &emsp;&emsp;&emsp;&emsp;'style-loader',<br/>
+          &emsp;&emsp;&emsp;&emsp;'css-loader',<br/>
+          &emsp;&emsp;&emsp;&emsp;'stylus-loader',<br/>
+          &emsp;&emsp;&emsp;&emsp;'sass-loader']<br/>
+          &emsp;&emsp;&emsp;}<br/>
+        <span class="highlight">
+          &emsp;&emsp;]<br/>
+          &emsp;},<br/>
+          &emsp;plugins: {<br/>
+          &emsp;&emsp;new ...({...})
+        </span>,<br/>
+        &emsp;&emsp;new MiniCssExtractPlugin({<br/>
+        &emsp;&emsp;&emsp;filename: 'assets/[name].[contenthash].css'<br/>
+        &emsp;&emsp;}),<br/>
+        <span class="highlight">
+          &emsp;}<br/>
+          }
+        </span>
+      </article>
+      <div class="container">
+        <p>notas:</p>
+        <p>Es importante que se coloquen las reglas de CSS en ese orden: <u>style-loader</u>, css-loader, stylus-loader y sass-loader.</p>
+        <p>A veces existen conflictos entre <i>style-loader</i> y <i>mini-css-extract-plugin</i>, si ocacionan problemas se deberá comentar o eliminar <i>style-loader</i> de las reglas de CSS, también se puede desinstalar con el comando <code>npm uninstall style-loader -D</code>.</p>
+      </div>
+      <p>Por último se compila webpack y se obtienen todos los archivos de estilos combinados.</p>
+    </section>
+  </main>
+  <footer class="container">
+    <h3>Rederencias:</h3>
+    <p>
+      <a class="link" href="https://webpack.js.org/loaders/" target="_blank" rel="noopener noreferrer">Loaders.</a><br/>
+      <a class="link" href="https://webpack.js.org/plugins/" target="_blank" rel="noopener noreferrer">Plugins.</a><br/>
+      <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+    </p>
+  </footer>
+</body>
+</html>

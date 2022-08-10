@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Importar módulos</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Importar módulos -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Importar módulos.</h2>
+        <p>En Node se tienen dos formas de importar módulos:</p>
+        <ul>
+          <li>El método <b>require</b> es la forma por defecto de importar módulos, ya sean nuestros propios módulos como los de otras personas en nuestros proyectos JS.</li>
+        </ul>
+        <aside class="exempliGratia">
+          <i class="coment highlight textCenter block">// ***myModulo<b>.js</b>***</i>
+          &emsp;function <u>saludar</u>(){<br/>
+          &emsp;&emsp;<u>console.log("¡Hola mundo!");</u><br/>
+          &emsp;}<br/>
+          <i class="coment highlight">// Exporta la función "saludar" de myModulo.js</i><br/>
+          &emsp;module.exports = {<br/>
+          &emsp;&emsp;<u>saludar</u>,<br/>
+          &emsp;&emsp;<u>propiedad1: '¡Hello world!'</u><br/>
+          &emsp;};
+          <hr class="link"/>
+          <i class="coment highlight textCenter block">// ***index<b>.js</b>***</i>
+          <i class="coment highlight">// Importa el myModulo.js</i><br/>
+          &emsp;const <u>moduloX</u> = require('<u>./ruta-de-myModulo.js</u>');<br/>
+          <i class="coment highlight">// Muestra las propiedades del módulo</i><br/>
+          &emsp;<u>console.log(moduloX);</u><br/>
+          <i class="coment highlight">// Ejecuta una propiedad del myModulo.js</i><br/>
+          &emsp;<u>console.log(moduloX.propiedad1);;</u><br/>
+          <i class="coment highlight">// Ejecuta una función del myModulo.js</i><br/>
+          &emsp;<u>moduloX.saludar();</u><br/>
+          <hr class="link"/>
+          <i class="coment highlight textCenter block">// ***terminal***</i>
+          &emsp;nodemon <u>./ruta-de-index.js</u>
+        </aside><br/>
+        <ul>
+          <li>El método <b>import</b> es una forma nueva de importar módulos.</li>
+        </ul>
+        <p>Para utilizar éste método se añade en el fichero <b>package.json</b> una línea extra (en donde va name, version, author, etc.) que contenga lo siguiente: <b>"type": "module"</b></p>
+        <aside class="exempliGratia">
+          <i class="coment highlight block textCenter">// ***myModulo<b>.js</b>***</i>
+          &emsp;function saludar() {<br/>
+          &emsp;&emsp;console.log("¡Hola mundo!");<br/>
+          &emsp;}<br/>
+          <i class="coment highlight">// Exportar el módulo.</i><br/>
+          &emsp;export default {<br/>
+            &emsp;&emsp;saludar,<br/>
+          &emsp;&emsp;propiedad1: "¡Hello world!"<br/>
+          &emsp;}<br/>
+          <hr class="link"/>
+          <i class="coment highlight block textCenter">// ***index<b>.js</b>***</i>
+          <i class="coment highlight">// Importar módulo.</i><br/>
+          &emsp;import moduloY from './myModulo.js'<br/>
+          <i class="coment highlight">// Muestra las propiedades del módulo</i><br/>
+          &emsp;<u>console.log(moduloY);</u><br/>
+          <i class="coment highlight">// Ejecuta una propiedad del myModulo.js</i><br/>
+          &emsp;<u>console.log(moduloY.propiedad1);;</u><br/>
+          <i class="coment highlight">// Ejecuta una función del myModulo.js</i><br/>
+          &emsp;<u>moduloY.saludar();</u><br/>
+          <hr class="link"/>
+          <i class="coment highlight textCenter block">// ***terminal***</i>
+          &emsp;nodemon <u>./ruta-de-index.js</u>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <!-- <footer>
+    <section>
+      <div class="container">
+        <h3>Referencias:</h3>
+        <p>
+          <a href="" target="_blank" rel="noopener noreferrer"></a><br/>
+        </p>
+      </div>
+    </section>
+  </footer> -->
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

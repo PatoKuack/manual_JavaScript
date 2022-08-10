@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>Módulos útiles</title>
+</head>
+<body class="body">
+  <main>
+    <!-- Módulos útiles -->
+    <section class="container">
+      <div>
+        <h2 class="textCenter">Módulos útiles.</h2>
+        <h3>bcrypt</h3>
+        <p>La función de cifrado de bcrypt permite construir una plataforma de seguridad utilizando contraseñas encriptadas y poder verificar la autenticidad de la contraseña.</p>
+        <p>Primero es necesario instalarla a través de la terminal con la instrucción <b>npm install bcrypt</b></p>
+        <aside class="exempliGratia">
+          &emsp;const <u><i>bcrypt</i></u> = require("bcrypt");<br/>
+          &emsp;const <u><i>password</i></u> = "<u><i>NuncaParesDeAprender</i></u>";<br/>
+          &emsp;bcrypt.hash( <u><i>password</i></u>, <u><i>5</i></u>, function( err, hash ){<br/>
+          &emsp;&emsp;<u><i>console.log(hash);</i></u><br/>
+          &emsp;} );<br/>
+          <i class="coment highlight">// El primer parámetro es la contraseña, el segundo es la cantidad de veces que se aplicará el hash y el tercero es la función que retorna.</i><br/>
+          <i class="coment highlight">// Un hash es aplicar un algoritmo para poder cambiar el texto por una cadena de caracteres que no tenga nada que ver con la contraseña inicial.</i><br/>
+          <i class="coment highlight">// el hash entrega una contraseña distinta en cada ejecución del bcrypt, para evaluar si una contraseña concuerda con un hash se utiliza un compare.</i><br/>
+          &emsp;<u><i>bcrypt</i></u>.compare( <u><i>password</i></u>, hash, function( error, result ){<br/>
+          &emsp;&emsp;console.log(result);<br/>
+          &emsp;&emsp;console.log(error);<br/>
+          &emsp;} );<br/>
+          <i class="coment highlight">// Devuelve true o false en el result.</i>
+        </aside>
+        <h3>Moment.js</h3>
+        <p>Moment es una librería que permite trabajar con fechas y manejar tiempos fácilmente.</p>
+        <p>Primero es necesario instalarla a través de la terminal con la instrucción <b>npm install moment</b></p>
+        <aside class="exempliGratia">
+          &emsp;const <u><i>moment</i></u> = require('moment')<br/>
+          &emsp;const <u><i>ahora</i></u> = moment();<br/><br/>
+          <i class="coment highlight">// Para ver las opciones que tiene moment:</i><br/>
+          &emsp;console.log(<u><i>ahora</i></u>);<br/><br/>
+          <i class="coment highlight">// Para ver la fecha:</i><br/>
+          &emsp;console.log(<u><i>ahora</i></u>.toString());<br/><br/>
+          <i class="coment highlight">// Para darle formato a la fecha:</i><br/>
+          &emsp;console.log(<u><i>ahora</i></u>.format('MM/DD/YYYY HH:MM A')); <i class="coment highlight">// 04/11/2021 20:10 PM</i><br/><br/>
+          <i class="coment highlight">// Para validad una fecha</i><br/>
+          &emsp;console.log(moment('2021-08-10').isValid()); <i class="coment highlight">// Retorna un true o false dependiendo de si la fecha es válida o no</i><br/><br/>
+          <i class="coment highlight">// Para encontrar cuanto tiempo ha pasado hasta hoy</i><br/>
+          &emsp;console.log(moment('2018-04-11').fromNow()); 
+          <i class="coment highlight">// Hace 2 años</i><br/><br/>
+          <i class="coment highlight">// Para agregar o eliminar años, días o meses</i><br/>
+          &emsp;console.log(moment('2021-08-10').add(1, 'years')); <i class="coment highlight">// 2021-04-11</i><br/>
+          &emsp;console.log(moment('2021-08-10').subtract(1, 'years')); 
+          <i class="coment highlight">// 2019-04-11</i><br/>
+        </aside>
+        <h3>Sharp</h3>
+        <p>Sharp trabaja con la librería de manejo de imágenes en c++ que permite convertir imágenes grandes en imágenes JPEG, PNG más pequeñas o compatibles con la web de diferentes dimensiones.</p>
+        <aside class="exempliGratia">
+          &emsp;const <u><i>sharp</i></u> = require('sharp')<br/>
+          <i class="coment highlight">// Reducira una imagen de cualquier tamaño a 80x80 y la guardara en una imagen más pequeña sin eliminr la original.</i><br/>
+          &emsp;<u><i>sharp</i></u>( '<u><i>imagen.png</i></u>' )<br/>
+          <i class="coment highlight">// Si a resize se le coloca solo un número se tomará como porcentaje, pero si se colocan 2 los tomará como el largo y el ancho.</i><br/>
+          &emsp;&emsp;.resize( <u><i>80</i></u>, <u><i>80</i></u> )<br/>
+          <i class="coment highlight">// Convierte la imagen en blanco y negro.</i><br/>
+          &emsp;&emsp;.grayscale()<br/>
+          <i class="coment highlight">// Guarda la imagen modificada en tamaño y color en una imagen nueva con un nuevo nombre especificado.</i><br/>
+          &emsp;&emsp;.toFile( '<u><i>imagen80x80.png</i></u>' );
+        </aside>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section>
+      <div class="container">
+        <h3>Referencias:</h3>
+        <p>
+          <a href="https://lenguajejs.com/javascript/caracteristicas/modulos-es6/" target="_blank" rel="noopener noreferrer">Módulos ECMAScript.</a><br/>
+          <!-- <a href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+        </p>
+      </div>
+    </section>
+  </footer>
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

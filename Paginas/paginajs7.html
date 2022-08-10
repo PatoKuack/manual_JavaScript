@@ -11,64 +11,117 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>String</title>
+  <title>Objetos</title>
 </head>
 <body>
   <div class="medio">
-    <h2>String</h2>
     <div>
-      <h3>String (Slice).</h3>
-      Parte un texto eliminando las partes indicadas, del primer carácter hasta el enésimo carácter indicado en el primer parámetro y del segundo parámetro hasta el último carácter, ejemplo:<br>
-      <b>let <u><i>variable1</i></u> = "<u><i>string</i></u>"<br>
-      let <u><i>variable2</i></u> = <u><i>variable1</i></u>.slice ( <u><i>parámetros</i></u> )</b><br>
+      <h2>Objetos.</h2>
+      <p>Es una lista de elementos (valores), PERO cada elemento tiene un nombre clave (atributo).</p>
+      <p>Se crea como una variable normal y se colocan sus atributos entre llaves, ejemplo:</p>
       <span>
-        Ejemplo con valores:<br>
-        <b>let <u><i>pizza</i></u> = "<u><i>La pizza de don cangrejo, es la mejor pizza</i></u>"<br>
-        let <u><i>rodajas</i></u> = <u><i>kk</i></u>.slice ( <u><i>12, 37</i></u> )</b><br>
-        En este caso elimina los carácteres del primero al duodécimo y del trigésimo séptimo hasta el final.
+        <b>let <u><i>objeto</i></u> = {<br>
+            <u><i>atributo1</i></u> : <u><i>valor1</i></u>,<br>
+            <u><i>atributo2</i></u> : <u><i>valor2</i></u><br>
+          }</b>
+      </span>
+      Se puede escribir directamente en la consola el nombre del objeto para visualizarlo, ejemplo: <code><u><i>objeto</i></u></code><br>
+      Se puede obtener el valor de cada atributo con la sentencia <b><u><i>objeto</i></u>["<u><i>atributo1</i></u>"]</b> o <b><u><i>objeto</i></u>.<u><i>atributo1</i></u></b><br>
+      Se puede obtener el valor de todos los atributos con la sentencia <b>Object.values(<u><i>objeto</i></u>)</b>, se puede guardar el resultado en una variable e imprimirlo en consola.<br>
+      Se puede obtener los atributos del objeto con la sentencia <b>Object.keys(<u><i>objeto</i></u>)</b>, si el resultado devuelve un método vacío significa que el objeto está vacío.<br>
+      Se puede obtener el valor de un atributo dentro del objeto con la palabra reservada <b>this</b>, ejemplo:<br>
+      <span>
+        <b>var videojuego = {<br>
+          nombre: "Stardew Valley",<br>
+          desarrollador: "Eric "ConcernedApe" Barone",<br>
+          publicador: "Chucklefish Games"<br>
+          lanzamiento: function(){<br>
+            console.log(`${<u>this</u>.nombre} fue lanzado en 2016`);<br>
+          } }</b>
+        <hr>
+        //se manda a llamar la función del atributo del objeto así:<br>
+        <b>videojuego.lanzamiento();</b>
+      </span>
+      <p>Existen formas más complejas, pero reducidas de obtener datos del objeto:</p>
+      <span>
+        <b>
+          function <u>myFunction</u>(myObject) {<br/>
+          &emsp;for (let myElement in myObject) {<br/>
+          &emsp;&emsp;console.log(`the ${myElement} is: ${myObject[myElement]} =D`);<br/>
+          &emsp;}<br/>
+          }<br/>
+        </b>
+        <i>// imprimirá cada una de las variables con su respectivo valor del objeto especificado.</i>
+      </span>
+      <p>Con la sentencia <b>Object.entries(<u><i>objeto</i></u>)</b> se convierte cada atributo con su respectivo valor en un array y todos los arrays creados por los atributos se guardarán en conjunto dentro de un único array.</p>
+      <p>Con la sentencia <b>Object.entries(<u><i>objeto</i></u>)[<u><i>0</i></u>]</b> se obtiene el primer array del array de arrays, es decir, convierte el primer atributo y su valor en un array, ejemplo: Array [ "atributo1", "valor1" ]</p>
+      <p>Con la sentencia <b>Object.entries(<u><i>objeto</i></u>.<u><i>atributo</i></u>)</b> se convierte cada caracter del atributo especificado en un array y todos los arrays creados por los caracteres se guardarán en conjunto dentro de un único array.</p>
+      <p>Con la sentencia <b>Object.assign(<u><i>objeto1</i></u>, <u><i>objeto2</i></u>)</b> se puede unir los objetos colocados en el parámetro creando un nuevo objeto con todos los atributos y sus valores.</p>
+    </div>
+    <div>
+      <h3>Math.</h3>
+      Nos permite obtener valores matemáticos como:<br>
+      <dl>
+        <dt>Math.sqrt(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Devuelve la raíz cuadrada del valor numérico, pero si es un valor numérico negativo devuelve NaN.</dd>
+        <dt>Math.pow(<i><u>base</u></i>, <i><u>exponente</u></i>)</dt>
+        <dd>Devuelve el valor numérico "base" elevado a la potencia especificada en el segundo parámetro.</dd>
+        <dt>Math.PI</dt>
+        <dd>Esta instrucción contiene el valor de PI, puede guardarse en una variable.</dd>
+        <dt>Math.round(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones (1.50 a 2; 1.49 a 1; -1.50 a -1; -1.51 a -2).</dd>
+        <dt>Math.ceil(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones al mayor (1.05 a 2; -1.9 a -1).</dd>
+        <dt>Math.floor(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones al menor (1.9 a 1; -1.05 a -2).</dd>
+        <dt>Math.trunc(<i><u>valorNumerico</u></i>)</dt>
+        <dd>Redondea números con fracciones truncando su valor fraccional (-1.03 a -1; 5.99 a 5).</dd>
+        <dt>Math.min(<i><u>valNum</u></i>, <i><u>valNum</u></i>, <i><u>valNum</u></i>)</dt>
+        <dd>Devuelve el valor más pequeño de los valores ingresados como argumento.</dd>
+        <dt>Math.max(<i><u>valNum</u></i>, <i><u>valNum</u></i>, <i><u>valNum</u></i>)</dt>
+        <dd>Devuelve el valor más grande de los valores ingresados como argumento.</dd>
+        <dt>Math.random()</dt>
+        <dd>Devuelve un valor aleatorio entre 0 y 1 (jamás dará 1 pero si 0).</dd>
+        <dd>
+          Ejemplo para obtener un valor aleatorio entre dos valores.
+          <span>
+            function getRandomArbitrary(min, max){<br>
+              return Math.random() * (max - min) + min;<br>
+            }
+          </span>
+        </dd>
+      </dl>
+    </div>
+    <div>
+      <h3>Date.</h3>
+      Nos permite obtener valores de fechas como .getFullYear(), .getMinutes(), getUTCDate(), etc., ejemplo:<br>
+      <b>const <u><i>variable</i></u> = new Date() //es necesario definir una fecha<br>
+      console.log(<u><i>variable</i></u>.getUTCDate( )) // aquí se manipula la fecha</b>
+    </div>
+    <div>
+      <h3>Objetos: función constructora.</h3>
+      Podemos generar una función con parámetros que sean sus atributos para poder usarlo como plantilla para crear objetos, ejemplo:<br>
+      <span>
+        <b>
+          function <u><i>función</i></u>(<u><i>atributo1</i></u>, <u><i>atributo2</i></u>){<br>
+            this.<u><i>atributo1</i></u> = <u><i>atributo1</i></u>;<br>
+            this.<u><i>atributo2</i></u> = <u><i>atributo2</i></u>;<br>
+          }
+        </b>
+        <hr>
+        //uso:<br>
+        //los valores colocados llevan comillas si son strings, pero no las llevan si son números o booleanos.<br>
+        <b>
+          var <u><i>objeto1</i></u> = new <u><i>función</i></u>("<u><i>valor1</i></u>", <u><i>valor2</i></u>);
+        </b>
       </span>
     </div>
     <div>
-      <h3>String (Split).</h3>
-      Divide el texto en letras si no se coloca algún parámetro, también puede dividir entre palabras tomando como referencia de separación el carácter que se coloca de parámetro, ejemplo:<br>
-      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.split ( <u><i>separación</i></u> )</b><br>
-      <span>
-        Ejemplo con valores:<br>
-        <b>let <u><i>porpalabra</i></u> = <u><i>kk</i></u>.split ( <u><i>" "</i></u> )</b>
-      </span>
-    </div>
-    <div>
-      <h3>String (trim).</h3>
-      Remueve los espacios en blanco solamente de los extremos de un string, ejemplo:<br>
-      <b>let <u><i>variable</i></u> = "<u><i>  string  </i></u>";<br>
-      <u><i>variable</i></u>.trim();</b><br>
-      //resultado: "  string  " -> "string"
-    </div>
-    <div>
-      <h3>Search.</h3>
-      Necesita una expresión regular (que es una serie de carácteres que simboliza algo que el lenguaje entienda y realice una búsqueda).
-    </div>
-    <div class="dividido">
-      <h3>Método to... (toLowerCase).</h3>
-      Transforma en minúsculas todo un string, ejemplo:<br>
-      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.toLowerCase()</b><br>
-      <span>
-        Ejemplo con valores:<br>
-        <b>let <u><i>minus</i></u> = <u><i>kk</i></u>.toLowerCase()</b>
-      </span>
-    </div>
-    <div class="dividido">
-      <h3>Método to... (toUpperCase).</h3>
-      Transforma en mayúsculas todo un string, ejemplo:<br>
-      <b>let <u><i>variable2</i></u> = <u><i>variable1</i></u>.toLowerCase()</b><br>
-      <span>
-        Ejemplo con valores:<br>
-        <b>let <u><i>mayus</i></u> = <u><i>kk</i></u>.toUpperCase()</b>
-      </span>
+      <h3>Referencias y ayudas:</h3>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in" target="_blank" rel="noopener noreferrer">Objeto - for ... in</a><br/>
+      <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object#m%C3%A9todos_est%C3%A1ticos" target="_blank" rel="noopener noreferrer">Métodos de los objetos.</a><br/>
     </div>
   </div>
-<footer>https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/String#M%C3%A9todos</footer>
-
-  <script src="../Js/programajs7.js"></script>
+  <script src="../Js/programajs8.js"></script>
 </body>
 </html>

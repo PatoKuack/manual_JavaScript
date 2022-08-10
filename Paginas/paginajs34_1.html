@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <title>File system</title>
+</head>
+<body class="body">
+  <main>
+    <!-- File system -->
+    <section>
+      <div class="container">
+        <h2 class="textCenter">File system.</h2>
+        <p>El file system provee una API para interactuar con el sistema de archivos cerca del estándar POSIX.</p>
+        <p>POSIX es el estándar para interfaces de comando y shell, las siglas significan: “Interfaz de sistema operativo portátil” y la X de POSIX es por UNIX.</p>
+        <p>El File System es uno de los módulos principales que nos ofrece Node, este módulo es aquel que nos permite operar directamente con los archivos de nuestro sistema, permitiéndonos crear, leer, editar, eliminar y manipular de diferentes maneras a los archivos del sistema. <i>Escribirlos, es muy útil para precompiladores, para lo que requiera hacer grabados de disco, o bases de datos en Node que requieren un uso intensivo de Node.</i></p>
+        <p>La mayoría de métodos de este módulo son asíncronos, pero también nos ofrecen su versión síncrona (como <i>readFileSync</i>), es muy poco recomendable usar la versión síncrona ya que puede bloquear el proceso principal o Event Loop de Node y no permite responder a peticiones hasta que el evento síncrono concluya.</p>
+        <p>Para poder usar un módulo dentro de Node lo debemos importar, existen varias formas de importarlo, pero la más utilizada es con <b>require</b> en una constante con el mismo nombre del módulo:</p>
+        <aside class="exempliGratia">
+          &emsp;const fs require('fs');<br/>
+          &emsp;function leer(ruta, callback) {<br/>
+          &emsp;&emsp;fs.readFile(ruta, (err, data) => {<br/>
+          &emsp;&emsp;&emsp;callback(data.toString());<br/>
+          <i class="coment highlight">// Se convierte la salida de la lectura en string ya que por default lo entrega en modo Buffer con contenido hexadecimal.</i><br/>
+          &emsp;&emsp;});<br/>
+          &emsp;}<br/><br/>
+          &emsp;leer(__dirname + '/archivo1.txt', console.log);<br/>
+          <i class="coment highlight">// Se utiliza "__dirname" para ubicar la ruta del archivo actual. En este caso el archivo.txt se encontraría en el mismo lugar que el archivo.js en el que se está convocando.</i>
+          <hr class="link"/>
+          &emsp;function escribir(ruta, contenido, callback) {<br/>
+          &emsp;&emsp;fs.writeFile(ruta, contenido, function (err) => {<br/>
+          &emsp;&emsp;&emsp;if (err) {<br/>
+          &emsp;&emsp;&emsp;&emsp;console.error('No se ha podido escribir. ', err);<br/>
+          &emsp;&emsp;&emsp;} else {<br/>
+          &emsp;&emsp;&emsp;&emsp;console.log('Se ha escrito correctamente.');<br/>
+          &emsp;&emsp;&emsp;}<br/>
+          &emsp;&emsp;});<br/>
+          &emsp;}<br/>
+          &emsp;escribir(__dirname + '/achivo2.txt', 'Soy un archivo', console.log);
+          <hr class="link"/>
+          &emsp;function borrar(ruta, callback) {<br/>
+          &emsp;&emsp;fs.unlink(ruta, callback);<br/>
+          &emsp;}<br/>
+          <i class="coment highlight">"unlink" remueve los enlaces que se han creado del archivo.</i><br/>
+          &emsp;borrar(__dirname + '/achivo3.txt', console.log);<br/>
+          <i class="coment highlight">// En consola se imprimiría un "null" lo cual indica que se ha borrado</i>
+        </aside>
+      </div>
+    </section>
+  </main>
+  <!-- <footer>
+    <section>
+      <div class="container">
+        <h3>Referencias:</h3>
+        <p>
+          <a href="" target="_blank" rel="noopener noreferrer"></a><br/>
+        </p>
+      </div>
+    </section>
+  </footer> -->
+  <script src="../Js/programajsHelp2.js"></script>
+</body>
+</html>

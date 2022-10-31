@@ -10,10 +10,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <link rel="stylesheet" href="../Estilos/stylejs41.css">
   <title>Variables de entorno</title>
 </head>
-<body class="body">
+<body id="body">
   <main>
     <!-- Variables de entorno -->
     <section class="container">
@@ -21,25 +21,25 @@
       <p>Las variables de entorno son variables externas a un proyecto o aplicación que residen en el sistema operativo o en el contenedor de la aplicación que se está ejecutando. Se declaran usando mayúsculas y con formato SNAKE_CASE.</p>
       <p>Estas variables son un espacio seguro donde se guardan datos sensibles del proyecto o aplicación. Como son sensibles, <b>no se deben subir al repositorio</b> y si se desea trabajar en el proyecto se deben pedir al líder del proyecto.</p>
       <p>Para que webpack las reconozca y optimice se instala la siguiente dependencia:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         npm install -D dotenv-webpack
       </article>
       <p>Después, en la raíz del proyecto junto al README o al .gitignore, se crea un archivo llamado <b>.env</b> que es donde se almacenan las variables de entorno (no se sube al repositorio). De la misma manera se crea un archivo llamado <b>.env.example</b> que es en donde se colocan las mismas variables que en el archivo .env, pero sin asignarles un valor (se puede subir al repositorio).</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// .env</i><br/>
         API = https://.../
       </article>
-        <article class="exempliGratia">
+        <article class="idEst">
         <i class="highlight font-normal textCenter block">// .env.example</i><br/>
         API = 
       </article>
       <p>En el archivo de configuración <b>webpack.config.js</b> se coloca la siguiente constante en las primeras lineas del código:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         const Dotenv = require('dotenv-webpack');
       </article>
       <p>Y en la parte de los plugins del mismo archivo, se coloca lo siguiente:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         <span class="highlight">
           &emsp;plugins: [<br/>
@@ -49,17 +49,18 @@
         &emsp;<span class="highlight">],</span>
       </article>
       <p>Después se modifican los archivos en donde se utilizan los valores de las variables de entorno de la siguiente manera:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <span class="highlight">const nombre =</span> process.env.NOMBRE_VARIABLE<span class="highlight">;</span>
       </article>
       <p>Por último se compila el proyecto con webpack.</p>
     </section>
   </main>
   <!-- <footer class="container">
-    <h3>Rederencias:</h3>
+    <h3>Referencias:</h3>
     <p>
       <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/>
     </p>
   </footer> -->
+  <script src="../Js/programajs41.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 {
   "liveServer.settings.port": 5502,
   "workbench.colorCustomizations": {
+    "textLink.foreground": "#d9ffbc",
     "activityBar.activeBackground": "#07a8a8",
     "activityBar.activeBorder": "#fee0fe",
     "activityBar.background": "#07a8a8",
@@ -17,7 +18,8 @@
     "titleBar.activeBackground": "#057777",
     "titleBar.activeForeground": "#f0fffe",
     "titleBar.inactiveBackground": "#05777799",
-    "titleBar.inactiveForeground": "#f0fffe99"
+    "titleBar.inactiveForeground": "#f0fffe99",
+    "commandCenter.border": "#f0fffe99"
   },
   "peacock.color": "#057777",
   "peacock.darkenLightenPercentage": 8,
@@ -28,5 +30,34 @@
     "titleBar": "none"
   },
   "peacock.lightForegroundColor": "#f0fffe",
-  "peacock.darkForegroundColor": "#15202b"
+  "peacock.darkForegroundColor": "#15202b",
+  "editor.tokenColorCustomizations": {
+    "comments": "#b2e386",
+    "keywords": "#ffff81",
+    "types": "#bbffb2",
+    "strings": "#eba3ff",
+    "functions": "#9fff7f",
+    "textMateRules": [
+      {
+          "scope": "entity.name.tag",
+          "settings": {
+              "foreground": "#a9deff"
+          }
+      },
+      {
+          "scope": "entity.other.attribute-name",
+          "settings": {
+              "foreground": "#ffffff",
+              "fontStyle": "bold"
+          }
+      }
+    ]
+  },
+  "bracket-pair-colorizer-2.unmatchedScopeColor": "red",
+  "indentRainbow.colors": [
+    "rgba(255,255,64,0.2)",
+    "rgba(127,255,127,0.2)",
+    "rgba(255,127,255,0.2)",
+    "rgba(79,236,236,0.2)"
+  ]
 }

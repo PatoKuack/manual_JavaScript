@@ -10,10 +10,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <link rel="stylesheet" href="../Estilos/stylejs41.css">
   <title>Loaders y optimización</title>
 </head>
-<body class="body">
+<body id="body">
   <!-- Otros loaders -->
   <header class="container">
     <h1 class="textCenter">Otros loaders y optimizaciones.</h1>
@@ -24,11 +24,11 @@
       <h2>Copy webpack</h2>
       <p>Si se necesita mover un archivo o directorio al proyecto final, se puede utilizar el plugin “copy-webpack-plugin”.</p>
       <p>Se instala desde la terminal:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         npm i copy-webpack-plugin -D
       </article>
       <p>Se agrega la configuración en el archivo <b>webpack.config.js</b>:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         <span class="highlight">const ...;</span><br/>
         const CopyPlugin = require('copy-webpack-plugin');<br/>
@@ -52,20 +52,20 @@
         &emsp;&emsp;&emsp;&emsp;&emsp;to: "<u>assets</u>"<br/>
         &emsp;&emsp;&emsp;&emsp;}<br/>
         &emsp;&emsp;&emsp;]<br/>
-        }),<br/>
+        &emsp;&emsp;}),<br/>
         <span class="highlight">
           &emsp;}<br/>
           }
         </span>
       </article>
-      <div class="container">
-        <p>nota:</p>
+      <div class="note">
+        <p>Nota:</p>
         <p><b>Resolve o Join path</b></p>
           <p>Cuando se trabaja en el entorno de Node habrán ocasiones en que se debe describir el directorio de trabajo mediante una dirección absoluta. En Node existe la libreía nativa <b>path</b> para resolver este caso.</p>
           <p>Cuando se requiera estructurar un directorio de trabajo a partir de una dirección absoluta, sin importar el sistema operativo, se utiliza path.resolve([...paths]) por ello, si se utiliza un directorio de trabajo como una referencia, se utiliza <b>__dirname</b> y apartir de ahí se resolverá el conjunto de paths que se anexen:</p>
       </div>
       <p>Después se puede eliminar en este caso el ../src/ de los direccionamientos de las imágenes, quedando de la siguiente manera:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal">&#60;img src="../src/assets/images/meme.png" /&#62;</i><br/>
         &#60;img src="assets/images/meme.png" /&#62;
       </article>
@@ -75,7 +75,7 @@
     <section class="container">
       <h2>Optimización de imágenes.</h2>
       <p>Se pueden importar las imágenes del proyecto generando una variable. No es necesario instalar ninguna dependencia, webpack ya lo tiene incluido y solo se debe agregar la siguiente configuración en el archivo de configuración de webpack <b>webpack.config.js</b>:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         <span class="highlight">
           const ...;<br/>
@@ -93,7 +93,10 @@
         </span>
           &emsp;&emsp;&emsp;{<br/>
           &emsp;&emsp;&emsp;&emsp;test: /\.(png|svg|jpg|jpeg|gif)$/i,<br/>
-          &emsp;&emsp;&emsp;&emsp;type: "asset/resource"<br/>
+          &emsp;&emsp;&emsp;&emsp;type: "asset/resource",<br/>
+          &emsp;&emsp;&emsp;&emsp;generator: {<br/>
+          &emsp;&emsp;&emsp;&emsp;&emsp;filename: "assets/images/[name][ext][query]",<br/>
+          &emsp;&emsp;&emsp;&emsp;},<br/>
           &emsp;&emsp;&emsp;}<br/>
         <span class="highlight">
           &emsp;&emsp;]<br/>
@@ -103,7 +106,7 @@
         </span>
       </article>
       <p>Después se importan todas las imágenes con sus direcciones al inicio del archivo .js o .jsx en donde se utilicen las imágenes, generalmente se utiliza en el archivo <b>template.js</b>, este se utiliza en react para crear el html.</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// template.js</i><br/>
         import nombre_de_variable from '../assets/images/nombre_de_imagen.png';<br/>
         <i class="highlight font-normal">// Después se modifican las URL de las imágenes por las variables de la importación.</i><br/>
@@ -117,7 +120,7 @@
       <p>Cuando se utilizan fuentes externas, el proyecto se hace un poco más pesado y una buena práctica es descargar las fuentes en el proyecto para optimizar recursos. Webpack ayuda a optimizar aún más estos recursos.</p>
       <p>Primero se deben descargar las fuentes que se ocupan en el proyecto en formato .woff y colocarlas en la carpeta <b>assets</b> creando una carpeta llamada <b>fonts</b>, una página recomendada para descargarlas es <a class="link" href="http://google-webfonts-helper.herokuapp.com/fonts/ubuntu?subsets=cyrillic,latin" target="_blank" rel="noopener noreferrer">google-webfonts-helper</a>.</p>
       <p>Después se coloca el siguiente código en el archivo de estilos main.css:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// main.css</i><br/>
         <i class="highlight font-normal">// En este caso se utilizará de ejemplo la fuente Ubuntu y las extensiones woff.</i><br/>
         @font-face {<br/>
@@ -133,11 +136,11 @@
         }<br/>
       </article>
       <p>Después se instalam las dependencias que ayudarán a optimizar la fuente con el comando:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         npm install url-loader file-loader -D
       </article>
       <p>Y a conticuación se coloca el siguiente código en el archivo de configuración <b>webpack.config.js</b>:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         <span class="highlight">
           const ...;<br/>
@@ -187,13 +190,13 @@
       <p>Cuando el navegador entra a un sitio por primera vez, detecta datos del usuario y los guarda en la memoria cache como recursos que puede utilizar en cualquier momento. Por ello la siguiente vez que el navegador entre al mismo sitio será mucho más rápido porque estarán en la memoria cache listos para nadamás ser consultados.</p>
       <p>La desventaja es que cuando sale una nueva versión del sitio web, los recursos tendrán un mismo nombre evitando que se descargue los nuevos cambios, por lo tanto, el usuario no recibirá los nuevos cambios. Para que no haya conflictos con la memoria cache, una vez que el proyecto esté en producción, es importante darles un hash a los recursos para cada nueva versión.</p>
       <p>Para optimizar webpack se instalan las siguientes dependencias desde la terminal para minificar el código HTML y CSS:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         npm i css-minimizer-webpack-plugin terser-webpack-plugin -D<br/>
         <i class="highlight font-normal"># css-minimizer-webpack-plugin ⇒ comprime los archivos finales CSS.<br/>
         # terser-webpack-plugin ⇒ minifica de una mejor forma.</i><br/>
       </article>
       <p>Después, en el archivo de configuración <b>webpack.config.js</b>, se anexa el siguiente código:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         <span class="highlight">const ...;</span><br/>
         const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');<br/>
@@ -221,7 +224,7 @@
     <section class="container">
       <h2>Alias.</h2>
       <p>Los alias permiten otorgar nombres a paths específicos evitando los paths largos, para crear un alias se agrega la siguiente configuración a <b>webpack.config.js</b>:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         <span class="highlight">
           module.exports = {
@@ -238,7 +241,7 @@
         }</span>
       </article>
       <p>Después se pueden modificar las rutas de los documentos de tipo .js o .jsx, generalmente se utiliza en el archivo template.js:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// template.js</i><br/>
         <span class="highlight font-normal">import profilPicture from 'src/images/profilePicture.png'</span><br/>
         import profilPicture from '@<u>nombre del alias</u>/profilePicture.png'
@@ -247,10 +250,11 @@
     </section>
   </main>
   <!-- <footer class="container">
-    <h3>Rederencias:</h3>
+    <h3>Referencias:</h3>
     <p>
       <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/>
     </p>
   </footer> -->
+  <script src="../Js/programajs41.js"></script>
 </body>
 </html>

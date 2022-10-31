@@ -3,6 +3,12 @@
 html{
   background-color: rgb(126, 42, 143);
 }
+body {
+  line-height: 1.2rem;
+  overflow-wrap: break-word;
+}
+/* dd {
+} */
 
 /* span{
   margin: 5px;
@@ -94,17 +100,9 @@ div.medio > h2, div.medio > p, .centrar, h1{
   text-align: center;
 }
 
-.figureVideoYT{
-  margin: 0;
-}
-
 .coment{
   background-color: rgba(244, 255, 97, 0.281);
   font-weight:        400;
-}
-
-.gif{
-  width: 200px;
 }
 
 .white{

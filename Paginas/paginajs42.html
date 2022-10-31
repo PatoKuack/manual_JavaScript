@@ -10,10 +10,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <link rel="stylesheet" href="../Estilos/stylejs41.css">
   <title>Instalación</title>
 </head>
-<body class="body">
+<body id="body">
   <main>
     <!-- Instalación de wepack -->
     <section class="container">
@@ -21,6 +21,13 @@
       <p>El proyecto inicialmente tiene en la raíz 3 archivos: .gitignore, README.md y LICENSE.</p>
       <p>Se deben crear las siguientes carpetas:</p>
       <ul>
+        <li><b>webpack.config.js</b></li>
+        <li><b>.babelrc</b></li>
+        <li><b>.gitignore</b> <i class="highlight font-normal">// En este archivo de git es importante especificar que se omita el archivo node_modules</i></li>
+        <li>
+          <b>/public</b> <i class="highlight font-normal">En ella se alojan los archivos de los que dispone el proyecto.</i>
+          <ul><li class="li-square"><b>index.html</b></li></ul>
+        </li>
         <li>
           <b>/src</b> <i class="highlight font-normal">En ella se alojará todo el código del proyecto.</i>
           <ul>
@@ -36,7 +43,7 @@
             </li>
             <li>
               <b>/utils</b> <i class="highlight font-normal">En ella se alojarán los archivos .js.</i>
-              <ul><li>document.js</li></ul>
+              <!-- <ul><li>document.js</li></ul> -->
             </li>
           </ul>
           <ul><li>
@@ -44,13 +51,11 @@
             <ul><li><b>main.css</b></li></ul>
           </li></ul>
         </li>
-        <li>
-          <b>/public</b> <i class="highlight font-normal">En ella se alojan los archivos de los que dispone el proyecto.</i>
-          <ul><li class="li-square"><b>index.html</b></li></ul>
-        </li>
       </ul>
-      <p>Al trabajar con react se tienen que editar los archivos index.js, index.html y App.jsx.</p>
-      <article class="exempliGratia">
+      <p>En la <a class="link" href="https://webpack.js.org/" target="_blank" rel="noopener noreferrer">documentación de webpack</a> se indica como instalar webpack en un proyecto y miestra comando por comando con explicaciones en ingles.</p>
+      <p>Iniciando instalación tal como se especifica en la <a class="link" href="https://webpack.js.org/guides/getting-started/#basic-setup" target="_blank" rel="noopener noreferrer">documentación - guía de inicio</a>:</p>
+      <article class="idEst">
+        <i class="highlight font-normal text-center block">// En consola.</i><br/>
         <i class="highlight font-normal">// Se inicializa un repositorio de forma local con git.</i><br/>
         git init<br/>
         <i class="highlight font-normal">// Se inicializa el proyecto con npm (al ejecutar la instrucción se creará el archivo package.json).</i><br/>
@@ -65,16 +70,32 @@
         <i class="highlight font-normal">// npx ejecuta paquetes directamente de npm, este viene instalado en npm.</i><br/>
         npx webpack
       </article>
-      <p>
+      <div class="note">
         <i>Nota: <br/>
           <code><b>npm install react react-dom -S</b></code> instala la última versión de react.<br/>
           <code><b>npm install react@17 react-dom@17 --save</b></code> instala la versión 17 de react.<br/>
         </i>
         Es bueno saber trabajar con versiones antiguas de react entre la 16 y la actual ya que muchas empresas grandes trabajan con versiones muy antiguas.
-      </p>
+      </div>
+      <p>Al trabajar con react se tienen que editar los archivos index.js y index.html de la siguiente manera:</p>
+      <article class="idEst">
+        <i class="highlight font-normal textCenter block">// index.js</i><br/>
+        import React from "react";<br/>
+        import ReactDom from "react-dom";<br/><br/>
+        console.log("Paso 1: ¡completed!");<br/>
+        <i class="highlight font-normal">// El Paso 2 funcionará cuando se implemente el loader babel.</i><br/>
+        ReactDOM.render(&#60;h1&#62;Paso 2: ¡completado!&#60;/h1&#62;, document.getElementById('app'));
+        <hr class="link">
+        <i class="highlight font-normal textCenter block">// index.html</i><br/>
+        &#60;html&#62;<br/>
+        &#60;body&#62;<br/>
+        &emsp;&#60;div id="app"&#62;&#60;/div&#62;<br/>
+        &#60;/body&#62;<br/>
+        &#60;/html&#62;
+      </article>
       <p>Al ejecutar <strong>npx webpack</strong> se crea una carpeta llamada <i>dist</i> que contendrá un archivo llamado <i>main.js</i> en donde se aloja el código compilado de la ruta <strong>src/index.js</strong>, también se crea el archivo <b>package-lock.json</b> y la carpeta <b>node_modules</b>.</p>
       <p>Por defecto webpack al compilar el proyecto, lo setea (o compila) en el modo “production” implícitamente, pero es posible definir explícitamente el modo que se desea con las siguientes instrucciones:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal">// El modo production deja el código comprimido, limpio y optimizado para utilizarse.</i><br/>
         npx webpack --mode production<br/>
         <i class="highlight font-normal">// El modo development deja el código mas legible para los desarrolladores pero con comentarios.</i><br/>
@@ -85,20 +106,22 @@
     <!-- webpack.config.js -->
     <section class="container">
       <h2>webpack.config.js</h2>
-      <p>Este es el archivo de configuración, establece la configuración y elementos que se utilizan. Este archivo se crea en la raíz del proyecto y en él se especifica los siguiente:</p>
-      <article class="exempliGratia">
+      <p>Este es el archivo de configuración, establece la configuración y elementos que se utilizan. Este archivo se crea en la raíz del proyecto y tal como lo indica la <a class="link" href="https://webpack.js.org/guides/getting-started/#using-a-configuration" target="_blank" rel="noopener noreferrer">documentación - uso de configuración</a> se especifica los siguiente:</p>
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// webpack.config.js</i><br/>
         <i class="highlight font-normal">// path es donde estará la carpeta donde se guardará los archivos.</i><br/>
         const path = require('path');<br/>
         <i class="highlight font-normal">// Se abre el objeto en donde se colocarán las configuraciones.</i><br/>
         module.exports = {<br/>
-          &emsp;<i class="highlight font-normal">// Con entry se especificar el punto de entrada de la aplicación.</i><br/>
+          &emsp;<i class="highlight font-normal">// Se puede especificar si el modo de ejecución del archivo es de produción (production) o de desarrollo (development).</i><br/>
+          &emsp;mode: "production",<br/>
+          &emsp;<i class="highlight font-normal">// Con entry se especificar el archivo de entrada de la aplicación.</i><br/>
           &emsp;entry: "./src/index.js",<br/>
-          &emsp;<i class="highlight font-normal">// Con output se especifica hacia dónde se envía lo que prepara webpack.</i><br/>
+          &emsp;<i class="highlight font-normal">// Con output se especifica el archivo de salida, o sea, hacia dónde se envía lo que prepara webpack.</i><br/>
           &emsp;output: {<br/>
-          &emsp;&emsp;<i class="highlight font-normal">// Con path.resolve se especifica dónde se hubica el proyecto.</i><br/>
+          &emsp;&emsp;<i class="highlight font-normal">// Con path.resolve se especifica en dónde se colocará el archivo final, creará una carpeta en la raíz del proyecto con el nombre especificado.</i><br/>
           &emsp;&emsp;path: path.resolve(__dirname, "dist"),<br/>
-          &emsp;&emsp;<i class="highlight font-normal">// filename le asigna el nombre al archivo final, puede colocarse el main.js o la estructura con el uso del hash:</i><br/>
+          &emsp;&emsp;<i class="highlight font-normal">// filename le asigna el nombre al archivo final, puede definirse como main.js o definirse con el nombre del archivo de entrada (en este caso index.js) y también se puede utilizar un hash:</i><br/>
           &emsp;&emsp;<i class="highlight font-normal">// filename: "main.js"</i><br/>
           &emsp;&emsp;filename: "[name].[contenthash].js"<br/>
           &emsp;},<br/>
@@ -109,30 +132,31 @@
         }
       </article>
       <p>Una vez configurado el archivo de configuración, se compila con la instrucción:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         npx webpack --mode production --config webpack.config.js
       </article><hr class="link"/>
       <p>Se puede colocar en el archivo <b>package.json</b> en la sección de <b>scripts</b> la instrucción:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         <i class="highlight font-normal textCenter block">// package.json</i><br/>
         <span class="highlight">scripts": {<br/>
-          &emsp;...,<br/></span>
+          &emsp;... ,<br/></span>
           &emsp;"build": "webpack --mode production"<br/>
         <span class="highlight">},</span>
       </article>
       <p>Para facilitar la compilación del archivo de configuración, permitiendo colocar <b><u>npm run build</u></b> en vez de <b>npx webpack --mode production --config webpack.config.js</b></p>
       <p>Se asegura q todo este bien con la instrucción:</p>
-      <article class="exempliGratia">
+      <article class="idEst">
         npx webpack --mode production
       </article>
     </section>
   </main>
   <footer class="container">
-    <h3>Rederencias:</h3>
+    <h3>Referencias:</h3>
     <p>
       <a class="link" href="https://webpack.js.org/configuration/" target="_blank" rel="noopener noreferrer">Configuración básica.</a><br/>
       <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
     </p>
   </footer>
+  <script src="../Js/programajs41.js"></script>
 </body>
 </html>

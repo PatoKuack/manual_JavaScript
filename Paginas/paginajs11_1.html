@@ -9,122 +9,105 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs1.css">
-  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
   <title>Scope</title>
 </head>
 <body>
-  <div class="medio">
-    <h2 class="white">Scope.</h2>
+  <div class="decoration-light light3"></div>
+  <div class="decoration-light light2"></div>
+  <div class="decoration-light light1"></div>
+  <div class="decoration depth"></div>
+  <section class="container">
     <div>
-      <h3>Scope o alcance.</h3>
+      <h1>Scope.</h1>
+      <h2>Scope o alcance.</h2>
       <p>Es el alcance que puede tener una variable en tu código.</p>
       <p><b>Scope Local o Variable Locar</b> se refiere a la variable o función que está dentro de un bloque o función especifica. Solo se pueden acceder a ellas (ejecutar o llamar) dentro del entrono en donde conviven.</p>
-      <span>
-        <b>
-          const fruits = () => {<br/>
-            var fruit = 'apple';<br/>
-            console.log(fruit);<br/>
-        </b>
-          <em class="coment">//se declara e imprime el valor de la variable fruit dentro de la función.</em><br/>
-        <b>
-          }<br/>
-          fruits();<br/>
-        </b>
+      <div class="eg">
+        const fruits = () => {<br/>
+        var fruit = 'apple';<br/>
+        console.log(fruit);<br/>
+        <em class="coment">//se declara e imprime el valor de la variable fruit dentro de la función.</em><br/>
+        }<br/>
+        fruits();<br/>
         <em class="coment">//imprime: apple</em><br/>
-        <b>console.log(fruit);</b><br/>
+        console.log(fruit);<br/>
         <em class="coment">//imprime un error de no asignación ya que la variable "fruit" solo existe dentro del bloque de código de la función donde se declaró.</em>
-      </span>
+      </div>
       <p>Las variables tienen un scope local diferente dependiendo del ámbito en el que se encuentran como por ejemplo, var tiene un ámbito de función, es decir que las variables declaradas con var tienen un alcance (existen) en toda la función, pero las variables declaradas con let y const tienen un ámbito de bloque por lo que tienen un alcance (existen) sólo en el bloque en el  que se les declara, ejemplo:</p>
-      <span>
-        <b>
-          const fruits = () => {<br/>
-            if (true) {<br/>
-              var fruit1 = 'apple';<br/>
-              let fruit2 = 'banana';<br/>
-              const fruit3 = 'melon';<br/>
-              console.log(fruit2);<br/>
-              console.log(fruit3);<br/>
-            </b>
-            <em class="coment">//se declaran las variables.</em><br/>
-            <em class="coment">//se imprime la variable declarada con let y const porque estas variables solo existirán en este fragmento de bloque.</em><br/>
-          <b>
-            }<br/>
-            console.log(fruit1);<br/>
-          </b>
-          <em class="coment">//se puede imprimir la variable declarada con var fuera del bloque donde se declaró porque existe dentro de toda la función.</em><br/>
-        <b>
-          }<br/>
-          fruits();<br/>
-        </b>
+      <div class="eg">
+        const fruits = () => {<br/>
+        if (true) {<br/>
+        var fruit1 = 'apple';<br/>
+        let fruit2 = 'banana';<br/>
+        const fruit3 = 'melon';<br/>
+        console.log(fruit2);<br/>
+        console.log(fruit3);<br/>
+        <em class="coment">//se declaran las variables.</em><br/>
+        <em class="coment">//se imprime la variable declarada con let y const porque estas variables solo existirán en este fragmento de bloque.</em><br/>
+        }<br/>
+        console.log(fruit1);<br/>
+        <em class="coment">//se puede imprimir la variable declarada con var fuera del bloque donde se declaró porque existe dentro de toda la función.</em><br/>
+        }<br/>
+        fruits();<br/>
         <em class="coment">//imprime: <u>banana</u> después <u>melon</u> y por último <u>apple</u></em><br/>
-      </span>
+      </div>
       <p><b>Scope Global o Variable Global</b> se refiere a la variable o función que está afuera de cualquier bloque o funcion. Se pueden acceder a ellas (ejecutar o llamar) en cualquier parte del entrono dentro del código.</p>
       <p>La reasignación de valores en las variables se hace en cascada y es recomendable utilizar constantes en vez de variables (var o let) globales. También es recomendable no utilizar variables con el mismo nombre dentro y fuera de bloques de código ya que se pueden modificar los valores de las variables como en el siguiente caso:</p>
-      <span>
-        <b>
-          let nombre = "Deiv"<br>
-          const saludar = function() {<br>
-            nombre = "Alex"<br>
-            console.log(`${nombre}`)<br>
-          }<br>
-          saludar()
-        </b><br>
+      <div class="eg">
+        let nombre = "Deiv"<br>
+        const saludar = function() {<br>
+        nombre = "Alex"<br>
+        console.log(`${nombre}`)<br>
+        }<br>
+        saludar()<br/>
         <em class="coment">
           //imprime: Alex (porque así lo marca esta función)<br>
         </em>
-        <b>
-          console.log(nombre)<br>
-        </b>
+        console.log(nombre)<br>
         <em class="coment">
           //imprime: Alex (porque se llamó a la variable global "nombre" dentro del bloque de código y se le asignó un nuevo valor)
         </em>
-      </span>
+      </div>
       <p>Las constantes globales pueden ser modificadas en bloques de código declarando una constante con el mismo nombre, pero sólo funcionarán dentro de ese bloque de código, ejemplo:</p>
-      <span>
-        <b>
-          const nombre2 = "Deiv"<br>
-          const saludar = function() {<br>
-            const nombre2 = "Alex";<br>
-            console.log(`${nombre2}`)<br>
-          }<br>
-          saludar();<br>
-        </b>
+      <div class="eg">
+        const nombre2 = "Deiv"<br>
+        const saludar = function() {<br>
+          const nombre2 = "Alex";<br>
+          console.log(`${nombre2}`)<br>
+        }<br>
+        saludar();<br>
         <em class="coment">
           //imprime Alex (porque así lo marca esta función)<br>
         </em>
-        <b>
-          console.log(nombre2);<br>
-        </b>
+        console.log(nombre2);<br>
         <em class="coment">
           //imprime Deiv (porque el valor "Alex" de la variable "nombre2" se creó y existió solamente dentro del bloque de código de la función y aunque se quisiera asignar un nuevo valor a "nombre2" no se podría porque es una <u>constante</u>).
         </em>
-      </span><br/>
-      <h3>Lexical Scope o Ámbito Léxico.</h3>
+      </div>
+      <h2>Lexical Scope o Ámbito Léxico.</h2>
       <p>
         El ámbito léxico se refiere a que una función puede acceder a una función o variable fuera de ella. Cada nivel interno puede acceder a sus niveles externos hasta poder alcanzarlas.
-        <span>
-          <b>
-            var scope = "I am Globalin";<br/>
-            <em class="coment">//se declara una variable global.</em><br/>
-            const functionScope = () =>{<br/>
-              var scope = "Soy Localin";<br/>
-              <em class="coment">//dentro de una variable se re declara y re asigna la misma variable.</em><br/>
-              const funcIntroduce = () => {<br/>
-                return scope;<br/>
-                <em class="coment">//dentro de una función se retorna la variable con su valor.</em><br/>
-              }<br/>
-              console.log(funcIntroduce());<br/>
-              <em class="coment">//se manda a llamar el retorno de la variable.</em><br/>
+        <div class="eg">
+          var scope = "I am Globalin";<br/>
+          <em class="coment">//se declara una variable global.</em><br/>
+          const functionScope = () =>{<br/>
+            var scope = "Soy Localin";<br/>
+            <em class="coment">//dentro de una variable se re declara y re asigna la misma variable.</em><br/>
+            const funcIntroduce = () => {<br/>
+              return scope;<br/>
+              <em class="coment">//dentro de una función se retorna la variable con su valor.</em><br/>
             }<br/>
-            functionScope();<br/>
-            <em class="coment">//esta llamada devuelve: Soy Localin</em><br/>
-            console.log(scope);<br/>
-            <em class="coment">//esta llamada devuelve: I am Globalin</em><br/>
-          </b>
-        </span>
+            console.log(funcIntroduce());<br/>
+            <em class="coment">//se manda a llamar el retorno de la variable.</em><br/>
+          }<br/>
+          functionScope();<br/>
+          <em class="coment">//esta llamada devuelve: Soy Localin</em><br/>
+          console.log(scope);<br/>
+          <em class="coment">//esta llamada devuelve: I am Globalin</em><br/>
+        </div>
       </p>
     </div>
-  </div>
+  </section>
 </body>
 </html>

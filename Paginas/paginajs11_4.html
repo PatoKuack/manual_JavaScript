@@ -9,32 +9,37 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs1.css">
-  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
   <title>Debugging</title>
 </head>
 <body>
-  <div class="medio">
-    <h2 class="white">Debugging.</h2>
-    <div>
-      <p>El debugger es como un botón de pausa en el flujo del código, si ponemos los puntos de pausa en los lugares correctos podemos estar viendo que valores están trayendo los parámetros, cuales están siendo modificados o no, para brindarnos la seguridad de que el flujo de código que estamos construyendo sea el correcto.</p>
-      <span>
-          <b>const moneyBox = ()=> {<br/>            
-            <u>debugger</u></b> <em class="coment">// no hay ningún valor definido porque aún no se ha hecho nada.</em><br/>
-              <b>var saveCoins = 0;<br/>
-              const countCoins = (coins) => {<br/>                                 
-            <u>debugger</u></b> <em class="coment">//paso por paso irá saltando para saber cuál es el valor de "coins" en el parámeto que le va llegando y cuanto guardará "saveCoins".</em><br/>
-              <b>saveCoins += coins;<br/>
-              console.log(`MoneyBox: $${saveCoins}`);<br/>
+  <div class="decoration-light light3"></div>
+  <div class="decoration-light light2"></div>
+  <div class="decoration-light light1"></div>
+  <div class="decoration depth"></div>
+  <main>
+    <section class="container">
+      <h1>Debugging.</h1>
+      <div>
+        <p>El debugger es como un botón de pausa en el flujo del código, si ponemos los puntos de pausa en los lugares correctos podemos estar viendo que valores están trayendo los parámetros, cuales están siendo modificados o no, para brindarnos la seguridad de que el flujo de código que estamos construyendo sea el correcto.</p>
+        <div class="eg">
+            <b>const moneyBox = ()=> {<br/>            
+              <u>debugger</u></b> <em class="coment">// no hay ningún valor definido porque aún no se ha hecho nada.</em><br/>
+                <b>var saveCoins = 0;<br/>
+                const countCoins = (coins) => {<br/>                                 
+              <u>debugger</u></b> <em class="coment">//paso por paso irá saltando para saber cuál es el valor de "coins" en el parámeto que le va llegando y cuanto guardará "saveCoins".</em><br/>
+                <b>saveCoins += coins;<br/>
+                console.log(`MoneyBox: $${saveCoins}`);<br/>
+              }<br/>
+              return countCoins;<br/>
             }<br/>
-            return countCoins;<br/>
-          }<br/>
-          let myMoneyBox = moneyBox();<br/><br/>
-          myMoneyBox(4);<br/>
-          myMoneyBox(6);<br/>
-          myMoneyBox(10);</b><br/>
-      </span>
-    </div>
-  </div>
+            let myMoneyBox = moneyBox();<br/><br/>
+            myMoneyBox(4);<br/>
+            myMoneyBox(6);<br/>
+            myMoneyBox(10);</b><br/>
+        </div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

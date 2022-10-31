@@ -1,43 +1,33 @@
-.coordenadas{
-  max-width:    var(--imahen1);
-  opacity:  80%;
+.ejBefore, .ejAfter{
+  background-color: rgba(151, 88, 70, 0.5);
+  font-weight: bold;
+  overflow-wrap: break-word;
 }
-
-.bubbleman{
-  width: var(--imahen2);
-  opacity: 50%;
+.ejBefore{
+  box-shadow: 0px 0px 10px 5px rgb(255, 222, 178) inset;
 }
-[class^="bubble"]:not(.bubbleman){
-  border:     var(--paddNieto) solid var(--colorInteract);
-  padding:    var(--paddNieto) 15%;
-  text-align: center;
+.ejAfter{
+  box-shadow: 0px 0px 10px 5px rgb(252, 166, 240) inset;
 }
-.bubble3{
-  background-image: linear-gradient(to top, lightgoldenrodyellow 20%, var(--colorNo) 100%);
+.ejBefore > em, .ejAfter > em{
+  font-weight: lighter;
 }
-.bubble2{
-  background-image: linear-gradient(to top, powderblue 60%, var(--colorNo) 100%);
+.blind{
+  display: none;
 }
-.bubble1{
-  background-color: mistyrose;
+.seer{
+  display: block;
 }
-
-.galeria:hover{
-  border:           var(--paddNieto) solid;
-  border-color:     var(--colorBordtop) var(--colorBordDown) var(--colorBordDown) var(--colorBordtop);
+.falseTrue{
+  width: 100px;
 }
-.galeria{
-  border:           var(--paddNieto) solid var(--colorNo);
-  display:          flex;
-  flex-direction:   row;
-  flex-wrap:        wrap;
-  justify-content:  space-evenly;
+.centrado{
+  display: block;
+  margin-left:  auto;
+  margin-right: auto;
 }
-.obra:not(:nth-last-child(2)){
-  font-size:  4em;
-  margin:     var(--paddNieto);
-}
-.obra>figcaption{
-font-size:  var(--paddNieto);
-text-align: center;
+.ejFormato{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

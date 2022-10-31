@@ -1,82 +1,107 @@
 :root{
-  /* COLORS */
-  /* https://www.w3.org/TR/css-color-3/#svg-color */
-  --background1:  rgb(0, 157, 168);
-  --background2:  rgb(0, 117, 126);
-  --bgContainer:  rgba(134, 2, 223, 0.3);
-  --bgBorder:     rgb(252, 206, 5);
-  --letterActive: rgba(190, 255, 250, 0.863);
-  --letterColor:  rgba(255, 255, 255, 0.863);
-  --highlight:    pink;
-  --transparent:  transparent;
+  /* colores */
+  --backGround:   rgb(0, 35, 100);
+  --bckGndNode1:  rgb(7, 165, 204);
+  --bckGndNode2:  rgb(9, 107, 110);
+  --bg-selection: rgba(255, 238, 127, 0.7);
+  /* --colorBorde:   rgb(160, 62, 199); */
+  --colorBorde:   rgb(244, 255, 97);
+  --colorBordtop: brown;
+  --colorBordDown:peru;
+  --colorTexto:   rgb(241, 250, 255);
+  --colorEnlace:  rgb(255, 214, 127);
+  --colorBotnBG:  bisque;
+  --colorInteract:red;
+  --colorNo:        transparent;
+  --colorConsola: rgba(0, 0, 0, .5);
+
+  /* mediciones */
+  --paddNormal:     1em;
+  --paddHijo:       .7em;
+  --paddNieto:      .2em;
+  --maxWNormal:     50em;
+  --maxWHijo:       45em;
+  --maxWNieto:      37em;
+  --imahen1:        100%;
+  --imahen2:        70%;
 }
 
-.body{
-  background-image:       radial-gradient(circle, var(--background1) 40%, var(--background2) 40%, var(--background2) 80%, var(--background1) 80%);
-  background-size:        50rem 50rem;
-  background-repeat:      repeat;
-  background-position:    40% 28%;
-  color:                  var(--letterColor);
+*, *:before, *:after{
+  box-sizing: border-box;
 }
 
-.container{
-  max-width:        750px;
-  background-color: var(--bgContainer);
-  border:           .3em solid var(--bgBorder);
-  border-radius:    10px;
-  margin:           1.5em auto;
-  padding:          1.2em;
-  padding-top:      .5em;
-  box-shadow:       0px 4px 70px -20px var(--bgBorder) inset;
+.cuerpo{
+  /* background-image: linear-gradient(var(--bckGndNode2) 0%, var(--backGround) 30%); */
+  background-image:
+  radial-gradient(circle, var(--colorTexto) 1%, var(--backGround) 3%);
+  background-position:    -2em 3em;
+  background-size:        15em 11em;
+  background-attachment:  fixed;
+  color:                  var(--colorTexto);
+}
+*::selection {
+  background-color: var(--bg-selection);
+  color:            var(--backGround);
 }
 
-.exempliGratia{
-  background-color: var(--bgContainer);
-  border:           .2em dotted var(--bgBorder);
-  padding:          .7em;
+.contenedor{
+  max-width:        var(--maxWNormal);
+  margin:           var(--paddNormal) auto;
+  padding:          var(--paddNormal);
+  background-image: linear-gradient(var(--bckGndNode1) 1%, var(--bckGndNode2) 70%);
+  border:           .2em double var(--colorBorde);
+  color:            var(--colorTexto);
+  box-shadow:       .5em .5em 1em var(--colorTexto);
+}
+
+.ejemplo, .consola{
+  display:          block;
+  max-width:        var(--maxWNieto);
+  background-image: linear-gradient(var(--bckGndNode1) 1%, var(--bckGndNode2) 50%);
+  border:           .2em double var(--colorBorde);
+  margin:           var(--paddHijo) auto;
+  padding:          var(--paddHijo);
   font-weight:      bold;
   overflow-wrap:    break-word;
 }
 
-.table tr, .table th, .table td{
-  border: .1em solid var(--letterColor);
+.interaccion{
+  border-top:     .15em solid var(--colorInteract);
+  border-bottom:  .15em solid var(--colorInteract);
+  text-align:     center;
+}
+
+.negrita, dt{
+  font-weight: bold;
+}
+
+.titCentrado{
   text-align: center;
-  padding: .3em;
-}
-.table{
-  border: .1em solid var(--letterColor);
 }
 
-
-
-.link{
-  color:        var(--letterActive);
-}
-.link:visited{
-  color:        var(--letterColor);
+.enlace{
+  color: var(--colorEnlace);
 }
 
-.bold{
-  font-weight:  bold;
-}
-.font-normal{
-  font-weight:  normal;
+.coment{
+  color: var(--colorBorde);
 }
 
-.highlight{
-  color:        var(--highlight);
+.forminput{
+  background-color: var(--colorBotnBG);
+  border-color:     var(--colorEnlace);
 }
 
-.textCenter{
-  text-align:   center;
+.block-centrado{
+  display:  block;
+  margin:   var(--paddNieto) auto;
 }
-.marginCenter{
-  margin-left:  auto;
-  margin-right: auto;
+
+.esconder{
+  color:    var(--colorNo);
+  position: absolute;
 }
-.block{
-  display: block;
-}
-.li-square{
-  list-style-type: square;
+
+.consola{
+  background-image: linear-gradient(var(--bckGndNode2) 1%, var(--colorConsola) 50%);
 }

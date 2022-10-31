@@ -9,7 +9,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs21.css">
+  <link rel="stylesheet" href="../Estilos/stylejs31.css">
   <title>NPM</title>
 </head>
 <body class="body">
@@ -53,14 +53,19 @@
         </dl>
         <p>El archivo package.json es el documento principal donde se especifica toda la configuración y los recursos informativos del proyecto.</p>
         <dl>
-          <dt>npm set init.author.name "Fulanito"</dt>
+          <dt>npm set init-author-name "Fulanito"</dt>
           <dd>Añade en la configuración de npm el nombre del autor.</dd>
-          <dt>npm set init.author.email "correo@mail.com"</dt>
+          <dt>npm set init-author-email "correo@mail.com"</dt>
           <dd>Añade en la configuración de npm el e-mail del autor.</dd>
-          <dt>npm set init.license "MIT"</dt>
+          <dt>npm set init-license "MIT"</dt>
           <dd>Añade en la configuración de npm la licencia deseada.</dd>
           <dt>npm init <span class="highlight">-y|-yes</span></dt>
           <dd>Crea un package.json con los datos por default y los añadidos al npm.</dd>
+        </dl>
+        <h3>Nota:</h3>
+        <p>
+          Si surge algún problema con las configuraciones anteriores, se pueden editar desde el archivo .npmrc de la ruta home/USUARIO/.npmrc
+        </p>
       </div>
     </section>
   </main>

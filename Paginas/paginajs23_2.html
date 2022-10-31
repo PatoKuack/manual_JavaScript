@@ -12,7 +12,7 @@
   <!-- normalize css -->
   <link rel="stylesheet" href="../Estilos/Normalizecss.css">
   <!-- Estilo personalizado -->
-  <link rel="stylesheet" href="../Estilos/stylejs11.css">
+  <link rel="stylesheet" href="../Estilos/stylejs21.css">
   <title>Manipulador DOM (inserción)</title>
 </head>
 <body class="cuerpo">
@@ -64,17 +64,17 @@
             Le inserta a un elemento un hijo indicándole uno de los siguientes métodos y posiciones:
             <dl>
               <h3>Posiciones.</h3>
-              <dt>beforebegin</dt>
+              <dt>'beforebegin'</dt>
               <dd>Antes de que comience el elemento (sería como su hermano anterior).</dd>
-              <dt>afterbegin</dt>
+              <dt>'afterbegin'</dt>
               <dd>Después de que comience el elemento (sería como su primer hijo).</dd>
-              <dt>beforeend</dt>
+              <dt>'beforeend'</dt>
               <dd>Antes de que termine el elemento (sería como su último hijo).</dd>
-              <dt>afterend</dt>
+              <dt>'afterend'</dt>
               <dd>Después de que termine el elemento (sería como su hermano siguiente).</dd>
 
               <h3>Métodos.</h3>
-              <dt>insertAdjacentElement(<u>position</u>, <u>elemento</u>)</dt>
+              <dt>insertAdjacentElement(<u>'position'</u>, <u>elemento</u>)</dt>
               <dd>
                 Inserta elementos, ejemplo:
               </dd>
@@ -82,23 +82,23 @@
                 let father = document.getElementById("dad");<br/>
                 const <u>ad</u> = document.createElement('div');<br/>
                 ad.textContent = 'Contenido Publicitario';<br/>
-                father.insertAdjacentElement(beforebegin, ad);
+                father.insertAdjacentElement('beforebegin', ad);
               </span>
-              <dt>insertAdjacentHTML(<u>position</u>, <u>HTML</u>)</dt>
+              <dt>insertAdjacentHTML(<u>'position'</u>, <u>HTML</u>)</dt>
               <dd>
                 Inserta etiquetas HTML, ejemplo:<br/>
               </dd>
               <span class="ejemplo">
                 let father = document.getElementById("dad");<br/>
-                father.insertAdjacentHTML(beforeend, "Contenido");
+                father.insertAdjacentHTML('beforeend', "Contenido");
               </span>
-              <dt>insertAdjacentText(<u>position</u>, <u>text</u>)</dt>
+              <dt>insertAdjacentText(<u>'position'</u>, <u>text</u>)</dt>
               <dd>
                 Inserta textos, ejemplo:<br/>
               </dd>
               <span class="ejemplo">
                 let father = document.getElementById("dad");<br/>
-                father.insertAdjacentHTML(afterbegin, "Contenido");
+                father.insertAdjacentHTML('afterbegin', "Contenido");
               </span>
             </dl>
           </dd>

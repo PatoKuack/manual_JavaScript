@@ -1,0 +1,43 @@
+.coordenadas{
+  max-width:    var(--imahen1);
+  opacity:  80%;
+}
+
+.bubbleman{
+  width: var(--imahen2);
+  opacity: 50%;
+}
+[class^="bubble"]:not(.bubbleman){
+  border:     var(--paddNieto) solid var(--colorInteract);
+  padding:    var(--paddNieto) 15%;
+  text-align: center;
+}
+.bubble3{
+  background-image: linear-gradient(to top, lightgoldenrodyellow 20%, var(--colorNo) 100%);
+}
+.bubble2{
+  background-image: linear-gradient(to top, powderblue 60%, var(--colorNo) 100%);
+}
+.bubble1{
+  background-color: mistyrose;
+}
+
+.galeria:hover{
+  border:           var(--paddNieto) solid;
+  border-color:     var(--colorBordtop) var(--colorBordDown) var(--colorBordDown) var(--colorBordtop);
+}
+.galeria{
+  border:           var(--paddNieto) solid var(--colorNo);
+  display:          flex;
+  flex-direction:   row;
+  flex-wrap:        wrap;
+  justify-content:  space-evenly;
+}
+.obra:not(:nth-last-child(2)){
+  font-size:  4em;
+  margin:     var(--paddNieto);
+}
+.obra>figcaption{
+font-size:  var(--paddNieto);
+text-align: center;
+}

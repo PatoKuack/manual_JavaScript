@@ -9,60 +9,53 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../Estilos/stylejs1.css">
-  <link rel="stylesheet" href="../Estilos/stylejs2.css">
+  <link rel="stylesheet" href="../Estilos/stylejs11.css">
   <title>Hoisting</title>
 </head>
 <body>
-  <div class="medio">
-    <h2 class="white">Hoisting.</h2>
+  <div class="decoration-light light3"></div>
+  <div class="decoration-light light2"></div>
+  <div class="decoration-light light1"></div>
+  <div class="decoration depth"></div>
+  <section class="container">
+    <h1>Hoisting.</h1>
     <div>
-      <p>
-        Es el proceso que realiza el motor de JavaScript de colocar las declaraciones de variables y funciones hasta arriba de nuestro código, almacenándolas así previamente en memoria dentro de un contexto de ejecución.
-      </p>
-      <p>
-        El proceso de hoisting solo sucede con dos palabras reservadas de JavaScript: var y function.
-      </p>
+      <p>Es el proceso que realiza el motor de JavaScript de colocar las declaraciones de variables y funciones hasta arriba de nuestro código, almacenándolas así previamente en memoria dentro de un contexto de ejecución.</p>
+      <p>El proceso de hoisting solo sucede con dos palabras reservadas de JavaScript: var y function.</p>
       <p>En JavaScript, las declaraciones (por ejemplo, de variables o funciones) se mueven al principio de su scope o ámbito. Este comportamiento se conoce como hoisting y es muy importante tenerlo en cuenta a la hora de programar para prevenir posibles errores. Con el Hoisting podemos llamar a una función y definirla más abajo, porque automáticamente JS la “subirá”, ejemplo:</p>
-      <span>
-        <b>
+      <div class="eg">
           add();<br/>
           function add() {<br/>
             var myNumber = 4;<br/>
             console.log(myNumber + myNumber);<br/>
           }<br/>
-        </b>
-          <em class="coment">//en este caso JavaScript mandará la declaración de la función antes de su llamado quedando así:</em>
-        <b>
-          <hr>
+          <em class="coment">//en este caso JavaScript mandará la declaración de la función antes de su llamado quedando así:</em><br/><br/>
+          <hr class="link"><br/>
           function add() {<br/>
             var myNumber;<br/>
             myNumber = 4;<br/>
             console.log(myNumber + myNumber);<br/>
           }add();<br/>
-        </b>
         <em class="coment">//*las funciones siempre se mueven arriba del scope. Por lo tanto, podemos elegir donde declararlas y usarlas.</em>
-      </span>
+      </div>
       <p>En el caso de las variables, es muy importante tener en cuenta que el hoisting solo se aplica a la declaración, y no a su asignación. Por lo tanto, NO podríamos escribir esto:</p>
-      <span>
+      <div class="eg">
         <em class="coment">// Error</em><br/>
-        <b>
           add();<br/>
           function add() {<br/>
             console.log(myNumber + myNumber);<br/>
           }var myNumber = 4;<br/>
-        </b>
         <em class="coment">//*la declaración de las variables se mueven arriba del scope, pero no la asignación. Antes de usar una variable, habrá que crearla y asignarla.</em>
-      </span>
-      <figure class="figureVideoYT centrar">
+      </div>
+      <figure class="alignCenter">
         <iframe width="336px" height="189px" src="https://www.youtube.com/embed/uI6o97A4IrI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </figure>
     </div>
-  </div>
-  <footer>
+  </section>
+  <footer class="container">
     <h3>Referencias:</h3>
     <p>
-      <a href="https://anamartinezaguilar.medium.com/qu%C3%A9-es-el-hoisting-327870f67b36" target="_blank" rel="noopener noreferrer">Hoisting.</a><br/>
+      <a class="link" href="https://anamartinezaguilar.medium.com/qu%C3%A9-es-el-hoisting-327870f67b36" target="_blank" rel="noopener noreferrer">Hoisting.</a><br/>
     </p>
   </footer>
 </body>

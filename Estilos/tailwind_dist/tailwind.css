@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.2.2 | MIT License | https://tailwindcss.com
+! tailwindcss v3.2.4 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -695,6 +695,7 @@ dd {
   margin-top: 1rem;
   margin-bottom: 1rem;
   max-width: 64rem;
+  overflow-wrap: break-word;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   border-width: 2px;

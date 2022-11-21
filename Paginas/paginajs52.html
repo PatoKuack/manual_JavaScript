@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <title>Endpoints/Query Parameters</title>
+</head>
+<body class="bg-coocky bg-[length:200px_200px] bg-center">
+  <header class="pk-section">
+    <h1 class="text-2xl text-center">Endpoints y Query parameters.</h1>
+    <p>Los Endpoints son rutas que permiten hacer una consulta a la API de un trozo del contenido y no de todo el contenido de la API.</p>
+    <p>Los Query Parameter son información extra que permiten obtener datos específicos de una consulta a la API.</p>
+  </header>
+  <main>
+    <!-- Endpoints/Query parameters -->
+    <section class="pk-section">
+      <h2>Endpoints.</h2>
+      <p>Los endpoints se utilizan agregándole a la URL de los datos de la API un <b>slash /</b> y el nombre del endpoint, ejemplo:</p>
+      <ul class="list-disc list-inside">
+        <li>api.com/breeds<br/><i class="text-lime-600 font-light">Pide solo las razas de la API.</i></li>
+        <li>api.com/images<br/><i class="text-lime-600 font-light">Pide solo las imágenes de la API.</i></li>
+        <li>api.com/images/michi34<br/><i class="text-lime-600 font-light">Pide específicamente la imagen del "michi34".</i></li>
+      </ul>
+    </section>
+    <section class="pk-section">
+      <h2>Query Parameters.</h2>
+      <p>* Los Query Parameters <b>solo funcionan si la API está preparada para utilizarlos</b>, por eso es importante revisar la documentación de la API.</p>
+      <p>Se utilizan agregándole a la URL de los datos de la API un <b>signo de interrogación cerrada ?</b> y el nombre del query parameter. También se puede concatenar otro query parameter anexándole un <b>ampersand &</b>, por ejemplo:</p>
+      <ul class="list-disc list-inside">
+        <li>/breeds?search=furry<br/><i class="text-lime-600 font-light">Pide solo las razas que sean peludas.</i></li>
+        <li>/breeds?limit=5&page=2<br/><i class="text-lime-600 font-light">Pide solo las primeras 5 razas de la segunda página.</i></li>
+        <li>/images/michi34?format=png<br/><i class="text-lime-600 font-light">Pide específicamente la imagen del "michi34", pero en formato de imagen png.</i></li>
+      </ul>
+      <p>La API de YuGiOh! no tiene Endpoints (o no los encontré), así que se mostrará un ejemplo de la API usando Query Prameters utilizando async-await:</p>
+      <div class="pk-code"><code>
+        const apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';<br/>
+        <b>async</b> function showToonCard() {<br/>
+        &emsp;<i class="text-lime-600 font-light">// Se utiliza try y catch para capturar errores y poder manejarlos.</i><br/>
+        &emsp;try{<br/>
+        &emsp;&emsp;const toonsList = document.getElementById('toonsList');<br/>
+        &emsp;&emsp;let i = 1;<br/>
+        &emsp;&emsp;const res = <b>await</b> fetch(`${apiUrl}<u><b>?type=toon%20monster</b></u>`);<br/>
+        &emsp;&emsp;const data = <b>await</b> res.json();<br/>
+        &emsp;&emsp;const toonNames = data.data.map ( toon => `${toon.name}` );<br/>
+        &emsp;&emsp;toonNames.forEach(printName => {<br/>
+        &emsp;&emsp;&emsp;const createItemList = document.createElement('li');<br/>
+        &emsp;&emsp;&emsp;createItemList.textContent = `${i++}: ${printName}`;<br/>
+        &emsp;&emsp;&emsp;toonsList.appendChild(createItemList);<br/>
+        &emsp;&emsp;});<br/>
+        &emsp;} catch(err) { console.log(err)}<br/>
+        }<br/>
+        showToonCard()
+      </code></div>
+      <ul id="toonsList" class="text-xs text-center"></ul>
+    </section>
+  </main>
+  <footer class="pk-section">
+    <h3>Referencias:</h3>
+    <ul>
+      <li><a href="https://github.com/public-apis/public-apis#games--comics" target="_blank" rel="noopener noreferrer">Repositorio de APIs públicas.</a></li>
+      <li><a href="https://ygoprodeck.com/api-guide/" target="_blank" rel="noopener noreferrer">Yu-Gi-Oh! API.</a></li>
+      <li><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener noreferrer">json viewer online (transformar a archivos.json presentables).</a></li>
+    </ul>
+  </footer>
+  <script src="../Js/programajs51.js"></script>
+</body>
+</html>

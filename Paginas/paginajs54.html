@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <title>Métodos HTTP, Header y Body</title>
+</head>
+<body class="bg-coocky bg-[length:200px_200px] bg-center">
+  <header class="pk-section">
+    <h1 class="text-2xl text-center">Métodos HTTP, Header y Body.</h1>
+  </header>
+  <main>
+    <!-- Métodos HTTP -->
+    <section class="pk-section">
+      <h2>Métodos HTTP.</h2>
+      <dl>
+        <dt>GET</dt>
+        <dd>Sirve para consumir (leer) información.</dd>
+        <dt>POST</dt>
+        <dd>Sirve para crear información.</dd>
+        <dt>PUT y PATCH</dt>
+        <dd>Sirve para editar información ya creada. PUT es para editar toda la información creada. PATCH es para editar solo una parte de la información creada.</dd>
+        <dt>DELETE</dt>
+        <dd>Sirve para borrar información.</dd>
+      </dl>
+      <p>En la API de YuGiOh! no se pueden utilizar métodos, pero a continuación se muestra un ejemplo anexando una imagen a una sección especial de una API para almacenar datos a través de POST (enviando el id por el headers/body):</p>
+      <div class="pk-code"><code>
+        const apiURL = 'https://api.com';<br/>
+        const apiURLPOST = 'https://api_post.com';<br/>
+        let <u>saved</u>;<br/><br/>
+        async function picture() {<br/>
+        &emsp;const res = await fetch(apiURL);<br/>
+        &emsp;const data = await res.json();<br/>
+        &emsp;<u>saved</u> = data[0].id;<br/>
+        }<br/><br/>
+        async function savePicture() {<br/>
+        &emsp;<i class="text-lime-600 font-light">// Al fetch se le agrega un objeto como segundo argumento, el objeto será el método POST.</i><br/>
+        &emsp;<i class="text-lime-600 font-light">// Si no se le manda un segundo argumento al fetch, por defecto será GET.</i><br/>
+        &emsp;const res = await fetch(apiURLPOST, {<br/>
+        &emsp;&emsp;method: 'POST',<br/>
+        &emsp;&emsp;<i class="text-lime-600 font-light">// Se indica que en el método se trabajará con un contenido de tipo json.</i><br/>
+        &emsp;&emsp;headers: {<br/>
+        &emsp;&emsp;&emsp;'Content-Type': 'application/json',<br/>
+        &emsp;&emsp;},<br/>
+        &emsp;&emsp;<i class="text-lime-600 font-light">// Se transforma el dato que se mandará, de json a string, para que no haya problemas con el tipo de archivo que maneja la API.</i><br/>
+        &emsp;&emsp;body: JSON.stringify({<br/>
+        &emsp;&emsp;&emsp;<i class="text-lime-600 font-light">// Se indica el dato que se mandará a la API.</i><br/>
+        &emsp;&emsp;&emsp;image_id: <u>saved</u>;<br/>
+        &emsp;&emsp;}),<br/>
+        &emsp;});<br/>
+        &emsp;const data = await res.json();<br/>
+        }
+      </code></div>
+      <p>Ejemplo usando DELETE (enviando el id por la url):</p>
+      <div class="pk-code"><code>
+        const apiURL = 'https://api.com';<br/>
+        const apiURLDELETE = 'https://api_delete.com';<br/>
+        let <u>saved</u>;<br/><br/>
+        async function deletePicture() {<br/>
+        &emsp;const res = await fetch(`${apiURLDELETE}/${saved}`, {<br/>
+        &emsp;&emsp;method: 'DELETE',<br/>
+        &emsp;});<br/>
+        &emsp;const data = await res.json();<br/>
+        }
+      </code></div>
+    </section>
+    <!-- Header y Body -->
+    <section class="pk-section">
+      <h2>Header y Body.</h2>
+      <h3>Body.</h3>
+      <p>En HTML se tiene una etiqueta body que tiene el contenido de la página.</p>
+      <p>Al consumir APIs se utiliza el body para crear (POST) o modificar (PUT/PATCH) datos de la API, no es necesario utilizarlo para consultar (GET) y no suele usarse para eliminar (DELETE).</p>
+      <h3>Header.</h3>
+      <p>En HTML se tiene una etiqueta head que tiene links o metadata que le indica la lectura e interpretación del body en los navegadores.</p>
+      <p>Al consumir APIs, se utiliza el header principalmente para indicar en que formato se mandará la información.</p>
+      <h3>Header de contenido.</h3>
+      <p>Se debe especificar el tipo de formato en el que se mandará la información a la API (al backend) para evitar problemas de comunicación entre datos.</p>
+      <div class="pk-code"><code>
+        <span class="text-lime-600">
+          async function saveData(id) {<br/>
+          &emsp;const res = await fetch( <u>apiURL</u>, {<br/>
+        </span>
+        &emsp;&emsp;method: 'POST',<br/>
+        &emsp;&emsp;headers: {<br/>
+        &emsp;&emsp;&emsp;'Content-Type': '<u>text/csv</u>',<br/>
+        &emsp;&emsp;&emsp;'X-API-KEY': '<u>ABC123</u>',<br/>
+        &emsp;&emsp;},<br/>
+        &emsp;&emsp;body: JSON.stringify({<br/>
+        &emsp;&emsp;&emsp;image_id: id<br/>
+        &emsp;&emsp;}),<br/>
+        <span class="text-lime-600">
+          &emsp;});<br/>
+          &emsp;const data = await res.json();<br/>
+          &emsp;...<br/>
+          }
+        </span>
+      </code></div>
+      <p>Hay algunos casos en los que se puede omitir el Content-Type, por ejemplo, al mandar un formulario a la API:</p>
+      <div class="pk-code"><code>
+        <span class="text-lime-600">
+          async function sendData() {<br/>
+        </span>
+        &emsp;<i class="text-lime-600">// Se guarda un formulario en la variable form.</i><br/>
+        &emsp;const <u>form</u> = docuent.getElementById('<u>form</u>');<br/>
+        &emsp;<i class="text-lime-600">// Se convierte el elemento form en una instancia del prototipo FormData.</i><br/>
+        &emsp;<i class="text-lime-600">// FormData guardará todos los datos de los inputs del formulario.</i><br/>
+        &emsp;<i class="text-lime-600">// A través de la instancia se podrá llamar a cualquier dato por el nombre del input (el nombre del input viene del atributo name="" del HTML).</i><br/>
+        &emsp;const <u>formData</u> = new FormData(<u>form</u>);<br/>
+        &emsp;<i>console.log(<u>formData</u>.get('<u>imagen</u>'));</i><br/>
+        <span class="text-lime-600">
+          &emsp;const res = await fetch( <u>apiURL</u>, {<br/>
+        </span>
+        &emsp;&emsp;method: 'POST',<br/>
+        &emsp;&emsp;headers: {<br/>
+        &emsp;&emsp;&emsp;'X-API-KEY': '<u>ABC123</u>',<br/>
+        &emsp;&emsp;},<br/>
+        &emsp;&emsp;body: <u>formData</u>,<br/>
+        <span class="text-lime-600">
+          &emsp;});<br/>
+          &emsp;const data = await res.json();<br/>
+          &emsp;...<br/>
+          }
+        </span>
+      </code></div>
+      <h3>Header de autorización.</h3>
+      <p>Se pueden mandar las llaves de autenticación (api keys) en el header en vez de colocarlo con un query parameter en la URL.</p>
+      <p class="pl-4"><b>Query parameter:</b> ...?api_key=ABC123</p>
+      <p class="pl-4"><b>Authorization Header:</b> X-API-Key: ABC123</p>
+      <div class="pk-code"><code>
+        <span class="text-lime-600">
+          async function loadData() {<br/>
+          &emsp;const res = await fetch( <u>apiURL</u>, {<br/>
+        </span>
+        &emsp;&emsp;method: 'GET',<br/>
+        &emsp;&emsp;headers: {<br/>
+        &emsp;&emsp;&emsp;'X-API-KEY': '<u>ABC123</u>',<br/>
+        &emsp;&emsp;},<br/>
+        <span class="text-lime-600">
+          &emsp;});<br/>
+          &emsp;const data = await res.json();
+          &emsp;...
+          }
+        </span>
+      </code></div>
+    </section>
+    <!-- Más propiedades de Fetch -->
+    <section class="pk-section">
+      <h2>Más propiedades de Fetch.</h2>
+      <h3>Mode.</h3>
+      <dl>
+        <dt>mode: cors</dt>
+        <dd>Esta opción evita que haya intercambio de información.</dd>
+        <dt>mode: no-cors</dt>
+        <dd>Permite hacer peticiones o solicitudes sin restricciones.</dd>
+        <dt>mode: same-origin</dt>
+        <dd>Permite hacer peticiones o solicitudes solamente al servidor o URL de origen, es decir, de forma local y de uso propio.</dd>
+      </dl>
+      <h3><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/cache" target="_blank" rel="noopener noreferrer">Cache.</a></h3>
+      <p>La memoria cache guarda datos en el navegador para evitar leer información default de las páginas cada vez que recarguen y evitar que sean lentas. También sirve para almacenar datos de configuración de las preferencias del usuario en la página como las el modo oscuro o el idioma.</p>
+      <ul>
+        <li>cache: default</li>
+        <li>cache: no-store</li>
+        <li>cache: reload</li>
+        <li>cache: no-cache</li>
+        <li>cache: force-cache</li>
+        <li>cache: only-if-cached</li>
+      </ul>
+      <p>Se recomienda no utilizar estas opciones a menos que hay un caso muy específico. Fetch puede utilizar el cache sin necesidad de configurarlo manualmente.</p>
+      <h3>Redirect.</h3>
+      <p>Permite redireccionar la página cuando aparezca un error o para bloquear redirecciones evitando abrir páginas no seguras y descargas de información dudosa.</p>
+      <dl>
+        <dt>redirect: follow</dt>
+        <dd>Indica que haya redirecciones a cualquier página externa.</dd>
+        <dt>redirect: error</dt>
+        <dd>No permite la redirección.</dd>
+        <dt>redirect: manual</dt>
+        <dd>Se utiliza en Service Workers y permite elegir manualmente cada IP que se quiera permitir o no para redirecciones.</dd>
+      </dl>
+    </section>
+  </main>
+  <footer class="pk-section">
+    <h3>Referencias:</h3>
+    <ul>
+      <li><a href="https://apipheny.io/api-headers/" target="_blank" rel="noopener noreferrer">¿Qué son los API headers?.</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types/Common_types" target="_blank" rel="noopener noreferrer">Content types.</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreferrer">fetch.</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers" target="_blank" rel="noopener noreferrer">Headers.</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank" rel="noopener noreferrer">Propiedades de Fetch.</a></li>
+      <li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Caching#actualizaci%C3%B3n" target="_blank" rel="noopener noreferrer">Seguridad de HTTP (cache-control).</a></li>
+    </ul>
+  </footer>
+</body>
+</html>

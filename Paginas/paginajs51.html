@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <title>API REST</title>
+</head>
+<body class="bg-coocky bg-[length:200px_200px] bg-center">
+  <header class="pk-section">
+    <h1 class="text-2xl text-center">API REST.</h1>
+    <p>API significa Application Programming Interfaces y REST significa Representational State Transfer.</p>
+    <p>API REST es una interfaz que comunica a robots con otros robots (ejemplo, frontend con backend) a través del protocolo HTTP. Existen otros protocolos que funcionaban con HTTP y XML como SOAP, sin embargo, en la actualidad se utiliza en un 90% REST y JSON.</p>
+    <p>El frontend al pedir o recibir datos de un usuario, obtiene los datos del backend en formato json a través de una API.</p>
+  </header>
+  <main>
+    <!-- Consumo de API REST -->
+    <section class="pk-section">
+      <h2>Consumo de API REST.</h2>
+      <p>
+        Googlea <b>github publica apis</b> y el navegador mostrará entre los resultados un <a href="https://github.com/public-apis/public-apis#games--comics" target="_blank" rel="noopener noreferrer">repositorio de GitHub</a> que contiene una colección de APIs públicas, es decir, de consumo gratis. En la tabla de las APIs se pueden ver:
+        <ul>
+          <li>la autenticación</li>
+          <li>el protocolo seguro HTTPS</li>
+          <li>el CORS</li>
+        </ul>
+        para el primer consumo de APIs se <b>recomienda</b> utilizar una API que:
+        <ul>
+          <li>no tenga CORS</li>
+          <li>sí tenga HTTPS</li>
+          <li>no requiera autenticación o requiera la autenticación <i>apikey</i></li>
+        </ul>
+      </p>
+      <p>Para utilizar la API se utiliza una URL que se encuentra en la documentación de la API, por ejemplo, <a href="https://db.ygoprodeck.com/api/v7/cardinfo.php" target="_blank" rel="noopener noreferrer">https://db.ygoprodeck.com/api/v7/cardinfo.php</a> es la URL que contiene los datos de las cartas de Yu-Gi-Oh! (la mayoría de las APIS entregan un archivo json).</p>
+      <p>Lo primero que se tiene que hacer al consultar una API es transformar la respuesta que retorne la consulta en un objeto entendible para JavaScript como un objeto json.</p>
+      <p>Ejemplo del uso de la API de Yu-Gi-Oh! usando <b>fetch()</b>:</p>
+      <div class="pk-code"><code>
+        <i class="text-lime-600 font-light">// Se guarda la URL de la API en una constante.</i><br/>
+        const API_URL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';<br/>
+        <i class="text-lime-600 font-light">// Por medio de la función fetch se pueden realizar peticiones HTTP asíncronas de JavaScript, se le ingresa un argumento y devuelve una promesa.</i><br/>
+        fetch(API_URL)<br/>
+        &emsp;<i class="text-lime-600 font-light">// La promesa devuelta se resolverá con un then.</i><br/>
+        &emsp;<i class="text-lime-600 font-light">// Se transforma la respuesta del API a un objeto json a través del método .json(). Esto devuelve otra promesa.</i><br/>
+        &emsp;.then(result => result.json())<br/>
+        &emsp;<i class="text-lime-600 font-light">// La promesa devuelta se resuelve con otro then.</i><br/>
+        &emsp;<i class="text-lime-600 font-light">// Ya que se tienen los datos de la API en un formato json, se utilizan.</i><br/>
+        &emsp;.then(data => {<br/>
+        &emsp;&emsp;const imageCard = document.getElementById('image-example');<br/>
+        &emsp;&emsp;imageCard.src = data.card_images[0].image_url_small;<br/>
+        &emsp;&emsp;imageCard.alt = `Carta aleatoria de la serie Yu-Gi-Oh!: ${data.name}`;<br/>
+        &emsp;&emsp;imageCard.title = `Carta aleatoria de la serie Yu-Gi-Oh!: ${data.name}`;<br/>
+        &emsp;})<br/>
+        &emsp;<i class="text-lime-600 font-light">// La promesa devuelta se resuelve con un catch que atrapará los errores que se puedan generar.</i><br/>
+        &emsp;.catch(err => console.log(err));
+      </code></div>
+      <p>Ejemplo del uso de la API de YU-Gi-Oh! usando <b>async / await</b>:</p>
+      <div class="pk-code"><code>
+        const API_URL = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';<br/>
+        <i class="text-lime-600 font-light">// Se utiliza la palabra reservada async para indicar que la función utilizará awaits.</i><br/>
+        async function showCard() {<br/>
+        &emsp;<i class="text-lime-600 font-light">// Se guarda el fetch() en una variable y se indica, con la palabra reservada await, que tendrá un llamado asíncrono.</i><br/>
+        &emsp;const result = await fetch(API_URL);<br/>
+        &emsp;<i class="text-lime-600 font-light">// Se crea otra variable indicando que será asíncrona y en esta se colocará la transformación de la API en formato json con el método .json().</i><br/>
+        &emsp;const data = await result.json();<br/>
+        &emsp;&emsp;<i class="text-lime-600 font-light">// Se utiliza el formato json.</i><br/>
+        &emsp;&emsp;const imageCard = document.getElementById('image-example');<br/>
+        &emsp;&emsp;imageCard.src = data.card_images[0].image_url_small;<br/>
+        &emsp;&emsp;imageCard.alt = `Carta aleatoria de la serie Yu-Gi-Oh!: ${data.name}`;<br/>
+        &emsp;&emsp;imageCard.title = `Carta aleatoria de la serie Yu-Gi-Oh!: ${data.name}`;<br/>
+        }<br/>
+        <i class="text-lime-600 font-light">// Se manda a llamar la función para que se ejecute.</i><br/>
+        showCard();
+      </code></div>
+      <img id="image-example" class="mx-auto">
+    </section>
+  </main>
+  <p id="lol_message"></p>
+  <footer class="pk-section">
+    <h3>Referencias:</h3>
+    <ul>
+      <li><a href="https://github.com/public-apis/public-apis#games--comics" target="_blank" rel="noopener noreferrer">Repositorio de APIs públicas.</a></li>
+      <li><a href="https://ygoprodeck.com/api-guide/" target="_blank" rel="noopener noreferrer">Yu-Gi-Oh! API.</a></li>
+      <li><a href="http://jsonviewer.stack.hu/" target="_blank" rel="noopener noreferrer">json viewer online (transformar a archivos.json presentables).</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreferrer">fetch.</a></li>
+    </ul>
+  </footer>
+  <script src="../Js/programajs51.js"></script>
+</body>
+</html>
+
+<!-- 
+  https://developer.riotgames.com/docs/lol#data-dragon
+
+  https://developer.riotgames.com/policies/general
+ -->

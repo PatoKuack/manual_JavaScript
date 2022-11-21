@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <title>Librerias fetch()</title>
+</head>
+<body class="bg-coocky bg-[length:200px_200px] bg-center">
+  <header class="pk-section">
+    <h1 class="text-2xl text-center">Librerias para fetch.</h1>
+  </header>
+  <main>
+    <!-- Librerias para facilitar fetch -->
+    <section class="pk-section">
+      <h2>Librería Axios.</h2>
+      <p>Es un cliente HTTP que se basa en promesas para soportar a fetch de forma nativa en el navegador y en node.js (aunque node ya soporta fetch de forma nativa).</p>
+      <p>Ve la <a href="https://axios-http.com/docs/intro" target="_blank" rel="noopener noreferrer">documentación de Axios</a> para saber todas las ventajas que ofrece.</p>
+      <p>En la documentación se indican varias formas de instalar Axios, entre ellas esta instalarlo a través de npm y pegando un script en el archivo html.</p>
+      <p class="pk-code"><code>
+        <span class="text-lime-600">
+          &emsp;&#60;/footer&#62;<br/>
+        </span>
+        &emsp;&#60;script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"&#62;&#60;/script&#62;<br/>
+        <span class="text-lime-600">
+          &emsp;&#60;script src="./programajs.js"&#62;&#60;/script&#62;<br/>
+          &#60;/body&#62;
+        </span>
+      </code></p>
+      <p>La mejor funcionalidad de Axios es crear instancias para todas las solicitudes con una configuración base.</p>
+      <p>Como se indica en la <a href="https://axios-http.com/docs/config_defaults#custom-instance-defaults" target="_blank" rel="noopener noreferrer">documentación de Axios (en instancia personalizada predeterminada)</a>, se coloca en el archivo de javascript la base de la URL (el fragmento inicial que está en todas las URL) y la api_key que se utilizarán en todo el proyecto:</p>
+      <p class="pk-code"><code>
+        const instance = axios.create({<br/>
+        &emsp;<i class="text-lime-500">// En el caso de la API de YU-GI-OH!, lo único que cambia de las URL son los query parameter, así que se podría colocar toda la URL en la baseURL.</i><br/>
+        &emsp;baseURL: '<u>https://db.ygoprodeck.com/api/v7/cardinfo.php</u>'<br/>
+        });<br/><br/>
+        instance.defaults.headers.common['X-API-KEY'] = <u>ABC123</u>;
+      </code></p>
+      <p>Para utilizar el POST en Axios, como dice la <a href="https://axios-http.com/docs/post_example" target="_blank" rel="noopener noreferrer">documentación (POST Request)</a>, se hace de la siguiente forma:</p>
+      <p class="pk-code"><code>
+        async function showCard(id) {<br/>
+        &emsp;const { data, status } = await api.post('/endpoint', {<br/>
+        &emsp;&emsp;image_id: id,<br/>
+        &emsp;});<br/>
+        &emsp;if(status !== 200) {<br/>
+        &emsp;&emsp;console.log("Error:" + status + ".\n" + data.message);<br/>
+        &emsp;}
+        }
+      </code></p>
+      <p>Comparándolo con el primer ejemplo de la sección <i>Header y Body</i> y la sección <i>HTTP Status Code</i>, se ahorra mucho más código.</p>
+    </section>
+  </main>
+  <footer class="pk-section">
+    <h3>Referencias:</h3>
+    <ul>
+      <li><a href="https://axios-http.com/docs/intro" target="_blank" rel="noopener noreferrer">Documentación de Axios.</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/fetch" target="_blank" rel="noopener noreferrer">fetch.</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Request" target="_blank" rel="noopener noreferrer">Propiedades de Fetch.</a></li>
+      <li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Caching#actualizaci%C3%B3n" target="_blank" rel="noopener noreferrer">Seguridad de HTTP (cache-control).</a></li>
+    </ul>
+  </footer>
+</body>
+</html>

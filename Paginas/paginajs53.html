@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <title>StatusCode y APIKey</title>
+</head>
+<body class="bg-coocky bg-[length:200px_200px] bg-center">
+  <header class="pk-section">
+    <h1 class="text-2xl text-center">HTTP Status Code y API Keys.</h1>
+  </header>
+  <main>
+    <!-- HTTP Status Code -->
+    <section class="pk-section">
+      <p>Indican el estado del servidor. Eh aquí un <a href="https://httpstatusdogs.com/" target="_blank" rel="noopener noreferrer">ejemplo con imágenes</a>.</p>
+    <ul>
+      <li>1XX Respuestas Afirmativas</li>
+      <li>2XX Respuestas satisfactorias</li>
+      <li>3XX Re-direcciones</li>
+      <li>4XX Error del cliente</li>
+      <li>5XX Error de servidor</li>
+    </ul>
+    <p>Ejemplo mostrando el estado de un error y su descripción:</p>
+    <div class="pk-code"><code>
+      apiURL = "https://api.com";<br/>
+      async function cardYuGiOh() {<br/>
+      &emsp;const res = await fetch(apiURL);<br/>
+      &emsp;const data = await res.json();<br/>
+      <b>
+        &emsp;if(res.status !== 200) {<br/>
+        &emsp;&emsp;body.innerHTML = "&#60;p&#62;Error:" + res.status + data.message "&#60;/p&#62;"<br/>
+        &emsp;}<br/>
+      </b>
+      }
+    </code></div>
+    </section>
+    <!-- API Keys -->
+    <section class="pk-section">
+      <h2>API Keys.</h2>
+      <p>Las API Keys ayudan a identificar quién realiza solicitudes a los endpoints de una API.</p>
+      <h3>Autenticación.</h3>
+      <p>Consiste en identificar quién es cada usuario.</p>
+      <h3>Autorización.</h3>
+      <p>Consiste en definir que permisos tiene cada usuario.</p>
+      <hr>
+      <p>La manera de utilizar un APIkey es obteniendo un dígito de autenticación a través de un registro en la página de la API. Después se coloca el dígito al final de la URL de consulta de la API como si fuera un query parameter.</p>
+      <p>La API de YuGiOh! no tiene APIKey, pero un ejemplo sería:</p>
+      <div class="pk-code"><code>
+        const toonMonsters = '<span class="text-lime-500">https://db.ygoprodeck.com/api/v7/cardinfo.php?type=toon%20monster</span><b>?api_key=c08d415f-hrj3-fjt1-urh2-heej4l3c25yu</b>';
+      </code></div>
+    </section>
+  </main>
+  <footer class="pk-section">
+    <h3>Referencias:</h3>
+    <ul>
+      <li><a href="https://github.com/public-apis/public-apis#games--comics" target="_blank" rel="noopener noreferrer">Repositorio de APIs públicas.</a></li>
+    </ul>
+  </footer>
+</body>
+</html>

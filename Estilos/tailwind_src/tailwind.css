@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+a {
+  @apply text-emerald-500 hover:bg-orange-300 underline
+}
+h2 {
+  @apply text-xl mb-4
+}
+h3 {
+  @apply text-lg
+}
+p {
+  @apply my-2
+}
+dd {
+  @apply ml-4
+}
+
+.pk-section {
+  @apply mx-auto my-4 p-8 max-w-5xl border-2 border-solid border-red-700 rounded-t-2xl shadow-lg bg-ice_cream bg-[length:100px_100px] bg-repeat-x bg-red-200 bg-top
+}
+.pk-code {
+  @apply p-4 mb-4 border-2 border-solid border-amber-700 break-words shadow-[inset_0_0_16px_-1px_rgba(0,0,0,0.1)]
+}

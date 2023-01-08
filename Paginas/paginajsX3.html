@@ -638,12 +638,12 @@
     <!-- GitHub-pages con React -->
     <section class="container">
       <h2>GitHub-pages con React.</h2>
-      <p>Desde la terminal se posicionandose en la raíz del proyecto se utiliza la siguiente instrucción:</p>
+      <p>Desde la terminal y posicionandose en la raíz del proyecto se utiliza la siguiente instrucción:</p>
       <code class="idEst">
         npm install --save-dev gh-pages
       </code>
       <p>Esta instrucción ayuda a mandar el código del proyecto a <i>GitHub pages</i> para visualizar su funcionamiento.</p>
-      <p>Después en el archivo <b>package.json</b> se le anexará la instrucción que le indica a la dependencia de desarrollo que se instaló (gh-pages) en donde se debe subir el proyecto:</p>
+      <p>Después, en el archivo <b>package.json</b> se le anexa la siguiente instrucción para indicarle a la dependencia de desarrollo que se instaló (gh-pages) donde se debe subir el proyecto:</p>
       <code class="idEst">
         <span class="highlight">
           {<br/>
@@ -658,10 +658,12 @@
           &emsp;},<br/>
           &emsp;...<br/>
         </span>
-        <i class="coment">/* Esta parte se agrega al completar la instalación de gh-pages */</i><br/>
+        <i class="coment">/* La siguiente parte se agrega al completar la instalación de gh-pages */</i><br/>
         <span class="highlight">
           &emsp;"devDependencies": {<br/>
+        </span>
           &emsp;&emsp;"gh-pages": "^3.2.3"<br/>
+        <span class="highlight">
           &emsp;},<br/>
         </span>
         <i class="coment">/* ----------------- */</i><br/>
@@ -670,10 +672,11 @@
           }<br/>
         </span>
       </code>
+      <p>Al final se ejecuta <b>npm run deploy</b> para desplegar el proyecto a GitHub pages.</p>
     </section>
   </main>
   <footer>
-    <section class="containe">
+    <section class="container">
       <h3>Referencias:</h3>
       <p>
         <a class="link" href="https://platzi.com/blog/tutorial-como-crear-una-animacion-de-carga-de-contenido-tipo-facebook/" target="_blank" rel="noopener noreferrer">Loading skeletons (esqueletos de carga).</a><br/>
@@ -683,6 +686,7 @@
         <a class="link" href="https://threejs.org/" target="_blank" rel="noopener noreferrer">Three.js</a><br/>
         <a class="link" href="https://shopify.github.io/draggable/" target="_blank" rel="noopener noreferrer">draggable</a><br/>
         <a class="link" href="https://www.youtube.com/watch?v=Nh2He5m_Eps&t=713s" target="_blank" rel="noopener noreferrer">Tipos de Componentes</a><br/>
+        <a class="link" href="https://dev.to/ajpalacios/tipos-de-componentes-en-react-js-4epg" target="_blank" rel="noopener noreferrer">Tipos de componentes en React.</a><br/>
         <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
       </p>
     </section>

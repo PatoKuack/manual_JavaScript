@@ -126,6 +126,45 @@
         npx node ./scripts/create-env.js && webpack --mode production --config webpack.config.js
       </article>
     </section>
+    <!-- GitHub-pages con React -->
+    <section class="container">
+      <h2>Deploy a GitHub-pages.</h2>
+      <p>Desde la terminal y posicionandose en la raíz del proyecto se utiliza la siguiente instrucción:</p>
+      <code class="idEst">
+        npm install --save-dev gh-pages
+      </code>
+      <p>Esta instrucción ayuda a mandar el código del proyecto a <i>GitHub pages</i> para visualizar su funcionamiento.</p>
+      <p>Después, en el archivo <b>package.json</b> se le anexa la siguiente instrucción para indicarle a la dependencia de desarrollo que se instaló (gh-pages) donde se debe subir el proyecto:</p>
+      <code class="idEst">
+        <span class="highlight">
+          {<br/>
+          &emsp;...<br/>
+          &emsp;"scripts": {<br/>
+          &emsp;&emsp;...</span>,<br/>
+          &emsp;&emsp;"predeploy": "npm run build",<br/>
+          &emsp;&emsp;"deploy": "gh-pages -d build"<br/>
+          &emsp;&emsp;<i class="coment">/* Para ejecutar el deploy se debe primero ejecutar "build", para ahorrarse una instrucción se utiliza un "pre" */</i><br/>
+          &emsp;&emsp;<i class="coment">/* El "pre___" se ejecutará automáticamente cuando se detecte que se va a ejecutar el comando original, es decir, en este caso si se ejecuta "deploy" se ejecutará automáticamente "predeploy" el cual ejecuta "build" */</i><br/>
+          <span class="highlight">
+          &emsp;},<br/>
+          &emsp;...<br/>
+        </span>
+        <i class="coment">/* La siguiente parte se agrega al completar la instalación de gh-pages */</i><br/>
+        <span class="highlight">
+          &emsp;"devDependencies": {<br/>
+        </span>
+          &emsp;&emsp;"gh-pages": "^3.2.3"<br/>
+        <span class="highlight">
+          &emsp;},<br/>
+        </span>
+        <i class="coment">/* ----------------- */</i><br/>
+        &emsp;"homepage": "https://<b><u>user-name en GitHub</u></b>.github.io/<b><u>repository-name del proyecto</u></b>"<br/>
+        <span class="highlight">
+          }<br/>
+        </span>
+      </code>
+      <p>Al final se ejecuta <b>npm run deploy</b> para desplegar el proyecto a GitHub pages.</p>
+    </section>
   </main>
   <footer class="container">
     <h3>Referencias:</h3>

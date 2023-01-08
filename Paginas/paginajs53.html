@@ -37,7 +37,7 @@
       &emsp;const data = await res.json();<br/>
       <b>
         &emsp;if(res.status !== 200) {<br/>
-        &emsp;&emsp;body.innerHTML = "&#60;p&#62;Error:" + res.status + data.message "&#60;/p&#62;"<br/>
+        &emsp;&emsp;document.body.innerHTML = "&#60;p&#62;Error:" + res.status + data.message "&#60;/p&#62;"<br/>
         &emsp;}<br/>
       </b>
       }

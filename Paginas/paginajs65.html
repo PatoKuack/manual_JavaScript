@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-Modales y formularios</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header>
+    <section class="pk-section__v2">
+      <h1 class="text-center text-2xl">Modales y formularios.</h1>
+    </section>
+  </header>
+  <main>
+    <!-- Modales y formaularios -->
+    <section class="pk-section__v2">
+      <h2>React portals.</h2>
+      <p>Permiten teletrasportar componentes a un nodo de HTML distinto al nodo donde hace render el resto de la aplicación..</p>
+      <p>React renderiza toda la aplicación gracias al elemento con el id="root" del archivo src/index.js, con los React portals se pueden renderizar los componentes de la página en otro lugar, en otro nodo y aún así se pueden seguir comunicando los estados de los nodos.</p>
+      <div class="pk-code">
+        <div class="text-center">src/Modal/index.js</div><br/>
+        import React from 'react';<br/>
+        import ReactDOM from 'react-dom';<br/><br/>
+        function Modal() {<br/>
+        &emsp;return ReactDOM.createPortal(<br/>
+        &emsp;&emsp;<i class="coment">/* Aquí se pueden colocar elementos o componentes para mostrar algo especifico y estatico o algo dinamico que sea reutilisable */</i><br/>
+        &emsp;);<br/>
+        }
+      </div>
+      <p>Después se colocan los argumentos:</p>
+      <ol>
+        <li>En el primer argumento se coloca lo que se mandará en el portal (en el siguiente ejemplo será un children).</li>
+        <li>En el segundo argumento se coloca el nodo del código HTML a donde se mandará el contenido del componente modal.</li>
+      </ol>
+      <div class="pk-code">
+        <div class="text-center">src/Modal/index.js</div><br/>
+        <span class="highlight">
+          import React from 'react';<br/>
+          import ReactDOM from 'react-dom';<br/><br/>
+          function Modal(</span>{ children }<span class="highlight">) {<br/>
+          &emsp;return ReactDOM.createPortal(<br/>
+          &emsp;&emsp;</span>children,<br/>
+          &emsp;&emsp;document.getElementById('modal')<span class="highlight"><br/>
+          &emsp;);<br/>
+          }<br/>
+        </span>
+        export { Modal };
+      </div>
+      <div class="pk-code">
+        <div class="text-center">public/index.html</div><br/>
+        <span class="highlight">
+          ...<br/>
+          &emsp;&#60;body&#62;<br/>
+          &emsp;&emsp;&#60;noscript&#62;...&#60;/noscript&#62;<br/>
+          &emsp;&emsp;&#60;div id="root"&#62;&#60;/div&#62;<br/>
+        </span>
+        &emsp;&emsp;&#60;div id="modal"&#62;&#60;/div&#62;<br/>
+        <span class="highlight">
+          &emsp;&#60;/body&#62;<br/>
+          &#60;/html&#62;<br/>
+        </span>
+      </div>
+      <p>Una vez exportado se puede importar a otros archivos para poder utilizarlo en otros componentes. Es recomendable utilizar el modal hasta el final de los componentes.</p>
+      <div class="pk-code">
+        import { Modal } from "../Modal";<br/>
+        <span class="highlight">import ...<br/>
+        function ...</span><br/>
+        &#60;Modal&#62;<br/>
+        &emsp;&#60;p&#62;¡Código para el modal!&#60;/p&#62;<br/>
+        &#60;/Modal&#62;<br/>
+        <span class="highlight">...</span>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+        <a class="link" href="https://platzi.com/blog/tutorial-como-crear-una-animacion-de-carga-de-contenido-tipo-facebook/" target="_blank" rel="noopener noreferrer">Loading skeletons (esqueletos de carga).</a><br/>
+        <a class="link" href="https://skeletonreact.com/" target="_blank" rel="noopener noreferrer">Create React Content Loader.</a><br/>
+        <a class="link" href="https://platzi.com/blog/ui-stack/" target="_blank" rel="noopener noreferrer">5 estados clave para crear interfaces coherentes.</a><br/>
+        <a class="link" href="https://material.io/design/iconography/system-icons.html" target="_blank" rel="noopener noreferrer">Guía sobre diseño de íconos.</a><br/>
+        <a class="link" href="https://threejs.org/" target="_blank" rel="noopener noreferrer">Three.js</a><br/>
+        <a class="link" href="https://shopify.github.io/draggable/" target="_blank" rel="noopener noreferrer">draggable</a><br/>
+        <a class="link" href="https://www.youtube.com/watch?v=Nh2He5m_Eps&t=713s" target="_blank" rel="noopener noreferrer">Tipos de Componentes</a><br/>
+        <a class="link" href="https://dev.to/ajpalacios/tipos-de-componentes-en-react-js-4epg" target="_blank" rel="noopener noreferrer">Tipos de componentes en React.</a><br/>
+        <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+      </p>
+    </section>
+  </footer>
+</body>
+</html>

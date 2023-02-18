@@ -15,12 +15,12 @@
   <title>StatusCode y APIKey</title>
 </head>
 <body class="bg-coocky bg-[length:200px_200px] bg-center">
-  <header class="pk-section">
+  <header class="pk-section__v1">
     <h1 class="text-2xl text-center">HTTP Status Code y API Keys.</h1>
   </header>
   <main>
     <!-- HTTP Status Code -->
-    <section class="pk-section">
+    <section class="pk-section__v1">
       <p>Indican el estado del servidor. Eh aquí un <a href="https://httpstatusdogs.com/" target="_blank" rel="noopener noreferrer">ejemplo con imágenes</a>.</p>
     <ul>
       <li>1XX Respuestas Afirmativas</li>
@@ -30,7 +30,7 @@
       <li>5XX Error de servidor</li>
     </ul>
     <p>Ejemplo mostrando el estado de un error y su descripción:</p>
-    <div class="pk-code"><code>
+    <div class="pk-code__v1"><code>
       apiURL = "https://api.com";<br/>
       async function cardYuGiOh() {<br/>
       &emsp;const res = await fetch(apiURL);<br/>
@@ -44,7 +44,7 @@
     </code></div>
     </section>
     <!-- API Keys -->
-    <section class="pk-section">
+    <section class="pk-section__v1">
       <h2>API Keys.</h2>
       <p>Las API Keys ayudan a identificar quién realiza solicitudes a los endpoints de una API.</p>
       <h3>Autenticación.</h3>
@@ -54,12 +54,12 @@
       <hr>
       <p>La manera de utilizar un APIkey es obteniendo un dígito de autenticación a través de un registro en la página de la API. Después se coloca el dígito al final de la URL de consulta de la API como si fuera un query parameter.</p>
       <p>La API de YuGiOh! no tiene APIKey, pero un ejemplo sería:</p>
-      <div class="pk-code"><code>
+      <div class="pk-code__v1"><code>
         const toonMonsters = '<span class="text-lime-500">https://db.ygoprodeck.com/api/v7/cardinfo.php?type=toon%20monster</span><b>?api_key=c08d415f-hrj3-fjt1-urh2-heej4l3c25yu</b>';
       </code></div>
     </section>
   </main>
-  <footer class="pk-section">
+  <footer class="pk-section__v1">
     <h3>Referencias:</h3>
     <ul>
       <li><a href="https://github.com/public-apis/public-apis#games--comics" target="_blank" rel="noopener noreferrer">Repositorio de APIs públicas.</a></li>

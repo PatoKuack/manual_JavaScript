@@ -15,12 +15,12 @@
   <title>Métodos HTTP, Header y Body</title>
 </head>
 <body class="bg-coocky bg-[length:200px_200px] bg-center">
-  <header class="pk-section">
+  <header class="pk-section__v1">
     <h1 class="text-2xl text-center">Métodos HTTP, Header y Body.</h1>
   </header>
   <main>
     <!-- Métodos HTTP -->
-    <section class="pk-section">
+    <section class="pk-section__v1">
       <h2>Métodos HTTP.</h2>
       <dl>
         <dt>GET</dt>
@@ -33,7 +33,7 @@
         <dd>Sirve para borrar información.</dd>
       </dl>
       <p>En la API de YuGiOh! no se pueden utilizar métodos, pero a continuación se muestra un ejemplo anexando una imagen a una sección especial de una API para almacenar datos a través de POST (enviando el id por el headers/body):</p>
-      <div class="pk-code"><code>
+      <div class="pk-code__v1"><code>
         const apiURL = 'https://api.com';<br/>
         const apiURLPOST = 'https://api_post.com';<br/>
         let <u>saved</u>;<br/><br/>
@@ -61,7 +61,7 @@
         }
       </code></div>
       <p>Ejemplo usando DELETE (enviando el id por la url):</p>
-      <div class="pk-code"><code>
+      <div class="pk-code__v1"><code>
         const apiURL = 'https://api.com';<br/>
         const apiURLDELETE = 'https://api_delete.com';<br/>
         let <u>saved</u>;<br/><br/>
@@ -74,7 +74,7 @@
       </code></div>
     </section>
     <!-- Header y Body -->
-    <section class="pk-section">
+    <section class="pk-section__v1">
       <h2>Header y Body.</h2>
       <h3>Body.</h3>
       <p>En HTML se tiene una etiqueta body que tiene el contenido de la página.</p>
@@ -84,7 +84,7 @@
       <p>Al consumir APIs, se utiliza el header principalmente para indicar en que formato se mandará la información.</p>
       <h3>Header de contenido.</h3>
       <p>Se debe especificar el tipo de formato en el que se mandará la información a la API (al backend) para evitar problemas de comunicación entre datos.</p>
-      <div class="pk-code"><code>
+      <div class="pk-code__v1"><code>
         <span class="text-lime-600">
           async function saveData(id) {<br/>
           &emsp;const res = await fetch( <u>apiURL</u>, {<br/>
@@ -105,7 +105,7 @@
         </span>
       </code></div>
       <p>Hay algunos casos en los que se puede omitir el Content-Type, por ejemplo, al mandar un formulario a la API:</p>
-      <div class="pk-code"><code>
+      <div class="pk-code__v1"><code>
         <span class="text-lime-600">
           async function sendData() {<br/>
         </span>
@@ -135,7 +135,7 @@
       <p>Se pueden mandar las llaves de autenticación (api keys) en el header en vez de colocarlo con un query parameter en la URL.</p>
       <p class="pl-4"><b>Query parameter:</b> ...?api_key=ABC123</p>
       <p class="pl-4"><b>Authorization Header:</b> X-API-Key: ABC123</p>
-      <div class="pk-code"><code>
+      <div class="pk-code__v1"><code>
         <span class="text-lime-600">
           async function loadData() {<br/>
           &emsp;const res = await fetch( <u>apiURL</u>, {<br/>
@@ -153,7 +153,7 @@
       </code></div>
     </section>
     <!-- Más propiedades de Fetch -->
-    <section class="pk-section">
+    <section class="pk-section__v1">
       <h2>Más propiedades de Fetch.</h2>
       <h3>Mode.</h3>
       <dl>
@@ -187,7 +187,7 @@
       </dl>
     </section>
   </main>
-  <footer class="pk-section">
+  <footer class="pk-section__v1">
     <h3>Referencias:</h3>
     <ul>
       <li><a href="https://apipheny.io/api-headers/" target="_blank" rel="noopener noreferrer">¿Qué son los API headers?.</a></li>

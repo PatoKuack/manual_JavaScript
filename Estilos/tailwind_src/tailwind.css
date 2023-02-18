@@ -3,14 +3,17 @@
 @tailwind utilities;
 
 
+* {
+  @apply box-border text-neutral-900 selection:bg-orange-300 selection:text-neutral-900 text-sm sm:text-base
+}
 a {
-  @apply text-emerald-500 hover:bg-orange-300 underline
+  @apply text-emerald-600 hover:bg-orange-300 underline
 }
 h2 {
-  @apply text-xl mb-4
+  @apply text-xl my-4
 }
 h3 {
-  @apply text-lg
+  @apply text-lg mt-4
 }
 p {
   @apply my-2
@@ -19,9 +22,24 @@ dd {
   @apply ml-4
 }
 
-.pk-section {
-  @apply mx-auto my-4 p-8 max-w-5xl border-2 border-solid border-red-700 rounded-t-2xl shadow-lg bg-ice_cream bg-[length:100px_100px] bg-repeat-x bg-red-200 bg-top break-words
+[class*="pk-section"] {
+  @apply mx-auto my-4 p-8 max-w-5xl border-2 border-solid border-neutral-900 shadow-lg break-words
 }
-.pk-code {
-  @apply p-4 mb-4 border-2 border-solid border-amber-700 break-words shadow-[inset_0_0_16px_-1px_rgba(0,0,0,0.1)]
+.pk-section__v1 {
+  @apply border-red-700 rounded-t-2xl bg-ice_cream bg-[length:100px_100px] bg-repeat-x bg-red-200 bg-top
+}
+.pk-section__v2 {
+  @apply border-indigo-400 bg-sky-200
+}
+[class*="pk-code"] {
+  @apply p-4 mb-4 border-2 border-solid break-words shadow-[inset_0_0_16px_-1px_rgba(0,0,0,0.1)] whitespace-nowrap overflow-x-auto
+}
+.pk-code__v1 {
+  @apply border-amber-700
+}
+.pk-code__v2 {
+  @apply bg-black text-white border-gray-300
+}
+.pk-code__v2 * {
+  @apply text-white
 }

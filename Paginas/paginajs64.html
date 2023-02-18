@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-interacción</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header class="pk-section__v2">
+    <h1 class="text-center text-2xl">Interacción con React.</h1>
+  </header>
+  <main>
+    <section class="pk-section__v2">
+      <h2>Eventos.</h2>
+      <p>Los eventos se declaran en formato camelCase y sus acciones se colocan entre llaves.</p>
+      <h3>Evento con función directa.</h3>
+      <p>las acciones que se desencadenarán al activar el evento se formulan en forma de función ya que, si se coloca la acción directamente, se ejecuta automaticamente al renderizar el elemento sin necesidad de activar el evento, ejemplo:</p>
+      <p class="italic">Cuando el evento detecte un clic en el elemento, se imprimirá en consola el string "clic".</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormButton.js</p>
+        import React from "react";<br/>
+        import './FormButton.css';<br/><br/>
+        function FormButton( ) {<br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;button </span>
+        <span class="block indent-12">className="form-button"</span>
+        <span class="block indent-12"><i class="font-light">{/* evento={ función } */}</i></span>
+        <span class="block indent-12 font-bold">onClick={ ( ) => console.log('clic') }</span>
+        <span class="block indent-8">&#62;</span>
+        <span class="block indent-12">Texto de botón</span>
+        <span class="block indent-8">&#60;/button&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        export { FormButton };
+      </div>
+      <h3>Evento llamando una función.</h3>
+      <p>También se puede colocar la función del evento en una constante para tener un código más limpio, ejemplo:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormButton.js</p>
+        import React from "react";<br/>
+        import './FormButton.css';<br/><br/>
+        function FormButton( ) {<br/><br/>
+        <span class="block indent-4">const <u>handleClick</u> = ( ) => {</span>
+        <span class="block indent-8">console.log('clic');</span>
+        <span class="block indent-4">}</span><br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;button </span>
+        <span class="block indent-12">className="form-button"</span>
+        <span class="block indent-12"><i class="font-light">{/* evento={ función } */}</i></span>
+        <span class="block indent-12">onClick={ <u>handleClick</u> }</span>
+        <span class="block indent-8">&#62;</span>
+        <span class="block indent-12">&#60;Texto de botón</span>
+        <span class="block indent-8">&#60;/button&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        export { FormButton };
+      </div>
+      <h3>Evento con una función con parámetro.</h3>
+      <p>Si se mandara un parámetro en la función se tendría que mandar envuelta en otra función, porque aunque ya sea una función, si se manda directamente, la función se ejecuta automaticamente al renderizar el elemento sin necesidad de activar el evento.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormButton.js</p>
+        import React from "react";<br/>
+        import './FormButton.css';<br/><br/>
+        function FormButton( ) {<br/><br/>
+        <span class="block indent-4">const onClickButton = ( <u>message</u> ) => {</span>
+        <span class="block indent-8">console.log( <u>message</u> );</span>
+        <span class="block indent-4">}</span><br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;button </span>
+        <span class="block indent-12">className="form-button"</span>
+        <span class="block indent-12"><i class="font-light">{/* evento={ función( ){ función } } */}</i></span>
+        <span class="block indent-12">onClick={ ( ) => onClickButton( "<u>se ha cliqueado</u>" ) }</span>
+        <span class="block indent-8">&#62;</span>
+        <span class="block indent-12">Texto de botón</span>
+        <span class="block indent-8">&#60;/button&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        export { FormButton };
+      </div>
+    </section>
+    <section class="pk-section__v2">
+      <h2>Estados.</h2>
+      <p>Para agregar estados a los componentes que no se crearon como clases, sino como funciones, se utiliza el hook <b>React.useState()</b> este hook requiere dos valores, el valor por default y el valor que sustituirá al original.</p>
+      <p>En el siguiente ejemplo se cambiará el parentesis del <i>return</i> por corchetes para que poder convertirlo en un array y poder mandar más de un elemento separados por comas (aunque también se puede utilizar React.Fragment u algún otro método):</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormInput.js</p>
+        import React from "react";<br/>
+        import './FormInput.css';<br/>
+        function FormInput() {<br/><br/>
+        <span class="block indent-4"></span>const [myMessage, setMyMessage] = React.useState('Has escrito algo');<br/><br/>
+        <span class="block indent-4"></span>return[<br/>
+        <span class="block indent-4"></span>&#60;input <br/>
+        <span class="block indent-4"></span>className="form-input"<br/>
+        <span class="block indent-4"></span>onChange={() => setMyMessage('Segui escribiendo =B')}<br/>
+        <span class="block indent-4"></span>/&#62;,<br/>
+        <span class="block indent-4"></span>&#60;p&#62;{myMessage}&#60;/p&#62;<br/>
+        <span class="block indent-4"></span>];<br/>
+        }<br/>
+        export { FormInput };
+      </div>
+      <p>Un ejemplo práctico sería que apareciera en otra etiqueta lo que se esta escribiendo en el input:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormInput.js</p>
+        import React from "react";<br/>
+        import './FormInput.css';<br/>
+        
+        function FormInput() {<br/><br/>
+        <span class="block indent-4"></span>const [myMessage, setMyMessage] = React.useState('');<br/>
+        <span class="block indent-4"></span><i class="coment">/* La siguiente función le asigna a "setMyMessage" el valor que se encuentra en el campo de input */</i><br/>
+        <span class="block indent-4"></span>const onWriteValueChange = (myEvent) => {<br/>
+        <span class="block indent-4"></span>setMyMessage(myEvent.target.Value);<br/>
+        <span class="block indent-4"></span>}<br/><br/>
+        <span class="block indent-4"></span>return[<br/>
+        <span class="block indent-4"></span>&#60;input <br/>
+        <span class="block indent-4"></span>className="form-input"<br/>
+        <i class="coment">/*  &#11088; Para <u>conectar el hook con el elemento</u> input se le asigna en la propiedad "value" el valor original del hook */</i><br/>
+        <span class="block indent-4"></span>value={myMessage}<br/>
+        <span class="block indent-4"></span>onChange={onWriteValueChange}<br/>
+        <span class="block indent-4"></span>/&#62;,<br/>
+        <span class="block indent-4"></span><i class="coment">/* Al final se coloca el valor de "myMessage" en el elemento "p" */</i><br/>
+        <span class="block indent-4"></span>&#60;p&#62;{myMessage}&#60;/p&#62;<br/>
+        <span class="block indent-4"></span>];<br/>
+        }<br/>
+        export { FormInput };
+      </div>
+      <p>Ahora, tomando al ejemplo anterior, para compartir los valores del hook con otros componentes se le coloca al componente FormInput dos propiedades (props) que serán los valores que utiliza el hook (React.useState), de esta forma se podrán obtener estos valores desde el componente padre (App) y así poder compartir los valores con otros componentes:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormInput.js</p>
+        import React from "react";<br/>
+        import './FormInput.css';<br/>
+        <i class="coment">/* Se agrega como propiedades del componente a myMessage y a setMyMessage para que sus valores sean pasados desde el componente padre App */</i><br/>
+        function FormInput({myMessage, setMyMessage}) {<br/><br/>
+        <span class="block indent-4"></span>const onWriteValueChange = (myEvent) => {<br/>
+        <span class="block indent-4"></span>setMyMessage(myEvent.target.Value);<br/>
+        <span class="block indent-4"></span>}<br/><br/>
+        <i class="coment">/* Se cambian los corchetes de return por parentesis y se elimina el elemento p */</i><br/>
+        <span class="block indent-4"></span>return(<br/>
+        <span class="block indent-4"></span>&#60;input <br/>
+        <span class="block indent-4"></span>className="form-input"<br/>
+        <span class="block indent-4"></span>value={myMessage}<br/>
+        <span class="block indent-4"></span>onChange={onWriteValueChange}<br/>
+        <span class="block indent-4"></span>/&#62;<br/>
+        <span class="block indent-4"></span>);<br/>
+        }<br/>
+        export { FormInput };
+      </div>
+      <p>Después en el componente App se agrega un estado y se mandan las propiedades al componente Form que es llamado dentro del componente App.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App.js</p>
+        import { FormInput } from "./FormInput";<br/>
+        ...<br/>
+        function App() {<br/>
+        <span class="block indent-4"></span>const [myMessage, setMyMessage] = React.useState('');<br/>
+        <span class="block indent-4"></span>&#60;FormInput<br/>
+        <span class="block indent-4"></span>myMessage={myMessage}<br/>
+        <span class="block indent-4"></span>setMyMessage={setMyMessage}<br/>
+        <span class="block indent-4"></span>/&#62;<br/>
+        ...<br/>
+        }
+      </div>
+    </section>
+    <section class="pk-section__v2">
+      <h2>Persistencia de datos.</h2>
+      <p><b>local.storage</b> es una herramienta de los navegadores que ayuda a guardar información (en forma de string) de la página, esta información no expira aunque se apague el dispositivo que se utiliza y esta disponible en la web de forma global. Esta herramienta también permite utilizar su información guardada para interactuar con el usuario.</p>
+      <p>Existe otra herramienta para almacenar información, <b>session.storage</b> solo esta disponible en la ventana del navegador actual y si se cierra la ventana se pierde su información.</p>
+      <p>Desde la consola del navegador se puede escribir <b>localStorage</b> para visualizar la información que tiene guardada.</p>
+      <p>Debido a que localStorage solo almacena información en texto, para poder guardar la información que se desee se utiliza una función llamada <b>JSON.stringify()</b>, en ella se colocan los datos que se quieran transformar a string como objetos, arrays o array de objetos, ejemplo: JSON.stringifly([{text: 'mytext', completed: 'false'}])</p>
+      <p>Y si se desea transformar el contenido del localStore a un formato de código como en objetos o en arrays se utiliza la función <b>JSON.parse()</b></p>
+      <p>Para insertar información en el local storage, se utiliza la instrucción <b>localStorage.setItem('<u>variable</u>', '<u>valor</u>')</b>. Como primer parámetro se coloca la variable en forma de string que almacenará el valor y como segundo parámetro se coloca el valor, también en forma de string.</p>
+      <p>Para obtener un parámetro se utiliza la instrucción <b>localStorage.getItem('<u>variable</u>')</b>.</p>
+    </section>
+    <section class="pk-section__v2">
+      <h2>React Hook.</h2>
+      <p>Los React Hooks conectan de una forma fácil a los componentes y los estados o eventos.son como funciones normales, solo que los cambios dentro de los React Hooks conectan de una forma fácil a los componentes y los estados o eventos.le avisan a React que debe hacer un nuevo render del componente; por esto también se utilizan para hacer renders de partes especificas del código dependiendo de algunas condiciones.</p>
+      <p>Los custom hook siempre deben comenzar por la palabra <b>use</b> (ejemplo: useLocalStorage) y como es una funcion debe recibir mínimo 2 parámetros:</p>
+      <ul>
+        <li>El nombre de lo que buscará o creará.</li>
+        <li>El estado inicial de la variable (puede ser un objeto {}, un array [], un string vacío " ", etc.).</li>
+      </ul>
+      <p>Un hook muy útil es <b>React.useEffect()</b>, este hook ejecuta el código cuando la aplicación esta cargada y lista para renderizarse, pero aún no se ha renderizado.</p>
+      <div class="pk-code__v2">
+        console.log("Queso");<br/>
+        React.useEffect(<br/>
+        <span class="block indent-4"></span>console.log("Carne");<br/>
+        );<br/>
+        console.log("Pan");<br/>
+        <i class="coment">
+          --------impresión en consola:--------<br/>
+          Queso<br/>Pan<br/>Carne
+        </i>
+      </div>
+      <p>En el ejemplo anterior se imprime primero Queso y Pan porque React realiza los calculos del código y genera las impresiones en consola y después de realizar los calculos y preparar la aplicación se ejecuta el hook de Effect.</p>
+      <p>Para que este hook no se ejecute siempre que se renderice la aplicación se le coloca una función como primer argumento y como segundo argumento un array que le indicará al hook cuando ejecutarse.</p>
+      <p>Si se coloca un arrray vacío, el hook se ejecutará solo la primera vez que se vaya a renderizar la página (solo se ejecuta una sola vez).</p>
+      <p>Si al array se le coloca un componente, el hook se ejecutará cuando se realice un cámbio en ese componente.</p>
+      <div class="pk-code__v2">
+        React.useEffect( () => {<br/>
+        <span class="block indent-4"></span>console.log("Carne");<br/>
+        }, [ myComponent ]);<br/>
+      </div>
+      <p>Otro hook parecido es <b>React.useLayoutEffect()</b>, este hook ejecuta el código cuando la aplicación ya se ha renderizado.</p>
+    </section>
+    <section class="pk-section__v2">
+      <h2>React Context.</h2>
+      <p>Es una herramienta de React que permite utilizar providers y consumers para que el estado de los componentes se pueda compartir entre los diferentes componentes de la aplicación, para esto se crea una carpeta en la que se alojará el archivo con el código necesario para compartir estados entre los componentes.</p>
+      <p><b>React.createContext()</b> es una herramienta de React que permite crear contextos los cuales permiten crear providers y consumers.</p>
+      <p><b>&#60;MyContxt.Provider&#62;&#60;/MyContxt.Provider&#62;</b> se utiliza para envolver toda la aplicación del componente de App.js (la etiqueta comienza con letra mayúscula).</p>
+      <p><b>&#60;MyContxt.Consumer&#62;&#60;/MyContxt.Consumer&#62;</b> se utiliza en cualquier lugar de los componentes que requiera información de algún estado compartido (la etiqueta comienza con letra mayúscula).</p>
+      <p>Lo primero que se hace es crear el contexto y el Provider:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/MyContext/index.js</p>
+        import React from 'react';<br/>
+        const MyContext = React.createContext();<br/>
+        <i class="coment">/* La siguiente función se utiliza para compartir información del provider al consumer. */</i><br/>
+        function MyProvider(props) {<br/>
+        <span class="block indent-4"></span>return (<br/>
+        <span class="block indent-4"></span>&#60;MyContext.Provider&#62;<br/>
+        <span class="block indent-4"></span><i class="coment">/* Cualquier componente que llame al componente MyProvider lo mandará a props.children y podrá utilizar el consumidor */</i><br/>
+        <span class="block indent-4"></span>{props.children}<br/>
+        <span class="block indent-4"></span>&#60;/MyContext.Provider&#62;<br/>
+        <span class="block indent-4"></span>);<br/>
+        }<br/>
+      </div>
+      <p>Después se colocan los estados y elementos que se compartirán entre componentes y se exporta el Provider:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/MyContext/index.js</p>
+        import React from 'react';<br/>
+        const MyContext = React.createContext();<br/>
+        function MyProvider(props) {<br/>
+        <span class="block indent-4"></span><i class="coment">/* Antes del return se coloca el código que abarcan los estados que se van a compartir (variables, constantes y funciones) */</i><br/>
+        <span class="block indent-4"></span>return (<br/>
+        <span class="block indent-4"></span><i class="coment">/* Para indicarle al Provider cuales son los estado que se compartirán en los componentes, se utiliza la propiedad value */</i><br/>
+        <span class="block indent-4"></span>&#60;MyContext.Provider value={{<br/>
+        <span class="block indent-4"></span><i class="coment">/* Aquí se colocan todas las propiedades que se utilizan en los estados (utilizar sintaxis .js no .jsx) */</i><br/>
+        <span class="block indent-4"></span>}}&#62;<br/>
+        <span class="block indent-4"></span>{props.children}<br/>
+        <span class="block indent-4"></span>&#60;/MyContext.Provider&#62;<br/>
+        <span class="block indent-4"></span>);<br/>
+        }<br/>
+        <i class="coment">/* Se exporta el contexto y el atajo Provider. */</i><br/>
+        export { MyContext, MyProvider };
+      </div>
+      <p>Después se importa el Provider en el archivo App.js (index.js) y </p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App/index.js</p>
+        import { MyProvider } from ../MyContext;<br/>
+        
+          import React from 'react';<br/>
+          function App() {<br/>
+          <span class="block indent-4"></span>return(<br/>
+        
+        <span class="block indent-4"></span><i class="coment">/* Los componentes o componentes dentro de otros componentes pueden utilizar el Consumer para compartir estados siempre que el componente padre se coloque dentro del Provider: */</i><br/>
+        <span class="block indent-4"></span>&#60;MyProvider&#62;<br/>
+        <span class="block indent-4"></span>...<br/>
+          <span class="block indent-4"></span>&#60;/MyProvider&#62;<br/>
+        
+          <span class="block indent-4"></span><span class="block indent-4">);<br/>
+          }<br/>
+          export default App;
+        
+      </code>
+      <p>Para que un componente pueda consumir un estado guardado dentro del Context, se llama al Consumer; dentro del Consumer se utiliza una sintaxis llamada Render Props que implica enviar el código .jsx dentro de una función:</p>
+      <div class="pk-code__v2">
+        &#60;MyContext.Consumer&#62;<br/>
+        <span class="block indent-4"></span><i class="coment">/* Se manda a llamar a la propiedad value del componente MyContext.Provider para poder recibir toda su información. */</i><br/>
+        <span class="block indent-4"></span>{value => {<br/>
+        <span class="block indent-4"></span>return (<br/>
+        <span class="block indent-4"></span><i class="coment">/* Dentro del return se utilizan los componentes que usarán la información de value. */</i><br/>
+        <span class="block indent-4"></span><i class="coment">/* Cada que se utilice un valor de value se utilizará de la siguiente forma: */</i><br/>
+        <span class="block indent-4"></span>&#60;MyComponent&#62;<br/>
+        <span class="block indent-4"></span>{value.error ...}<br/>
+        <span class="block indent-4"></span>{value.loading ...}<br/>
+        <span class="block indent-4"></span>&#60;/MyComponent&#62;<br/>
+        <span class="block indent-4"></span>);<br/>
+        <span class="block indent-4"></span>}}<br/>
+        &#60;/MyContext.Consumer&#62;<br/>
+      </div>
+      <p>Si dentro del componente anterior hubiera otro componente, se tendrían que agregar los estados q utilizarán esos componentes hijos en sus respectivas props.</p>
+      <p>Para evitar colocar el value en cada valor que se quiera llamar desde el Context, se insertan los estados directamente (separados por comas) en vez del value:</p>
+      <div class="pk-code__v2">
+        &#60;MyContext.Consumer&#62;<br/>
+        <span class="block indent-4"></span><i class="coment">/* En vez del value se abre un bloque de llaves y se colocan adentro los estados a utilizar. */</i><br/>
+        <span class="block indent-4"></span>{{error, loading, ...} => {<br/>
+        <span class="block indent-4"></span>return (<br/>
+        <span class="block indent-4"></span>&#60;MyComponent&#62;<br/>
+        <span class="block indent-4"></span>{error ...}<br/>
+        <span class="block indent-4"></span>{loading ...}<br/>
+        <span class="block indent-4"></span>&#60;/MyComponent&#62;<br/>
+        <span class="block indent-4"></span>);<br/>
+        <span class="block indent-4"></span>}}<br/>
+        &#60;/MyContext.Consumer&#62;<br/>
+      </div>
+      <p>Una manera más óptima de utilizar el Consumer es llamando a los estados que se utilizarán atravez del hook <b>React.useContext()</b> y así evitar utilizar llamar al componente Consumer</p>
+      <div class="pk-code__v2">
+        import { MyContext } from '../MyContext/'<br/>
+        
+          ...<br/>
+          function MyComponent(){<br/>
+        
+        <span class="block indent-4"></span><i class="coment">/* Se puede utilizar la variable "value" del Provider o directamente colocar los estados que se utilizarán,<br/>
+        <span class="block indent-4"></span>en vez de:<br/>
+        <span class="block indent-4"></span><b>const value = React.useContext(MyContext);</b><br/>
+        <span class="block indent-4"></span>para evitar llamar a value.error o value.loading se utiliza: */</i><br/>
+        <span class="block indent-4"></span>const { error, loading, ... } = React.useContext(MyContext);<br/>
+        
+          <span class="block indent-4"></span>return (<br/>
+          <span class="block indent-4"></span>&#60;AnotherComponent&#62;<br/>
+          <span class="block indent-4"></span>{error ...}<br/>
+          <span class="block indent-4"></span>{loading ...}<br/>
+          <span class="block indent-4"></span>&#60;/AnotherComponent&#62;<br/>
+          <span class="block indent-4"></span>);<br/>
+        }
+      
+      </div>
+      <p>Este método se utiliza también en cada componente que se encuentre dentro del componente que utilice este hook. Se pueden eliminar los estados que se llamen a traves de los props al utilizar este hook en los componentes hijos.</p>
+    </section>
+  </main>
+  <footer>
+    <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+        <a class="link" href="https://platzi.com/blog/tutorial-como-crear-una-animacion-de-carga-de-contenido-tipo-facebook/" target="_blank" rel="noopener noreferrer">Loading skeletons (esqueletos de carga).</a><br/>
+        <a class="link" href="https://skeletonreact.com/" target="_blank" rel="noopener noreferrer">Create React Content Loader.</a><br/>
+        <a class="link" href="https://platzi.com/blog/ui-stack/" target="_blank" rel="noopener noreferrer">5 estados clave para crear interfaces coherentes.</a><br/>
+        <a class="link" href="https://material.io/design/iconography/system-icons.html" target="_blank" rel="noopener noreferrer">Guía sobre diseño de íconos.</a><br/>
+        <a class="link" href="https://threejs.org/" target="_blank" rel="noopener noreferrer">Three.js</a><br/>
+        <a class="link" href="https://shopify.github.io/draggable/" target="_blank" rel="noopener noreferrer">draggable</a><br/>
+        <a class="link" href="https://www.youtube.com/watch?v=Nh2He5m_Eps&t=713s" target="_blank" rel="noopener noreferrer">Tipos de Componentes</a><br/>
+        <a class="link" href="https://dev.to/ajpalacios/tipos-de-componentes-en-react-js-4epg" target="_blank" rel="noopener noreferrer">Tipos de componentes en React.</a><br/>
+        <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
+      </p>
+    </section>
+  </footer>
+</body>
+</html>

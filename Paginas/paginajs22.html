@@ -32,8 +32,16 @@
           <dt>on<i>Event</i></dt>
           <dd>Cuando utilizamos el objeto <i>$0</i> en la consola del navegador y colocamos un punto ($0.), se despliega una lista de propiedades y métodos que tiene el objeto que hace referencia a un elemento sombreado de la página. Dentro de esa lista existen unas opciones que inician con "on", todas esas opciones son <u>eventos</u> que pueden ser aplicadas al elemento al que señala el objeto $0.</dd>
           <dt>addEventListener('_', _)</dt>
-          <dd>Este método es un escuchador de eventos, recibe un evento en forma de string y un callback (una función que se ejecuta cuando el evento ocurre), la función debe ser llamada sin parentesis (myFunc() -> myFunc) porque la propiedad le agrega automáticamente parentesis o puede ser una función anónima ya que recibirá un parámetro y se ejecutará cuando se cumpla el evento.<br/>
-          El evento en este caso se coloca sin el <b>on</b></dd>
+          <dd>
+            Este método es un escuchador de eventos.
+            <ul>
+              <li>Recibe un evento en forma de string.</li>
+              <li>Una función o un callback (una función que se ejecuta cuando el evento ocurre).</li>
+              <li>Y en ocaciones un tercer parámetro que indica varias desiciones, como un true que indica que el evento se ejecute una vez.</li>
+            </ul>
+            La función del segundo parámetro debe ser llamada sin parentesis (myFunc() -> myFunc) porque la propiedad le agrega automáticamente parentesis o puede ser una función anónima ya que recibirá un parámetro y se ejecutará cuando se cumpla el evento.<br/>
+            El evento en este caso se coloca sin el <b>on</b>
+          </dd>
           <p><b>window</b> es el objeto global de JavaScript, no hay ningún objeto por encima de este, todos descienden de este y es omisible al ejecutar especificaciones que lo involucren, ejemplo:<br/>
           <u>window.</u>document.getElement...<br/>
           document.getElement...<br/>
@@ -274,11 +282,14 @@
         <p>Los principales eventos del navegador son los siguientes:</p>
         <dl>
           <dt>load</dt>
-          <dd>este es parecido al DOMContentloaded pero, este se ejecuta cuando carga toda la página, es decir con las imágenes o formularios, etc.</dd>
+          <dd>Este es parecido al DOMContentloaded pero, este se ejecuta cuando carga toda la página, es decir con las imágenes o formularios, etc.</dd>
           <dt>scroll</dt>
-          <dd>se ejecuta cuando haces scroll, se pueden utilizar los atributos <b>scrollX</b> y <b>scrollY</b> para saber el nivel de scroll que se tiene y con ello poder realizar acciones.</dd>
+          <dd>Se ejecuta cuando haces scroll, se pueden utilizar los atributos <b>scrollX</b> y <b>scrollY</b> para saber el nivel de scroll que se tiene y con ello poder realizar acciones.</dd>
           <dt>resize</dt>
-          <dd>se ejecuta cuando redimensionas la pantalla.</dd>
+          <dd>Se ejecuta cuando redimensionas la pantalla.</dd>
+          <dt>onhashchange</dt>
+          <dd>Se ejecuta cuando el hash (#) de la URL cambia.</dd>
+          <dd>Se puede modificar el hash con location.hash = "example".</dd>
         </dl>
         <p><b>Inner</b> se refiere a la parte interna del navegador, la ventana o el viewport, y <b>outer</b> es toda la ventana del navegador en el sistema operativo.</p>
         <p class="titCentrado">Ejemplo:</p>

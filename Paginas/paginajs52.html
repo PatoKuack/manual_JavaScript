@@ -15,14 +15,14 @@
   <title>Endpoints/Query Parameters</title>
 </head>
 <body class="bg-coocky bg-[length:200px_200px] bg-center">
-  <header class="pk-section">
+  <header class="pk-section__v1">
     <h1 class="text-2xl text-center">Endpoints y Query parameters.</h1>
     <p>Los Endpoints son rutas que permiten hacer una consulta a la API de un trozo del contenido y no de todo el contenido de la API.</p>
     <p>Los Query Parameter son información extra que permiten obtener datos específicos de una consulta a la API.</p>
   </header>
   <main>
     <!-- Endpoints/Query parameters -->
-    <section class="pk-section">
+    <section class="pk-section__v1">
       <h2>Endpoints.</h2>
       <p>Los endpoints se utilizan agregándole a la URL de los datos de la API un <b>slash /</b> y el nombre del endpoint, ejemplo:</p>
       <ul class="list-disc list-inside">
@@ -31,7 +31,7 @@
         <li>api.com/images/michi34<br/><i class="text-lime-600 font-light">Pide específicamente la imagen del "michi34".</i></li>
       </ul>
     </section>
-    <section class="pk-section">
+    <section class="pk-section__v1">
       <h2>Query Parameters.</h2>
       <p>* Los Query Parameters <b>solo funcionan si la API está preparada para utilizarlos</b>, por eso es importante revisar la documentación de la API.</p>
       <p>Se utilizan agregándole a la URL de los datos de la API un <b>signo de interrogación cerrada ?</b> y el nombre del query parameter. También se puede concatenar otro query parameter anexándole un <b>ampersand &</b>, por ejemplo:</p>
@@ -41,7 +41,7 @@
         <li>/images/michi34?format=png<br/><i class="text-lime-600 font-light">Pide específicamente la imagen del "michi34", pero en formato de imagen png.</i></li>
       </ul>
       <p>La API de YuGiOh! no tiene Endpoints (o no los encontré), así que se mostrará un ejemplo de la API usando Query Prameters utilizando async-await:</p>
-      <div class="pk-code"><code>
+      <div class="pk-code__v1"><code>
         const apiUrl = 'https://db.ygoprodeck.com/api/v7/cardinfo.php';<br/>
         <b>async</b> function showToonCard() {<br/>
         &emsp;<i class="text-lime-600 font-light">// Se utiliza try y catch para capturar errores y poder manejarlos.</i><br/>
@@ -63,7 +63,7 @@
       <ul id="toonsList" class="text-xs text-center"></ul>
     </section>
   </main>
-  <footer class="pk-section">
+  <footer class="pk-section__v1">
     <h3>Referencias:</h3>
     <ul>
       <li><a href="https://github.com/public-apis/public-apis#games--comics" target="_blank" rel="noopener noreferrer">Repositorio de APIs públicas.</a></li>

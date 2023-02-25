@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-Context</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header class="pk-section__v2">
+    <h1 class="text-center text-2xl">React Context.</h1>
+    <p>Es una herramienta de React que permite utilizar Providers y Consumers para que los estados de los componentes se puedan compartir entre los diferentes componentes de la aplicación, para esto se crea una carpeta en la que se alojará el archivo con el código necesario para compartir estados entre los componentes.</p>
+  </header>
+  <main>
+    <section class="pk-section__v2">
+      <h2>Provider y Consumers</h2>
+      <p><b>React.createContext()</b> es una herramienta de React que permite crear contextos los cuales permiten crear providers y consumers.</p>
+      <p><b>&#60;<u>My</u>Context.Provider&#62;&#60;/<u>My</u>Context.Provider&#62;</b> se utiliza para envolver toda la aplicación del componente principal que por defecto suele ser App.js.</p>
+      <p><b>&#60;<u>My</u>Context.Consumer&#62;&#60;/<u>My</u>Context.Consumer&#62;</b> se utiliza en cualquier lugar de los componentes que requiera información de algún estado compartido. El Consumer se puede utilizar sin importar que el componente al que se le coloca el Consumer es un hijo o nieto del componente que contenga el Provider.</p>
+      <p class="italic">Lo primero que se hace es crear el archivo donde se alojará el contexto, el contexto y el Provider:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/EjemploContext/index.js</p>
+        import React from 'react';<br/><br/>
+        const EjemploContext = React.createContext( );<br/><br/>
+        <i class="font-light">{/* La siguiente función se utiliza para compartir</i><br/>
+        <i class="font-light">información del provider al consumer. */}</i><br/>
+        function EjemploProvider( props ) {<br/>
+        <span class="block indent-4">return (</span>
+        <span class="block indent-8">&#60;EjemploContext.Provider&#62;</span>
+        <span class="block indent-12 font-light italic">{/* Cualquier componente que llame al componente EjemploProvider</span>
+        <span class="block indent-12 font-light italic">será mandado al siguiente props.children y podrá utilizar el consumidor */}</span>
+        <span class="block indent-12">{ props.children }</span>
+        <span class="block indent-8">&#60;/EjemploContext.Provider&#62;</span>
+        <span class="block indent-4">);</span>
+        }
+      </div>
+      <p class="italic">Continuando con el archivo anterior, se colocan los estados y elementos que se compartirán entre componentes y se exporta el Provider:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/EjemploContext/index.js</p>
+        import React, {useState} from 'react';<br/><br/>
+        const EjemploContext = React.createContext( );<br/><br/>
+        function EjemploProvider( props ) {
+        <span class="block indent-4 font-light italic">{/* Antes del return se coloca el código que abarca los estados que</span>
+        <span class="block indent-4 font-light italic">se van a compartir (variables, constantes, funciones, etados, etc.) */}</span>
+        <span class="block indent-4 font-bold">const [ ejemplo, setEjemplo ] = React.useState( ' ' );</span>
+        <span class="block indent-4">return (</span>
+        <span class="block indent-8 font-light italic">{/* Para indicarle al Provider cuales son los estados que se</span>
+        <span class="block indent-8 font-light italic">compartirán en los componentes, se utiliza la propiedad value */}</span>
+        <span class="block indent-8 font-light italic">{/* Se utilizan dos llaves porque la primera indica el contenido de value</span>
+        <span class="block indent-8 font-light italic">y la segunda llave es porque se mandará un objeto */}</span>
+        <span class="block indent-8">&#60;EjemploContext.Provider <b>value={ {</b></span>
+        <span class="block indent-12 font-light italic">{/* Aquí se colocan todas las propiedades que se compartiran</span>
+        <span class="block indent-12 font-light italic">en los estados (utilizar sintaxis .js no .jsx) */}</span>
+        <span class="block indent-12 font-bold">ejemplo,</span>
+        <span class="block indent-12 font-bold">setEjemplo</span>
+        <span class="block indent-8"><b>} }</b>&#62;</span>
+        <span class="block indent-12">{props.children}</span>
+        <span class="block indent-8">&#60;/EjemploContext.Provider&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        <i class="font-light">{/* Se exporta el contexto y el atajo Provider. */}</i><br/>
+        <b>export { EjemploContext, EjemploProvider }</b>
+      </div>
+      <p class="italic">Después se importa el Provider y Consumer en el archivo que vincula todo el contenido que suele ser App.js o App/index.js, o también se puede inportar directamente en los archivos que utilizarán el contexto.</p>
+      <p>Para que un componente pueda consumir un estado guardado dentro del Context, se debe llamar al Consumer dentro del Provider.</p>
+      <p>Los componentes o componentes dentro de otros componentes, pueden utilizar el Consumer para compartir estados.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App/index.js</p>
+        import { EjemploProvider } from ../EjemploContext;<br/>
+        import React from 'react';<br/><br/>
+        function App( ) {<br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8 font-bold">&#60;EjemploProvider&#62;</span>
+        <span class="block indent-12">...</span>
+        <span class="block indent-12 font-bold">&#60;EjemploContext.Consumer&#62;</span>
+        <span class="block indent-16 font-light italic">{/* Aquí van elementos o componentes</span>
+        <span class="block indent-16 font-light italic">que utilicen los valores compartidos. */}</span>
+        <span class="block indent-12 font-bold">&#60;/EjemploContext.Consumer&#62;</span>
+        <span class="block indent-12">...</span>
+        <span class="block indent-8 font-bold">&#60;/EjemploProvider&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        export default App;
+      </div>
+      <p>Dentro del Consumer se utiliza una sintaxis llamada Render Props que implica enviar el código .jsx dentro de una función.</p>
+      <p>Los Consumer pueden colocarse depués o antes de otros elementos o componentes, también pueden colocarse dentro en los archivos de componentes que sean llamados por el componente que contenga el Provider.</p>
+      <div class="pk-code__v2">
+        &#60;EjemploContext.Consumer&#62;<br/>
+        <span class="block indent-4 font-light italic">{/* Se manda a llamar a la propiedad value del componente</span>
+        <span class="block indent-4 font-light italic">&#60;EjemploContext.Provider&#62; para poder recibir toda su información. */}</span>
+        <span class="block indent-4">{ value => {</span>
+        <span class="block indent-8">return (</span>
+        <span class="block indent-12 font-light italic">{/* Dentro del return se utilizan los componentes</span>
+        <span class="block indent-12 font-light italic">que usarán la información de value. */}</span>
+        <span class="block indent-12 font-light italic">{/* Cada que se utilice un valor de value</span>
+        <span class="block indent-12 font-light italic">se utilizará de la siguiente forma: */}</span>
+        <span class="block indent-12">&#60;ComponentEjemplo&#62;</span>
+        <span class="block indent-16">{ value.ejemplo ... }</span>
+        <span class="block indent-16">{ value.setEjemplo(...) }</span>
+        <span class="block indent-12">&#60;/ComponentEjemplo&#62;</span>
+        <span class="block indent-8">);</span>
+        <span class="block indent-4">} }</span>
+        &#60;/EjemploContext.Consumer&#62;
+      </div>
+      <p>Si al componente anterior se le quisieran pasar los datos del contexto como propiedades, se tendrían que agregar los estados que se desean pasar.</p>
+      <p>Para evitar colocar el value en cada valor que se quiera llamar desde el Context, se insertan los estados directamente (separados por comas) en vez de colocar el value:</p>
+      <div class="pk-code__v2">
+        &#60;EjemploContext.Consumer&#62;<br/>
+        <span class="block indent-4 font-light italic">{/* En vez del value se abre un bloque de llaves</span>
+        <span class="block indent-4 font-light italic">se colocan adentro los estados a utilizar. */}</span>
+        <span class="block indent-4">{ ( { ejemplo, setEjemplo } ) => {</span>
+        <span class="block indent-8">return (</span>
+        <span class="block indent-12">&#60;ComponentEjemplo</span>
+        <span class="block indent-16">ejemplo = { ejemplo }</span>
+        <span class="block indent-16">setEjemplo = { setEjemplo }</span>
+        <span class="block indent-12">/&#62;</span>
+        <span class="block indent-8">);</span>
+        <span class="block indent-4">} }</span>
+        &#60;/EjemploContext.Consumer&#62;
+      </div>
+      <p>Una manera más óptima de utilizar el Context, es llamando a los estados que se utilizarán atravez del hook <b>React.useContext()</b> y así evitar utilizar llamar al componente Consumer</p>
+      <div class="pk-code__v2">
+        import { EjemploContext } from '../EjemploContext/';<br/>
+        ...<br/>
+        function ComponentEjemplo( ) {<br/>
+        <span class="block indent-4 font-light italic">{/* Se puede utilizar la variable "value" del Provider o</span>
+        <span class="block indent-4 font-light italic">directamente colocar los estados que se utilizarán, en vez de:</span>
+        <span class="block indent-4 font-light italic underline">const value = React.useContext(EjemploContext);</span>
+        <span class="block indent-4 font-light italic">para evitar llamar a value.error o value.loading se utiliza: */}</span>
+        <span class="block indent-4">const { ejemplo, setEjemplo } = React.useContext( EjemploContext );</span>
+          <span class="block indent-4">return (</span>
+          <span class="block indent-8">&#60;AnotherComponent&#62;</span>
+          <span class="block indent-12">{ ejemplo ... }</span>
+          <span class="block indent-12">{ setEjemplo(...) }</span>
+          <span class="block indent-8">&#60;/AnotherComponent&#62;</span>
+          <span class="block indent-4">);</span>
+        }
+      </div>
+      <p>Esta forma de utilizar el Consumer se utiliza en cualquier componente que se encuentre dentro (ya sea hijo o bisnieto) del componente que utilice el Provider.</p>
+    </section>
+  </main>
+  <footer>
+    <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+        <a class="link" href="https://reactjs.org/docs/context.html#api" target="_blank" rel="noopener noreferrer">React.createContext</a><br/>
+      </p>
+    </section>
+  </footer>
+</body>
+</html>

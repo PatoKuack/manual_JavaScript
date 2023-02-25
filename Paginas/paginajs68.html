@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-Estados</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header class="pk-section__v2">
+    <h1 class="text-center text-2xl md:text-3xl">Estados.</h1>
+  </header>
+  <main>
+    <!-- React.useState -->
+    <section class="pk-section__v2">
+      <h2>React.useState</h2>
+      <p>Para agregar estados a los componentes que no se crearon como clases, sino como funciones, se utiliza el hook <b>React.useState( <i>value</i>, <i>setValue</i> )</b> . Este hook requiere dos variables:</p>
+      <ul class="ml-4 list-disc list-inside">
+        <li>la variable que contendrá los valores y por la que se podrán utilizar los valores</li>
+        <li>la función que modifica el valor de la variable.</li>
+      </ul>
+      <p>El hook puede inicializarse con cualquier valor, desde números hasta objetos. Además se puede utilizar de dos maneras:</p>
+      <p class="italic">Importando y declarando que es una eztensión de react dessde el inicio:</p>
+      <div class="pk-code__v2">
+        import React from "react";<br/>
+        import <b>{ useState }</b> from "react";<br/><br/>
+        const [ valor, setValor ] = <b>useState( [ ] )</b>;
+      </div>
+      <p class="italic">O declarando que es una extensión de react en el momento en que se utiliza:</p>
+      <div class="pk-code__v2">
+        import <u>React</u> from "react";<br/><br/>
+        const [ valor, setValor ] = <b><u>React</u>.useState( [ ] )</b>;
+      </div>
+      <p class="italic">React.useState( <i>const</i>, <i>newConst</i> ) es como una forma de crear una constante cuyo valor se podrá modificar.</p>
+      <p>En el siguiente ejemplo se cambiará el parentesis del <i>return</i> por corchetes para poder convertirlo en un array y poder mandar más de un elemento separados por comas (aunque también se puede utilizar React.Fragment o algún otro método):</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormInput.js</p>
+        ...<br/>
+        function FormInput( ) {<br/><br/>
+        <span class="block indent-4 font-bold">const [ message, setMessage ] = React.useState( 'Vos has escrito algo' );</span>
+        <span class="block indent-4 font-light italic">{/* El valor inicial es = 'Vos has escrito algo' */}</span><br/>
+        <span class="block indent-4">return[</span>
+        <span class="block indent-8">&#60;input </span>
+        <span class="block indent-12">className="form-input"</span>
+        <span class="block indent-12 font-light italic">{/* Cuando el input cambie, se modificará el valor del estado message */}</span>
+        <span class="block indent-12">onChange={ ( ) => <b>setMessage( 'Seguí escribiendo =B' )</b> }</span>
+        <span class="block indent-8">/&#62;,</span>
+        <span class="block indent-8">&#60;p&#62;{ <b>message</b> }&#60;/p&#62;</span>
+        <span class="block indent-4">];</span>
+        }<br/>...
+      </div>
+    </section>
+    <!-- Ejemplo practico del estado. -->
+    <section class="pk-section__v2">
+      <h2>Ejemplo practico del estado.</h2>
+      <p>Un ejemplo práctico sería que apareciera en otra etiqueta lo que se esta escribiendo en el input:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormInput.js</p>
+        import React from "react";<br/><br/>
+        function FormInput( ) {<br/><br/>
+        <span class="block indent-4 font-bold">const [ message, setMessage ] = React.useState( ' ' );</span><br/>
+        <span class="block indent-4">const valueChange = (event) => {</span>
+        <span class="block indent-8 font-light italic">{/* Se le asigna a message el valor que contenga el input */}</span>
+        <span class="block indent-8 font-bold">setMessage( event.target.value );</span>
+        <span class="block indent-4">}</span><br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;React.Fragment&#62;</span>
+        <span class="block indent-12">&#60;input </span>
+        <span class="block indent-16">className="form-input"</span>
+        <span class="block indent-16 font-light italic">{/* &#11088; Para <u>conectar el hook con el elemento</u> input,</span>
+        <span class="block indent-16 font-light italic">se le asigna el valor original del hook a la propiedad "value" */}</span>
+        <span class="block indent-16">value={ message }</span>
+        <span class="block indent-16">onChange={ valueChange }</span>
+        <span class="block indent-12">/&#62;,</span>
+        <span class="block indent-12">&#60;p&#62;{ <b>message</b> }&#60;/p&#62;</span>
+        <span class="block indent-12 font-light italic">{/* El elemento "p" cambiará su contenido de acuerdo al estado */}</span>
+        <span class="block indent-8">&#60;/React.Fragment&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/>
+        export { FormInput };
+      </div>
+      <p>Ahora, retomando la idea del ejemplo anterior, para compartir los valores del hook con otros componentes se le coloca al componente FormInput dos propiedades (props) que serán los valores que utiliza el hook (React.useState), de esta forma se podrán obtener estos valores desde el componente padre (App) y así poder compartir los valores con otros componentes:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormInput.js</p>
+        import React from "react";<br/><br/>
+        <span class="block font-light italic">{/* Se agregan como propiedades del componente a message y a setMessage<br/> para que los valores le sean pasados desde el componente padre (App) */}</span><br/>
+        function FormInput( <b>{ message, setMessage }</b> ) {<br/><br/>
+        <span class="block indent-4">const <u>valueChange</u> = ( event ) => {</span>
+        <span class="block indent-8 font-bold">setMessage( event.target.value );</span>
+        <span class="block indent-4">}<br/></span>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;input </span>
+        <span class="block indent-12">className="form-input"</span>
+        <span class="block indent-12">value={ <b>message</b> }</span>
+        <span class="block indent-12">onChange={ <u>valueChange</u> }</span>
+        <span class="block indent-8">/&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/>
+        export { FormInput };
+      </div>
+      <p class="italic">En el componente App, se agrega un estado y se mandan las propiedades al componente FormInput.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App.js</p>
+        import React from "react";<br/>
+        import { FormInput } from "./FormInput";<br/><br/>
+        function App( ) {<br/>
+        <span class="block indent-4 font-bold">const [ message, setMessage ] = React.useState( ' ' );</span>
+        <span class="block indent-4">&#60;FormInput</span>
+        <span class="block indent-8 font-bold">message={ message }</span>
+        <span class="block indent-8 font-bold">setMessage={ setMessage }</span>
+        <span class="block indent-4">/&#62;</span>
+        ...
+      </div>
+    </section>
+  </main>
+  <footer>
+    <!-- <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+      </p>
+    </section> -->
+  </footer>
+</body>
+</html>

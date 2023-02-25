@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-Deploy</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header>
+    <section class="pk-section__v2">
+      <h1 class="text-center text-2xl">Deploy con React.</h1>
+    </section>
+  </header>
+  <main>
+    <section class="pk-section__v2">
+      <h2>GitHub-pages con React.</h2>
+      <p>Desde la terminal y posicionandose en la raíz del proyecto se utiliza la siguiente instrucción:</p>
+      <div class="pk-code__v2">
+        npm install --save-dev gh-pages
+      </div>
+      <p>Esta instrucción ayuda a mandar el código del proyecto a <i>GitHub pages</i> para visualizar su funcionamiento.</p>
+      <p>Después, en el archivo <b>package.json</b> se le anexa la siguiente instrucción para indicarle a la dependencia de desarrollo que se instaló (gh-pages) donde se debe subir el proyecto:</p>
+      <div class="pk-code__v2">
+        {<br/>
+        &emsp;...<br/>
+        &emsp;"scripts": {<br/>
+        &emsp;&emsp;...,<br/>
+        &emsp;&emsp;"predeploy": "npm run build",<br/>
+        &emsp;&emsp;"deploy": "gh-pages -d build"<br/>
+        &emsp;&emsp;<i class="font-light">/* Para ejecutar el deploy se debe primero ejecutar "build",</i><br/>
+        &emsp;&emsp;<i class="font-light">para ahorrarse una instrucción se utiliza un "pre" */</i><br/><br/>
+        &emsp;&emsp;<i class="font-light">/* El "pre___" se ejecutará automáticamente cuando se</i><br/>
+        &emsp;&emsp;<i class="font-light">detecte que se va a ejecutar el comando original, es decir,</i><br/>
+        &emsp;&emsp;<i class="font-light">en este caso si se ejecuta "deploy" se ejecutará</i><br/>
+        &emsp;&emsp;<i class="font-light">automáticamente "predeploy" el cual ejecuta "build" */</i><br/>
+        &emsp;},<br/>
+        &emsp;...<br/>
+        <i class="font-light">/* La siguiente parte se agrega al completar la instalación de gh-pages */</i><br/>
+          &emsp;"devDependencies": {<br/>
+          &emsp;&emsp;"gh-pages": "^3.2.3"<br/>
+          &emsp;},<br/>
+        <i class="font-light">/* ----------------- */</i><br/>
+        &emsp;"homepage": "https://<b><u>user-name en GitHub</u></b>.github.io/<b><u>repository-name del proyecto</u></b>"<br/>
+          }<br/>
+      </div>
+      <p>Al final se hace un git push con sus respectivos códigos (git add . || git commit -m "..." || git pull origin main || git push origin main) y después se ejecuta <b>npm run deploy</b> para desplegar el proyecto a GitHub pages.</p>
+      <div class="pk-code__v2">
+        git add .<br/>
+        git commit -m "<span class="font-light italic">Corta descripción del commit</span>"<br/>
+        git pull origin main<br/>
+        git push origin main<br/>
+        npm run deploy
+      </div>
+      <p>Todo esto genera una rama llamada <b>gh-pages</b> en el repositorio de la página de github, esta rama es la que se debe utilizar para la publicación de la página.</p>
+    </section>
+  </main>
+  <!-- <footer>
+    <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+      </p>
+    </section> -->
+  </footer>
+</body>
+</html>

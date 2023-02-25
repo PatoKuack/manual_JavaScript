@@ -13,90 +13,164 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React-Modales y formularios</title>
+  <title>React-Props</title>
 </head>
 <body class="bg-react bg-[length:200px_200px] bg-center">
   <header>
     <section class="pk-section__v2">
-      <h1 class="text-center text-2xl">Modales y formularios.</h1>
+      <h1 class="text-center text-2xl md:text-3xl">Propiedades.</h1>
+      <p>Los atributos de los elementos como className=' ', src=' ', title=' ', etc. son considerados como propiedades. Las propiedades de los componentes son lo que serían parámetros o atributos</p>
+      <p>Las propiedades permiten mandar un valor o estado en forma de atributo en el momento en que se invoca el componente, entonces componente actualizará su contenido con los valores o estados que se han mandado por medio de la invocación.</p>
     </section>
   </header>
   <main>
-    <!-- Modales y formaularios -->
+    <!-- props. -->
     <section class="pk-section__v2">
-      <h2>React portals.</h2>
-      <p>Permiten teletrasportar componentes a un nodo de HTML distinto al nodo donde hace render el resto de la aplicación..</p>
-      <p>React renderiza toda la aplicación gracias al elemento con el id="root" del archivo src/index.js, con los React portals se pueden renderizar los componentes de la página en otro lugar, en otro nodo y aún así se pueden seguir comunicando los estados de los nodos.</p>
-      <div class="pk-code">
-        <div class="text-center">src/Modal/index.js</div><br/>
-        import React from 'react';<br/>
-        import ReactDOM from 'react-dom';<br/><br/>
-        function Modal() {<br/>
-        &emsp;return ReactDOM.createPortal(<br/>
-        &emsp;&emsp;<i class="coment">/* Aquí se pueden colocar elementos o componentes para mostrar algo especifico y estatico o algo dinamico que sea reutilisable */</i><br/>
-        &emsp;);<br/>
-        }
+      <h2>props.</h2>
+      <p>Hay diferentes formas de recibir propiedades, una de ellas es utilizando la palabra "props" que es una convención (no una palabra reserbada) para utilizar propiedades, ejemplo:</p>
+      <p class="italic">Se invoca un componente (App) y se le manda una propiedad denominada "saludo" con un string como valor.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/index.js</p>
+        ...<br/>
+        ReactDOM.render(<br/>
+        <span class="block indent-4">&#60;App <b>saludo="Ola k ace?"</b> /&#62;,</span>
+        ...
       </div>
-      <p>Después se colocan los argumentos:</p>
-      <ol>
-        <li>En el primer argumento se coloca lo que se mandará en el portal (en el siguiente ejemplo será un children).</li>
-        <li>En el segundo argumento se coloca el nodo del código HTML a donde se mandará el contenido del componente modal.</li>
-      </ol>
+      <p class="italic">En el archivo del componente, se le indica al componente que recibirá propiedades por medio de la palabra "porps", y para utilizar las propiedades recibidas se escribe dentro de llaves la palabra props.<u>nombre de la propiedad</u></p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App.js</p>
+        ...<br/>
+        function App(<b>props</b>) {<br/>
+          <span class="block indent-4">return ( ...</span>
+          <span class="block indent-8">&#60;a ...&#62;</span>
+          <span class="block indent-12"><b>{ props.saludo }</b></span>
+          <span class="block indent-8">&#60;/a&#62;</span>
+          ...
+      </div>
+      <p>En el caso anterior se anexará el valor ("Ola k ace?") de la propiedad saludo en el contenido de la etiqueta &#60;a&#62; &#60;/a&#62;</p>
+    </section>
+    <!-- children. -->
+    <section class="pk-section__v2">
+      <h2>children.</h2>
+      <p>A los componentes también se les pueden agregar una propiedad especial llamada <b>children</b> que permite insertar todos los elementos y propiedades que contenga un componente, ejemplo:</p>
+      <p class="italic">Se invoca un componente (App) y se le agrega un atributo como propiedad, aparte, adentro del componente se le insertan elementos.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/index.js</p>
+        ...<br/>
+        ReactDOM.render(<br/>
+        <span class="block indent-4">&#60;App <b>pregunta="¿Cómo t va?"</b>&#62;</span>
+        <span class="block indent-8 font-bold">&#60;h1&#62;Saludo&#60;/h1&#62;</span>
+        <span class="block indent-8 font-bold">&#60;p&#62;holi holilla&#60;/p&#62;</span>
+        <span class="block indent-4">&#60;/App&#62;,</span>
+        ...
+      </div>
+      <p class="italic">En el archivo del componente, se resiven las propiedades por medio de la palabra "props". Para utilizar los elementos y componentes que se resiven, se escribe dentro de llaves la palabra props.children.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App.js</p>
+        ...<br/>
+        function App( <b>props</b> ) {<br/>
+        <span class="block indent-4">return ( ...</span>
+        <span class="block indent-8"><b>{ props.children }</b></span>
+        <span class="block indent-8">&#60;a ...&#62;</span>
+        <span class="block indent-12"><b>{ props.pregunta }</b></span>
+        <span class="block indent-8">&#60;/a&#62;</span>
+        ...
+      </div>
+      <p class="italic">El resultado del ejemplo quedaría:</p>
       <div class="pk-code">
-        <div class="text-center">src/Modal/index.js</div><br/>
-        <span class="highlight">
+        <p class="mt-0 text-xl">Saludo</p>
+        <p class="mt-0">holi holilla</p>
+        <p class="mt-0 text-blue-500 underline cursor-pointer">¿Cómo estás?</p>
+      </div>
+    </section>
+    <!-- key. -->
+    <section class="pk-section__v2">
+      <h2>key.</h2>
+      <p>Cuando se importa un componente y este componente tiene una lista de valores, se debe agregar una propiedad especial llamada <b>key={ }</b> para renderizar los elementos de la lista, esto ayuda a que React identifique los elementos mutables e inmutables de la lista evitando que renderice elementos que no son modificables, ejemplo:</p>
+      <p class="italic">En el archivo de un componente se le indica al componente que resivirá propiedades y se indica con props.text en donde se renderizará la propiedad "text":</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/OtroComponente.js</p>
+        import React from 'react';<br/><br/>
+        function OtroComponente( props ){<br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-12">&#60;li&#62;El item es: { props.text }&#60;/li&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/>
+        export { OtroComponente };
+      </div>
+      <p class="italic">Se importa el componente en donde se utilizará y mediante un map se pide que se utilice el código del componente importado (OtroComponente) con cada elemento del array (listItems).</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App.js</p>
           import React from 'react';<br/>
-          import ReactDOM from 'react-dom';<br/><br/>
-          function Modal(</span>{ children }<span class="highlight">) {<br/>
-          &emsp;return ReactDOM.createPortal(<br/>
-          &emsp;&emsp;</span>children,<br/>
-          &emsp;&emsp;document.getElementById('modal')<span class="highlight"><br/>
-          &emsp;);<br/>
-          }<br/>
-        </span>
-        export { Modal };
+          import { OtroComponente } from './OtroComponente';<br/><br/>
+          const listItems = [<br/>
+          <span class="block indent-4">{ text: "Uno", completed: false },</span>
+          <span class="block indent-4">{ text: "Dos", completed: false },</span>
+          <span class="block indent-4">{ text: "Tres", completed: false },</span>
+          ];<br/><br/>
+          function App( ){<br/>
+          <span class="block indent-4">return(</span>
+          <span class="block indent-8">&#60;ul&#62;</span>
+          <span class="block indent-12">{ listItems.map ( eItem => (</span>
+          <span class="block indent-16">&#60;OtroComponente</span>
+          <span class="block indent-20">key={ eItem.text }</span>
+          <span class="block indent-20">text={ eItem.text }</span>
+          <span class="block indent-16">/&#62;</span>
+          <span class="block indent-12">) ) }</span>
+          <span class="block indent-8">&#60;/ul&#62;</span>
+          <span class="block indent-4">);</span>
+          }
       </div>
+      <p class="italic">El renderizado quedaría:</p>
       <div class="pk-code">
-        <div class="text-center">public/index.html</div><br/>
-        <span class="highlight">
-          ...<br/>
-          &emsp;&#60;body&#62;<br/>
-          &emsp;&emsp;&#60;noscript&#62;...&#60;/noscript&#62;<br/>
-          &emsp;&emsp;&#60;div id="root"&#62;&#60;/div&#62;<br/>
-        </span>
-        &emsp;&emsp;&#60;div id="modal"&#62;&#60;/div&#62;<br/>
-        <span class="highlight">
-          &emsp;&#60;/body&#62;<br/>
-          &#60;/html&#62;<br/>
-        </span>
+        <ul class="list-disc list-inside">
+          <li>El item es: Uno</li>
+          <li>El item es: Dos</li>
+          <li>El item es: Tres</li>
+        </ul>
       </div>
-      <p>Una vez exportado se puede importar a otros archivos para poder utilizarlo en otros componentes. Es recomendable utilizar el modal hasta el final de los componentes.</p>
-      <div class="pk-code">
-        import { Modal } from "../Modal";<br/>
-        <span class="highlight">import ...<br/>
-        function ...</span><br/>
-        &#60;Modal&#62;<br/>
-        &emsp;&#60;p&#62;¡Código para el modal!&#60;/p&#62;<br/>
-        &#60;/Modal&#62;<br/>
-        <span class="highlight">...</span>
+    </section>
+    <!-- Propiedades directas. -->
+    <section class="pk-section__v2">
+      <h2>Propiedades directas.</h2>
+      <p>Otra forma de recibir propiedades es mandando la propiedad con el nombre con el que lo recibirá el otro componente <span class="italic">nombre={variable}</span>.</p>
+      <p>Si simplemente se manda el nombre de la variable, se estaría mandando un true o false de acuerdo al contenido o existencia de la variable.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/Componente.js</p>
+        import React from "react";<br/>
+        import { OtroComponente } from "./OtroComponente";<br/><br/>
+        function Componente( ) {
+        <span class="block indent-4">const <b><u>var1</u></b> = { };</span>
+        <span class="block indent-4">const <b><u>var2</u></b> = "Hello";</span>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;OtroComponente</span>
+        <span class="block indent-8 font-light italic">{/* Las propiedades se suelen enviar renombrandolas con</span>
+        <span class="block indent-8 font-light italic">el mismo nombre para evitar confuciones */}</span>
+        <span class="block indent-12"><b>var1</b>={ <b><u>var1</u></b> }</span>
+        <span class="block indent-12"><b>var2</b>={ <b><u>var2</u></b> }</span>
+        <span class="block indent-8">/&#62;</span>
+        <span class="block indent-4">);</span>
+        ...
+      </div>
+      <p class="italic">Y se suelen recibir encerradas entre llaves:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/OtroComponente.js</p>
+        ...<br/>
+        function Componente( <b>{ <u>var1</u>, <u>var2</u> }</b> ) {<br/>
+        <span class="block indent-4">console.log(<b><u>var1</u></b>);</span>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;p&#62;<b>{ <u>var2</u> }</b>&#60;/p&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/>...
       </div>
     </section>
   </main>
-  <footer>
+  <!-- <footer>
     <section class="pk-section__v2">
-      <h3>Referencias:</h3>
+      <h2>Referencias:</h2>
       <p>
-        <a class="link" href="https://platzi.com/blog/tutorial-como-crear-una-animacion-de-carga-de-contenido-tipo-facebook/" target="_blank" rel="noopener noreferrer">Loading skeletons (esqueletos de carga).</a><br/>
-        <a class="link" href="https://skeletonreact.com/" target="_blank" rel="noopener noreferrer">Create React Content Loader.</a><br/>
-        <a class="link" href="https://platzi.com/blog/ui-stack/" target="_blank" rel="noopener noreferrer">5 estados clave para crear interfaces coherentes.</a><br/>
-        <a class="link" href="https://material.io/design/iconography/system-icons.html" target="_blank" rel="noopener noreferrer">Guía sobre diseño de íconos.</a><br/>
-        <a class="link" href="https://threejs.org/" target="_blank" rel="noopener noreferrer">Three.js</a><br/>
-        <a class="link" href="https://shopify.github.io/draggable/" target="_blank" rel="noopener noreferrer">draggable</a><br/>
-        <a class="link" href="https://www.youtube.com/watch?v=Nh2He5m_Eps&t=713s" target="_blank" rel="noopener noreferrer">Tipos de Componentes</a><br/>
-        <a class="link" href="https://dev.to/ajpalacios/tipos-de-componentes-en-react-js-4epg" target="_blank" rel="noopener noreferrer">Tipos de componentes en React.</a><br/>
-        <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
       </p>
     </section>
-  </footer>
+  </footer> -->
 </body>
 </html>

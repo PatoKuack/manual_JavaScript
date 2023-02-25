@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <!-- No guardar cache en navegadores -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <!-- ------------------- -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- normalize css -->
+    <link rel="stylesheet" href="../Estilos/Normalizecss.css">
+    <!-- Estilo personalizado -->
+    <link rel="stylesheet" href="../Estilos/stylejs21.css">
+    <title>localStorage</title>
+  </head>
+  <body class="cuerpo">
+    <header>
+      <section>
+        <div class="contenedor" >
+          <h1 class="titCentrado">Persistencia de datos.</h1>
+        </div>
+      </section>
+    </header>
+    <main>
+      
+    <!-- local.storage -->
+    <section>
+      <div class="contenedor">
+        <h2 class="titCentrado">localStorage.</h2>
+        <p class="contenido"><b>local.storage</b> es una herramienta de los navegadores que ayuda a guardar información (en forma de string) de la página, esta información no expira aunque se apague el dispositivo que se utiliza y esta disponible en la web de forma global. Esta herramienta también permite utilizar su información guardada para interactuar con el usuario.</p>
+        <p class="contenido">Existe otra herramienta para almacenar información, <b>session.storage</b> solo esta disponible en la ventana del navegador actual y si se cierra la ventana se pierde su información.</p>
+        <h3>Ver contenido del LS.</h3>
+        <p class="contenido">Desde la consola del navegador se puede escribir <b>localStorage</b> para visualizar la información que se tiene guardada.</p>
+        <h3>Transformar a texto.</h3>
+        <p class="contenido">Debido a que localStorage solo almacena información en texto, para poder guardar la información que se desee, se utiliza la función <b>JSON.stringify()</b> . Se le coloca como argumento los datos que se quieran transformar a string como objetos, arrays o array de objetos, ejemplo: JSON.stringifly([{text: 'mytext', completed: 'false'}])</p>
+        <h3>Transformar a código.</h3>
+        <p class="contenido">Para transformar el contenido del localStore a un formato de código como en objetos o en arrays, se utiliza la función <b>JSON.parse()</b> en la cual se le coloca como argumento el string que se desea transformar.</p>
+        <h3>Insertar datos en LS.</h3>
+        <p class="contenido">Para insertar información en el localStorage, se utiliza la instrucción <b>localStorage.setItem('<u>variable</u>', '<u>valor</u>')</b>. Como primer parámetro se coloca la variable en forma de string que almacenará el valor y como segundo parámetro se coloca el valor, también en forma de string.</p>
+        <p class="contenido">Si se guarda una variable que ya existe, los datos almacenados en la variable existente serán reemplazados por los datos de la variable que se guardará.</p>
+        <h3>Obtener variable de LS.</h3>
+        <p class="contenido">Para obtener una variable del localStorage se utiliza la instrucción <b>localStorage.getItem('<u>variable</u>')</b>.</p>
+      </div>
+    </section>
+    </main>
+    <footer class="contenedor">
+      <h3>Referencias:</h3>
+      <p>
+        <a class="enlace" href="https://developer.mozilla.org/es/docs/Web/API/Window/open" target="blank" rel="noopener noreferrer">Método open()</a><br/>
+        <a class="enlace" href="https://ed.team/blog/css-si-tiene-condicionales-y-deberias-estar-usandolas" target="blank" rel="noopener noreferrer">Condicionales de CSS.</a><br/>
+        <a class="enlace" href="https://www.youtube.com/watch?v=ZbF5qomB8XM" target="blank" rel="noopener noreferrer">Crear un contador con JavaScript.</a><br/>
+        <a class="enlace" href="https://nodejs.org/api/globals.html" target="_blank" rel="noopener noreferrer">Métodos globales.</a><br/>
+        <a class="enlace" href="https://www.w3schools.com/jsref/met_win_setinterval.asp" target="_blank" rel="noopener noreferrer">SetInterval.</a><br/>
+      </p>
+    </footer>
+    <script src="../Js/programajsHelp.js"></script>
+  </body>
+</html>

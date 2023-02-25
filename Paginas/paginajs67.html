@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-Eventos</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header class="pk-section__v2">
+    <h1 class="text-center text-2xl md:text-3xl">Eventos.</h1>
+    <p>Los eventos se declaran en formato camelCase</p>
+    <p>Las acciones que se desencadenarán al activar el evento se formulan en forma de función, todos los eventos reciben una función colocada entre llaves.</p>
+    <p>Al evento se le debe colocar una función que React pueda ejecutar, por lo que no se puede mandar directamente un console.log() ni un alert(), porque aunque ambas son funciones, al ponerles los paréntesis estas se ejecutan directamente sin necesidad de activar el evento en el momento en que se renderiza el elemento, y no se deben ejecutar directamente, solo se deben enviar las funciones y React se debe encargar de ejecutarlas.</p>
+    <p>Existen diferentes maneras de pasarle funciones al evento.</p>
+  </header>
+  <main>
+    <!-- Evento con función directa. -->
+    <section class="pk-section__v2">
+      <h2>Evento con función directa.</h2>
+      <p>Se puede declarar la función directamente en el evento, ejemplo:</p>
+      <p class="italic">Cuando el evento detecte un clic en el elemento, se imprimirá en consola el string "clic".</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormButton.js</p>
+        import React from "react";<br/>
+        import './FormButton.css';<br/><br/>
+        function FormButton( ) {<br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;button </span>
+        <span class="block indent-12">className="form-button"</span>
+        <span class="block indent-12 font-light italic">{/* evento={ función } */}</span>
+        <span class="block indent-12 font-bold">onClick={ ( ) => console.log('clic') }</span>
+        <span class="block indent-8">&#62;</span>
+        <span class="block indent-12">Texto de botón</span>
+        <span class="block indent-8">&#60;/button&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        export { FormButton };
+      </div>
+    </section>
+    <!-- Evento llamando una función. -->
+    <section class="pk-section__v2">
+      <h2>Evento llamando una función.</h2>
+      <p>También se puede colocar la función del evento en una constante para tener un código más limpio y poder reutilizar la función, ejemplo:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormButton.js</p>
+        import React from "react";<br/>
+        import './FormButton.css';<br/><br/>
+        function FormButton( ) {<br/><br/>
+        <span class="block indent-4">const <u>handleClick</u> = ( ) => {</span>
+        <span class="block indent-8">console.log('clic');</span>
+        <span class="block indent-4">}</span><br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;button </span>
+        <span class="block indent-12">className="form-button"</span>
+        <span class="block indent-12"><i class="font-light">{/* evento={ función } */}</i></span>
+        <span class="block indent-12">onClick={ <u>handleClick</u> }</span>
+        <span class="block indent-8">&#62;</span>
+        <span class="block indent-12">&#60;Texto de botón</span>
+        <span class="block indent-8">&#60;/button&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        export { FormButton };
+      </div>
+    </section>
+    <!-- Evento con una función con parámetro. -->
+    <section class="pk-section__v2">
+      <h2>Evento con una función con parámetro.</h2>
+      <p>Si se mandara un parámetro en la función se tendría que mandar envuelta en otra función para que no se ejecute automaticamente, ejemplo:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormButton.js</p>
+        import React from "react";<br/>
+        import './FormButton.css';<br/><br/>
+        function FormButton( ) {<br/><br/>
+        <span class="block indent-4">const onClickButton = ( <u>message</u> ) => {</span>
+        <span class="block indent-8">console.log( <u>message</u> );</span>
+        <span class="block indent-4">}</span><br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;button </span>
+        <span class="block indent-12">className="form-button"</span>
+        <span class="block indent-12"><i class="font-light">{/* evento={ función( ){ función } } */}</i></span>
+        <span class="block indent-12">onClick={ ( ) => onClickButton( "<u>se ha cliqueado</u>" ) }</span>
+        <span class="block indent-8">&#62;</span>
+        <span class="block indent-12">Texto de botón</span>
+        <span class="block indent-8">&#60;/button&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        export { FormButton };
+      </div>
+    </section>
+    <!-- Ejemplo de eventos -->
+    <section class="pk-section__v2">
+      <h2>Eventos.</h2>
+      <section class="pk-section__v2">
+        <h3>onSubmit={ }</h3>
+        <p>Este evento <b>detecta</b> (no captura) el envío del formulario, ejecutando la función que se le coloque entre las llaves.</p>
+        <div class="pk-code__v2">
+          const <u>submiting</u> = ( ) => {
+          <span class="block indent-4">...</span>
+          }<br/><br/>
+          &#60;form <b>onSubmit={ <u>submiting</u> }</b>&#62;
+          <span class="block indent-4">&#60;label&#62;...&#60;/label&#62;</span>
+          <span class="block indent-4">&#60;textarea&#62;&#60;/textarea&#62;</span>
+          <span class="block indent-4">&#60;button <b>type="submit"</b>&#62;</span>
+          <span class="block indent-8">Enviar</span>
+          <span class="block indent-4">&#60;/button&#62;</span>
+          &#60;/form&#62;
+        </div>
+        <p>Se puede capturar el evento que envía el formulario con <i>event</i>, en el caso del ejemplo anterior, el <i>event</i> capturaría el contenido del textarea al mandarse el formulario.</p>
+        <p>Además con el método event.preventDefault() se puede evitar que la página se recargue al enviar los datos del formulario.</p>
+        <div class="pk-code__v2">
+          const printing = ( <b>event</b> ) => {
+          <span class="block indent-4 font-light italic">{/* Imprimirá en consola el contenido del input textarea */}</span>
+          <span class="block indent-4">console.log( <b>event.target.value</b> );</span>
+          }<br/>
+          const <u>submiting</u> = ( <b>event</b> ) => {
+            <span class="block indent-4 font-light italic">{/* Prevendrá que el formulario recargue la página */}</span>
+          <span class="block indent-4 font-bold">event.preventDefault()</span>
+          }<br/><br/>
+          &#60;form <b>onSubmit={ <u>submiting</u> }</b>&#62;
+          <span class="block indent-4">&#60;label&#62;...&#60;/label&#62;</span>
+          <span class="block indent-4">&#60;textarea&#62;&#60;/textarea&#62;</span>
+          <span class="block indent-4">&#60;button <b>type="submit"</b>&#62;</span>
+          <span class="block indent-8">Enviar</span>
+          <span class="block indent-4">&#60;/button&#62;</span>
+          &#60;/form&#62;
+        </div>
+      </section>
+    </section>
+  </main>
+  <!-- <footer>
+    <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+      </p>
+    </section>
+  </footer> -->
+</body>
+</html>

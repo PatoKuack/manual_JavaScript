@@ -13,67 +13,121 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>React-Deploy</title>
+  <title>React-Estilos</title>
 </head>
 <body class="bg-react bg-[length:200px_200px] bg-center">
   <header>
     <section class="pk-section__v2">
-      <h1 class="text-center text-2xl">Deploy con React.</h1>
+      <h1 class="text-center text-2xl md:text-3xl">Estilos.</h1>
+      <p>Existen dos formas de agregar CSS en un proyecto en React, directamente en los componentes o importando estilos de otros archivos.</p>
     </section>
   </header>
   <main>
+    <!-- Directamente en archivos javascript. -->
     <section class="pk-section__v2">
-      <h2>GitHub-pages con React.</h2>
-      <p>Desde la terminal y posicionandose en la raíz del proyecto se utiliza la siguiente instrucción:</p>
-      <div class="pk-code">
-        npm install --save-dev gh-pages
+      <h2>Directamente en archivos javascript.</h2>
+      <h4>Estilos en línea dentro del componente:</h4>
+      <p>En las formas que implican usar CSS en archivos JavaScript se deben colocar las propiedades sin guiones y con formato <b>camelCase</b>, además de que los valores se colocan entre comillas como strings (backgroundColor: 'pink',).</p>
+      <p>Se crea un objeto que contendrá los estilos y éste objeto será colocado en el elemento principal que agrupa todo en el return (no funciona en React.Fragment por ser un elemento invisible en el navegador), ejemplo:</p>
+      <div class="pk-code__v2">
+        import React from 'react';<br/><br/>
+        function AComponent() {<br/>
+        <span class="block indent-4">return(</span>
+        <span class="block font-light indent-8"><i class="coment">/* Se tiene que colocar doble llave. */</i></span>
+        <span class="block font-bold indent-8">&#60;div style={ {</span>
+        <span class="block font-bold indent-12">backgroundColor: 'rgb(22, 143, 141)',</span>
+        <span class="block font-bold indent-12">color: 'aliceblue',</span>
+        <span class="block font-bold indent-8">} }&#62;</span>
+        <span class="block indent-12">...</span>
+        <span class="block font-bold indent-8">&#60;/div&#62;</span>
+        <span class="block indent-4">);</span>
+        }
       </div>
-      <p>Esta instrucción ayuda a mandar el código del proyecto a <i>GitHub pages</i> para visualizar su funcionamiento.</p>
-      <p>Después, en el archivo <b>package.json</b> se le anexa la siguiente instrucción para indicarle a la dependencia de desarrollo que se instaló (gh-pages) donde se debe subir el proyecto:</p>
-      <div class="pk-code">
+      <h4>Estilos en línea fuera del componente:</h4>
+      <p>Otra manera de agregar estilos en línea (similar a la anterior) es creando un objeto afuera de la función, ejemplo:</p>
+      <div class="pk-code__v2">
+        import React from 'react';<br/><br/>
+        <b>const <u>estilos</u> = {<br/>
+        <span class="block indent-4">backgroundColor: "rgb(22, 143, 141)",</span>
+        }</b><br/><br/>
+        function AComponent( ) {<br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;div <b>style={<u>estilos</u>}</b>&#62;</span>
+        <span class="block indent-12">...</span>
+        <span class="block indent-8">&#60;/div&#62;</span>
+        <span class="block indent-4">);</span>
+        }
+      </div>
+    </section>
+    <!-- Importando documentos de estilo. -->
+    <section class="pk-section__v2">
+      <h2>Importando documentos de estilo.</h2>
+      <p>Otra forma es importando un documento de estilo (como css o scss), en el documento de estilo se utiliza sintaxis normal, este documento se crea dentro de la carpeta <i>src</i>.</p>
+      <p>En el archivo javascript se le deben colocar las clases a los elementos con el atributo <b>className=" "</b>, ejemplo:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/Menu.js</p>
+        import React from "react";<br/>
+        <b>import "menu.css";</b><br/><br/>
+        function Menu( ) {<br/>
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;nav <b>className="menu"</b>&#62;</span>
+        <span class="block indent-12">...</span>
+        <span class="block indent-8">&#60;/nav&#62;</span>
+        <span class="block indent-4">);</span>
+        }
+      </div>
+    </section>
+    <!-- Condicionales en las clases. -->
+    <section class="pk-section__v2">
+      <h2>Condicionales en las clases.</h2>
+      <p>Si se utilizan clases de estilos, pueden definirse usando código de JavaScript para manipularlas de acuerdo a condicionales. Se tiene que utilizar <b>comillas invetidas</b> ( ` ` ), ejemplo:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/FormItems.js</p>
+        import React from "react";<br/><br/>
+        function FormItems(props) {
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;li className="class-item"&#62;</span>
+        <span class="block indent-12 italic font-light">/* Al elemento p se le agregará la clase "class-item__p"</span>
+        <span class="block indent-12 italic font-light">solamente si la propiedad especificada (props.completed) marca true,</span>
+        <span class="block indent-12 italic font-light">se le anexará una segunda clase "class-item__completed" */</span>
+        <span class="block indent-12">&#60;p className={</span>
+        <span class="block indent-16 font-bold">` class-item__p ${ props.completed && 'class-item__completed' } `</span>
+        <span class="block indent-12">}&#62;</span>
+        <span class="block indent-16">{props.text}</span>
+        <span class="block indent-12">&#60;/p&#62;</span>
+        <span class="block indent-8">&#60;/li&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/>
+        ...
+      </div>
+      <p class="italic">Continuando con el ejemplo y retomando el ejemplo de la key, así se mandarían las propiedades:</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">src/App.js</p>
+        ...<br/>
+        &#60;React.Fragment&#62;<br/>
+        <span class="block indent-4">&#60;Form&#62;</span>
+        <span class="block indent-8">{ listItems.map( item => (</span>
+        <span class="block indent-12">&#60;FormItems</span>
+        <span class="block indent-16">key={ item.text }</span>
+        <span class="block indent-16">text={ item.text }</span>
+        <span class="block indent-16">completed={ item.completed }</span>
+        <span class="block indent-12">/&#62;</span>
+        <span class="block indent-8">) ) }</span>
+        <span class="block indent-4">&#60;/Form&#62;</span>
         <span class="highlight">
-          {<br/>
-          &emsp;...<br/>
-          &emsp;"scripts": {<br/>
-          &emsp;&emsp;...</span>,<br/>
-          &emsp;&emsp;"predeploy": "npm run build",<br/>
-          &emsp;&emsp;"deploy": "gh-pages -d build"<br/>
-          &emsp;&emsp;<i class="coment">/* Para ejecutar el deploy se debe primero ejecutar "build", para ahorrarse una instrucción se utiliza un "pre" */</i><br/>
-          &emsp;&emsp;<i class="coment">/* El "pre___" se ejecutará automáticamente cuando se detecte que se va a ejecutar el comando original, es decir, en este caso si se ejecuta "deploy" se ejecutará automáticamente "predeploy" el cual ejecuta "build" */</i><br/>
-          <span class="highlight">
-          &emsp;},<br/>
-          &emsp;...<br/>
-        </span>
-        <i class="coment">/* La siguiente parte se agrega al completar la instalación de gh-pages */</i><br/>
-        <span class="highlight">
-          &emsp;"devDependencies": {<br/>
-        </span>
-          &emsp;&emsp;"gh-pages": "^3.2.3"<br/>
-        <span class="highlight">
-          &emsp;},<br/>
-        </span>
-        <i class="coment">/* ----------------- */</i><br/>
-        &emsp;"homepage": "https://<b><u>user-name en GitHub</u></b>.github.io/<b><u>repository-name del proyecto</u></b>"<br/>
-        <span class="highlight">
-          }<br/>
+          &#60;/React.Fragment&#62;<br/>
+          ...
         </span>
       </div>
-      <p>Al final se ejecuta <b>npm run deploy</b> y se hace un git push con sus respectivos códigos (git add . || git commit -m "..." || git pull origin main || git push origin main) para desplegar el proyecto a GitHub pages.</p>
     </section>
   </main>
   <footer>
     <section class="pk-section__v2">
       <h3>Referencias:</h3>
       <p>
-        <a class="link" href="https://platzi.com/blog/tutorial-como-crear-una-animacion-de-carga-de-contenido-tipo-facebook/" target="_blank" rel="noopener noreferrer">Loading skeletons (esqueletos de carga).</a><br/>
-        <a class="link" href="https://skeletonreact.com/" target="_blank" rel="noopener noreferrer">Create React Content Loader.</a><br/>
-        <a class="link" href="https://platzi.com/blog/ui-stack/" target="_blank" rel="noopener noreferrer">5 estados clave para crear interfaces coherentes.</a><br/>
+        <a class="link" href="https://platzi.com/blog/tutorial-como-crear-una-animacion-de-carga-de-contenido-tipo-facebook/" target="_blank" rel="noopener noreferrer">Loading skeletons (Blog).</a><br/>
+        <a class="link" href="https://skeletonreact.com/" target="_blank" rel="noopener noreferrer">Loading skeletons (Código).</a><br/>
         <a class="link" href="https://material.io/design/iconography/system-icons.html" target="_blank" rel="noopener noreferrer">Guía sobre diseño de íconos.</a><br/>
-        <a class="link" href="https://threejs.org/" target="_blank" rel="noopener noreferrer">Three.js</a><br/>
-        <a class="link" href="https://shopify.github.io/draggable/" target="_blank" rel="noopener noreferrer">draggable</a><br/>
-        <a class="link" href="https://www.youtube.com/watch?v=Nh2He5m_Eps&t=713s" target="_blank" rel="noopener noreferrer">Tipos de Componentes</a><br/>
-        <a class="link" href="https://dev.to/ajpalacios/tipos-de-componentes-en-react-js-4epg" target="_blank" rel="noopener noreferrer">Tipos de componentes en React.</a><br/>
-        <!-- <a class="link" href="" target="_blank" rel="noopener noreferrer"></a><br/> -->
       </p>
     </section>
   </footer>

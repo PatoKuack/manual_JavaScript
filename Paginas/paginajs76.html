@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-HOF y HOC</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header>
+    <section class="pk-section__v2">
+      <h1 class="text-center text-2xl">High Order Components.</h1>
+      <p>Retornan componentes y funciones heredando un conjunto de información de todo, por esto es útil para compartir información entre componentes.</p>
+      <p>Tiene una desventaja, y es que funcionan bien mientras no se requiera compartir mucha información de distintos HOCs en un mismo componente, ya que genera poca escalabilidad en el código, aunque se puede evitar esto creando una <i>función compose</i> o utilizando la <i>función compose</i> de una libreria.</p>
+    </section>
+  </header>
+  <main>
+    <!-- High Order Functions -->
+    <section class="pk-section__v2">
+      <h2>High Order Functions.</h2>
+      <p>Las HOF son funciones que retornan otras funciones.</p>
+      <div class="pk-code__v2">
+        function highOrderFunc( ) {
+        <span class="block indent-4">return function normalFunc( ) {</span>
+        <span class="block indent-8">return( ... );</span>
+        <span class="block indent-4">}</span>
+        }
+      </div>
+      <p>Ya que son funciones, se les pueden mandar argumentos.</p>
+      <div class="pk-code__v2">
+        function hof( var1 ) {
+        <span class="block indent-4">return function normalFunction( var2 ) {</span>
+        <span class="block indent-8">return var1 + var2;</span>
+        <span class="block indent-4">}</span>
+        }<br/><br/>
+        const sumando1 = hof( 1 );<br/>
+        const sumaTotal = sumando1( 2 );
+      </div>
+    </section>
+    <!-- High Order Components -->
+    <section class="pk-section__v2">
+      <h2>High Order Components</h2>
+      <p>Los HOCs también son <u>funciones que retornan</u> funciones, pero las funciones retornadas son <u>Componentes</u>.</p>
+      <div class="pk-code__v2">
+        function highOrderComp( CompEnvuelto ) {
+        <span class="block indent-4">return function OtroComp( props ) {</span>
+        <span class="block indent-8">return(</span>
+        <span class="block indent-12">&#60;CompEnvuelto</span>
+        <span class="block indent-16">algoEspecial={ props.algoEspecial }</span>
+        <span class="block indent-12">/&#62;</span>
+        <span class="block indent-8">);</span>
+        <span class="block indent-4">}</span>
+        }
+      </div>
+      <p>Cuando los componentes se colocan como parámetros en los HOC se dice que son <i>componentes envueltos</i>, estos <i>componentes envueltos</i> recibirán automaticamente las propiedades de todos los componentes involucrados en el HOC.</p>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">./App/withApi.js</p>
+        import React from 'react';<br/><br/>
+        <span class="block font-light italic">{/* El HOC recibirá una url como parámetro */}</span>
+        function withApi( <u>apiURL</u> ) {
+        <span class="block indent-4 font-light italic">{/* retornará otro HOC que recibirá un Componente como parámetro */}</span>
+        <span class="block indent-4">return function withApiUrl( <u>WrappedComponent</u> ) {</span>
+        <span class="block indent-8">const dataApi = fetchApi( <u>apiURL</u> );</span><br/>
+        <span class="block indent-8 font-light italic">{/* El HOC hijo retornará un Componente */}</span>
+        <span class="block indent-8">return function WrappedComponentWithApi( props ) {</span>
+        <span class="block indent-12">if ( dataApi.loading ) return &#60;p&#62;;Loading&#60;/p&#62;;</span>
+        <span class="block indent-12">return (</span>
+        <span class="block indent-16 font-light italic">{/* Se retornará el Componente recibido en el 2° HOC</span>
+        <span class="block indent-16 font-light italic">mandandole como propiedad la URL procesada del 1° HOC */}</span>
+        <span class="block indent-16">&#60;<u>WrapperdComponent</u> data={ dataApi.json } /&#62;</span>
+        <span class="block indent-12">);</span>
+        <span class="block indent-8">}</span>
+        <span class="block indent-4">}</span>
+      }<br/><br/>
+      export { withApi };
+      </div>
+      <div class="pk-code__v2">
+        <p class="mt-0 text-center italic">./App/index.js</p>
+        import React from 'react';<br/>
+        import { withApi } from './withApi.js';<br/><br/>
+        function CompBox( props ) {
+        <span class="block indent-4">return (</span>
+        <span class="block indent-8">&#60;p&#62;Tu nombre es { props.data.name }&#60;/p&#62;</span>
+        <span class="block indent-4">);</span>
+        }<br/><br/>
+        <span class="block font-light italic">{/* Se guarda en una constante el llamado del HOC</span>
+        <span class="block font-light italic">mandandole los parámetros que requiere, la URL y el Componente */}</span>
+        const CompBoxWithApi = withApi( 'https://api.com' )( CompBox );<br/><br/>
+        export { CompBoxWithApi };
+      </div>
+      <p>En el ejemplo anterior se anidan dos HOCs y dos Componentes. Dentro de un HOC se pueden pasar todos los Componentes, funciones y HOCs que se deseen, pero es IMPORTANTE que el <b>último retorno sea un Componente</b>.</p>
+      <p>Por convención los HOCs empiezan por la palabra <b>with</b> y los parámetros que recibirán Componentes se les llama <b>WrappedComponent</b> (wrapped = envuelto).</p>
+    </section>
+  </main>
+  <footer>
+    <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+        <a class="link" href="https://es.javascript.info/currying-partials" target="_blank" rel="noopener noreferrer">Currificación.</a><br/>
+        <a class="link" href="https://reactjs.org/docs/higher-order-components.html" target="_blank" rel="noopener noreferrer">Higher-Order Components.</a><br/>
+      </p>
+    </section>
+  </footer>
+</body>
+</html>

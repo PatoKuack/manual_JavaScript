@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- No guardar cache en navegadores -->
+  <meta http-equiv="Last-Modified" content="0">
+  <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <!-- ------------------- -->
+  <!-- Estilos -->
+  <link rel="stylesheet" href="../Estilos/tailwind_dist/tailwind.css">
+  <!-- ------------------- -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React-cloneElement/Children</title>
+</head>
+<body class="bg-react bg-[length:200px_200px] bg-center">
+  <header>
+    <section class="pk-section__v2">
+      <h1 class="text-center text-2xl">React.cloneElement y React.Children.</h1>
+    </section>
+  </header>
+  <main>
+    <!-- React.cloneElement -->
+    <section class="pk-section__v2">
+      <h2>React.cloneElement</h2>
+      <p>Sirve para poder pasar propiedades especiales a los componentes hijos de los componentes contenedores. Su desventaja es que aunque pueda mandar varias propiedades al elemento clonado, solamente puede recibir un elemento para ser clonado.</p>
+      <div class="pk-code__v2">
+        import React from 'react';<br/>
+        import EjHijo from './EjHijo';<br/><br/>
+        function <u>App</u>( ) {<br/>
+        const [ loading, objectList ] = React.useState( true );
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;EjPadre loading={ loading }&#62;</span>
+        <span class="block indent-12">&#60;EjHijo /&#62;</span>
+        <span class="block indent-8">&#60;/EjPadre&#62;</span>
+        <span class="block indent-4">);</span>
+      </div>
+      <div class="pk-code__v2">
+        function <u>EjPadre</u>( <b>{ children, loading }</b> ) {
+          <span class="block indent-4">return(</span>
+          <span class="block indent-8">&#60;section&#62;</span>
+          <span class="block indent-12 font-light italic">{/* Recibirá el elemento del contenido (EjHijo)</span>
+          <span class="block indent-12 font-light italic">y le mandará la propiedad loading */}</span>
+          <span class="block indent-12 font-bold">React.cloneElement(child, { loading: loading } )</span>
+          <span class="block indent-8">&#60;/section&#62;</span>
+          <span class="block indent-4">);</span>
+        }
+      </div>
+    </section>
+    <!-- React.Children -->
+    <section class="pk-section__v2">
+      <h2>React.Children</h2>
+      <p>Tiene muchos métodos para ayudar a utilizar el contenido que se le pasa a los componentes.</p>
+      <ul class="mb-4 ml-4 list-disc list-inside">
+        <li>React.Children<u>.toArray( children )</u></li>
+      </ul>
+      <p>Recibe el contenido del componente (children) y devuelve un array con los comonentes o elementos que se reciban, no importa si no recibe elementos o si recibe solo uno, siempre devuelve un array con los componentes y elementos como contenido.</p>
+      <div class="pk-code__v2">
+        import React from 'react';<br/>
+        import EjHijo1 from './EjHijo1';<br/>
+        import EjHijo2 from './EjHijo2';<br/><br/>
+        function <u>App</u>( ) {<br/>
+        const [ loading, objectList ] = React.useState( true );
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;EjPadre loading={ loading }&#62;</span>
+        <span class="block indent-12">&#60;EjHijo1 /&#62;</span>
+        <span class="block indent-12">&#60;EjHijo2 /&#62;</span>
+        <span class="block indent-8">&#60;/EjPadre&#62;</span>
+        <span class="block indent-4">);</span>
+      </div>
+      <div class="pk-code__v2">
+        function <u>EjPadre</u>( <b>{ children, loading }</b> ) {
+        <span class="block indent-4">return(</span>
+        <span class="block indent-8">&#60;section&#62;</span>
+        <span class="block indent-12 font-light italic">{/* Recibirá el elemento del contenido (EjHijo) */}</span>
+        <span class="block indent-12">{ React.Children</span>
+          <span class="block indent-16 font-light italic">{/* Transformará el contenido en un Array */}</span>
+          <span class="block indent-16">.toArray(children)</span>
+          <span class="block indent-16 font-light italic">{/* Con cada elemento del array se usará React.cloneElement */}</span>
+        <span class="block indent-16">.map( ( child ) =></span>
+        <span class="block indent-20">React.cloneElement( child, { loading: loading } )</span>
+        <span class="block indent-16">)</span>
+        <span class="block indent-12">}</span>
+        <span class="block indent-8">&#60;/section&#62;</span>
+        <span class="block indent-4">);</span>
+        }
+      </div>
+    </section>
+  </main>
+  <footer>
+    <section class="pk-section__v2">
+      <h3>Referencias:</h3>
+      <p>
+        <a class="link" href="https://frontarm.com/james-k-nelson/passing-data-props-children/" target="_blank" rel="noopener noreferrer">How to pass data to props.children.</a><br/>
+        <a class="link" href="https://medium.com/@justynazet/passing-props-to-props-children-using-react-cloneelement-and-render-props-pattern-896da70b24f6" target="_blank" rel="noopener noreferrer">Using React.cloneElement.</a><br/>
+        <a class="link" href="https://reactjs.org/docs/react-api.html#reactchildren" target="_blank" rel="noopener noreferrer">React.Children.</a><br/>
+      </p>
+    </section>
+  </footer>
+</body>
+</html>

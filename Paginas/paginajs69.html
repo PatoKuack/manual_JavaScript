@@ -21,6 +21,15 @@
     <p>Los React Hooks conectan de una forma muy fácil a los componentes con propiedades, información, estados y eventos; por esto es super útil para compartir información entre compoentes.</p>
     <p>Son como funciones normales, solo que los cambios dentro de los React Hooks hacen validaciones y le avisan a React que debe hacer un nuevo render del componente; por esto también se utilizan para maquetar y hacer renders de partes especificas del código dependiendo de algunas condiciones, aunque no es poco efectivo utilizarlos en maquetación.</p>
     <p>Los custom hook siempre comienzan por la palabra <b>use</b> (ejemplo: useEffect) y como es una función debe recibir mínimo 2 parámetros.</p>
+    <p>Los hooks de React se pueden utilizar importandolos o llamando a React al ustilizar el hook, ejemplo:</p>
+    <div class="pk-code__v2">
+      import React { useEffect, useRef } from 'react';<br/>
+      useEffect(...);
+    </div>
+    <div class="pk-code__v2">
+      import React from 'react';<br/>
+      React.useEffect(...);
+    </div>
   </header>
   <main>
     <!-- useEffect. -->
@@ -48,7 +57,7 @@
       <div class="pk-code__v2">
         React.useEffect( ( ) => {
         <span class="block indent-4">console.log("Carne");</span>
-        }, [ myComponent ] );
+        }, [ myState ] );
       </div>
     </section>
     <!-- useLayoutEffect. -->

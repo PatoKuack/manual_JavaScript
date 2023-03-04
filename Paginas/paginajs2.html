@@ -15,27 +15,27 @@
 </head>
 <body>
   <div class="medio">
-    <h2>Operadores</h2>
+    <h1>Operadores</h1>
     <div>
-      <h3>Operadores de aritméticas</h3>
+      <h2>Operadores de aritméticas</h2>
       Los operadores aritméticos <b>(+, -, *, /, %, **)</b> permiten crear operaciones matemáticas en la declaración de un valor, ejemplo:<br>
       <b>let num = 5-15</b>
       <p>Para la raíz cuadrada se utiliza <b>Math.sqrt()</b></p>
     </div>
     <div>
-      <h3>Operadores de asignación</h3>
+      <h2>Operadores de asignación</h2>
       El operador <b>=</b> sirve para asignar o reasignar o asignar por referencia un valor a una variable.<br>
       Se puede reducir asignaciones combinando operadores aritméticos y de asignación, ejemplo:<br>
       <b>a %= b</b>, en este caso se reasigna el residuo de <b>a</b> entre <b>b</b> a la variable <b>a</b>.<br>
       Lo mismo se puede hacer con cualquier operador aritmético colocándolo en lugar de '%'.
     </div>
     <div>
-      <h3>Operadores de concatenación</h3>
+      <h2>Operadores de concatenación</h2>
       El operador <b>+</b> concatena strings, ejemplo:<br>
       <b>let nomCompleto = nombre + " " + apellido</b>
     </div>
     <div>
-      <h3>Operador de comparación.</h3>
+      <h2>Operador de comparación.</h2>
       Comparan valores y devuelve true o false según se cumpla o no la comparación.<br>
       Igual que <b>==</b> compara solo valores (un String "5" puede ser igual que un Number 5).<br>
       Estrictamente igual que <b>===</b> compara valor y tipo de dato.<br>
@@ -52,25 +52,25 @@
       "oso" in animal //devuelve true porque hay un string en el objeto</b>
     </div>
     <div>
-      <h3>Operadores lógicos</h3>
+      <h2>Operadores lógicos</h2>
       And <b>&&</b> concatena comparaciones pidiendo que se cumplan todas las comparaciones involucradas<br>
       Or <b>||</b> concatena comparaciones pidiendo que se cumplan al menos una de las comparaciones involucradas<br>
       Es buena práctica separar las comparaciones con paréntesis, ejemplo:<br>
       <b>(b > a) || (b > c)</b>
     </div>
     <div>
-      <h3>Operadores unarios</h3>
+      <h2>Operadores unarios</h2>
       Necesitan de ellos mismos para modificar su valor.<br>
       Incremento en uno <b>++</b>, <b>a=a+1 == a++</b><br>
       Decremento en uno <b>--</b>, <b>a=a-1 == a--</b>
     </div>
     <div>
-      <h3>Operadores ternarios</h3>
+      <h2>Operadores ternarios</h2>
       Asigna un valor1 a una variable si se cumple una condición, sino le asigna un valor2, ejemplo:<br>
       <b>let c = 30 > 21 ? <u>valor1</u> : <u>valor2</u></b>
     </div>
     <div>
-      <h3>Type coercion</h3>
+      <h2>Type coercion</h2>
       Capacidad que tiene JavaScript para convertir un tipo de dato en otro al realizar interacciones entre variables con tipos de datos diferentes, ejemplo:<br>
       <b>let numA = "1";</b>
       <em class="coment">//numA será de tipo "string"</em><br>
@@ -89,7 +89,7 @@
       <em class="coment">//sume =2; como en lógica binaria true = 1 y false = 0, entonces el navegador convierte estos dos valores de tipo booleanos a tipo numérico y los suma.</em><br>
     </div>
     <div>
-      <h3>Converción de tipo de valores.</h3>
+      <h2>Converción de tipo de valores.</h2>
       <b>parseInt(<u>"2.99"</u>)</b><br>
       Convierte cualquier número en un entero, ya sea que sea un numero con fracción o un numero de tipo string. En un numero con fracción trunca sus decimales, en el ejemplo de 2.99 se convertiría en 2.<br>
       <b>Object.entries(<u><i>array</i></u>)</b><br>
@@ -99,7 +99,7 @@
     </div>
   </div>
   <footer>
-    <h4>Referencias:</h4>
+    <h3>Referencias:</h3>
     <p>
       <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank" rel="noopener noreferrer">Objeto Math</a>
     </p>
